@@ -1,0 +1,103 @@
+//Mixins
+.navigation-green-bottom {
+    border-bottom: @navigation-page-bar;
+}
+.navigation-green-top {
+    border-top: @navigation-page-bar;
+}
+.icon-light {
+    color:#fff !important;
+}
+
+.form-control-focus(@color: #a5c727) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    border-color: @color;
+    outline: 0;
+    background-color: @white;
+    .opacity(1);
+    color:#000;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+  }
+}
+//Adding button gradients to buttons: https://gist.github.com/claviska/6117193
+.pretty-buttons(@color, @background, @text-shadow: none) {
+	color: @color;
+	#gradient > .vertical(lighten(@background, 5%), darken(@background, 5%), 0%, 100%);
+	border-color: darken(@background, 10%);
+	border-bottom-color: darken(@background, 20%);
+	text-shadow: @text-shadow;
+	.box-shadow(inset 0 1px 0 rgba(255, 255, 255, .1));
+	
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		#gradient > .vertical(darken(@background, 0), darken(@background, 10%), 0%, 100%);
+		border-color: darken(@background, 20%);
+		color: @color;
+	}
+	
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			background-color: @background;
+			border-color: darken(@background, 5%);
+		}
+	}
+}
+
+.remove-gradient(@color:transparent) {
+    background-color:@color;
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+.full-width-row {
+    &> div[class*="col-"] {
+        padding-right:0px;
+        padding-left:0px;
+    }
+     @media (min-width: @screen-sm-min) {
+     &>   div[class*="col-"]:first-child {
+        padding-left:0px;
+        padding-right:(20px/ 2);
+        }
+       &> div[class*="col-"]:last-child {
+        padding-right:0px;
+        padding-left:(20px / 2);
+        }
+        &>div[class*="col-"] {
+            padding-right:(20px / 2);
+            padding-left:(20px / 2);
+        }
+    }
+}
+
+.floating-content-box {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top:0;
+    }
+    .thumbnail;
+    background-color:#fff;
+    border-radius:0;
+    border:none;
+    padding-top:20px;
+    padding-left:20px;
+    padding-right:20px;
+    &.border-top {
+        border-top: 6px solid @default-theme-primary;
+    }
+}
+
+.img-non-responsive {
+    display: initial !important;
+    max-width: none !important;
+    height: initial !important;
+}

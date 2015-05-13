@@ -1,0 +1,300 @@
+/*
+ Responsive Mega Menu v1.3
+ 
+ Changelog
+	v1.3
+		- Separated responsive elements into their own file.
+
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+/* 979px and below */
+/*=================*/
+@media (min-width: 768px) and (max-width: 979px) {
+
+.navbar-inner { padding: 5px 0 5px 7px; }
+.navbar-fixed-top .navbar-inner { padding: 5px 0 5px 10px; }
+
+.nav-collapse .navbar-form,
+.nav-collapse .navbar-search { border: 0; margin-bottom: 0; padding: 0; }
+
+li.dropdown { margin-top: 10px; }
+
+.nav-collapse .nav-title, .nav-collapse .nav .nav-header { color: #ccc; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); border-bottom: 1px solid #555; }
+
+.nav-collapse .btn-primary, .nav-collapse .btn-warning, .nav-collapse .btn-success, .nav-collapse .btn-info, .nav-collapse .btn-danger, .nav-collapse .btn-inverse { color: #fff !important; }
+
+/* 2 Menus */
+.nav-collapse .mega-menu-2 { width: 50%; }
+.nav-collapse .mega-menu-2 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 3 Menus */
+.nav-collapse .mega-menu-3 { width: 100%; }
+.nav-collapse .mega-menu-3 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 4 Menus */
+.nav-collapse .mega-menu-4 { width: 100%; }
+.nav-collapse .mega-menu-4 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 5 Menus */
+.nav-collapse .mega-menu-5 { width: 100%; }
+.nav-collapse .mega-menu-5 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 6 Menus */
+.nav-collapse .mega-menu-6 ul { width: 714px; margin: 0; }
+.nav-collapse .mega-menu-6 ul ul { list-style: none; margin: 0; float: none; width: auto; }
+
+.nav-collapse .mega-menu-2 .one-column { width: 168px; margin-right: 10px; }
+.nav-collapse .mega-menu-3 .one-column { width: 228px; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .one-column { width: 168px; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .one-column { width: 132px; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .one-column { width: 109px; margin-right: 10px; }
+
+.nav-collapse .mega-menu-2 .two-column { width: 98%; margin-right: 10px; }
+.nav-collapse .mega-menu-3 .two-column { width: 456px; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .two-column { width: 347px; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .two-column { width: 274px; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .two-column { width: 228px; margin-right: 10px; }
+
+.nav-collapse .mega-menu-3 .three-column { width: 704px; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .three-column { width: 526px; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .three-column { width: 420px; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .three-column { width: 347px; margin-right: 10px; }
+
+.nav-collapse .mega-menu-4 .four-column { width: 704px; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .four-column { width: 546px; }
+.nav-collapse .mega-menu-6 .four-column { width: 454px; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .five-column { width: 585px; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .six-column { width: 704px; margin-right: 0; }
+
+.navbar-search { display: inline-block; }
+
+/* With Products */
+.mega-menu-3 .add-products li { width: 221px; }
+.mega-menu-4 .add-products li  { width: 162px; }
+.mega-menu-5 .add-products li { width: 127px; }
+.mega-menu-6 .add-products li { width: 221px; }
+
+}
+
+
+/* 767px and below */
+/*=================*/
+@media (max-width: 767px) {
+
+.navbar-inner { padding: 5px 0 5px 8px; }
+.navbar-fixed-top .navbar-inner { padding: 5px 0 5px 10px; }
+
+.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:hover { color: #fff; background: none; }
+
+.nav-collapse .navbar-form,
+.nav-collapse .navbar-search { border: 0; margin-bottom: 0; padding: 0; }
+
+li.dropdown { margin-top: 10px; }
+
+.nav-collapse .nav-title, .nav-collapse .nav .nav-header { color: #ccc; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); border-bottom: 1px solid #555; }
+
+.nav-collapse .btn-primary, .nav-collapse .btn-warning, .nav-collapse .btn-success, .nav-collapse .btn-info, .nav-collapse .btn-danger, .nav-collapse .btn-inverse { color: #fff !important; }
+
+/* 2 Menus */
+.nav-collapse .mega-menu-2 { width: 50%; }
+.nav-collapse .mega-menu-2 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 3 Menus */
+.nav-collapse .mega-menu-3 { width: 100%; }
+.nav-collapse .mega-menu-3 ul.dropdown-menu, .nav-collapse .mega-menu-3 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 4 Menus */
+.nav-collapse .mega-menu-4 { width: 100%; }
+.nav-collapse .mega-menu-4 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 5 Menus */
+.nav-collapse .mega-menu-5 { width: 100%; }
+.nav-collapse .mega-menu-5 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 6 Menus */
+.nav-collapse .mega-menu-6 { width: 100%; margin: 0; }
+.nav-collapse .mega-menu-6 ul { list-style: none; margin: 0; float: none; width: auto; }
+.nav-collapse .mega-menu-6 ul ul { width: auto; }
+
+.nav-collapse .mega-menu-2 .one-column { width: 46%; margin-right: 10px; }
+.nav-collapse .mega-menu-3 .one-column { width: 31.1%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .one-column { width: 23%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .one-column { width: 18%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .one-column { width: 14.6%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-2 .two-column { width: 96%; margin-right: 0; }
+.nav-collapse .mega-menu-3 .two-column { width: 64.5%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .two-column { width: 48.1%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .two-column { width: 38%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .two-column { width: 31.1%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-3 .three-column { width: 97%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .three-column { width: 72.1%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .three-column { width: 58.1%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .three-column { width: 47%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-4 .four-column { width: 98.5%; }
+.nav-collapse .mega-menu-5 .four-column { width: 77.9%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .four-column { width: 63%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-5 .five-column { width: 98%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .five-column { width: 80%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .six-column { width: 96%; margin-right: 0; }
+
+.nav-collapse .nav > li > a,
+.nav-collapse .dropdown-menu a,
+.nav-collapse .nav .dropdown-toggle { padding: 3px 0; }
+
+.transition a {
+-webkit-transition: none; /** Chrome & Safari **/
+-moz-transition: none; /** Firefox **/
+-o-transition: none; /** Opera **/ }
+.transition a:hover {
+padding-left: 0; 
+-webkit-transition: none; /** Chrome & Safari **/
+-moz-transition: none; /** Firefox **/
+-o-transition: none; /** Opera **/ }
+
+.navbar-search { display: inline-block; }
+
+/* With Products */
+.mega-menu-3 .add-products li { width: 30.4%; }
+.mega-menu-4 .add-products li { width: 22.5%; }
+.mega-menu-5 .add-products li { width: 17.5%; }
+.mega-menu-6 .add-products li { width: 30.4%; }
+
+}
+
+
+/* 480px and below */
+/*=================*/
+@media (max-width: 480px) {
+
+.navbar-fixed-top .navbar-inner { padding: 5px 0 5px 10px; }
+
+.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:hover { color: #fff; background: none; }
+
+.nav-collapse .navbar-form,
+.nav-collapse .navbar-search { float: left; padding: 0; }
+
+li.dropdown { margin-top: 10px; }
+
+.nav-collapse .nav-title, .nav-collapse .nav .nav-header { color: #ccc; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); border-bottom: 1px solid #555; }
+
+.nav-collapse .btn-primary, .nav-collapse .btn-warning, .nav-collapse .btn-success, .nav-collapse .btn-info, .nav-collapse .btn-danger { color: #fff !important; }
+
+/* 2 Menus */
+.nav-collapse .mega-menu-2 { width: 100%; }
+.nav-collapse .mega-menu-2 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 3 Menus */
+.nav-collapse .mega-menu-3 { width: 100%; }
+.nav-collapse .mega-menu-3 ul.dropdown-menu, .nav-collapse .mega-menu-3 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 4 Menus */
+.nav-collapse .mega-menu-4 { min-width: 100%; }
+.nav-collapse .mega-menu-4 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 5 Menus */
+.nav-collapse .mega-menu-5 { min-width: 100% !important; }
+.nav-collapse .mega-menu-5 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 6 Menus */
+.nav-collapse .mega-menu-6 { min-width: 100%; margin: 0; }
+.nav-collapse .mega-menu-6 ul { list-style: none; margin: 0; float: none; width: auto; }
+.nav-collapse .mega-menu-6 ul ul { width: auto; }
+
+.nav-collapse .mega-menu-2 .one-column { width: 47.5%; margin-right: 10px; }
+.nav-collapse .mega-menu-3 .one-column { width: 30.6%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .one-column { width: 22.4%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .one-column { width: 17.5%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .one-column { width: 14.2%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-2 .two-column { width: 98%; margin-right: 0; }
+.nav-collapse .mega-menu-3 .two-column { width: 63.9%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .two-column { width: 47.5%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .two-column { width: 37.3%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .two-column { width: 31%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-3 .three-column { width: 97%; margin-right: 10px; }
+.nav-collapse .mega-menu-4 .three-column { width: 72.3%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .three-column { width: 57.5%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .three-column { width: 47%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-4 .four-column { width: 98%; margin-right: 10px; }
+.nav-collapse .mega-menu-5 .four-column { width: 77.8%; margin-right: 10px; }
+.nav-collapse .mega-menu-6 .four-column { width: 63%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-5 .five-column { width: 98.5%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .five-column { width: 81%; margin-right: 10px; }
+
+.nav-collapse .mega-menu-6 .six-column { width: 98%; margin-right: 0; }
+
+.nav-collapse .nav > li > a,
+.nav-collapse .dropdown-menu a,
+.nav-collapse .nav .dropdown-toggle { padding: 3px 0; }
+
+/* Wide Menu */
+.nav-collapse .mega-menu-2 ul.mega-wide,
+.nav-collapse .mega-menu-3 ul.mega-wide,
+.nav-collapse .mega-menu-4 ul.mega-wide,
+.nav-collapse .mega-menu-5 ul.mega-wide,
+.nav-collapse .mega-menu-6 ul.mega-wide { width: 100%; margin: 0; }
+
+.transition ul li a {
+-webkit-transition: none; /** Chrome & Safari **/
+-moz-transition: none; /** Firefox **/
+-o-transition: none; /** Opera **/ }
+.transition ul li a:hover {
+padding-left: 0; 
+-webkit-transition: none; /** Chrome & Safari **/
+-moz-transition: none; /** Firefox **/
+-o-transition: none; /** Opera **/ }
+
+/* With Products */
+.mega-menu-3 .add-products li { width: 30.4%; }
+.mega-menu-4 .add-products li { width: 22%; }
+.mega-menu-5 .add-products li { width: 16.8%; }
+.mega-menu-6 .add-products li { width: 30.4%; }
+
+}
+
+/* 320px and below */
+@media (max-width: 320px) {
+
+.nav-collapse .mega-menu-2 .one-column, 
+.nav-collapse .mega-menu-3 .one-column,
+.nav-collapse .mega-menu-4 .one-column,
+.nav-collapse .mega-menu-5 .one-column,
+.nav-collapse .mega-menu-6 .one-column,
+.nav-collapse .mega-menu-2 .two-column, 
+.nav-collapse .mega-menu-3 .two-column,
+.nav-collapse .mega-menu-4 .two-column,
+.nav-collapse .mega-menu-5 .two-column,
+.nav-collapse .mega-menu-6 .two-column,
+.nav-collapse .mega-menu-3 .three-column,
+.nav-collapse .mega-menu-4 .three-column,
+.nav-collapse .mega-menu-5 .three-column,
+.nav-collapse .mega-menu-6 .three-column,
+.nav-collapse .mega-menu-4 .four-column,
+.nav-collapse .mega-menu-5 .four-column,
+.nav-collapse .mega-menu-6 .four-column,
+.nav-collapse .mega-menu-5 .five-column,
+.nav-collapse .mega-menu-6 .five-column,
+.nav-collapse .mega-menu-6 .six-column,
+.nav-collapse .mega-menu-3 .add-products li,
+.nav-collapse .mega-menu-4 .add-products li,
+.nav-collapse .mega-menu-5 .add-products li,
+.nav-collapse .mega-menu-6 .add-products li { width: 96.5%; margin-right: 10px; }
+
+}
+

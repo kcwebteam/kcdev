@@ -1,0 +1,122 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Grid example
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            | .col-xs-1
+      p
+        | Using 
+        a(href='http://getbootstrap.com/css/#responsive-utilities', target='_blank') Bootstrap's visibility classes
+        | , I've created a few sample grids below for you to examine in your browser. This first grid is using all 4 grid sizes combined in a single row.
+      p.visible-lg
+        | lg indicates that the large grid displaying. The grid stacks horizontally < 1200px.
+      p.visible-md
+        | md indicates that the medium grid displaying. The grid stacks horizontally < 992px.
+      p.visible-sm
+        | sm indicates that the small grid displaying. The grid stacks horizontally < 768px.
+      p.visible-xs
+        | xs indicates that the extra small grid displaying. This grid is always horizontal.
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-lg-4.col-md-1.col-sm-5.col-xs-5(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            span.visible-lg .col-lg-4
+            span.visible-md .col-md-1
+            span.visible-sm .col-sm-5
+            span.visible-xs .col-xs-5
+          .col-lg-4.col-md-5.col-sm-1.col-xs-6(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            span.visible-lg .col-lg-4
+            span.visible-md .col-md-5
+            span.visible-sm .col-sm-1
+            span.visible-xs .col-xs-6
+          .col-lg-4.col-md-6.col-sm-6.col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            span.visible-lg .col-lg-4
+            span.visible-md .col-md-6
+            span.visible-sm .col-sm-6
+            span.visible-xs .col-xs-1
+      // end row
+
+      h2 xs Grid Alone
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-xs-5(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-xs-5
+          .col-xs-6(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-xs-6
+          .col-xs-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-xs-1
+      // end row
+      h2 sm Grid Alone
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-sm-5(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-sm-5
+          .col-sm-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-sm-1
+          .col-sm-6(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-sm-6
+      // end row
+      h2 md Grid Alone
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-md-1(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-md-1
+          .col-md-5(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-md-5
+          .col-md-6(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-md-6
+      // end row
+      h2 lg Grid Alone
+      div(data-xrayhtml)
+        .row(style="margin-left:0; margin-right:0")
+          .col-lg-4(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-lg-4
+          .col-lg-4(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-lg-4
+          .col-lg-4(style="background-color: rgba(255,195,13,.3);border: 1px solid rgba(255,195,13,.4);padding:1em 0")
+            p .col-lg-4
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+     });

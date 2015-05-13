@@ -1,0 +1,71 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Images
+      h2 Responsive Images
+      p 
+        | By default all images are responsive. This means they will scale to the parent element. So if you resize your screen the image should resize proportionally.
+      div(data-xrayhtml)
+        div(style="width:400px")
+          img(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+        div(style="width:300px")
+          img(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+        div(style="width:200px")
+          img(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+        img(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+      br
+      p 
+        | Sometimes you'll want an image to remain one size even if resizing. To remove responsiveness use the  
+        code .img-non-responsive
+        |  class.
+      div(data-xrayhtml)
+        div(style="width:400px")
+          img.img-non-responsive(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+        div(style="width:300px")
+          img.img-non-responsive(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+        div(style="width:200px")
+          img.img-non-responsive(src="http://www.newildernesstrust.org/wp-content/uploads/2013/04/Bird.jpg")
+      h2 Images with wrapping text
+      p 
+        | Use 
+        code .pull-right
+        |  class to pull images to right and wrap text around.
+        | You can also use 
+        code .pull-left
+        |  to pull image to right. See other options 
+        a(href="http://getbootstrap.com/css/#helper-classes") here
+        | .
+      div(data-xrayhtml)
+        img.pull-right(src="http://blog.birdsupplies.com/wp-content/uploads/2013/08/cat-Bird-1-300x200.jpg")
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+
+
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+      $('#your-div-id').eventsCalendar({
+        calNum: "69gk-ky9a", //Socrata database number *Required
+        numItems: 4
+      });
+      $("#feed-div-id").deliciousNewsFeed({});
+     });

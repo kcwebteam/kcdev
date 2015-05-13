@@ -1,0 +1,58 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Twitter Boostsrap
+      h2 
+        strong What is Twitter Bootsrap?
+      p 
+        a(href="http://getbootstrap.com") Twitter Bootstrap
+        |  is a collection of UI elements, layouts and JavaScript tools that King County is using as a framework for our website.
+      h2
+        strong Why are we using Twitter Bootstrap?
+      ul
+        li
+          a(href="http://getbootstrap.com/getting-started/#support") Standards compliant and browser compatible
+        li 
+          a(href="http://getbootstrap.com/") User-friendly, lots of documentation
+
+        li Built with HTML5, mobile first
+
+        li It's open source (free!)
+      h2 
+        strong When would I use Twitter Bootstrap?
+      p 
+        | You can use Twitter Bootstrap to add compnents such as 
+        a(href="http://getbootstrap.com/javascript/#tooltips") tooltips
+        |, 
+        a(href="http://getbootstrap.com/javascript/#collapse") accordians
+        |  and 
+        a(href="http://getbootstrap.com/components/#panels") panels
+        | . You can also use it to style your 
+        a(href="http://getbootstrap.com/css/#type") text. 
+        |  You'll be using 
+        a(href="http://getbootstrap.com/") getbootstrap.com
+        |  in combination with this site to build your pages.
+
+
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+     });

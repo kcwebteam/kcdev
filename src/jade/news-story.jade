@@ -1,0 +1,251 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block custom-js
+  script.
+    $('#myNews').eventsCalendar({calNum:"69gk-ky9a"});
+block custom-style
+  style.
+    .thumbnail.with-caption {
+      display: inline-block;
+      background-color:transparent;
+      border:none;
+    }
+    .thumbnail.with-caption p {
+      margin: 0;
+      padding-top: 0.5em;
+      font-style: italic;
+      color:#413e39;
+    }
+block main-content
+  include includes/news-tool-header
+  article
+    .row.addon-row.addon-row-attached
+      .col-sm-12
+        header#nt-title
+          h1 
+            | King County preserves 43,000 acres of White River Forest
+          h2
+            | Largest piece of unprotected forestland is twice the size of Bellevue
+          time July 24, 2013
+    .row.addon-row.addon-row-attached
+      .col-sm-12
+        h4.nt-label
+          span.label.label-primary Summary
+        p.nt-summary 
+          | King County Executive Dow Constantine reached an agreement with the Hancock Timber Resource Group to permanently protect 43,000 acres of the White River Forest from development. King County Executive Dow Constantine says the agreement extends our “wall against” sprawl and achieves the goal of protecting 200,000 acres of forests countywide.
+    .row.addon-row.addon-row-attached
+      .col-sm-12
+        h4.nt-label
+          span.label.label-primary Story
+        .clearfix
+        .nt-details-media.col-sm-6.col-xs-12.pull-right
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+          ul
+            li Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+            li Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
+            li Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.
+            li Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.
+          figure.thumbnail.with-caption
+            img(src='img/rotator-flood2.jpg', alt='This is a picture')
+            figcaption
+              p
+                | White River Forest,
+                br
+                | Photographer: Name
+          figure.thumbnail.with-caption
+            img(src='http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg', alt='This is a picture')
+            figcaption
+              p
+                | White River Forest,
+                br
+                | Photographer: Name
+
+        p
+          | King County Executive Dow Constantine reached an agreement with the Hancock Timber Resource Group to permanently protect 43,000 acres of the White River Forest from development.
+        p
+          | Located east of Enumclaw along scenic Highway 410, the forestlands are a critical wildlife corridor and an important part of the county’s timber resource industry, supporting more than 350 jobs in forestry.
+        p
+          | It is the largest swath of unprotected forestland remaining in King County and is roughly twice the size of Bellevue.
+        p Details of the purchase agreement include:
+        ul
+          li
+            | The Executive sent legislation to the County Council to authorize $8.1 million in existing funds from the county’s dedicated open space funds known as the Conservation Futures Fund.
+          li
+            | Last fall, the Council approved $3 million from the Conservation Futures Fund and the King County Parks levy toward the $11.1 million total price.
+          li
+            | The forestland remains in private ownership with the right to harvest timber sustainably.
+        ul
+          li Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+          li Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
+          li Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.
+          li Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        .clearfix
+        .nt-details-media.col-sm-6.col-xs-12.pull-right
+          figure.thumbnail.with-caption
+            img(src='img/rotator-flood2.jpg', alt='This is a picture')
+            figcaption
+              p
+                | White River Forest,
+                br
+                | Photographer: Name
+          figure
+            img(src='http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg', alt='This is a picture')
+            figcaption.thumbnail.with-caption
+              p
+                | White River Forest,
+                br
+                | Photographer: Name
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      p Migration related information
+      p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+      p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+    // RELATED INFORMATION
+  .row.addon-row.addon-row-attached
+    .col-sm-6
+      h4.nt-label
+        span.label.label-primary Relevant links
+      ul.list-unstyled.relative-links
+        li
+          a(href='#', aria-label='Download PDF') In vitae augue pharetra 
+          span.link-icon
+            i.fa.fa-file-text-o
+            |  PDF
+        li
+          a(href='#') Lacinia nibh sed, ullamcorper purus 
+          span.link-icon
+            i.fa.fa-external-link
+        li
+          a(href='#', aria-label='Download slideshow') Morbi tristique ante pharetra tellus viverra laoreet 
+          span.link-icon
+            i.fa.fa-picture-o
+            |  PPT
+        li
+          a(href='#', aria-label='Download Word Document') Sed adipiscing eros dignissim 
+          span.link-icon
+            i.fa.fa-file-text-o
+            |  DOC
+    // GALLERY
+    aside.col-sm-6
+      h4.nt-label
+        span.label.label-primary Multimedia
+      .row
+        .col-xs-4
+          img(src='http://placehold.it/100x100', alt='White River Forest photo gallery')
+        .col-xs-4
+          img(src='http://placehold.it/100x100', alt='White River Forest photo gallery')
+          .caption(style='position: absolute; bottom:0px; padding-left:10px')
+            h3(style='font-size:14px; color: #fff')
+              i.fa.fa-picture-o
+              | Gallery
+        .col-xs-4
+          img(src='http://placehold.it/100x100', alt='White River Forest photo gallery')
+          .caption(style='position: absolute; bottom:0px; padding-left:10px')
+            h3(style='font-size:14px; color: #fff')
+              i.fa.fa-film
+              | Video
+  // QUOTES
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h4.nt-label
+        span.label.label-primary Quotes
+      blockquote
+        p
+          | With this agreement, we will dramatically extend our green wall against sprawl, and achieve the ambitious goal set a decade ago of protecting 200,000 acres of working forests countywide,
+        footer Dow Constantine, King County Executive
+      blockquote
+        p
+          | With the conservation of the White River forest, the Hancock Timber Resource Group’s Sensitive Lands program would surpass more than 470,000 acres protected globally. A significant part of that work has been accomplished right here in King County and we greatly respect the County’s ongoing efforts to conserve vital working forests.
+        footer Dan Christensen, CEO of Hancock Timber Resource Group
+      blockquote
+        p
+          | Protecting these lands will preserve resource jobs, open space, fish and wildlife habitat, and a significant view corridor for the people of King County. This is an important legacy to leave for future generations, building on the hundreds of thousands of acres of open space we’ve preserved in King County. I am proud to continue the County Council’s work finalizing the funding package we began assembling last year toward this preservation effort.
+        footer Larry Phillips, King County Councilmember
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h4.nt-label
+        span.label.label-primary Social media
+      .media.nt-social-media 
+        .pull-left
+          button.btn.btn-default.btn-sm(type='button')
+            i.fa.fa-twitter
+            | &nbsp;Tweet
+        .media-body
+          p
+            | King County to protect 43K acres of White River Forest from development, extends wall against sprawl, says @kcexec: 1.usa.gov/ZFEaRq
+      .media.nt-social-media 
+        .pull-left
+          button.btn.btn-default.btn-sm(type='button')
+            i.fa.fa-facebook-square
+            | &nbsp;Like
+        .media-body
+          p
+            | King County has reached an agreement to protect 43,000 acres of the White River Forest from development. Roughly twice the size of Bellevue, the area is the largest swath of unincorporated forestland remaining in King County.
+  // CONTACT INFO
+  .row.addon-row.addon-row-attached
+    footer#nt-footer.col-sm-12
+      h6 For more information, contact:
+      address
+        | Chad Lewis,
+        a(href='mailto:chad.lewis@kingcounty.gov') chad.lewis@kingcounty.gov
+        | ,
+        a(href='tel:+2062960100') 206-263-5555
+  // UPDATES AND CORRECTIONS
+  .row.addon-row.addon-row-attached
+    #nt-updated.col-sm-12
+      h6
+        | Updated
+        date July 25, 2013
+        | :
+      p
+        | Details of the purchase agreement were ammended to include the third bullet "The forestland remains in private ownership with the right to harvest timber sustainably."
+  // DEPARTMENT FOOTER appears on all pages in news
+  .row.addon-row
+    .col-sm-5
+      h5 About the Executive Office
+      p
+        | Etiam risus enim, ultricies ut dolor nec, lacinia commodo elit. Donec consectetur eget magna posuere commodo. Phasellus accumsan dui ac tellus fringilla ultrices.
+      address
+        | 401 5th Avenue, Suite 800
+        br
+        | Seattle, Washington 98104
+        br
+        a(href='tel:206-263-5555') 206-263-5555
+        br
+        a(href='mailto:exec@kingcounty.gov') exec@kingcounty.gov
+        br
+        a(href='/elected/executive.aspx') www.kingcounty.gov/executive
+      p
+        a(href='#', title='Subscribe to Executive office news')
+          | Get email updates when stories are posted 
+          i.fa.fa-envelope
+    section.col-xs-10.col-sm-6
+      #myNews
+    .col-xs-2.col-sm-1
+      div
+        a(href='#', title='Executive Facebook')
+          i.fa.fa-facebook-square.fa-4x.pull-right
+        a(href='#', title='Executive Twitter')
+          i.fa.fa-twitter-square.fa-4x.pull-right
+        a(href='#', title='Executive Flickr gallery')
+          i.fa.fa-flickr.fa-4x.pull-right
+        a(href='#', title='Executive News')
+          i.fa.fa-rss-square.fa-4x.pull-right
+
+
+  

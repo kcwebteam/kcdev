@@ -1,0 +1,73 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Get updates from King County
+  .row.addon-row.addon-row-attached
+    .col-sm-5
+      .portal-list-light
+        h2 
+          i.fa.fa-envelope-square.fa-color-primary
+          |  Email updates
+        form(name="govdelivery" action="https://public.govdelivery.com/accounts/WAKING/subscribers/qualify" method="post") 
+          input(id="authenticity_token" name="authenticity_token" type="hidden" value="authenticity_token=ahBv558qZXMNRYwZmXoNux0sDbEP9CGo5ZIF0ioIaXM%3D")
+          input(type="hidden" id="subscription_type" name="subscription_type" value="email")
+          .input-group
+            input.form-control(type="text" placeholder="Enter email address" id="email" name="email" onfocus="this.value=''")
+            span.input-group-btn
+              button.btn.btn-primary(type="submit" value="submit" name="commit") Pick topics
+    .col-sm-2.text-center
+      h2 ...Or...
+    .col-sm-5
+      .portal-list-light
+        h2 
+          i.fa.fa-phone-square.fa-color-primary
+          |  Text updates
+        form(name="govdelivery" action="https://public.govdelivery.com/accounts/WAKING/subscribers/qualify" method="post") 
+          input(id="authenticity_token" name="authenticity_token" type="hidden" value="authenticity_token=ahBv558qZXMNRYwZmXoNux0sDbEP9CGo5ZIF0ioIaXM%3D")
+          input(type="hidden" id="country_code" name="country_code" value="1")
+          input(type="hidden" id="subscription_type" name="subscription_type" value="phone")
+          .input-group
+            input.form-control(type="text" placeholder="Enter cell phone number" id="phone" name="phone" onfocus="this.value=''")
+            span.input-group-btn
+              button.btn.btn-primary(type="submit" value="submit" name="commit") Pick topic
+    br
+    br
+    br
+    br
+    br
+    br
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .well(style="background-color:#EFEEE0")
+        h5 How it works
+        p Enter your contact information to subscribe to topics or to update your preferences.
+        p If you wish to have both email and wireless subscription, you will need to sign up twice, once with your email and once with your wireless number. If you have questions about this service, please 
+          a(href="http://www.kingcounty.gov/CustomerService.aspx") contact us.
+  .row.addon-row
+    .col-sm-12
+      h6 Topics include:
+    .col-sm-6
+      h5 Metro Transit
+      p Real-time info by bus route &middot; Metro Matters general updates &middot; Metro manager's newsletter &middot; Rideshare commuter van newsletter &middot; more
+      h5 Public Health - Seattle King County
+      p Food establishment closures &middot; pandemic flu resources &middot; emergency medical services &middot; King County Board of Health &middot; more
+    .col-sm-6
+      h5 Natural Resources &amp; Parks
+      p Unincorporated area news &middot; King County Parks newsletter &middot; native plant salvage program &middot; King County weed news &middot; more
+      h5 Department of Transportation
+      p Road Services updates &middot; King County Water Taxi information and schedule changes &middot; Regional Transit Task Force &middot; more
+    .col-sm-12
+      br
+      br
+      p
+        i(style="color:#565552") Other Newsletters include; King County Executive Dow Constantine &middot; equity and social justice &middot; Department of Public Defense &middot; Superior Court clerk's alerts &middot; more
+

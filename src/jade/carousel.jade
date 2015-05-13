@@ -1,0 +1,102 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block custom-style
+block isfullwidth
+  - var colSize = 'col-md-9'
+
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Carousel example
+        // h2: small Sub header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      #kc-carousel-1.carousel.slide(data-ride='carousel')
+        // Indicators
+        ol.carousel-indicators
+          li.active(data-target='#kc-carousel-1', data-slide-to='0')
+          li(data-target='#kc-carousel-1', data-slide-to='1')
+          li(data-target='#kc-carousel-1', data-slide-to='2')
+        // Wrapper for slides
+        .carousel-inner
+          .item.active
+            a(href='http://www.kingcounty.gov')
+              img(src='img/carousel-cat.jpg', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title This is the title This is the title
+          .item
+            a(href='http://www.kingcounty.gov')
+              img(src='img/carousel-cat.jpg', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title
+        // Controls
+        a.left.carousel-control(href='#kc-carousel-1', data-slide='prev')
+          span.fa-stack.fa-lg
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-left.fa-stack-1x
+        a.right.carousel-control(href='#kc-carousel-1', data-slide='next')
+          span.fa-stack.fa-lg
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-right.fa-stack-1x
+  .row.addon-row.addon-row-attached
+    .col-sm-6
+      #kc-carousel-2.carousel.carousel-col-4.slide(data-ride='carousel')
+        // Indicators
+        ol.carousel-indicators
+          li.active(data-target='#kc-carousel-2', data-slide-to='0')
+          li(data-target='#kc-carousel-2', data-slide-to='1')
+          li(data-target='#kc-carousel-2', data-slide-to='2')
+        // Wrapper for slides
+        .carousel-inner
+          .item.carousel-news-item.active
+            ul
+              li
+                a(href='http://www.google.com') King County closes Flood Warning Center as rain-swollen Tolt River recedes
+              li
+                a(href='http://www.google.com')
+                  | King County Flood Warning Center opens as heavy rain brings minor flooding on Tolt River
+              li
+                a(href='http://www.google.com') Project to help protect public health, water quality in the Lower Duwamish River
+            a(href='http://www.kingcounty.gov')
+              img(src='http://placehold.it/845x469', alt='text')
+            // Carousel caption
+            .carousel-caption
+              h3
+                a(href='http://www.google.com')
+                  | Latest News
+                  i.fa.fa-chevron-right
+          .item
+            a(href='http://www.kingcounty.gov')
+              img(src='img/carousel-cat.jpg', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title This is the title This is the title
+          .item
+            a(href='http://www.kingcounty.gov')
+              img(src='img/carousel-cat.jpg', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title
+        // Controls
+        a.left.carousel-control(href='#kc-carousel-2', data-slide='prev')
+          span.fa-stack.fa-lg
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-left.fa-stack-1x
+        a.right.carousel-control(href='#kc-carousel-2', data-slide='next')
+          span.fa-stack.fa-lg
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-right.fa-stack-1x

@@ -1,0 +1,8 @@
+/* Fonts */
+
+/* Header */
+.nav-header, .nav-title { font-family: 'Orienta', sans-serif; font-weight: 400; }
+
+/* Links, Text */
+.nav, .nav p, .nav-title span, .dropdown-menu a { font-family: 'Pontano Sans', sans-serif; }
+

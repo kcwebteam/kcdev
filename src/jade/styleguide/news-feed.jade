@@ -1,0 +1,78 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 News feed
+      p
+        | Add a 
+        a(href="www.delicious.com/kingcounty") delicious 
+        | news feed to your page with a small script.
+      #my-feed
+
+      h2 HTML
+      p Place code below into the content area of your page:
+      pre
+        code
+          ='<div id="my-feed"></div>'
+      p Change "my-feed" to any name you'd like. Just make sure it matches the id call in your JavaScript.
+      p If you have multiple feeds on your page, you will need unique ids for each one. Also you will need to make a seperate JavaScript call to each id.
+      
+      h2 JavaScript
+      p Place code below into the custom script area of your page:
+      pre
+        code
+          | $('#my-feed').deliciousNewsFeed({});
+      p The code above uses defaults. You can override defaults by using using the options below:
+      p.alert.alert-info Seperate options with comma. If you don't want to change the default for an option, don't include that option.
+      p Feed Options 
+      ul
+        li 
+          | feedURL - URL of your feed. Feeds must use JSON format. Default is 
+          a(href='http://feeds.delicious.com/v2/json/kingcounty') http://feeds.delicious.com/v2/json/kingcounty
+          | .
+        li numItems - number of items to show. Default is 4.  
+        li title - Title of your feed. Default is 'News'.  
+        li 
+          | titleIcon - Icon that displays next to feed. Use 
+          a(href="http://fortawesome.github.io/Font-Awesome/") FontAwesome
+          | . Default is 'fa-file-text-o'.  
+        li showSummary - Choose to display summary of news story. Options are true or false. Default is true. 
+        li 
+          | allItemsUrl - Url for link that displays below feed. Default is 
+          a(href='http://www.kingcounty.gov/about/news/events') http://www.kingcounty.gov/about/news/events
+          | .  
+        li allItemsText - Text for link that displays below feed. Default is 'See all my news'.  
+      p Example with options:
+      pre
+        code
+          | $('#my-feed').deliciousNewsFeed({
+          |   numItems     : 5,
+          |   title        : 'My News',
+          |   titleIcon    : 'fa-twitter', 
+          |   showSummary  :  false,
+          |   allItemsUrl  : 'http://www.kingcounty.gov/mynews', 
+          |   allItemsText : 'See all my news'
+          | });
+  
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+    $("#my-feed").deliciousNewsFeed({});
+     });

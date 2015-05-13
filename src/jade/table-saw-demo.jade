@@ -1,0 +1,184 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block custom-style
+  link(rel="stylesheet" href="css/tablesaw.css")
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 TableSaw Demo
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      table#personDataTable.table.tablesaw.table-hover.table-bordered(data-tablesaw-sortable data-tablesaw-sortable-switch)
+        thead
+          tr
+            th(scope='col', data-tablesaw-priority='persist') Edit
+            th(scope='col', data-tablesaw-priority='persist') Delete
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='persist') Fruit
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-sortable-default-col='', data-tablesaw-priority='1') Eye color
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='2' data-sortable-numeric) Age
+        tbody
+      table.table.tablesaw.table-hover(data-tablesaw-sortable data-tablesaw-sortable-switch)
+        thead
+          tr
+            th(scope='col', data-tablesaw-priority='persist') Edit
+            th(scope='col', data-tablesaw-priority='persist') Delete
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='persist') Movie Title
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-sortable-default-col='', data-tablesaw-priority='3') Rank
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='2') Year
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='1')
+              abbr(title='Rotten Tomato Rating') Rating
+            th(scope='col', data-tablesaw-sortable-col='', data-tablesaw-priority='4') Gross
+        tbody
+          tr
+            td
+              a(href="") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Avatar_(2009_film)') Avatar
+            td.active  1
+            td 2009
+            td.success  83%
+            td $2.7B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Titanic_(1997_film)') Titanic
+            td 2
+            td.danger  1997
+            td 88%
+            td.danger  $2.1B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/The_Avengers_(2012_film)') The Avengers
+            td 3
+            td 2012
+            td 92%
+            td $1.5B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Harry_Potter_and_the_Deathly_Hallows_%E2%80%93_Part_2') Harry Potter and the Deathly Hallows—Part 2
+            td.success 4
+            td 2011
+            td 96%
+            td $1.3B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Frozen_(2013_film)') Frozen
+            td.info 5
+            td 2013
+            td 89%
+            td $1.2B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Iron_Man_3') Iron Man 3
+            td 6
+            td 2013
+            td 78%
+            td $1.2B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Transformers:_Dark_of_the_Moon') Transformers: Dark of the Moon
+            td 7
+            td 2011
+            td 36%
+            td $1.1B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King') The Lord of the Rings: The Return of the King
+            td 8
+            td 2003
+            td 95%
+            td $1.1B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Skyfall') Skyfall
+            td 9
+            td 2012
+            td 92%
+            td $1.1B
+          tr
+            td
+              a(href="#") Edit
+            td
+              a(href='#') Delete
+            td.title
+              a(href='http://en.wikipedia.org/wiki/Transformers:_Age_of_Extinction') Transformers: Age of Extinction
+            td 10
+            td 2014
+            td 18%
+            td $1.0B
+
+block custom-js
+  script(src="js/vendor/tablesaw.js")
+  script.
+    (function() {
+      $.getJSON( "http://beta.json-generator.com/api/json/get/LgmPruK")
+        .done(function(data){
+          drawTable(data);
+        });
+
+      function drawTable(data) {
+        for (var i = 0; i < data.length; i++) {
+            drawRow(data[i]);
+        }
+      }
+
+      function drawRow(rowData) {
+        var errorClass;
+        $tableDiv = $("#personDataTable");
+        var row = $("<tr />")
+        $tableDiv.find('tbody').append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+          row.append($('<td><a href="#">Edit</a></td>'));
+          row.append($('<td><a href="#">Delete</a></td>'));
+          if(rowData.favoriteFruit === 'apple'){
+            errorClass = 'danger';
+          }
+          row.append($('<td class="'+ errorClass+'">' + rowData.favoriteFruit+ '</td>'));
+          row.append($('<td>' + rowData.eyeColor+ '</td>'));
+          row.append($('<td>' + rowData.age + '</td>'));
+      }  
+    })();
+
+  

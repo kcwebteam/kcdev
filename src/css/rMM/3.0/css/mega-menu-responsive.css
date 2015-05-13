@@ -1,0 +1,295 @@
+/*
+ Responsive Mega Menu v1.4
+ 
+ Changelog
+	v1.3
+		- Separated responsive elements into their own file.
+
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+/* 979px and below */
+/*=================*/
+@media (min-width: 768px) and (max-width: 979px) {
+
+.nav > li { float: left; }
+.nav > li > a { padding: 10px 8px; }
+.nav > li > li > a { padding: 0 0 5px; }
+
+}
+
+
+/* 767px and below */
+/*=================*/
+@media (max-width: 767px) {
+
+.dropdown .pull-right {
+  float: none !important;
+}
+
+/* Links */
+.navbar-inverse .dropdown-menu li.nav-title { color: #bbb; border-bottom: 1px solid #ccc; }
+.navbar-inverse .dropdown-menu li > a,.navbar-inverse .dropdown-submenu > a { color: #ddd; }
+.navbar-inverse .dropdown-menu li.nav-title span.nav-title-description { color: #bbb; }
+
+.navbar-collapse p { color: #ddd; }
+
+.navbar-toggle { margin: 4px 10px 4px 0; padding: 8px 8px; }
+
+.navbar-nav { margin: 0 2%; }
+.nav > li { padding: 2px 0; width: 100%; }
+
+.navbar-nav .open .dropdown-menu > li > a{ padding: 3px 0; }
+
+.navbar-inverse .navbar-collapse .nav > li > a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:hover { color: #fff; background: none; }
+
+.navbar-collapse .nav-title, .navbar-collapse .nav .nav-header { color: #ccc; border-bottom: 1px solid #555; }
+
+.navbar-collapse .btn-primary, .navbar-collapse .btn-warning, .navbar-collapse .btn-success, .navbar-collapse .btn-info, .navbar-collapse .btn-danger, .navbar-collapse .btn-inverse { color: #fff !important; }
+
+/* 2 Menus */
+.navbar-collapse .mega-menu-2 { width: 100%; }
+.navbar-collapse .mega-menu-2 ul { list-style: none; margin: 0; float: none; width: auto; }
+
+/* 3 Menus */
+.navbar-collapse .mega-menu-3 { width: 100%; }
+.navbar-collapse .mega-menu-3 ul.dropdown-menu, .navbar-collapse .mega-menu-3 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 4 Menus */
+.navbar-collapse .mega-menu-4 { width: 100%; }
+.navbar-collapse .mega-menu-4 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 5 Menus */
+.navbar-collapse .mega-menu-5 { width: 100%; }
+.navbar-collapse .mega-menu-5 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 6 Menus */
+.navbar-collapse .mega-menu-6 { width: 100%; margin: 0; }
+.navbar-collapse .mega-menu-6 ul { list-style: none; margin: 0; float: none; width: auto; }
+.navbar-collapse .mega-menu-6 ul ul { width: auto; }
+
+.navbar-collapse .mega-menu-2 .one-column { width: 48.3%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-3 .one-column { width: 31.6%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-4 .one-column { width: 23.3%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-5 .one-column { width: 18.3%; margin: 0 10px 0 0;}
+.navbar-collapse .mega-menu-6 .one-column { width: 14.98%; margin: 0 10px 0 0; }
+
+.navbar-collapse .mega-menu-2 .two-column { width: 99%; margin: 0; }
+.navbar-collapse .mega-menu-3 .two-column { width: 64.5%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-4 .two-column { width: 48.1%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-5 .two-column { width: 38%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-6 .two-column { width: 31.1%; margin: 0 10px 0 0; }
+
+.navbar-collapse .mega-menu-3 .three-column { width: 99%; margin: 0; }
+.navbar-collapse .mega-menu-4 .three-column { width: 73.3%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-5 .three-column { width: 58.3%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-6 .three-column { width: 47%; margin: 0 10px 0 0; }
+
+.navbar-collapse .mega-menu-4 .four-column { width: 99%; margin: 0; }
+.navbar-collapse .mega-menu-5 .four-column { width: 77%; }
+.navbar-collapse .mega-menu-6 .four-column { width: 63%; }
+
+.navbar-collapse .mega-menu-5 .five-column { width: 99%; margin: 0; }
+
+.navbar-collapse .mega-menu-6 .five-column { width: 80%; margin-right: 10px; }
+
+.navbar-collapse .mega-menu-6 .six-column { width: 99%; margin: 0; }
+
+.navbar-collapse .nav > li > a,
+.navbar-collapse .dropdown-menu a,
+.navbar-collapse .nav .dropdown-toggle { padding: 3px 0; }
+
+.navbar .dropdown-menu a.btn:hover,
+.navbar .dropdown-menu a.btn:focus,
+.navbar .dropdown-menu a.btn:active,
+.navbar .dropdown-menu a.btn.active,
+.navbar .dropdown-menu a.btn.disabled,
+.navbar .dropdown-menu a.btn[disabled] { padding-left: 0; }
+
+/* With Products */
+.mega-menu-3 .add-products li { width: 30.4%; }
+.mega-menu-4 .add-products li { width: 22.5%; }
+.mega-menu-5 .add-products li { width: 17.5%; }
+.mega-menu-6 .add-products li { width: 30.4%; }
+
+}
+
+
+/* Between 640px and 480px below */
+/*===============================*/
+
+@media (min-width: 480px) and (max-width: 640px) {
+
+.navbar-inverse .navbar-collapse .nav > li > a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:hover { color: #fff; background: none; }
+
+.navbar-collapse .navbar-form,
+.navbar-collapse .navbar-search { float: left; padding: 0; }
+
+li.dropdown { margin-top: 0; }
+
+.navbar-collapse .nav-title, .navbar-collapse .nav .nav-header { color: #ccc; border-bottom: 1px solid #555; }
+
+.navbar-collapse .btn-primary, .navbar-collapse .btn-warning, .navbar-collapse .btn-success, .navbar-collapse .btn-info, .navbar-collapse .btn-danger { color: #fff !important; }
+
+/* 2 Menus */
+.navbar-collapse .mega-menu-2 { width: 100%; }
+.navbar-collapse .mega-menu-2 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 3 Menus */
+.navbar-collapse .mega-menu-3 { width: 100%; }
+.navbar-collapse .mega-menu-3 ul.dropdown-menu, .navbar-collapse .mega-menu-3 ul { list-style: none; margin: 0; float: none; width: 100%; }
+
+/* 4 Menus */
+.navbar-collapse .mega-menu-4 { min-width: 100%; }
+.navbar-collapse .mega-menu-4 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 5 Menus */
+.navbar-collapse .mega-menu-5 { min-width: 100%; }
+.navbar-collapse .mega-menu-5 ul { list-style: none; margin: 0; float: left; width: 100%; }
+
+/* 6 Menus */
+.navbar-collapse .mega-menu-6 { min-width: 100%; margin: 0; }
+.navbar-collapse .mega-menu-6 ul { list-style: none; margin: 0; float: none; width: auto; }
+.navbar-collapse .mega-menu-6 ul ul { width: auto; }
+
+.navbar-collapse .mega-menu-2 .one-column { width: 47.4%; margin-right: 10px; }
+.navbar-collapse .mega-menu-3 .one-column { width: 30.6%; margin-right: 10px; }
+.navbar-collapse .mega-menu-4 .one-column { width: 22.4%; margin-right: 10px; }
+.navbar-collapse .mega-menu-5 .one-column { width: 17.4%; margin-right: 10px; }
+.navbar-collapse .mega-menu-6 .one-column { width: 14.1%; margin-right: 10px; }
+
+.navbar-collapse .mega-menu-2 .two-column { width: 98%; margin: 0; }
+.navbar-collapse .mega-menu-3 .two-column { width: 64.3%; margin-right: 10px; }
+.navbar-collapse .mega-menu-4 .two-column { width: 47.4%; margin-right: 10px; }
+.navbar-collapse .mega-menu-5 .two-column { width: 37.3%; margin-right: 10px; }
+.navbar-collapse .mega-menu-6 .two-column { width: 30.8%; margin-right: 10px; }
+
+.navbar-collapse .mega-menu-3 .three-column { width: 99%; margin: 0px; }
+.navbar-collapse .mega-menu-4 .three-column { width: 72.5%; margin-right: 10px; }
+.navbar-collapse .mega-menu-5 .three-column { width: 57.5%; margin-right: 10px; }
+.navbar-collapse .mega-menu-6 .three-column { width: 47.4%; margin-right: 10px; }
+
+.navbar-collapse .mega-menu-4 .four-column { width: 99%; margin: 0; }
+.navbar-collapse .mega-menu-5 .four-column { width: 77.5%; margin-right: 0px; }
+.navbar-collapse .mega-menu-6 .four-column { width: 64%; margin: 0 10px 0 0; }
+
+.navbar-collapse .mega-menu-5 .five-column { width: 99%; margin: 0; }
+
+.navbar-collapse .mega-menu-6 .five-column { width: 80%; margin: 0; }
+
+.navbar-collapse .mega-menu-6 .six-column { width: 99%; margin: 0; }
+
+.navbar-collapse .nav > li > a,
+.navbar-collapse .dropdown-menu a,
+.navbar-collapse .nav .dropdown-toggle { padding: 3px 0; }
+
+/* Wide Menu */
+.navbar-collapse .mega-menu-2 ul.mega-wide,
+.navbar-collapse .mega-menu-3 ul.mega-wide,
+.navbar-collapse .mega-menu-4 ul.mega-wide,
+.navbar-collapse .mega-menu-5 ul.mega-wide,
+.navbar-collapse .mega-menu-6 ul.mega-wide { width: 100%; margin: 0; }
+
+/* With Gallery */
+.navbar-collapse .mega-menu-2 li.with-gallery li { display: inline-block; margin: 0 5px; width: 47%; }
+.navbar-collapse .mega-menu-3 li.with-gallery li { display: inline-block; margin: 0 5px; width: 30%; }
+.navbar-collapse .mega-menu-4 li.with-gallery li { display: inline-block; margin: 0 5px; width: 47%; }
+.navbar-collapse .mega-menu-5 li.with-gallery li { display: inline-block; margin: 0 5px; width: 17%; }
+.navbar-collapse .mega-menu-6 li.with-gallery li { display: inline-block; margin: 0 5px; width: 47%; }
+.navbar-collapse li.with-gallery li.full-width { display: block; margin: 0; width: auto; }
+
+.navbar-collapse .mega-menu-2 li.with-gallery li img,
+.navbar-collapse .mega-menu-4 li.with-gallery li img,
+.navbar-collapse .mega-menu-5 li.with-gallery li img,
+.navbar-collapse .mega-menu-6 li.with-gallery li img { margin-bottom: 0; }
+
+}
+
+/* 479px and below */
+@media (max-width: 479px) {
+.navbar-collapse .mega-menu-2 .one-column, 
+.navbar-collapse .mega-menu-3 .one-column,
+.navbar-collapse .mega-menu-4 .one-column,
+.navbar-collapse .mega-menu-5 .one-column,
+.navbar-collapse .mega-menu-6 .one-column,
+.navbar-collapse .mega-menu-2 .two-column, 
+.navbar-collapse .mega-menu-3 .two-column,
+.navbar-collapse .mega-menu-4 .two-column,
+.navbar-collapse .mega-menu-5 .two-column,
+.navbar-collapse .mega-menu-6 .two-column,
+.navbar-collapse .mega-menu-3 .three-column,
+.navbar-collapse .mega-menu-4 .three-column,
+.navbar-collapse .mega-menu-5 .three-column,
+.navbar-collapse .mega-menu-6 .three-column,
+.navbar-collapse .mega-menu-4 .four-column,
+.navbar-collapse .mega-menu-5 .four-column,
+.navbar-collapse .mega-menu-6 .four-column,
+.navbar-collapse .mega-menu-5 .five-column,
+.navbar-collapse .mega-menu-6 .five-column { width: 46%; margin: 0 10px 0 0; }
+.navbar-collapse .mega-menu-6 .six-column { width: 100%; margin: 0; }
+
+.navbar-collapse .mega-menu-2 .with-gallery,
+.navbar-collapse .mega-menu-3 .with-gallery,
+.navbar-collapse .mega-menu-4 .with-gallery,
+.navbar-collapse .mega-menu-5 .with-gallery,
+.navbar-collapse .mega-menu-6 .with-gallery { width: auto; margin: 0; }
+
+/* With Gallery */
+.navbar-collapse .mega-menu-2 li.with-gallery li { display: inline-block; margin: 0 5px; width: 45.7%; }
+.navbar-collapse .mega-menu-3 li.with-gallery li { display: inline-block; margin: 0 5px; width: 28.9%; }
+.navbar-collapse .mega-menu-4 li.with-gallery li { display: inline-block; margin: 0 5px; width: 45.7%; }
+.navbar-collapse .mega-menu-5 li.with-gallery li { display: inline-block; margin: 0 5px; width: 45.7%; }
+.navbar-collapse .mega-menu-6 li.with-gallery li { display: inline-block; margin: 0 5px; width: 45.7%; }
+.navbar-collapse li.with-gallery li.full-width { display: block; margin: 0; width: auto; }
+
+.navbar-collapse .mega-menu-4 li.with-gallery li img,
+.navbar-collapse .mega-menu-5 li.with-gallery li img,
+.navbar-collapse .mega-menu-6 li.with-gallery li img { margin-bottom: 0; }
+
+}
+
+/* 319px and below */
+@media (max-width: 319px) {
+.navbar-collapse .mega-menu-2 .one-column, 
+.navbar-collapse .mega-menu-3 .one-column,
+.navbar-collapse .mega-menu-4 .one-column,
+.navbar-collapse .mega-menu-5 .one-column,
+.navbar-collapse .mega-menu-6 .one-column,
+.navbar-collapse .mega-menu-2 .two-column, 
+.navbar-collapse .mega-menu-3 .two-column,
+.navbar-collapse .mega-menu-4 .two-column,
+.navbar-collapse .mega-menu-5 .two-column,
+.navbar-collapse .mega-menu-6 .two-column,
+.navbar-collapse .mega-menu-3 .three-column,
+.navbar-collapse .mega-menu-4 .three-column,
+.navbar-collapse .mega-menu-5 .three-column,
+.navbar-collapse .mega-menu-6 .three-column,
+.navbar-collapse .mega-menu-4 .four-column,
+.navbar-collapse .mega-menu-5 .four-column,
+.navbar-collapse .mega-menu-6 .four-column,
+.navbar-collapse .mega-menu-5 .five-column,
+.navbar-collapse .mega-menu-6 .five-column,
+.navbar-collapse .mega-menu-6 .six-column { width: 100%; margin-right: 10px; }
+
+.navbar-collapse .mega-menu-2 .with-gallery,
+.navbar-collapse .mega-menu-3 .with-gallery,
+.navbar-collapse .mega-menu-4 .with-gallery,
+.navbar-collapse .mega-menu-5 .with-gallery,
+.navbar-collapse .mega-menu-6 .with-gallery { width: auto; margin: 0; }
+
+.navbar-collapse .mega-menu-2 li.with-gallery li,
+.navbar-collapse .mega-menu-3 li.with-gallery li,
+.navbar-collapse .mega-menu-4 li.with-gallery li,
+.navbar-collapse .mega-menu-5 li.with-gallery li,
+.navbar-collapse .mega-menu-6 li.with-gallery li { margin: 0; width: auto; }
+
+.navbar-collapse .mega-menu-2 li.with-gallery li img,
+.navbar-collapse .mega-menu-3 li.with-gallery li img,
+.navbar-collapse .mega-menu-4 li.with-gallery li img,
+.navbar-collapse .mega-menu-5 li.with-gallery li img,
+.navbar-collapse .mega-menu-6 li.with-gallery li img { margin-bottom: 0; }
+
+}

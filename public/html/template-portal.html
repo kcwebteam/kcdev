@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>King County, Washington</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Official home page for King County Government, Seattle, Wash. Features include innovative government initiatives, information on county services and news.">
+    <meta name="Author" content="" >
+    <meta name="Keywords" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/kc-theme-default.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,600,700,800,400' rel='stylesheet' type='text/css'>
+    <script src="js/vendor/modernizr-latest.js"></script>
+    <style>
+    
+    </style>
+</head>
+
+<body>
+    <script>
+    if (!Modernizr.mq('only all')) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'js/vendor/respond.min.js';
+        if(document.body != null){ document.body.appendChild(script)};
+    }
+    </script>
+    <a href="#main-content-sr" class="sr-only">Skip to main content</a>
+    <!-- GLOBAL ALERT GOES HERE -->
+    <header class="hidden-print">
+        <!--Lg and md navbar-->
+        <div id="navbar-bg"></div>
+        <div id="nav-lg" class="container hidden-sm hidden-xs">
+            <div class="row">
+                <div id="nav-left-lg">
+                    <div id="logo-wrapper">
+                     <a href="/" title="King County home" ><img id="kc-logo" src="img/KClogo-horiz-black-lg.gif" alt="King County Logo" class="img-responsive"/></a>
+                 </div>
+             </div> <!-- /#nav-logo-lg -->
+             <div id="nav-right-lg">
+                <div class="row">
+                    <div class="navbar-right" id="lg-search-wrapper">
+                        <form role="form" accept-charset="UTF-8" action="http://search.kingcounty.gov/search" class="search-form" method="get">
+                            <label class="sr-only" for="search-form-text">Search kingcounty.gov</label>
+                            <input name="utf8" type="hidden" value="&#x2713;" />
+                            <input id="affiliate" name="affiliate" type="hidden" value="kingcounty" />
+                            <input autocomplete="on" class="usagov-search-autocomplete ui-autocomplete-input form-control search-form-text"  name="query" placeholder="Search Kingcounty.gov" type="search" />
+                            <button type="submit" class="btn btn-link search-form-btn"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div><!-- /#global-search-wrapper --> 
+                </div><!-- /.row-->
+                <div class="row">
+                    <nav class="navbar yamm navbar-inverse" id="navbar-full" role="navigation">
+                        <ul class="nav navbar-nav pull-right">
+                            <li><a href="/" title="King County home" class="nav-header bold"><span class="current"><span id="full-home-text">Home</span><i class="fa fa-home"></i></span></a></li>
+                            <li class="dropdown yamm-fw">
+                                <a href="/how-do-i" title="How do I..." class="dropdown-toggle disabled nav-header bold" data-toggle="dropdown"><span class="">How do I...</span> <i class="fa fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Apply for</li>
+                                                        <li><a href="/property/permits/info" title="Permits">Permits</a></li>
+                                                        <li><a href="/jobs" title="King County Jobs">Jobs at King County</a></li>
+                                                        <li><a href="/safety/regionalAnimalServices/License" title="Pet License">Pet license</a></li>
+                                                        <li class="hidden-link"><a href="/business/licenses" title="Business license">Business license</a></li>
+                                                        <li class="hidden-link"><a href="/courts/marriage" title="Marriage license">Marriage license</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Attend</li>
+                                                        <li><a href="/how-do-i/jury-duty" title="Jury duty">Jury duty</a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Do business with King County</li>
+                                                        <li><a href="https://procurement.kingcounty.gov/procurement_ovr/login.aspx?ReturnUrl=%2fprocurement_ovr%2fdefault.aspx" title="Register as a vendor">Register as a vendor</a></li>
+                                                        <li><a href="/operations/procurement.aspx" title="Bid &amp; contract opportunities">View bid &amp; contract opportunities</a></li>
+                                                        <li><a href="/exec/BusinessDev/contractingopps.aspx" title="Become a certified small business contractor or supplier">Become a certified small business contractor or supplier</a></li>
+                                                        <li class="hidden-link"><a href="https://info.kingcounty.gov/EXEC/contractreporting/Public/SCS/default.aspx" title="Find certified small business contractors and suppliers">Find certified small business contractors and suppliers</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Look up</li>
+                                                        <li><a href="http://your.kingcounty.gov/solidwaste/wdidw/index.asp" title="Recycle: What do I do with?">Recycle: What do I do with?</a></li>
+                                                        <li><a href="/safety/sheriff/SOSearch.aspx" title="Sex offenders">Sex offenders</a></li>
+                                                        <li><a href="http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx" title="Property values">Property values</a></li>
+                                                        <li class="hidden-link"><a href="/business/Forecasting" title="Economic forecast">Economic forecast</a></li>
+                                                        <li class="hidden-link"><a href="/elections/currentelections" title="Election results">Election results</a></li>
+                                                        <li class="hidden-link"><a href="/operations/Finance/Treasury/PropertyTax" title="Property tax">Property tax</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">File</li>
+                                                        <li><a href="/courts/Clerk/HowDoI/Fileadocument" title="Superior Court documents">Superior Court documents</a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Get around</li>
+                                                        <li><a href="/tools/trip-planner/" title="Plan a bus trip">Plan a bus trip</a></li>
+                                                        <li><a href="http://metro.kingcounty.gov/tops/bike/bike.html" title="Travel by bike">Travel by bike</a></li>
+                                                        <li><a href="http://metro.kingcounty.gov/schedules/" title="Find a bus schedule">Find a bus schedule</a></li> 
+                                                        <li class="hidden-link"><a href="http://metro.kingcounty.gov/parknrides" title="Find a park &amp; ride">Find a park &amp; ride</a></li>
+                                                        <li class="hidden-link"><a href="http://metro.kingcounty.gov/tops/van-car/van-car.html">Explore carpooling options</a></li>
+                                                        <li class="hidden-link"><a href="/transportation/kcdot/WaterTaxi" title="Take a water tax">Take a water taxi</a></li>
+                                                        <li class="hidden-link"><a href="http://metro.kingcounty.gov/tops/accessible/programs.html" title="Find senior transportation">Find senior transportation</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Help for</li>
+                                                        <li><a href="/how-do-i/domestic-violence" title="Domestic violence">Domestic violence</a></li>
+                                                        <li><a href="/services/police-safety" title="Emergencies">Emergencies</a></li>
+                                                        <li><a href="http://crisisclinic.org/" title="Crisis">Crisis</a></li>
+                                                        <li class="hidden-link"><a href="/socialservices/Housing/Resources/HomelessResources" title="Homeless">Homeless</a></li>                                                  
+                                                        <li class="hidden-link"><a href="/Assessor/TaxpayerAssistance/TaxRelief" title="Property tax relief">Property tax relief</a></li>
+                                                        <li class="hidden-link"><a href="/services/rural" title="Rural resident">Rural residents</a></li>
+                                                        <li class="hidden-link"><a href="/socialservices/veterans" title="Veterans">Veterans</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Locate</li>
+                                                        <li><a href="/environment/dnrp/park_map" title="Parks">Parks</a></li>
+                                                        <li><a href="/healthservices/health/locations" title="Public health clinics">Public health clinics</a></li>
+                                                        <li><a href="/transportation/kcdot/Roads/Construction" title="Road projects">Road projects</a></li>
+                                                        <li class="hidden-link"><a href="/transportation/kcdot/Roads/Bicycling" title="Bike routes">Bike routes</a></li>
+                                                        <li class="hidden-link"><a href="/operations/Finance/Treasury/Foreclosure" title="Foreclosures">Foreclosures</a></li>
+                                                        <li class="hidden-link"><a href="/recreation/parks/trails" title="Hiking &amp; biking trails">Hiking &amp; biking trails</a></li>
+                                                        <li class="hidden-link"><a href="http://ingress.kingcounty.gov/inmatelookup/" title="Jail inmate">Jail inmate</a></li>
+                                                        <li class="hidden-link"><a href="/operations/GIS/PropResearch/ParcelViewer" title="Property">Property</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Pay for</li>
+                                                        <li><a href="/healthservices/health/vitalstats/birth.aspx" title="Birth certificate">Birth certificate</a></li>
+                                                        <li><a href="/operations/Finance/Treasury/PropertyTax" title="Pay or look up property tax">Pay or look up property tax</a></li>
+                                                        <li><a href="/courts/marriage/Licensecopies" title="Marriage certificate">Marriage certificate</a></li>
+                                                        <li class="hidden-link"><a href="/business/Recorders/Fees" title="Deed">Deed</a></li>
+                                                        <li class="hidden-link"><a href="/healthservices/health/vitalstats/death" title="Death certificate">Death certificate</a></li>
+                                                        <li class="hidden-link"><a href="/business/Recorders/Fees" title="Title certificate">Title certificate</a></li>
+                                                        <li class="hidden-link"><a href="/environment/wastewater/capacityCharge.aspx" title="Capacity charge">Sewage treatment capacity charge</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Register or request</li>
+                                                        <li><a href="https://public.govdelivery.com/accounts/WAKING/subscriber/new" title="Email or text alerts">Email or text alerts</a></li>
+                                                        <li><a href="/elections/registration" title="To vote">To vote</a></li>
+                                                        <li><a href="/operations/ExecutiveServices/PublicRecords" title="Public records">Public records</a></li>
+                                                        <li class="hidden-link"><a href="/business/licenses" title="Your business with King County">Your business with King County</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Report</li>
+                                                        <li><a href="/safety/sheriff/ReportToSheriff" title="Crime">Crime</a></li>
+                                                        <li><a href="http://your.kingcounty.gov/solidwaste/cleanup/report-dumping.asp" title="Illegal dumping">Illegal dumping</a></li>
+                                                        <li><a href="/exec/CivilRights/FileComplaint" title="Discrimination complaint">Discrimination complaint</a></li>
+                                                        <li class="hidden-link"><a href="/healthservices/health/ehs/foodsafety/inspections/complaints" title="Unsafe food handling">Unsafe food handling</a></li>
+                                                        <li class="hidden-link"><a href="/environment/wtd/Response" title="Septic or sewer problem">Septic or sewer problem</a></li>
+                                                        <li class="hidden-link"><a href="http://info.kingcounty.gov/about/contact/default.aspx" title="Other problems or complaints">Other problems or complaints</a></li>
+                                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                                    </ul>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-title">Do more online</li>
+                                                        <li><a href="/tools/trip-planner" title="Metro Trip Planner">Metro Trip Planner</a></li> 
+                                                        <li><a href="/operations/GIS/PropResearch/ParcelViewer.aspx" title="Parcel viewer property information">Parcel viewer property information</a></li>
+                                                        <li><a href="http://ingress.kingcounty.gov/inmatelookup/" title="Jail inmate lookup">Jail inmate lookup</a></li>
+                                                        <li><a href="/how-do-i" class="btn btn nav-dropdown-btn btn-block" title="More tasks">More tasks</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown yamm-fw">
+                                <a href="/services" class="dropdown-toggle disabled nav-header bold" data-toggle="dropdown" title="services"><span class="">Services</span> <i class="fa fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="/services/animalspets" title="Animals and pets">Animals &amp; pets</a></li>
+                                                        <li><a href="/services/arts-culture" title="Arts and culture">Arts &amp; culture</a></li>
+                                                        <li><a href="/healthservices/health/vitalstats" title="Birth &amp; death records">Birth &amp; death records</a></li>
+                                                        <li><a href="/services/business" title="Business">Business</a></li>
+                                                        <li><a href="/services/codes-laws" title="Codes &amp; laws">Codes &amp; laws</a></li>
+                                                        <li><a href="/services/courts" title="Courts">Courts</a></li>
+                                                        <li><a href="/services/emergencies" title="Emergencies">Emergencies</a></li>
+                                                        <li><a href="/services/environment" title="Environment">Environment</a></li>
+                                                        <li><a href="/services/health" title="Health">Health</a></li>
+                                                        <li><a href="/services/home-property" title="Home &amp; property">Home &amp; property</a></li>
+                                                        <li><a href="/services/jails" title="Jails">Jails</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">   
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="/services/jobs-training" title="Jobs &amp; traiddning">Jobs &amp; training</a></li>
+                                                        <li><a href="/services/licenses-permits-records" title="Licenses, permits &amp; records">Licenses, permits &amp; records</a></li>
+                                                        <li><a href="/services/parks-recreation" title="Parks &amp; recreation">Parks &amp; recreation</a></li>
+                                                        <li><a href="/services/police-safety" title="Police &amp; safety">Police &amp; safety</a></li>
+                                                        <li><a href="/services/recycling-garbage" title="Recycling &amp; garbage">Recycling &amp; garbage</a></li>
+                                                        <li><a href="/services/rural" title="Rural services">Rural services</a></li>
+                                                        <li><a href="/services/social-services" title="Social services">Social services</a></li>
+                                                        <li><a href="/services/transportation-roads" title="Transportation &amp; roads">Transportation &amp; roads</a></li>
+                                                        <li><a href="/services/voting-elections" title="Voting &amp; elections">Voting &amp; elections</a></li>
+                                                        <li><a href="/services/volunteer" title="Volunteer">Volunteer</a></li>
+                                                        <li>
+                                                            <a href="/services" class="btn nav-dropdown-btn btn-block" title="More services">More services</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown yamm-fw">
+                                <a href="/about" class="dropdown-toggle disabled nav-header" data-toggle="dropdown" title="About King County"><span class="">About King County</span> <i class="fa fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled">
+                                                        <li><a title="Contact us" href="/customerservice">Contact us</a></li>
+                                                        <li><a title="Elected officials" href="/elected">Elected officials</a></li>
+                                                        <li><a title="Equity and social justice" href="/exec/equity.aspx">Equity &amp; social justice</a></li>
+                                                        <li><a title="History" href="/operations/archives/historylinks.aspx#_General_County_History">History</a></li>
+                                                        <li><a title="Jobs and training" href="/services/jobs-training.aspx">Jobs &amp; training</a></li>
+                                                        <li><a title="News and events" href="/about/news.aspx">News &amp; events</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <ul class="list-unstyled">
+                                                        <li><a title="Maps" href="/about/region/maps.aspx">Maps</a></li>
+                                                        <li><a title="Data and statistics" href="/exec/PSB/Demographics/DataReports.aspx">Data and statistics</a></li>
+                                                        <li><a title="King County Employees" href="/employees.aspx">King County Employees</a></li>
+                                                        <li><a title="Vision and strategic plan" href="/about/vision-strategic.aspx">Vision &amp; strategic plan</a></li>
+                                                        <li><a title="More information" class="btn nav-dropdown-btn btn-block" href="/about.aspx">More information</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown yamm-fw">
+                                <a href="/depts" class="dropdown-toggle disabled nav-header" data-toggle="dropdown" title="Departments"><span class="">Departments</span> <i class="fa fa-caret-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                     <div class="yamm-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                             <ul class="list-unstyled">
+                                               <li><a href="/courts/detention" title="Adult &mp; Juvenile Detention">Adult &amp; Juvenile Detention</a></li>
+                                               <li><a href="/assessor" title="Assessor">Assessor</a></li>
+                                               <li><a href="/operations/auditor" title="Auditor">Auditor</a></li>
+                                               <li><a href="/property/PropertyTaxAppeals/about" title="Board of Appeals/Equalization">Board of Appeals/Equalization</a></li>
+                                               <li><a href="/operations/DCHS" title="Community &amp; Human Services">Community &amp; Human Services</a></li>
+                                               <li><a href="/council" title="Council">Council</a></li>
+                                               <li><a href="/courts/DistrictCourt" title="District Court">District Court</a></li>
+                                               <li><a href="/business/Forecasting" title="Economic &amp; Financial Analysis">Economic &amp; Financial Analysis</a></li>
+                                               <li><a href="/elections" title="Elections">Elections</a></li>
+                                           </ul>
+                                       </div>
+                                       <div class="col-md-4">
+                                        <ul class="list-unstyled">
+                                            <li><a href="/exec" title="Executive Office">Executive Office</a></li>
+                                            <li><a href="/operations/ExecutiveServices" title="Executive Services">Executive Servces</a></li>
+                                            <li><a href="/property/HearingExaminer" title="Hearing Examiner">Hearing Examiner</a></li>
+                                            <li><a href="/operations/it" title="Information Technology">Information Technology</a></li>
+                                            <li><a href="/KCTV" title="King County TV">King County TV</a></li>
+                                            <li><a href="/operations/oleo" title="Law Enforcement Oversight">Law Enforcement Oversight</a></li>
+                                            <li><a href="/environment/dnrp" title="Natural Resources &amp; Parks">Natural Resources &amp; Parks</a></li>
+                                            <li><a href="/operations/Ombudsman" title="Ombudsman">Ombudsman</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                     <ul class="list-unstyled">
+                                        <li><a href="/property/permits" title="Permitting &amp; Environmental Review">Permitting &amp; Environmental Review</a></li>
+                                        <li><a href="/Prosecutor" title="Prosecuting Attorney">Prosecuting Attorney</a></li>
+                                        <li><a href="/courts/OPD" title="Department of Public Defense">Public Defense</a></li>
+                                        <li><a href="/healthservices/health" title="Public Health">Public Health</a></li>
+                                        <li><a href="/safety/sheriff" title="Sheriff">Sheriff</a></li>
+                                        <li><a href="/courts/SuperiorCourt" title="Superior Court">Superior Court</a></li>
+                                        <li><a href="/courts/Clerk.aspx" title="Superior Court Clerk's Offie (DJA)">Superior Court Clerk's Office (DJA)</a></li>
+                                        <li><a href="/transportation/kcdot" title="Transportation">Transportation</a></li>
+                                        <li><a href="/property/TaxAdvisor" title="Tax Advisor">Tax Advisor</a></li>
+                                        <li><a href="/depts" class="btn nav-dropdown-btn btn-block" title="More departments">More departments</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav><!-- /#navbar-full -->
+</div><!-- /.row-->
+</div><!-- /#nav-search-box-lg-->
+</div><!-- /#nav-lg-->
+</div><!-- /.container -->
+
+
+<!-- SM NAVBAR -->
+<nav id="nav-sm" class="navbar navbar-inverse yamm" role="navigation">
+    <div class="container visible-sm">
+        <div class="navbar-header">
+            <a href="/"><img src="img/KClogo-horiz-white-sm-xs.png" alt="King County logo" class="img-responsive"></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" >
+            <li><a href="/" class="nav-header"><i class="fa fa-home"></i></a></li>
+            <li class="dropdown yamm-fw">
+                <a href="/how-do-i" title="How do I..." class="dropdown-toggle disabled nav-header bold" data-toggle="dropdown">How do I... <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="yamm-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Apply for</li>
+                                        <li><a href="/property/permits/info" title="Permits">Permits</a></li>
+                                        <li><a href="/jobs" title="King County Jobs">Jobs at King County</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/safety/regionalAnimalServices/License" title="Pet License">Pet license</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/business/licenses" title="Business license">Business license</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/courts/marriage" title="Marriage license">Marriage license</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Attend</li>
+                                        <li><a href="/how-do-i/jury-duty" title="Jury duty">Jury duty</a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Do business with King County</li>
+                                        <li><a href="https://procurement.kingcounty.gov/procurement_ovr/login.aspx?ReturnUrl=%2fprocurement_ovr%2fdefault.aspx" title="Register as a vendor">Register as a vendor</a></li>
+                                        <li><a href="/operations/procurement.aspx" title="Bid &amp; contract opportunities">View bid &amp; contract opportunities</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/exec/BusinessDev/contractingopps.aspx" title="Become a certified small business contractor or supplier">Become a certified small business contractor or supplier</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="https://info.kingcounty.gov/EXEC/contractreporting/Public/SCS/default.aspx" title="Find certified small business contractors and suppliers">Find certified small business contractors and suppliers</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Look up</li>
+                                        <li><a href="http://your.kingcounty.gov/solidwaste/wdidw/index.asp" title="Recycle: What do I do with?">Recycle: What do I do with?</a></li>
+                                        <li><a href="/safety/sheriff/SOSearch.aspx" title="Sex offenders">Sex offenders</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx" title="Property values">Property values</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/business/Forecasting" title="Economic forecast">Economic forecast</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/elections/currentelections" title="Election results">Election results</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/operations/Finance/Treasury/PropertyTax" title="Property tax">Property tax</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">File</li>
+                                        <li><a href="/courts/Clerk/HowDoI/Fileadocument" title="Superior Court documents">Superior Court documents</a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Get around</li>
+                                        <li><a href="/tools/trip-planner" title="Plan a bus trip">Plan a bus trip</a></li>
+                                        <li><a href="http://metro.kingcounty.gov/tops/bike/bike.html" title="Travel by bike">Travel by bike</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://metro.kingcounty.gov/schedules/" title="Find a bus schedule">Find a bus schedule</a></li> 
+                                        <li class="hidden-link" style="display: none;"><a href="http://metro.kingcounty.gov/parknrides" title="Find a park &amp; ride">Find a park &amp; ride</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://metro.kingcounty.gov/tops/van-car/van-car.html">Explore carpooling options</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/transportation/kcdot/WaterTaxi" title="Take a water tax">Take a water taxi</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://metro.kingcounty.gov/tops/accessible/programs.html" title="Find senior transportation">Find senior transportation</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Help for</li>
+                                        <li><a href="/how-do-i/domestic-violence" title="Domestic violence">Domestic violence</a></li>
+                                        <li><a href="/services/police-safety" title="Emergencies">Emergencies</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://crisisclinic.org/" title="Crisis">Crisis</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/socialservices/Housing/Resources/HomelessResources" title="Homeless">Homeless</a></li>                                                   
+                                        <li class="hidden-link" style="display: none;"><a href="/Assessor/TaxpayerAssistance/TaxRelief" title="Property tax relief">Property tax relief</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/services/rural" title="Rural resident">Rural residents</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/socialservices/veterans" title="Veterans">Veterans</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="Show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Locate</li>
+                                        <li><a href="/environment/dnrp/park_map" title="Parks">Parks</a></li>
+                                        <li><a href="/healthservices/health/locations" title="Public health clinics">Public health clinics</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/transportation/kcdot/Roads/Construction" title="Road projects">Road projects</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/transportation/kcdot/Roads/Bicycling" title="Bike routes">Bike routes</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/operations/Finance/Treasury/Foreclosure" title="Foreclosures">Foreclosures</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/recreation/parks/trails" title="Hiking &amp; biking trails">Hiking &amp; biking trails</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://ingress.kingcounty.gov/inmatelookup/" title="Jail inmate">Jail inmate</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/operations/GIS/PropResearch/ParcelViewer" title="Property">Property</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Pay for</li>
+                                        <li><a href="/healthservices/health/vitalstats/birth.aspx" title="Birth certificate">Birth certificate</a></li>
+                                        <li><a href="/operations/Finance/Treasury/PropertyTax" title="Pay or look up property tax">Pay or look up property tax</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/courts/marriage/Licensecopies" title="Marriage certificate">Marriage certificate</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/business/Recorders/Fees" title="Deed">Deed</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/healthservices/health/vitalstats/death" title="Death certificate">Death certificate</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/business/Recorders/Fees" title="Title certificate">Title certificate</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/environment/wastewater/capacityCharge.aspx" title="Capacity charge">Sewage treatment capacity charge</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Register or request</li>
+                                        <li><a href="https://public.govdelivery.com/accounts/WAKING/subscriber/new" title="Email or text alerts">Email or text alerts</a></li>
+                                        <li><a href="/elections/registration" title="To vote">To vote</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/operations/ExecutiveServices/PublicRecords" title="Public records">Public records</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/business/licenses" title="Your business with King County">Your business with King County</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Report</li>
+                                        <li><a href="/safety/sheriff/ReportToSheriff" title="Crime">Crime</a></li>
+                                        <li><a href="http://your.kingcounty.gov/solidwaste/cleanup/report-dumping.asp" title="Illegal dumping">Illegal dumping</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/exec/CivilRights/FileComplaint" title="Discrimination complaint">Discrimination complaint</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/healthservices/health/ehs/foodsafety/inspections/complaints" title="Unsafe food handling">Unsafe food handling</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="/environment/wtd/Response" title="Septic or sewer problem">Septic or sewer problem</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://info.kingcounty.gov/about/contact/default.aspx" title="Other problems or complaints">Other problems or complaints</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title">Do more online</li>
+                                        <li><a href="/tools/trip-planner/" title="Metro Trip Planner">Metro Trip Planner</a></li> 
+                                        <li><a href="/operations/GIS/PropResearch/ParcelViewer.aspx" title="Parcel viewer property information">Parcel viewer property information</a></li>
+                                        <li class="hidden-link" style="display: none;"><a href="http://ingress.kingcounty.gov/inmatelookup/" title="Jail inmate lookup">Jail inmate lookup</a></li>
+                                        <li><a href="#" class="toggle-hidden-links" title="show more"><i class="fa fa-ellipsis-h"></i></a></li>
+                                        <li>
+                                            <a href="/services" class="btn nav-dropdown-btn btn-block" title="More services">More services</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown yamm-fw">
+                <a href="/services" class="dropdown-toggle disabled nav-header bold" data-toggle="dropdown">Services <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="yamm-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled">
+                                        <li><a href="/services/animalspets" title="Animals and pets">Animals &amp; pets</a></li>
+                                        <li><a href="/services/arts-culture" title="Arts and culture">Arts &amp; culture</a></li>
+                                        <li><a href="/healthservices/health/vitalstats" title="Birth &amp; death records">Birth &amp; death records</a></li>
+                                        <li><a href="/services/business" title="Business">Business</a></li>
+                                        <li><a href="/services/codes-laws" title="Codes &amp; laws">Codes &amp; laws</a></li>
+                                        <li><a href="/services/courts" title="Courts">Courts</a></li>
+                                        <li><a href="/services/emergencies" title="Emergencies">Emergencies</a></li>
+                                        <li><a href="/services/environment" title="Environment">Environment</a></li>
+                                        <li><a href="/services/health" title="Health">Health</a></li>
+                                        <li><a href="/services/home-property" title="Home &amp; property">Home &amp; property</a></li>
+                                        <li><a href="/services/jails" title="Jails">Jails</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">   
+                                    <ul class="list-unstyled">
+                                        <li><a href="/services/jobs-training" title="Jobs &amp; traiddning">Jobs &amp; training</a></li>
+                                        <li><a href="/services/licenses-permits-records" title="Licenses, permits &amp; records">Licenses, permits &amp; records</a></li>
+                                        <li><a href="/services/parks-recreation" title="Parks &amp; recreation">Parks &amp; recreation</a></li>
+                                        <li><a href="/services/police-safety" title="Police &amp; safety">Police &amp; safety</a></li>
+                                        <li><a href="/services/recycling-garbage" title="Recycling &amp; garbage">Recycling &amp; garbage</a></li>
+                                        <li><a href="/services/rural" title="Rural services">Rural services</a></li>
+                                        <li><a href="/services/social-services" title="Social services">Social services</a></li>
+                                        <li><a href="/services/transportation-roads" title="Transportation &amp; roads">Transportation &amp; roads</a></li>
+                                        <li><a href="/services/voting-elections" title="Voting &amp; elections">Voting &amp; elections</a></li>
+                                        <li><a href="/services/volunteer" title="Volunteer">Volunteer</a></li>
+                                        <li>
+                                            <a href="/services" class="btn nav-dropdown-btn btn-block" title="More services">More services</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown yamm-fw"> 
+                <a href="#" class="nav-header disabled dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="yamm-content">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <ul class="list-unstyled">
+                                        <li class="nav-title"><a href="/about">About King County</a></li>
+                                        <li><a title="Contact us" href="/customerservice">Contact us</a></li>
+                                        <li><a title="Elected officials" href="/elected">Elected officials</a></li>
+                                        <li><a title="Equity and social justice" href="/exec/equity.aspx">Equity &amp; social justice</a></li>
+                                        <li><a title="History" href="/operations/archives/historylinks.aspx#_General_County_History">History</a></li>
+                                        <li><a title="Jobs and training" href="/services/jobs-training.aspx">Jobs &amp; training</a></li>
+                                        <li><a title="News and events" href="/about/news.aspx">News &amp; events</a></li>
+                                        <li><a title="Maps" href="/about/region/maps.aspx">Maps</a></li>
+                                        <li><a title="Data and statistics" href="/exec/PSB/Demographics/DataReports.aspx">Data and statistics</a></li>
+                                        <li><a title="King County Employees" href="/employees.aspx">King County Employees</a></li>
+                                        <li><a title="Vision and strategic plan" href="/about/vision-strategic.aspx">Vision &amp; strategic plan</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                           <ul class="list-unstyled">
+                                            <li class="nav-title">Departments</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled">
+                                            <li><a href="/courts/detention" title="Adult &mp; Juvenile Detention">Adult &amp; Juvenile Detention</a></li>
+                                            <li><a href="/assessor" title="Assessor">Assessor</a></li>
+                                            <li><a href="/operations/DCHS" title="Community &amp; Human Services">Community &amp; Human Services</a></li>
+                                            <li><a href="/council" title="Council">Council</a></li>
+                                            <li><a href="/courts/DistrictCourt" title="District Court">District Court</a></li>
+                                            <li><a href="/elections" title="Elections">Elections</a></li>
+                                            <li><a href="/exec" title="Executive Office">Executive Office</a></li>
+                                            <li><a href="/operations/ExecutiveServices" title="Executive Services">Executive Servces</a></li>
+                                            <li><a href="/KCTV" title="King County TV">King County TV</a></li>
+                                            <li><a href="/environment/dnrp" title="Natural Resources &amp; Parks">Natural Resources &amp; Parks</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled">
+                                            <li><a href="/property/permits" title="Permitting &amp; Environmental Review">Permitting &amp; Environmental Review</a></li>
+                                            <li><a href="/Prosecutor" title="Prosecuting Attorney">Prosecuting Attorney</a></li>
+                                            <li><a href="/courts/OPD" title="Department of Public Defense">Public Defense</a></li>
+                                            <li><a href="/healthservices/health" title="Public Health">Public Health</a></li>
+                                            <li><a href="/safety/sheriff" title="Sheriff">Sheriff</a></li>
+                                            <li><a href="/courts/SuperiorCourt" title="Superior Court">Superior Court</a></li>
+                                            <li><a href="/courts/Clerk.aspx" title="Superior Court Clerk's Offie (DJA)">Superior Court Clerk's Office (DJA)</a></li>
+                                            <li><a href="/transportation/kcdot" title="Transportation">Transportation</a></li>
+                                            <li><a href="/property/TaxAdvisor" title="Tax Advisor">Tax Advisor</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown yamm-fw"> 
+            <a href="#" class="nav-header disabled dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="yamm-content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Staff directory</a></li>
+                                    <li><a href="#">Records search</a></li>
+                                    <li><a href="#">Legisearch</a></li>
+                                    <li><a href="#">Property search</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <form role="form" action="http://search.kingcounty.gov/search" class="search-form" method="get">
+                                    <label class="sr-only" for="form-search">Search kingcounty.gov</label>
+                                    <input name="utf8" type="hidden" value="&#x2713;" />
+                                    <input id="affiliate" name="affiliate" type="hidden" value="kingcounty" />
+                                    <input autocomplete="on" class="usagov-search-autocomplete form-control search-form-text"  name="query" placeholder="Search Kingcounty.gov" type="search" />
+                                    <!--fix this-->
+                                    <button type="submit" class="btn btn-link search-form-btn"><i class="fa fa-search"></i></button>
+                                    <div class="radio">
+                                        <label>
+                                            <input  type="radio" name="sm-search-radio-option" id="sm-search-radio-search-all" value="searchAll" checked> Search all of King County
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input  type="radio" name="sm-search-radio-option" id="sm-search-radio-search-site" value="searchSite"> Search this site only
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>      
+    </ul><!-- /.nav .navbar-nav -->
+</div><!-- /.container -->
+</nav><!-- /.navbar .hidden-lg .hidden-md -->
+<!-- XS NAVBAR -->
+<nav class="navbar navbar-inverse" role="navigation" id="nav-xs">
+    <div class="container visible-xs">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-dropdown-xs" >
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-search fa-2x"></i>
+            </button>
+            <a href="/"><img src="img/KClogo-horiz-white-sm-xs.png" alt="King County logo" class="img-responsive" ></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-dropdown-xs" id="nav-search-btn-xs">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars fa-2x"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-dropdown-xs">
+            <form role="search" accept-charset="UTF-8" action="http://search.kingcounty.gov/search" method="get" class="navbar-form search-form"accept-charset="UTF-8" action="http://search.kingcounty.gov/search" class="search-form" method="get" >
+                <label class="sr-only" for="search-form-text">Search kingcounty.gov</label>
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                <input id="affiliate" name="affiliate" type="hidden" value="kingcounty" />
+                <input  autocomplete="off" type="text"  class="usagov-search-autocomplete form-control"  name="query" placeholder="Search Kingcounty.gov" >
+                <button type="submit" class="btn btn-link search-form-btn"><i class="fa fa-search"></i></button>
+            </form>
+            <ul class="nav navbar-nav">
+                <li><a href="/"><span class="">Home</span></a></li>
+                <li><a href="/how-do-i"><span class="">How Do I...</span></a></li>
+                <li><a href="/services"><span class="">Services</span></a></li>
+                <li><a href="/about">About King County</a></li>
+                <li><a href="/depts">Departments</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</header>   
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+    <!-- MOBILE IMAGE IS OPTIONAL -->
+    <img id="mobile-bg" src="" alt="background image" class="visible-xs img-responsive hidden-print"/>
+    <div class="container">
+        <a id="main-content-sr"></a>
+        <img id="logo-img-print" src="img/KClogo-horiz-black-lg.gif" alt="King County logo" class="visible-print">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <!-- FULL-WIDTH CHANGE: NO SIDENAV -->
+            <!-- FULL-WIDTH CHANGE: col changes here to col-md-12 -->
+            <div class="col-sm-12 col-md-12">
+                <!-- BREADCRUMB-->
+                <div class="row addon-row main-breadcrumb-row hidden-print" >
+                    <div class="col-xs-12">
+                            <!-- FULL-WIDTH CHANGE: THIS BUTTON IS REMOVED 
+                            <button class="btn btn-nav-green pull-left visible-xs visible-sm" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i> Menu</button>-->
+                            <!-- FULL-WIDTH CHANGE: ADD MARGIN-LEFT:0 TO THIS OL -->
+                            <ol class="breadcrumb main-breadcrumb hidden-xs" style="margin-left:0">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li class="active">Animals & Pets</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /BREADCRUMB-->
+                    <!-- PAGE CONTENT BEGINS HERE -->
+                    <div class="row addon-row addon-row-attached">
+                        <div class="col-sm-12">
+                            <div class="page-header">
+                                <h1>Animals & Pets</h1>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="row addon-row addon-row-attached">
+                        <div class="col-sm-4">
+                            <div class="portal-list">
+                                <h2>How do I...</h2>
+                                <ul>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                </ul>
+                            </div>   
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="http://placehold.it/360x360" alt="Placer holder image" class="img-responsive">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="portal-list">
+                                <h2>Related Departments</h2>
+                                <ul>
+                                    <li><a title="Link" href="#">Link</a></li>
+                                </ul>  
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row addon-row">
+                        <div class="col-sm-6">
+                            <div class="portal-list-light">
+                                <h2>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-hand-o-right fa-stack-1x fa-inverse"></i>
+                                    </span> In this section
+                                </h2>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul>
+                                            <li>Title
+                                                <ul>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>Title
+                                                <ul>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a title="Link" href="#">Link</a></li>
+                                            <li><a title="Link" href="#">Link</a></li>
+                                            <li><a title="Link" href="#">Link</a></li>
+                                            <li><a title="Link" href="#">Link</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul>
+                                            <li>Title
+                                                <ul class="list-unstyled">
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                    <li><a title="Link" href="#">Link</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="calendar-events-list">
+                                <h2>
+                                    <span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-calendar fa-stack-1x fa-inverse"></i> </span> Events 
+                                </h2>
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <div class="date-day">7</div> 
+                                        <div class="date-month">MAR</div>
+                                    </div>
+                                </a>
+                                <div class="media-body">
+                                    <p><a class="pop" href="#" href="http://metro.kingcounty.gov/have-a-say/calendar.html" id="popove" rel="popover" data-animation="true" data-html="true" data-placement="top" data-trigger="hover" data-delay="0" data-content="Location: Shoreline City Hall&lt;br &gt;&lt;/a&gt; Address: 17500 Midvale Ave. N&lt;br /&gt; City: Shoreline" title="SeaShore Transportation Forum">Transit Advisory Commission</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <div class="date-day">7</div> 
+                                    <div class="date-month">MAR</div>
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <p><a href="#" class="pop" href="http://metro.kingcounty.gov/have-a-say/calendar.html" id="popover" rel="popover" data-animation="true" data-html="true" data-placement="top" data-trigger="hover" data-delay="0" data-content="Location: Shoreline City Hall&lt;br &gt;&lt;/a&gt; Address: 17500 Midvale Ave. N&lt;br /&gt; City: Shoreline" title="SeaShore Transportation Forum">Transit Advisory Commission</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <div class="date-day">7</div> 
+                                <div class="date-month">MAR</div>
+                            </div>
+                        </a>
+                        <div class="media-body">
+                            <p><a href="#" class="pop" href="http://metro.kingcounty.gov/have-a-say/calendar.html" id="popover88" rel="popover" data-animation="true" data-html="true" data-placement="top" data-trigger="hover" data-delay="0" data-content="Location: Shoreline City Hall&lt;br &gt;&lt;/a&gt; Address: 17500 Midvale Ave. N&lt;br /&gt; City: Shoreline" title="SeaShore Transportation Forum">Transit Advisory Commission</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            <div class="date-day">7</div> 
+                            <div class="date-month">MAR</div>
+                        </div>
+                    </a>
+                    <div class="media-body">
+                        <p><a href="#" class="pop" href="http://metro.kingcounty.gov/have-a-say/calendar.html" id="popover8" rel="popover" data-animation="true" data-html="true" data-placement="top" data-trigger="hover" data-delay="0" data-content="Location: Shoreline City Hall&lt;br &gt;&lt;/a&gt; Address: 17500 Midvale Ave. N&lt;br /&gt; City: Shoreline" title="SeaShore Transportation Forum">Transit Advisory Commission</a>
+                        </p>
+                    </div>
+                </div>
+                <p class="all-events"><a href="/about/news/events"><em>See all events</em></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="row addon-row addon-row-transparent main-share-links">
+        <div class="col-sm-12">
+            <ul class="list-inline">
+                <li>Last Updated February 20, 2014 &nbsp; &nbsp;</li>
+                <li class="clearfix visible-xs"></li>
+                <li class="hidden-print"><a id="facebook-share-button" href="#" class="btn btn-default" rel="nofollow" title="Share on Facebook"><i class="fa fa-facebook-square"></i>&nbsp;Share</a></li>
+                <li class="hidden-print"><a id="twitter-share-button" href="#" class="btn btn-default" rel="nofollow" title="Share on Twitter"><i class="fa fa-twitter"></i>&nbsp;Tweet</a></li>
+                <li class="hidden-print"><a id="email-share-button" href="#" class="btn btn-default" rel="nofollow" title="Email page"><i class="fa fa-envelope"></i>&nbsp;Email</a></li>
+                <li class="hidden-print"><a id="print-share-button" href="#" class="btn btn-default" rel="nofollow" title="Print page"><i class="fa fa-print"></i>&nbsp;Print</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</div> <!-- /.row-->
+</div><!-- /.container -->
+</div><!-- /#main-content -->
+
+<footer class='footer hidden-print' id="footer">
+    <div id="footer-nav-limit"></div>
+    <div id="sticky-footer"  class="hidden-xs hidden-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>
+                        <a href="#footer-nav" title="Information for">Information for... </a>
+                    </h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4><a href="#footer-nav" title="Do more online ">Do more online </a>
+                    </h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4>
+                        <a href="#footer-nav" title="Contact us">Contact us </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer-nav">
+        <div class="container">
+            <div class="row" >
+                <div class="col-sm-4">
+                    <h4>Information for
+                        <i class="pull-right fa fa-plus visible-xs"></i>
+                    </h4>
+                    <ul class="list-unstyled collapse in"> 
+                        <li><a href="/healthservices/health/personal/coverage.aspx" title="Healthcare enrollment">Healthcare enrollment</a></li>
+                        <li><a href="/audiences/residents" title="Residents">Residents</a> </li>
+                        <li><a href="/audiences/businesses" title="Businesses">Businesses</a> </li>
+                        <li><a href="/audiences/job-seekers" title="Job seekers">Job seekers</a> </li>
+                        <li><a href="/audiences/volunteers" title="Volunteers">Volunteers</a> </li>
+                        <li><a href="/audiences/employees" title="King County employees">King County employees</a> </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Do more online
+                        <i class="pull-right fa fa-plus visible-xs"></i>
+                    </h4>
+                    <ul class="list-unstyled collapse in"> 
+                        <li><a href="/tools/trip-planner">Trip Planner</a></li>
+                        <li><a href="/tools/property-tax">Property tax information &amp; payment</a></li>
+                        <li><a href="/tools/inmate-lookup">Jail inmate look up</a></li>
+                        <li><a href="/tools/parcel-viewer" title="Parcel viewer or iMap">Parcel viewer or iMap</a></li>
+                        <li><a href="/tools/public-records" title="Public records">Public records</a></li>                               
+                        <li><a href="/how-do-i.aspx#do-more-online-tab" title="More online tools"><em>More online tools...</em></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h4>
+                        Contact us <i class="pull-right fa fa-plus visible-xs"></i>
+                    </h4>
+                    <ul class="list-unstyled collapse in"> 
+                        <li><a href="tel:+2062960100" title="206-296-0100">206-296-0100</a> </li>
+                        <li><a href="http://info.kingcounty.gov/about/contact/default.aspx" title="Email us">Email us <span class="fa fa-envelope"></span></a></li>
+                        <li><a href="/tools/staff-directory" title="Staff directory">Staff directory</a> </li>
+                        <li><a href="/elected/executive/customer-service" title="Customer service">Customer service</a> </li>
+                        <li><a href="/tools/report-problem" title="Report a problem">Report a problem</a> </li>
+                        <li><a href="https://public.govdelivery.com/accounts/WAKING/subscriber/topics?qsp=CODE_RED" title="Subscribe to alerts">Subscribe to alerts <span class="fa fa-share"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-social-bar">
+        <div class="container">
+            <div class="row">
+                <ul class="list-inline">
+                    <li class="hidden-xs">Stay connected!</li>
+                    <li class="hidden-xs"><a href="/about/news/social-media" title="Social media">View King County social media</a> </li>
+                    <li><a href="https://www.facebook.com/KingCountyWA" title="King County Facebook"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="http://www.twitter.com/kcnews" title="King County Twitter"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="http://feeds.delicious.com/v2/rss/KingCounty" title="King County news"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a href="http://www.flickr.com/photos/kingcounty" title="King County Flickr"><i class="fa fa-flickr"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer-legal">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/" title="King County Home">
+                        <img id="footer-legal-logo" class="img-responsive" src="img/horiz_transbg.gif" alt="footer logo"></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <ul class="list-unstyled list-inline">
+                            <li>© King County 2014 </li>
+                            <li><a href="/about/website/privacy" title="Privacy Statement">Privacy </a></li>
+                            <li><a href="/about/website/accessibility" title="Accessibility">Accessibility </a></li>
+                            <li><a href="/about/website/termsofuse" title="Terms of use">Terms of use</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Javascript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> 
+    <script src="js/main.js"></script>
+    <script>
+    //set the background image
+    $(window).on("resize", function(){chooseBG("img/hero-driftwood-sm.jpg", "img/hero-driftwood.jpg")}).resize();
+    </script>
+</body>
+</html>

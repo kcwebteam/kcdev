@@ -1,0 +1,131 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  include includes/news-tool-header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Equal height boxes
+  .row.addon-row.addon-row-attached
+    .col-eq-heights
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor
+  .row.addon-row.addon-row-attached
+    .col-eq-heights
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+      .col-xs-4
+        .thumbnail
+          h3 Thumbnail label
+          p Lorem ipsum dolor
+  .row.addon-row.addon-row-attached
+    .col-eq-heights
+      .col-xs-4
+        .panel.panel-default
+          .panel-heading
+            .panel-title Panel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel titlePanel title
+          .panel-body
+            p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+          .panel-footer Panel footer
+      .col-xs-4
+        .panel.panel-default
+          .panel-heading
+            .panel-title Panel title Panel titlePanel titlePanel titlePanel titlePanel titlePanel title
+          .panel-body
+            p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+          .panel-footer Panel footer
+      .col-xs-4
+        .panel.panel-default
+          .panel-heading
+            .panel-title Panel title
+          .panel-body
+            p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+          .panel-footer Panel footer
+block custom-js
+  script.
+    $(document).ready(function() {   
+      $(".col-eq-heights").equalHeightColumns();
+    });
+
+    ;(function ( $, window, document, undefined ) {
+
+        var pluginName = "equalHeightColumns",
+            defaults = {
+                //propertyName: "value"
+            };
+
+        // The actual plugin constructor
+        function Plugin( element, options ) {
+            this.element = element;
+            this.options = $.extend( {}, defaults, options) ;
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init();
+        }
+
+        Plugin.prototype = {
+
+          init: function() {
+            this.getEqualHeights(this.element, this.options);
+          },
+
+          getEqualHeights: function(el, options) {
+            var tallest = 0;
+            var i;
+            var j;
+            $(el).each(function(){
+              var els = $(el).find('[class*="col-"]');
+              for(j=0; j < els.length; j++) {
+                var thisHeight = $(els[j]).height();
+                if(thisHeight > tallest) {          
+                  tallest = thisHeight;       
+                }
+              //- }
+              //- if (els.children().hasClass('panel')) {
+              //-   $.each(els.children(),function(index,val){
+              //-     var panelHead = $(val).children('.panel-heading').height();
+              //-     var panelBody = $(val).children('.panel-body').height();
+              //-     var panelFooter = $(val).children('.panel-footer').height();
+              //-     var panelTotalHeight = panelHead + panelBody + panelFooter;
+              //-   });
+                tallest = (els.children().hasClass('panel')) ? tallest -= 22 : tallest;
+              } else {
+                $(els.children()).height(tallest);
+              }
+              tallest = 0;
+            });
+          }
+        };
+
+        $.fn[pluginName] = function ( options ) {
+            return this.each(function () {
+                if (!$.data(this, "plugin_" + pluginName)) {
+                    $.data(this, "plugin_" + pluginName,
+                    new Plugin( this, options ));
+                }
+            });
+        };
+
+    })( jQuery, window, document );

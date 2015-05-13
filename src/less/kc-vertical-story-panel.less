@@ -1,0 +1,32 @@
+//KC-VERTICAL-STORY-PANEL
+.row.vertical-story-panel {
+  position:relative;
+  border-top: 2px solid @brand-primary;
+  padding-bottom:25px;
+  &.vertical-story-panel-success {
+    color: @state-success-text;
+    background-color: #E1E9C1;
+  }
+  &.vertical-story-panel-info {
+    color: @state-info-text;
+    background-color: @state-info-bg;
+  }
+  &.vertical-story-panel-default {
+    color: @state-default-text;
+    background-color: #fff;
+   // border: 1px solid @state-default-border;
+  }
+  .vertical-story-panel-head {
+    margin-bottom: 10px;
+  }
+  span.fa-stack.fa-2x{
+    top:initial;//Remove this after push
+    z-index:4;
+    position:absolute; 
+    right:0;  
+    left:0; 
+    margin-left:auto; 
+    margin-right:auto;
+    bottom:-27px;
+  }
+}

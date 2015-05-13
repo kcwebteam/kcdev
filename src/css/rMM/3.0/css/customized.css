@@ -1,0 +1,83 @@
+/*
+ Responsive Mega Menu, Customized
+ 
+ Paste your customized CSS below and call it on your HTML file like this:
+	<link href="css/customized.css" rel="stylesheet">
+ 
+ Important: It must reside in your CSS/ folder.
+ 
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+/** Start Pasting Below This Line **/
+
+.navbar-custom .dropdown-menu { border-color: #bbbbbb; }
+
+.navbar-custom .dropdown-menu li.nav-title { color: #000dff; }
+
+.navbar-custom .dropdown-menu li.nav-title span.nav-title-description { color: #cccccc; }
+
+.navbar-custom { background-color: #cccccc; border-color: #bbbbbb }
+
+.navbar-custom .navbar-brand { color: #777777; }
+
+.navbar-custom .nav > li > a { color: #ffffff; }
+
+.navbar-custom .nav > li > a:focus, .navbar-custom .nav > li > a:hover, .navbar-default .navbar-brand:hover { color: #777777; }
+
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle,
+.navbar-custom .nav li.dropdown.active > .dropdown-toggle,
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle { background: #bbbbbb; color: #ffff00; }
+
+.navbar-custom .nav li.dropdown:hover > .dropdown-toggle .caret { border-top-color: #777777; }
+
+.navbar-custom .nav li.dropdown > .dropdown-toggle .caret,
+.navbar-custom .nav li.dropdown.open a:hover .caret,
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-custom .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #ffffff; }
+
+.navbar-custom .nav li.dropdown.open a:hover .caret,
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #ffff00; }
+
+.navbar-custom .dropdown-menu li a { color: #0066cc; text-shadow: none; }
+
+.navbar-custom .dropdown-menu li a.btn { color: inherit; }
+
+.navbar-custom .dropdown-menu li a.btn:hover { color: white; padding-left: 0; }
+
+.navbar-custom .dropdown-menu li a.btn-default:hover { color: gray; }
+
+.navbar-custom .dropdown-menu .active > a,
+.navbar-custom .dropdown-menu li > a,
+.navbar-custom .dropdown-submenu > a { padding: 3px 0; }
+
+.navbar-custom .dropdown-menu li > a:hover,
+.navbar-custom .dropdown-menu li > a:focus,
+.navbar-custom .dropdown-submenu:hover > a { color: #777777; padding-left: 5px; }
+
+.navbar-custom .navbar-toggle .icon-bar { background-color: #cccccc; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+.navbar-custom .navbar-toggle { background: #aaaaaa; border: 1px solid #bbbbbb; }
+
+.navbar-custom .navbar-toggle:hover, .navbar-custom .navbar-toggle:focus { background: #555555; }
+
+@media (max-width: 979px) {
+
+.navbar-custom p, .dropdown-menu li.nav-title span.nav-title-description { color: #999999; }
+
+.navbar-custom .nav-collapse .btn { color: #bbbbbb; }
+
+.navbar-custom .nav > li > a:hover { background: none; }
+
+.navbar-custom .nav a { color: #ffffff; }
+
+.navbar-custom .dropdown-menu li > a:hover,
+.navbar-custom .dropdown-menu li > a:focus,
+.navbar-custom .dropdown-submenu:hover > a { color: #541614; background: none; padding-left: 3px; }
+
+.navbar-custom .navbar-collapse li.nav-title { color: #ffffff; border-bottom: 1px solid #bbbbbb; }
+}

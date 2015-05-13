@@ -1,0 +1,387 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block custom-style
+  <!-- FormValidation CSS file -->
+  link(rel="stylesheet" href="css/formValidation.min.css")
+  style.
+    .has-error .input-group-addon{
+      color: #ffffff;
+    }
+    .has-feedback label~.form-control-feedback {
+      top:34px;
+    }
+    .has-feedback label.sr-only~.form-control-feedback{
+      top:9px;
+    }
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h1 Simple form
+      h2 Your contact information
+      form#simpleForm
+        .form-group
+          label(for='userName') Your name
+          input#userName.form-control(type='text' placeholder='Name' name='userName')
+        .form-group
+          label.sr-only(for='userEmail') Email
+          .input-group
+            span.input-group-addon 
+              i.fa.fa-envelope
+              |  Email
+            input#userEmail.form-control(type='password' placeholder='example@example.com' name='userEmail')
+        .form-group
+          label(for='address') Address
+          input#address.form-control(type='password' placeholder='address' name='address')
+        .row
+          .col-sm-6
+            .form-group
+              label(for='city') City
+              input#city.form-control(type='text' placeholder='City' name='city')
+          .col-sm-6
+            .form-group
+              label(for='state') State
+              select#state.form-control(name='state')
+                option(value='') State
+                option(value='AL') AL
+                option(value='AK') AK
+                option(value='AZ') AZ
+                option(value='AR') AR
+                option(value='CA') CA
+                option(value='CO') CO
+                option(value='CT') CT
+                option(value='DE') DE
+                option(value='DC') DC
+                option(value='FL') FL
+                option(value='GA') GA
+                option(value='HI') HI
+                option(value='ID') ID
+                option(value='IL') IL
+                option(value='IN') IN
+                option(value='IA') IA
+                option(value='KS') KS
+                option(value='KY') KY
+                option(value='LA') LA
+                option(value='ME') ME
+                option(value='MD') MD
+                option(value='MA') MA
+                option(value='MI') MI
+                option(value='MN') MN
+                option(value='MS') MS
+                option(value='MO') MO
+                option(value='MT') MT
+                option(value='NE') NE
+                option(value='NV') NV
+                option(value='NH') NH
+                option(value='NJ') NJ
+                option(value='NM') NM
+                option(value='NY') NY
+                option(value='NC') NC
+                option(value='ND') ND
+                option(value='OH') OH
+                option(value='OK') OK
+                option(value='OR') OR
+                option(value='PA') PA
+                option(value='RI') RI
+                option(value='SC') SC
+                option(value='SD') SD
+                option(value='TN') TN
+                option(value='TX') TX
+                option(value='UT') UT
+                option(value='VT') VT
+                option(value='VA') VA
+                option(value='WA') WA
+                option(value='WV') WV
+                option(value='WI') WI
+                option(value='WY') WY
+        .row
+          .col-sm-6
+            .form-group
+              label.sr-only(for='zip')
+              select#zip.form-control(name='zip')
+                option(value='') Zip
+                option(value='123456') 123456
+                option(value='123456') 123456
+                option(value='123456') 123456
+                option(value='123456') 123456
+                option(value='123456') 123456
+          .col-sm-6
+            .form-group
+              label.sr-only(for='phone')
+              .input-group
+                span.input-group-addon 
+                  i.fa.fa-phone
+                  |  Phone
+                input#phone.form-control(type='tel' placeholder='206-555-5555' name="phone")
+        .form-group
+          label(for="radioList") Choose one of these: 
+            a(tabindex='0' data-toggle='popover' data-placement='right' data-content='Tell us what your choice is.' data-trigger="focus")
+              .fa.fa-lg.fa-question-circle
+          .radio
+            label
+              input(type='radio' name='radioList' value='Choice1')
+              | Choice 1
+          .radio
+            label
+              input(type='radio' name='radioList' value='Choice2')
+              | Choice 2
+          .radio
+            label
+              input(type='radio' name='radioList' value='Choice3')
+              | Choice 3
+          .radio
+            label
+              input(type='radio' name='radioList' value='Choice4')
+              | Choice 4
+        .form-group      
+          label(for="gender") Gender: 
+          br
+          label.radio-inline
+            input(type='radio' name='gender' value='male')
+            | Male
+          label.radio-inline
+            input(type='radio' name='gender' value='female')
+            | Female
+        <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+        button.btn.btn-primary(type='submit') Submit
+
+
+      h2 Your comment or question:
+      form#simpleForm2
+        .form-group
+          label(for='singleText') Single line text
+          input#singleText.form-control(type='text' placeholder='')
+        .form-group
+          label(for='multiText') Multiline Text
+          textarea#multiText.form-control(rows='3' placeholder='textarea')
+        button.btn.btn-primary(type='submit') Submit
+      h2 Another form
+      // Modal
+      #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', aria-describedby='Terms of service description')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#myModalLabel.modal-title TERMS OF SERVICE
+            .modal-body
+              p 
+              p OVERVIEW
+              p This website is operated by Shopify. Throughout the site, the terms “we”, “us” and “our” refer to Shopify. Shopify offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+              p By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply  to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content.
+
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+      form#simpleForm3
+        a(href="#myModal" data-toggle="modal" data-target="#myModal") Terms and conditions
+        .checkbox
+          label
+            input(type='checkbox', value='disclaimerRead')
+            | I have read the obligatory disclaimer and would like to move on now.
+        button.btn.btn-primary(type='submit') Submit
+      h2 Another Another form
+      form#simpleForm4
+        .collapse#collapseDisclaimer
+          .call-out-text.call-out-text-info When you purchase something from our store, as part of the buying and selling process, we collect the personal information you give us such as your name, address and email address. When you browse our store, we also automatically receive your computer’s internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.        
+        a(data-toggle="collapse" href="#collapseDisclaimer" aria-expanded="false" aria-controls="collapseDisclaimer") Terms and conditions
+        .form-group     
+          .checkbox
+            label(for='disclaimer')
+              input(type='checkbox', value='disclaimerRead' name="disclaimer")
+              | I have read the obligatory disclaimer and would like to move on now.
+        button.btn.btn-primary(type='submit') Submit
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+block custom-js
+  script(src='js/vendor/formValidation.min.js')
+  script(src="js/vendor/bootstrap.js")
+  script.
+    //Initialize popovers
+    $(function () {
+      $('[data-toggle="popover"]').popover();
+    });
+    $(function () {
+      $('#simpleForm4')
+      .on('init.field.fv', function(e, data) {
+        // data.fv      --> The FormValidation instance
+        // data.field   --> The field name
+        // data.element --> The field element
+
+        var $icon      = data.element.data('fv.icon'),
+            options    = data.fv.getOptions(),                      // Entire options
+            validators = data.fv.getOptions(data.field).validators; // The field validators
+
+        if (validators.notEmpty && options.icon && options.icon.required) {
+          // The field uses notEmpty validator
+          // Add required icon
+          $icon.addClass(options.icon.required).show();
+        }
+        data.fv.disableSubmitButtons(true);
+      })
+      .formValidation({
+        framework: 'bootstrap',
+        icon: {
+            required: 'fa fa-asterisk is-required',
+            valid: 'fa fa-check',
+            invalid: 'fa fa-remove',
+            validating: 'fa fa-refresh'
+        },
+        fields: {
+          disclaimer:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          }
+        }
+      })
+      .on('status.field.fv', function(e, data) {
+        // Remove the required icon when the field updates its status
+        var $icon      = data.element.data('fv.icon'),
+            options    = data.fv.getOptions(),                      // Entire options
+            validators = data.fv.getOptions(data.field).validators; // The field validators
+
+        if (validators.notEmpty && options.icon && options.icon.required) {
+            $icon.removeClass(options.icon.required).addClass('fa');
+        }
+      });
+      $('#simpleForm')
+      .on('init.field.fv', function(e, data) {
+        // data.fv      --> The FormValidation instance
+        // data.field   --> The field name
+        // data.element --> The field element
+
+        var $icon      = data.element.data('fv.icon'),
+            options    = data.fv.getOptions(),                      // Entire options
+            validators = data.fv.getOptions(data.field).validators; // The field validators
+
+        if (validators.notEmpty && options.icon && options.icon.required) {
+          // The field uses notEmpty validator
+          // Add required icon
+          $icon.addClass(options.icon.required).show();
+        }
+      })
+      .formValidation({
+        framework: 'bootstrap',
+        icon: {
+            required: 'fa fa-asterisk is-required',
+            valid: 'fa fa-check',
+            invalid: 'fa fa-remove',
+            validating: 'fa fa-refresh'
+        },
+        fields: {
+          userName:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          state:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          radioList:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          gender:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          userEmail:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+           address:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          zip:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          phone:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          city:{
+            validators:{
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          }
+        }
+      })
+      .on('success.field.fv', function(e, data) {
+          // If the field is empty
+          //if (data.element.val() === '') {
+              var $parent = data.element.parents('.form-group');
+
+              // Remove the has-success class
+              $parent.removeClass('has-success');
+
+              // Hide the success icon
+              $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]').hide();
+          //}
+      })
+      .on('status.field.fv', function(e, data) {
+            // Remove the required icon when the field updates its status
+            var $icon      = data.element.data('fv.icon'),
+                options    = data.fv.getOptions(),                      // Entire options
+                validators = data.fv.getOptions(data.field).validators; // The field validators
+
+            if (validators.notEmpty && options.icon && options.icon.required) {
+                $icon.removeClass(options.icon.required).addClass('fa');
+            }
+      })
+    });
+   
+
+  
+    

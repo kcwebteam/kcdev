@@ -1,0 +1,27 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Page Header
+        // h2: small Sub header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      p After re-election by the largest margin ever in a race for King County’s top office, Executive Constantine outlined the accomplishments of the past year, and the past four years, that provide the foundation for the work that lies ahead.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h2 White River Forest agreement protects 43,000
+      img.pull-right(src="!{rootPrefix}img/rotator-flood2.jpg" alt="This is a picture" width="229" height="189")                
+      p In sodales massa nec tortor tempus imperdiet. In sed ipsum metus, a ultricies arcu. Maecenas eu urna sit amet arcu luctus mattis. Fusce sed ante non neque laoreet ullamcorper. Suspendisse ornare luctus turpis, sed porta leo ultricies ac. Pellentesque pulvinar neque in ligula aliquet lacinia.
+      - for (var i = 0; i < 3; i++)
+        p: li: a(href="#")= 'Link ' + i

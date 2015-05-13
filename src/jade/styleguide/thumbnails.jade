@@ -1,0 +1,76 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+      .col-xs-12
+        h1 Thumbnails
+        p
+            | Use thumbnails to easily display grids of images, videos, text, and more.
+        h2 Default example
+        div(data-xrayhtml)
+          .row
+            .col-xs-6.col-md-3
+              a.thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+            .col-xs-6.col-md-3
+              a.thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+            .col-xs-6.col-md-3
+              a.thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+            .col-xs-6.col-md-3
+              a.thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+        br
+        h2 Custom content
+        p With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails. 
+        div(data-xrayhtml)
+          .row
+            .col-xs-4.col-md-4
+              .thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+                .caption
+                  h3 Thumbnail label
+                  p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                  p
+                    a.btn.btn-success(href='#', role='button') Yes
+                    a.btn.btn-danger(href='#', role='button') No   
+            .col-xs-4.col-md-4
+              .thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+                .caption
+                  h3 Thumbnail label
+                  p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                  p
+                    a.btn.btn-success(href='#', role='button') Yes
+                    a.btn.btn-danger(href='#', role='button') No
+            .col-xs-4.col-md-4
+              .thumbnail(href="#")
+                img(src="http://placehold.it/171x180")
+                .caption
+                  h3 Thumbnail label
+                  p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                  p
+                    a.btn.btn-success(href='#', role='button') Yes
+                    a.btn.btn-danger(href='#', role='button') No       
+
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+     });

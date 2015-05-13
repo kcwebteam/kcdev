@@ -1,0 +1,51 @@
+extends includes/base
+block sidebar
+block custom-style
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/portal-breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Background Example
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      p Upload large desktop image
+        input(id="uploadLGImage" type="file" name="myPhoto")
+      p Upload mobile image
+        input(id="uploadXSImage" type="file" name="myPhoto")
+      p
+        input(name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" data-form-data=" ... html-escaped JSON data ... ")
+block custom-js
+  script(src='https://raw.githubusercontent.com/cloudinary/cloudinary_js/master/js/jquery.ui.widget.js' type='text/javascript')
+  script(src='https://raw.githubusercontent.com/cloudinary/cloudinary_js/master/js/jquery.iframe-transport.js' type='text/javascript')
+  script(src='https://raw.githubusercontent.com/cloudinary/cloudinary_js/master/js/jquery.ui.widget.js' type='text/javascript')
+  script(src='https://raw.githubusercontent.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js' type='text/javascript')
+  script.
+    $(document).ready(function () {
+      $.cloudinary.config({ cloud_name: 'dlflkauag', api_key: '182363558445766'});
+    });
+    document.getElementById('uploadLGImage').addEventListener('change', PreviewLGImage);
+    function PreviewLGImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadLGImage").files[0]);
+        alert(oFReader.size);
+        oFReader.onload = function (oFREvent) {
+            document.getElementsByTagName('body')[0].style.backgroundImage = 'url('+oFREvent.target.result+')';
+        };
+    };
+
+    document.getElementById('uploadXSImage').addEventListener('change', PreviewXSImage);
+    function PreviewXSImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadXSImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementsById('mobile-bg')[0].src = 'url('+oFREvent.target.result+')';
+        };
+    };

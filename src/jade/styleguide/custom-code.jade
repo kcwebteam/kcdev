@@ -1,0 +1,56 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Custom code
+      img.pull-right(src="http://www.wdcigroup.net/images/no_customcode.png")
+      p During the upgrade the webteam found hundreds of pages with custom HTML, CSS and JavaScript code. This created huge problems when we wanted to push out global changes. Our updates would conflict or even break pages with custom code.
+      p 
+        | Also, lots of pages were using different scripts to accomplish the same thing, for example accordions and tabbed content. If possible, we always want to avoid this and follow the 
+        a(href="http://en.wikipedia.org/wiki/Don't_repeat_yourself") DRY
+        |  programming principle.
+      p In addition, custom code makes it difficult for us to maintain a consistent look and feel throughout kingcounty.gov.
+      p Because of these problems we are strongly urging web developers and authors to <strong>not use custom code</strong>.
+      p With Twitter Bootstrap and this styleguide, hopefully we can help you accomplish this goal. Bootstrap offers hundreds of solutions that you can implement into your page. And the webteam is busy building lots of tools to help you as well.
+      p However, if you absolutely need to use custom code, we are suggesting the following workflow:
+        ol
+          li 
+            | Check this site to see if you can find what need first. Over time, we will be adding the most of the commonly used tools for web developers and content editors. We also want to hear from you to let us know what tools you want to see implemented. If you have a suggestion email the 
+            a(href="mailto:webteam@kingcounty.gov") WebTeam
+            | .
+
+          li 
+            | Second, go to 
+            a(href="http://getbootstrap.com") Twitter Bootstrap
+            | to see if you can find a solution there. Make sure to check the 
+            a(href="http://getbootstrap.com/css") CSS
+            | , 
+            a(href="http://getbootstrap.com/components/") Components
+            |  and 
+            a(href="http://getbootstrap.com/javascript/") JavaScript
+            |  sections.
+          li 
+            | If you still can't find what you need, try googling your solution. When you do a search make sure to include "Bootstrap 3" in your search query. If you find some code that works, let us know about. We want to share your solution with other developers in the County.
+      p.alert.alert-danger WARNING: If you use custom code on your page, you must maintain it. The webteam is constantly making global changes and updates that may break your page. Any page errors created by your custom code are your responsiblity to fix.
+            
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+     });

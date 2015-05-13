@@ -1,0 +1,443 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block custom-style
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Helper classes
+        // h2: small Sub header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      ul#myTab.nav.nav-tabs.responsive(role='tablist')
+        li.active
+          a(href='#home', role='tab', data-toggle='tab') Home
+        li
+          a(href='#profile', role='tab', data-toggle='tab') Profile
+        li.dropdown
+          a#myTabDrop.dropdown-toggle(href='#', data-toggle='dropdown')
+            | Dropdown
+            span.caret
+          ul.dropdown-menu(role='menu', aria-labelledby='myTabDrop1')
+            li
+              a(href='#dropdown1', tabindex='-1', role='tab', data-toggle='tab') @fat
+            li
+              a(href='#dropdown2', tabindex='-1', role='tab', data-toggle='tab') @mdo
+      div#myTabContent.tab-content.responsive
+        div#home.tab-pane.in.active
+          p
+            | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        div#profile.tab-pane
+          p
+            | Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        div#dropdown1.tab-pane
+          p
+            | Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+        div#dropdown2.tab-pane
+          p
+            | Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      ul#myTab1.nav.nav-pills.responsive(role='tablist')
+        li.active
+          a(href='#home1', role='tab', data-toggle='tab') Home
+        li
+          a(href='#profile1', role='tab', data-toggle='tab') Profile
+        li.dropdown
+          a#myTabDrop1.dropdown-toggle(href='#', data-toggle='dropdown') 
+            | Dropdown
+            span.caret
+          ul.dropdown-menu(role='menu', aria-labelledby='myTabDrop1')
+            li
+              a(href='#dropdown11', tabindex='-1', role='tab', data-toggle='tab') @fat
+            li
+              a(href='#dropdown21', tabindex='-1', role='tab', data-toggle='tab') @mdo
+      div#myTabContent1.tab-content.responsive
+        div#home1.tab-pane.in.active
+          p
+            | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        div#profile1.tab-pane
+          p
+            | Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        div#dropdown11.tab-pane
+          p
+            | Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+        div#dropdown21.tab-pane
+          p
+            | Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      ul#myTab2.nav.nav-tabs.nav-justified.responsive(role='tablist')
+        li.active
+          a(href='#home2', role='tab', data-toggle='tab') Home
+        li
+          a(href='#profile2', role='tab', data-toggle='tab') Profile
+        li.dropdown
+          a#myTabDrop2.dropdown-toggle(href='#', data-toggle='dropdown')
+            | Dropdown
+            span.caret
+          ul.dropdown-menu(role='menu', aria-labelledby='myTabDrop1')
+            li
+              a(href='#dropdown12', tabindex='-1', role='tab', data-toggle='tab') @fat
+            li
+              a(href='#dropdown22', tabindex='-1', role='tab', data-toggle='tab') @mdo
+      div#myTabContent2.tab-content.responsive
+        div#home2.tab-pane.in.active
+          p
+            | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        div#profile2.tab-pane
+          p
+            | Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        div#dropdown12.tab-pane
+          p
+            | Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+        div#dropdown22.tab-pane
+          p
+            | Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      ul#myTab3.nav.nav-pills.nav-justified.responsive(role='tablist')
+        li.active
+          a(href='#home3', role='tab', data-toggle='tab') Home
+        li
+          a(href='#profile3', role='tab', data-toggle='tab') Profile
+        li.dropdown
+          a#myTabDrop3.dropdown-toggle(href='#', data-toggle='dropdown')
+            | Dropdown
+            span.caret
+          ul.dropdown-menu(role='menu', aria-labelledby='myTabDrop1')
+            li
+              a(href='#dropdown13', tabindex='-1', role='tab', data-toggle='tab') @fat
+            li
+              a(href='#dropdown23', tabindex='-1', role='tab', data-toggle='tab') @mdo
+      div#myTabContent3.tab-content.responsive
+        div#home3.tab-pane.in.active
+          p
+            | Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        div#profile3.tab-pane
+          p
+            | Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        div#dropdown13.tab-pane
+          p
+            | Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+        div#dropdown23.tab-pane
+          p
+            | Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
+
+
+
+
+
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+
+      ul#myTab99.nav.nav-tabs.responsive
+
+        li.active
+          a(href='#how-do-i-tab' data-toggle="tab" )
+            i.fa.fa-question-circle
+            |  How do I...
+        li
+          a(href='#do-more-online-tab' data-toggle="tab" )
+            i.fa.fa-wrench
+            |  Do more online
+      .tab-content.responsive
+        #how-do-i-tab.tab-pane.active
+          .row
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Apply for
+                  li
+                    a(href='/property/permits/info.aspx') Permits
+                  li
+                    a(href='/jobs.aspx') Jobs at King County
+                  li
+                    a(href='/safety/regionalAnimalServices/License.aspx') Pet license
+                  li
+                    a(href='/business/licenses.aspx') Business license
+                  li
+                    a(href='/courts/marriage.aspx') Marriage license
+              .portal-list
+                ul
+                  li.portal-list-title Attend
+                  li
+                    a(href='/how-do-i/jury-duty.aspx') Jury duty
+              .portal-list
+                ul
+                  li.portal-list-title Do business with King County
+                  li
+                    a(href='https://procurement.kingcounty.gov/procurement_ovr/login.aspx?ReturnUrl=%2fprocurement_ovr%2fdefault.aspx') Register as a vendor
+                  li
+                    a(href='/operations/procurement.aspx') View bid & contract opportunities
+                  li
+                    a(href='/exec/BusinessDev/contractingopps.aspx') Become a certified small business contractor or supplier
+                  li
+                    a(href='https://info.kingcounty.gov/EXEC/contractreporting/Public/SCS/default.aspx') Find certified contractors and suppliers
+              .portal-list
+                ul
+                  li.portal-list-title File
+                  li
+                    a(href='/courts/DistrictCourt/SmallClaims.aspx') District Court documents
+                  li
+                    a(href='/courts/Clerk/HowDoI/Fileadocument.aspx') Superior Court documents
+                  li
+                    a(href='/courts/FamilyCourt/facilitator.aspx') For divorce
+              .portal-list
+                ul
+                  li.portal-list-title Get around
+                  li
+                    a(href='/tools/trip-planner.aspx') Plan a bus trip
+                  li
+                    a(href='http://metro.kingcounty.gov/tops/bike/bike.html') Travel by bike
+                  li
+                    a(href='http://metro.kingcounty.gov/schedules/') Find a bus schedule
+                  li
+                    a(href='http://metro.kingcounty.gov/parknrides') Find a park & ride
+                  li
+                    a(href='http://metro.kingcounty.gov/tops/van-car/van-car.html') Explore carpooling options
+                  li
+                    a(href='/transportation/kcdot/WaterTaxi.aspx') Take a water taxi
+                  li
+                    a(href='http://metro.kingcounty.gov/tops/accessible/programs.html') Find senior transportation
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Help for
+                  li
+                    a(href='/how-do-i/domestic-violence.aspx') Domestic violence
+                  li
+                    a(href='/services/police-safety.aspx') Emergencies
+                  li
+                    a(href='/healthservices/MentalHealth/Services/CrisisServices/CommitmentServices.aspx') Crisis
+                  // <li><a href="/socialservices/Housing/ServicesAndPrograms/Programs/Homeless/EmergencyShelterAndHousing.aspx" title="Emergency housing">Emergency housing</a></li>
+                  li
+                    a(href='/socialservices/Housing/Resources/HomelessResources.aspx') Homeless
+                  li
+                    a(href='/Assessor/TaxpayerAssistance/TaxRelief.aspx') Property tax relief
+                  li
+                    a(href='/services/rural.aspx') Rural residents
+                  li
+                    a(href='/socialservices/veterans.aspx') Veterans
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Locate
+                  li
+                    a(href='/environment/dnrp/park_map.aspx') Parks
+                  li
+                    a(href='/healthservices/health/locations.aspx') Public health clinics
+                  li
+                    a(href='/transportation/kcdot/Roads/Construction.aspx') Road conditions
+                  li
+                    a(href='/transportation/kcdot/Roads/Bicycling.aspx') Bike routes
+                  li
+                    a(href='/operations/Finance/Treasury/Foreclosure.aspx') Foreclosures
+                  li
+                    a(href='/recreation/parks/trails.aspx') Hiking & biking trails
+                  li
+                    a(href='http://ingress.kingcounty.gov/inmatelookup/') Jail inmate
+                  li
+                    a(href='/operations/GIS/PropResearch/ParcelViewer.aspx') Property
+                  li
+                    a(href='/about/contact-us/locations.aspx') County offices
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Look up
+                  li
+                    a(href='http://your.kingcounty.gov/solidwaste/wdidw/index.asp') Recycle: What do I do with?
+                  li
+                    a(href='/safety/sheriff/SOSearch.aspx') Sex offenders
+                  li
+                    a(href='http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx') Property values
+                  li
+                    a(href='/business/Forecasting.aspx') Economic forecast
+                  li
+                    a(href='/elections/currentelections.aspx') Election results
+                  li
+                    a(href='/operations/Finance/Treasury/PropertyTax.aspx') Property tax
+                // /.content-list
+            // /.span4
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Pay for
+                  li
+                    a(href='/healthservices/health/vitalstats/birth.aspx') Birth certificate
+                  li
+                    a(href='/operations/Finance/Treasury/PropertyTax.aspx') Pay or lookup property tax
+                  li
+                    a(href='/courts/marriage/Licensecopies.aspx') Marriage certificate
+                  li
+                    a(href='/business/Recorders/Fees.aspx') Deed
+                  li
+                    a(href='/healthservices/health/vitalstats/death.aspx') Death Certificate
+                  li
+                    a(href='/business/Recorders/Fees.aspx') Title certificate
+                  li
+                    a(href='/environment/wastewater/CapacityCharge.aspx') Sewage treatment capacity charge
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Register or request
+                  li
+                    a(href='https://public.govdelivery.com/accounts/WAKING/subscriber/new') Email or text alerts
+                  li
+                    a(href='/elections/register.aspx') To vote
+                  li
+                    a(href='/operations/policies/pdi.aspx') Public records
+                  li
+                    a(href='/business/licenses.aspx') Your business with King County
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Report
+                  li
+                    a(href='/safety/sheriff/ReportToSheriff.aspx') Crime
+                  li
+                    a(href='http://your.kingcounty.gov/solidwaste/cleanup/report-dumping.asp') Illegal dumping
+                  li
+                    a(href='/exec/CivilRights/FileComplaint.aspx') Discrimination complaint
+                  li
+                    a(href='/healthservices/health/ehs/foodsafety/inspections/complaints.aspx') Unsafe food handling
+                  li
+                    a(href='/environment/wtd/Response.aspx') Septic or sewer problem
+                  li
+                    a(href='http://info.kingcounty.gov/about/contact/default.aspx') Compliment, question or problem
+                  li
+                    a(href='/environment/animalsAndPlants/noxious-weeds/infestation-form.aspx') Noxious weed infestation
+                // /.content-list
+            // /.span4
+          // /.row-fluid
+        // /.tab-pane active #how-do-i-tab
+        #do-more-online-tab.tab-pane
+          .row
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Appeal
+                  li
+                    a(href='https://blue.kingcounty.gov/assessor/eappeals/Index.aspx') Property assessment (eAppeals)
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Apply for
+                  li
+                    a(href='https://procurement.kingcounty.gov/procurement_ovr/login.aspx?ReturnUrl=%2fprocurement_ovr%2fdefault.aspx') Vendor registration
+                  li
+                    a(href='http://payments.kingcounty.gov/safety/animalservices/PetLicenses/') Pet licenses
+                  li
+                    a(href='/healthservices/health/ehs/portal.aspx') Plumbing, gas permits
+                  li
+                    a(href='https://aca.accela.com/kingcounty/') Building permits
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Customized data
+                  li
+                    a(href='https://data.kingcounty.gov/') Open government data
+                  li
+                    a(href='/operations/GIS/PropResearch/ParcelViewer.aspx') Parcel viewer property info
+                  li
+                    a(href='http://info.kingcounty.gov/health/ehs/foodsafety/inspections/search.aspx') Restaurant inspections
+                  li
+                    a(href='http://your.kingcounty.gov/solidwaste/wdidw/') What do I do with...?
+                  li
+                    a(href='http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx') Assessor property reports
+                  li
+                    a(href='/business/Recorders.aspx') Public records search
+                  li
+                    a(href='https://green.kingcounty.gov/gonative/index.aspx') Native plant search
+                  li
+                    a(href='http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx') eReal property search
+                  li
+                    a(href='http://your.kingcounty.gov/Assessor/eSales/Welcome.asp') eSales property search
+                  li
+                    a(href='http://your.kingcounty.gov/elections2/voterlookup.aspx') Voter guide
+                // /.content-list
+            // /.span4
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Get real-time info
+                  li
+                    a(href='http://www.rpin.org/rpinweb/', title='Subscribe to RPIN alerts') Subscribe to RPIN alerts
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Maps
+                  li
+                    a(href='/environment/dnrp/park_map.aspx') Parks, trails & facilities
+                  li
+                    a(href='http://green.kingcounty.gov/swimbeach/') Swimming beach bacteria & algae toxin levels
+                  li
+                    a(href='/operations/GIS/Maps/iMAP.aspx') iMaps
+                  li
+                    a(href='/operations/GIS/PropResearch/ParcelViewer.aspx') Parcel viewer
+                  li
+                    a(href='/about/contact-us/locations.aspx') King County office locations
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Order records
+                  li
+                    a(href='/healthservices/health/vitalstats/birth.aspx') Birth certificate
+                  li
+                    a(href='/healthservices/health/vitalstats/death.aspx') Death certificate
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Pay for
+                  li
+                    a(href='http://your.kingcounty.gov/kcdc/payonline/') District court payments
+                  li
+                    a(href='http://your.kingcounty.gov/kcdc/interpreterweb/ApplicationLogin.aspx?ReturnUrl=%2fKCDC%2finterpreterweb%2fdefault.aspx') Interpreter web
+                  li
+                    a(href='http://metro.kingcounty.gov/fares/index.html') Bus passes
+                // /.content-list
+            // /.span4
+            .col-sm-4
+              .portal-list
+                ul
+                  li.portal-list-title Report
+                  li
+                    a(href='http://your.kingcounty.gov/solidwaste/cleanup/report-dumping.asp') Illegal dumping
+                  li
+                    a(href='http://www.kingcounty.gov/environment/animalsAndPlants/noxious-weeds/infestation-form.aspx') Noxious weed infestation
+                  li
+                    a(href='https://fortress.wa.gov/doh/eh/portal/ehs/odbrs/') Dead bird
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Search for
+                  li
+                    a(href='http://ingress.kingcounty.gov/inmatelookup/') Jail inmates
+                  li
+                    a(href='http://www.kingcounty.gov/safety/sheriff/SOSearch.aspx') Sex offenders
+                // /.content-list
+              .portal-list
+                ul
+                  li.portal-list-title Travel info
+                  li
+                    a(href='/tools/trip-planner.aspx') Metro trip planner
+                  li
+                    a(href='http://gismaps.kingcounty.gov/MyCommute/') My Commute
+                  li
+                    a(href='http://www.rideshareonline.com/')
+                      | RideshareOnline.com 
+                      span.icon-external-link
+                // /.content-list
+            // /.span4
+          // /.row-fluid
+
+block custom-js

@@ -1,0 +1,49 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block custom-js
+block custom-style
+  style.
+    .thumbnail.with-caption {
+      display: inline-block;
+      background-color:transparent;
+      border:none;
+      text-align:right;
+    }
+    .thumbnail.with-hover-caption {
+      position:relative;
+    }
+    .thumbnail.with-caption p {
+      margin: 0;
+      padding-top: 0.5em;
+      font-style: italic;
+      margin-top:5px;
+      color:#413e39;
+    }
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h1 One column addon
+      p
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare porta lectus. Maecenas euismod est nec nisi bibendum, hendrerit malesuada enim commodo.Nullam ultrices diam et purus pharetra ultrices. Phasellus ac lobortis lectus. Praesent tortor enim, pharetra vitae interdum in, volutpat in libero. Integer sed laoreet lectus. Proin posuere quam vulputate blandit tincidunt. Suspendisse venenatis nisl urna, vel sodales tortor venenatis vel. Curabitur sodales faucibus tellus ac lacinia. Morbi cursus rhoncus nulla, et dapibus nunc sagittis eu. Morbi eu tempus metus.
+      .thumbnail.with-caption
+        img(src="http://img.youtube.com/vi/IJNR2EpS0jw/0.jpg")
+        p Dumb ways to die
+        small Metro
+      .thumbnail.with-caption
+        img(src="http://img.youtube.com/vi/IJNR2EpS0jw/0.jpg")
+        p Dumb ways to die
+        small Metro
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h2 One column addon
+      p
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare porta lectus. Maecenas euismod est nec nisi bibendum, hendrerit malesuada enim commodo.Nullam ultrices diam et purus pharetra ultrices. Phasellus ac lobortis lectus. Praesent tortor enim, pharetra vitae interdum in, volutpat in libero. Integer sed laoreet lectus. Proin posuere quam vulputate blandit tincidunt. Suspendisse venenatis nisl urna, vel sodales tortor venenatis vel. Curabitur sodales faucibus tellus ac lacinia. Morbi cursus rhoncus nulla, et dapibus nunc sagittis eu. Morbi eu tempus metus.

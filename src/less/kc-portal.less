@@ -1,0 +1,63 @@
+//KC-PORTAL.LESS
+.portal-list {
+    a {
+        &:link {
+            border-bottom: none;
+        }
+        &:hover,
+        &:focus {
+            border-bottom: @link-dotted-underline;
+        }
+        &:active{border-bottom: 1px solid @gray;}
+    }
+    .portal-list-title {
+        font-size:21px;
+        font-weight:800;
+        border-bottom: 1px solid #969592;
+        color: #5A5956;
+    }
+    h2 {
+        font-size: 20px;
+        @media screen and (min-width: @screen-sm-min){
+            margin-top:0;
+        }
+        .fa-stack {
+            color:@brand-primary;
+            font-size:.75em;
+        }
+    }
+    ul {
+        .list-unstyled;
+        li {
+            font-size: 16px;
+            line-height: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        li li {
+            font-size: 14px;
+            padding-bottom: 1px;
+            margin-left: 16px;
+            line-height: 18px;
+            font-weight: 400;
+        }
+    }
+}
+.portal-list-light {
+    .portal-list;
+    h2 {
+        font-size: 30px;
+        font-weight: 200;
+        color: @gray;
+        .fa-stack {
+            color:@brand-primary;
+            font-size:.75em;
+        }
+    }
+    li {
+        color: @gray-dark;
+    }
+}
+
+

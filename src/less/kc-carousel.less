@@ -1,0 +1,196 @@
+//KC-CAROUSEL.LESS
+// --------------------------------------------------
+.carousel-inner {
+    img {
+        width:100%;
+    }
+    .carousel-news-item {
+        ul {
+          position:absolute;
+          .list-unstyled;
+          top:20px;
+          left: 12%;
+          right: 12%;
+          li {
+            font-size: 14px;
+            font-weight: 700;
+            @media screen and (min-width: @screen-sm-min) {
+              font-size: 16px;
+            }
+            padding-bottom:15px;
+            color:@white;
+            a {
+              color:@white;
+              &:link,&:visited {
+                  border-bottom: none;
+              }
+              &:hover,
+              &:focus {
+                  border-bottom: none;
+              }
+              &:active{
+                border-bottom: 1px dotted @gray;
+              }
+            } 
+          }
+        }
+    }
+}
+.carousel-control {
+  z-index: 20;
+  top: 40%;
+  width:initial;
+  //bottom:15%;
+  .opacity(1);
+  &:link{border-bottom:none}
+  // Toggles
+  .fa.fa-chevron-left,
+  .fa.fa-chevron-right
+  {
+    position: absolute;
+    display: inline-block;
+  }
+  .fa.fa-square {
+      color:#000;
+      visibility:hidden;
+  }
+  &.left {
+     text-align: left;
+    .remove-gradient;
+    //&:hover {#gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));}
+  }
+  &.right {
+     text-align: right;
+    .remove-gradient;
+    //&:hover {#gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));}
+  }
+  
+  &:hover,&:focus {
+    .fa.fa-square {
+        visibility:hidden;
+        @media screen and (min-width: @screen-md-min) {
+          visibility:visible;
+          .opacity(.7);
+        }
+    }
+  }
+}
+.carousel-indicators {
+    display:none;
+    @media screen and (min-width: @screen-sm-min) {
+        display:initial;
+        top:8px;
+        right:8px;
+        left:auto;
+        bottom:auto;
+        text-align:right;
+        margin-left:0;
+        width:initial;
+    }
+}
+
+// Scale up controls for tablets and up
+@media screen and (min-width: @screen-sm-min) {
+  // Scale up the controls a smidge
+  .carousel-control {
+     .fa.fa-chevron-left,
+     .fa.fa-chevron-right,
+     {
+     // width: 30px;
+      //height: 30px;
+      //margin-top: -15px;
+     // margin-left: -15px;
+      //font-size: 30px;
+    }
+  }
+}
+
+// captions
+// -----------------------------
+.carousel-caption {
+    z-index: 21;
+    position:absolute;
+    text-shadow: none;
+    bottom:0;
+    left:0;
+    right:0;
+    padding: 6px;
+    width:100%;
+    @media screen and (min-width: @screen-sm-min) {
+      padding: 15px;
+    }
+    h3 {
+      margin:0;
+      text-transform:none;
+      text-align: center;
+      padding-left:10px;
+      padding-right:10px;
+      font-size:14px;
+      font-weight:700;
+      line-height: 1.2;
+      @media screen and (min-width: @screen-sm-min) {
+        font-size:21px;
+      }
+      a {
+          color:@white;
+          border-bottom:none;
+          &:hover {
+              color:darken(@white, 15%);
+              border-bottom:none;
+          }
+      }
+    }
+    background-color: rgb(35,35,31); // move to ie8
+    background-color: rgba(35,35,31, .9); 
+    /*background-color: #000;
+    &.carousel-caption-primary {
+       background-color: @brand-primary;
+    }
+    // Success appears as green
+    &.carousel-caption-success {
+       background-color: @brand-success;
+    }
+    // Info appears as blue-green
+    &.carousel-caption-info {
+      background-color:  @brand-info;
+    }
+    // Warning appears as orange
+    &.carousel-caption-warning {
+       background-color: @brand-warning;
+    }
+    // Danger and error appear as red
+    &.carousel-caption-danger {
+     background-color:  @brand-danger;
+    }*/
+}
+
+//Alt carousel for 4 columns
+.carousel.carousel-col-4 {
+  //.carousel;
+  @media screen and (min-width: @screen-sm-min) {
+    .carousel-caption {
+      background-color: rgba(35, 35, 31, 0.9);
+      padding: 8px;
+      h3{
+        font-size:14px;
+      }
+    }
+  }
+  .carousel-indicators {
+    display:none;
+    @media screen and (min-width: @screen-md-min) {
+      display:initial;
+      top:8px;
+      right:8px;
+      left:auto;
+      bottom:auto;
+      text-align:right;
+      margin-left:0;
+      width:initial;
+    }
+  }
+}
+
+
+
+

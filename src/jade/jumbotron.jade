@@ -1,0 +1,25 @@
+extends includes/base
+block sidebar
+block custom-style
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/portal-breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Jumbotron: Council
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .jumbotron(style="height:350px; position: relative;")
+        img.img-rounded(src="http://edit.kingcounty.gov/~/media/global/heroimages/hero-three-forks-lg.ashx;" style="position: absolute; z-index: 1; top:0; left:0; height:100%" )
+        .jumbtron-text(style="position: absolute;z-index: 2; top:0; left:0")
+          h1 Hello, world!
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+          p
+            a.btn.btn-primary.btn-lg(href="#" role="button") Learn more
+block custom-js

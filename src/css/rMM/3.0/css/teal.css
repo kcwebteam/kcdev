@@ -1,0 +1,77 @@
+/*
+ Responsive Mega Menu, Teal Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.navbar-teal .dropdown-menu { border-color: #5bc0de; }
+
+.navbar-teal .dropdown-menu li.nav-title { color: #2f96b4; }
+
+.navbar-teal .dropdown-menu li.nav-title span.nav-title-description { color: #cccccc; }
+
+.navbar-teal { background-color: #49afcd; }
+
+.navbar-teal .navbar-brand { color: #1f6377; }
+
+.navbar-teal .nav > li > a { color: #fff; }
+.navbar-teal .nav > li > a:focus, .navbar-teal .nav > li > a:hover, .navbar-default .navbar-brand:hover { color: #fff; }
+
+.navbar-teal .nav li.dropdown.open > .dropdown-toggle,
+.navbar-teal .nav li.dropdown.active > .dropdown-toggle,
+.navbar-teal .nav li.dropdown.open.active > .dropdown-toggle { background: #2f96b4; color: #fff; }
+
+.navbar-teal .nav li.dropdown:hover > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+
+.navbar-teal .nav li.dropdown > .dropdown-toggle .caret,
+.navbar-teal .nav li.dropdown.open a:hover .caret,
+.navbar-teal .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-teal .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-teal .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-teal .nav li.dropdown.open a:hover .caret,
+.navbar-teal .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-teal.nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-teal .dropdown-menu li a { color: #333333; text-shadow: none; }
+
+.navbar-teal .dropdown-menu li a.btn { color: inherit; }
+
+.navbar-teal .dropdown-menu li a.btn:hover { color: white; padding-left: 0; }
+
+.navbar-teal .dropdown-menu li a.btn-default:hover { color: gray; }
+
+.navbar-teal .dropdown-menu .active > a,
+.navbar-teal .dropdown-menu li > a,
+.navbar-teal .dropdown-submenu > a { padding: 3px 0; }
+
+.navbar-teal .dropdown-menu li > a:hover,
+.navbar-teal .dropdown-menu li > a:focus,
+.navbar-teal .dropdown-submenu:hover > a { color: #2f96b4; padding-left: 5px; }
+
+.navbar-teal .navbar-toggle .icon-bar { background-color: #1f6377; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+.navbar-teal .navbar-toggle { background: #5bc0de; border: 1px solid #2f96b4; }
+
+.navbar-teal .navbar-toggle:hover, .navbar-teal .navbar-toggle:focus { background: #2f96b4; }
+
+@media (max-width: 979px) {
+
+.navbar-teal p, .dropdown-menu li.nav-title span.nav-title-description { color: #fff; }
+
+.navbar-teal .nav-collapse .btn { color: #2f96b4; }
+
+.navbar-teal .nav > li > a:hover { background: none; }
+
+.navbar-teal .nav a { color: #fff; }
+
+.navbar-teal .dropdown-menu li > a:hover,
+.navbar-teal .dropdown-menu li > a:focus,
+.navbar-teal .dropdown-submenu:hover > a { color: #fff; background: none; padding-left: 3px; }
+
+.navbar-teal .navbar-collapse li.nav-title  { color: #fff; border-bottom: 1px solid #2f96b4; }
+
+}

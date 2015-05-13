@@ -1,0 +1,27 @@
+//KC-PRINT.LESS
+@media print {
+    html, body {
+        font-family: verdana, sans-serif; 
+    }
+    #logo-img-print {
+        padding:10px;
+    }
+    body {
+        border:none;
+    }
+    a[href]:after {
+    content: "";
+    }
+    abbr[title]:after {
+        content: "";
+    }
+    
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+    .panel-collapse.collapse{
+        display: block !important;
+        visibility: visible !important;
+    }
+}
