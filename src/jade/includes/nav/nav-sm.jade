@@ -1,0 +1,178 @@
+nav#nav-sm.navbar.navbar-inverse.yamm(role='navigation')
+  .container.visible-sm
+    .navbar-header.remove-border-bottom
+      a(href='/')
+        img.img-responsive(src=rootPrefix + 'img/KClogo-horiz-white-sm-xs.png', alt='King County logo')
+    ul.nav.navbar-nav.navbar-right
+      li
+        a.nav-header(href='/')
+          i.fa.fa-home
+      include nav-how-do-i
+      li.dropdown.yamm-fw
+        a.dropdown-toggle.disabled.nav-header.bold(href='/services', data-toggle='dropdown')
+          | Services 
+          i.fa.fa-caret-down
+        ul.dropdown-menu
+          li
+            .yamm-content
+              .row
+                .col-sm-6
+                  ul.list-unstyled
+                    li
+                      a(href='/services/animalspets', title='Animals and pets') Animals & pets
+                    li
+                      a(href='/services/arts-culture', title='Arts and culture') Arts & culture
+                    li
+                      a(href='/healthservices/health/vitalstats', title='Birth & death records') Birth & death records
+                    li
+                      a(href='/services/business', title='Business') Business
+                    li
+                      a(href='/services/codes-laws', title='Codes & laws') Codes & laws
+                    li
+                      a(href='/services/courts', title='Courts') Courts
+                    li
+                      a(href='/services/emergencies', title='Emergencies') Emergencies
+                    li
+                      a(href='/services/environment', title='Environment') Environment
+                    li
+                      a(href='/services/health', title='Health') Health
+                    li
+                      a(href='/services/home-property', title='Home & property') Home & property
+                    li
+                      a(href='/services/jails', title='Jails') Jails
+                .col-sm-6
+                  ul.list-unstyled
+                    li
+                      a(href='/services/jobs-training', title='Jobs & traiddning') Jobs & training
+                    li
+                      a(href='/services/licenses-permits-records', title='Licenses, permits & records') Licenses, permits & records
+                    li
+                      a(href='/services/parks-recreation', title='Parks & recreation') Parks & recreation
+                    li
+                      a(href='/services/police-safety', title='Police & safety') Police & safety
+                    li
+                      a(href='/services/recycling-garbage', title='Recycling & garbage') Recycling & garbage
+                    li
+                      a(href='/services/rural', title='Rural services') Rural services
+                    li
+                      a(href='/services/social-services', title='Social services') Social services
+                    li
+                      a(href='/services/transportation-roads', title='Transportation & roads') Transportation & roads
+                    li
+                      a(href='/services/voting-elections', title='Voting & elections') Voting & elections
+                    li
+                      a(href='/services/volunteer', title='Volunteer') Volunteer
+                    li
+                      a.btn.nav-dropdown-btn.btn-block(href='/services', title='More services') More services
+      li.dropdown.yamm-fw
+        a.nav-header.disabled.dropdown-toggle(href='#', data-toggle='dropdown')
+          | More 
+          i.fa.fa-caret-down
+        ul.dropdown-menu
+          li
+            .yamm-content
+              .row
+                .col-sm-4
+                  ul.list-unstyled
+                    li.nav-title
+                      a(href='/about') About King County
+                    li
+                      a(title='Contact us', href='/customerservice') Contact us
+                    li
+                      a(title='Elected officials', href='/elected') Elected officials
+                    li
+                      a(title='Equity and social justice', href='/exec/equity.aspx') Equity & social justice
+                    li
+                      a(title='History', href='/operations/archives/historylinks.aspx#_General_County_History') History
+                    li
+                      a(title='Jobs and training', href='/services/jobs-training.aspx') Jobs & training
+                    li
+                      a(title='News and events', href='/about/news.aspx') News & events
+                    li
+                      a(title='Maps', href='/about/region/maps.aspx') Maps
+                    li
+                      a(title='Data and statistics', href='/exec/PSB/Demographics/DataReports.aspx') Data and statistics
+                    li
+                      a(title='King County Employees', href='/employees.aspx') King County Employees
+                    li
+                      a(title='Vision and strategic plan', href='/about/vision-strategic.aspx') Vision & strategic plan
+                .col-sm-8
+                  .row
+                    .col-sm-12
+                      ul.list-unstyled
+                        li.nav-title Departments
+                    .col-sm-6
+                      ul.list-unstyled
+                        li
+                          a(href='/courts/detention', title='Adult ∓ Juvenile Detention') Adult & Juvenile Detention
+                        li
+                          a(href='/assessor', title='Assessor') Assessor
+                        li
+                          a(href='/operations/DCHS', title='Community & Human Services') Community & Human Services
+                        li
+                          a(href='/council', title='Council') Council
+                        li
+                          a(href='/courts/DistrictCourt', title='District Court') District Court
+                        li
+                          a(href='/elections', title='Elections') Elections
+                        li
+                          a(href='/exec', title='Executive Office') Executive Office
+                        li
+                          a(href='/operations/ExecutiveServices', title='Executive Services') Executive Servces
+                        li
+                          a(href='/KCTV', title='King County TV') King County TV
+                        li
+                          a(href='/environment/dnrp', title='Natural Resources & Parks') Natural Resources & Parks
+                    .col-sm-6
+                      ul.list-unstyled
+                        li
+                          a(href='/property/permits', title='Permitting & Environmental Review') Permitting & Environmental Review
+                        li
+                          a(href='/Prosecutor', title='Prosecuting Attorney') Prosecuting Attorney
+                        li
+                          a(href='/courts/OPD', title='Department of Public Defense') Public Defense
+                        li
+                          a(href='/healthservices/health', title='Public Health') Public Health
+                        li
+                          a(href='/safety/sheriff', title='Sheriff') Sheriff
+                        li
+                          a(href='/courts/SuperiorCourt', title='Superior Court') Superior Court
+                        li
+                          a(href='/courts/Clerk.aspx', title='Superior Court Clerk\'s Offie (DJA)') Superior Court Clerk's Office (DJA)
+                        li
+                          a(href='/transportation/kcdot', title='Transportation') Transportation
+                        li
+                          a(href='/property/TaxAdvisor', title='Tax Advisor') Tax Advisor
+      li.dropdown.yamm-fw
+        a.nav-header.disabled.dropdown-toggle(href='#', data-toggle='dropdown')
+          i.fa.fa-search
+        ul.dropdown-menu
+          li
+            .yamm-content
+              .row
+                .col-sm-6
+                  ul.list-unstyled
+                    li
+                      a(href='http://directory.kingcounty.gov/EmpSearch.asp') Staff directory
+                    li
+                      a(href='/business/Recorders/RecordsSearch.aspx') Records search
+                    li
+                      a(href='/environment/wastewater/MWPAAC/References/Legisearch.aspx') Legisearch
+                    li
+                      a(href='http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx') Property search
+                .col-sm-6
+                  form.search-form(role='form', action='http://search.kingcounty.gov/search', method='get')
+                    label.sr-only(for='form-search') Search kingcounty.gov
+                    input(name='utf8', type='hidden', value='✓')
+                    input#affiliate(name='affiliate', type='hidden', value='kingcounty')
+                    input.usagov-search-autocomplete.form-control.search-form-text(autocomplete='on', name='query', placeholder='Search Kingcounty.gov', type='search')
+                    button.btn.btn-link.search-form-btn(type='submit')
+                      i.fa.fa-search
+                    .radio(style='visibility: hidden;')
+                      label
+                        input#sm-search-radio-search-all(type='radio', name='sm-search-radio-option', value='searchAll', checked='checked')
+                        | Search all of King County
+                    .radio(style='visibility: hidden;')
+                      label
+                        input#sm-search-radio-search-site(type='radio', name='sm-search-radio-option', value='searchSite')
+                        | Search this site only

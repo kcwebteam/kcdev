@@ -1,0 +1,696 @@
+<!doctype html>
+<html>
+<head>
+	<title>rMM Customizer</title>
+	<meta charset="utf-8">
+	
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
+	<!-- Bootstrap 3 -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	
+	<!-- Extra Styles, not needed for Mega Menu or Boostrap -->
+	<link href="css/style.css" rel="stylesheet">
+	
+	<!-- Mega Menu Style, you kinda really need Bootstrap in order for this to work -->
+	<link href="css/mega-menu.css" rel="stylesheet">
+	
+	<!-- Mega Menu w/Responsive, unload this if you don't want it to be responsive (which kinda defeats the purpose) -->
+	<link href="css/mega-menu-responsive.css" rel="stylesheet">
+	<link href="css/customized.css" rel="stylesheet">
+	
+	<!-- MiniColors -->
+	<script src="jquery.minicolors.js"></script>
+	<link rel="stylesheet" href="jquery.minicolors.css">
+	
+	<!-- Le Google font -->
+	<link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+	
+	<style>
+		code {
+			color: black;
+			border: none;
+			background: rgba(128, 128, 128, .1);
+		}
+		pre {
+			background: #f8f8f8;
+			border: none;
+			color: #333;
+			padding: 20px;
+		}
+		h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; font-weight: 300; margin-top: 0; }
+		body {
+			padding-top: 40px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+		.form-group label { font-family: 'Karla', sans-serif; font-size: 13px; font-weight: bold; }
+		p.lead { line-height: 34px; }
+		p.lead small { font-size: 14px; font-style: italic; }
+	  </style>
+	
+	<script>
+		$(document).ready( function() {
+			
+            $('.demo').each( function() {
+                //
+                // Dear reader, it's actually very easy to initialize MiniColors. For example:
+                //
+                //  $(selector).minicolors();
+                //
+                // The way I've done it below is just for the demo, so don't get confused 
+                // by it. Also, data- attributes aren't supported at this time...they're 
+                // only used for this demo.
+                //
+				$(this).minicolors({
+					control: $(this).attr('data-control') || 'hue',
+					defaultValue: $(this).attr('data-defaultValue') || '',
+					inline: $(this).attr('data-inline') === 'true',
+					letterCase: $(this).attr('data-letterCase') || 'lowercase',
+					opacity: $(this).attr('data-opacity'),
+					position: $(this).attr('data-position') || 'bottom left',
+					change: function(hex, opacity) {
+						if( !hex ) return;
+						if( opacity ) hex += ', ' + opacity;
+						try {
+							console.log(hex);
+						} catch(e) {}
+						
+						// determine which set to change from the ID of the selector
+						currentID = $(this).attr('id');
+						
+						// update colour on screen
+						$('.bg-' + currentID).css('background' , hex);
+						$('.bgdisplay-' + currentID).text(hex);
+						
+						$('.border-' + currentID).css('border-color' , hex);
+						$('.borderdisplay-' + currentID).text(hex);
+						
+						$('.nav-' + currentID).css('color' , hex);
+						$('.navdisplay-' + currentID).text(hex);
+						
+						$('.navdesc-' + currentID).css('color' , hex);
+						$('.navdescdisplay-' + currentID).text(hex);
+						
+						$('.link-' + currentID).css('color' , hex);
+						$('.linkdisplay-' + currentID).text(hex);
+						
+						$('.caret-' + currentID).css('border-top-color' , hex);
+						$('.caretdisplay-' + currentID).text(hex);
+					},
+					theme: 'bootstrap'
+				});
+                
+            });
+			
+		});
+	</script>
+	
+	
+	
+</head>
+<body>
+
+<div class="container">
+
+	<header>
+
+		<div class="navbar navbar-default navbar-custom bg-bgmain border-bordermain">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle bg-bgrespbg bg-bgrespbghover" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar bg-bgresp"></span>
+				<span class="icon-bar bg-bgresp"></span>
+				<span class="icon-bar bg-bgresp"></span>
+				</button>
+				<a class="navbar-brand link-logolink" href=" " title="responsive Mega Menu">rMM</a>
+			</div>
+				
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">			
+					<li><a href="menu.htm" class="link-linktop">Main Menu</a></li>
+					<li class="dropdown mega-menu-6 transition"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">Main Link <b class="caret caret-caretborder"></b></a>
+						
+						<ul class="dropdown-menu border-bordermain">
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 1</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+									
+								<ul>
+									<li class="nav-title nav-navtitle">Column 1</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 2</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+									
+								<ul>
+									<li class="nav-title nav-navtitle">Column 2</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 3</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+									
+								<ul>
+									<li class="nav-title nav-navtitle">Column 3</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 4</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+								<ul>
+									<li class="nav-title nav-navtitle">Column 4</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 5</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+								<ul>
+									<li class="nav-title nav-navtitle">Column 5</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Column 6</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+								<ul>
+									<li class="nav-title nav-navtitle">Column 6</li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li><!-- 6 Menu Example Ends -->
+								
+					<li class="dropdown mega-menu-5"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">5 Menus <b class="caret  caret-caretborder"></b></a>
+						<ul class="dropdown-menu transition border-bordermain">
+						
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Web <span class="nav-title-description">digitally great</span></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 1</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 2</a></li>
+									<li><a href="menu.htm" class="btn btn-primary">Web</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Graphics <span class="nav-title-description">it's amazing</span></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 3</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 4</a></li>
+									<li><a href="menu.htm" class="btn btn-info">Graphics</a></li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Flash <span class="nav-title-description">just kidding</span></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 1</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 2</a></li>
+									<li><a href="menu.htm" class="btn btn-success">Flash</a></li>
+								</ul>
+							</li>
+									
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Print <span class="nav-title-description">crisp and clear</span></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 3</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 4</a></li>
+									<li><a href="menu.htm" class="btn btn-warning">Print</a></li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">HTML5 <span class="nav-title-description">the new web</span></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 1</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Service 2</a></li>
+									<li><a href="menu.htm" class="btn btn-danger">HTML5</a></li>
+								</ul>
+							</li>
+							<div class="dropdown-separator"></div>
+							<li class="three-column">
+								<ul>
+									<li class="nav-title nav-navtitle">This is your blog post title</li>
+									<li class="with-image">
+									<p><img src="img/image1.png" alt="image" class="img-left img-circle" />
+												There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in ome form, by injected humour, or randomised words which don't look even slightly believable.</p>
+									</li>
+												
+									<div class="dropdown-separator"></div>
+												
+									<li class="nav-title nav-navtitle">This is another blog post title</li>
+									<li class="with-image">
+										<p><img src="img/image2.png" alt="image" class="img-left img-circle" />
+											If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+										</p>
+									</li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="with-image">
+										<p><img src="img/image2.png" alt="image" class="img-rounded" width="125" height="125" /> A little blurb about your piece, write it as much you wish! <a href="menu.htm">Read more...</a></p>
+									</li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="with-image">
+										<p><img src="img/image1.png" alt="image" class="img-rounded" width="125" height="125" /> Here is some info about the portfolio item. <a href="menu.htm">Read more...</a></p>
+									</li>
+								</ul>
+							</li>
+										
+						</ul>
+					</li><!-- 5 Menu Example Ends -->
+								
+					<li class="dropdown mega-menu-4"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">4 Menus <b class="caret  caret-caretborder"></b></a>
+						<ul class="dropdown-menu transition border-bordermain">
+										
+							<li class="three-column">
+								<ul>
+									<li class="nav-title nav-navtitle"><i class="icon-user"></i> Recent Work</li>
+									<li><iframe src="http://player.vimeo.com/video/15069551?title=0&amp;byline=0&amp;portrait=0" width="415" height="234" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Client Info</li>
+									<li><p>A little blurb about your piece, write it as you wish! Here is some information about the portfolio item</p>
+										<p>A little blurb about your piece, write it as you wish!</p>
+										<a href="menu.htm" class="btn btn-default">Read more...</a>
+									</li>
+								</ul>
+							</li>
+										
+							<div class="dropdown-separator"></div>
+									
+							<li class="one-column">
+								<ul>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>									
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>										
+							<li class="one-column">
+								<ul>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+									<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li><!-- 4 Menu Example Ends -->
+								
+					<li class="dropdown mega-menu-3"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">3 Menus <b class="caret  caret-caretborder"></b></a>
+						<ul class="dropdown-menu transition border-bordermain">
+										
+							<li class="two-column">
+								<ul>
+									<li class="nav-title nav-navtitle">A Heading Here</li>
+									<li class="with-image">
+										<p><img src="img/image1.png" alt="image" class="img-rounded" />Here is some info about the portfolio item. <a href="menu.htm" class="link-linkinner link-linkallhover">Read more...</a></p>
+									</li>
+								</ul>
+							</li>
+										
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle">And Here</li>
+									<li class="with-image"><img src="img/image2.png" alt="image" class="img-rounded" /><p>A little blurb about your piece, write it as much you wish! <a href="menu.htm" class="link-linkinner link-linkallhover">Read more...</a></p></li>
+								</ul>
+							</li>
+										
+						</ul>
+					</li><!-- 3 Menu Example Ends -->
+								
+					<li class="dropdown mega-menu-2"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">2 Menus <b class="caret  caret-caretborder"></b></a>
+						<ul class="dropdown-menu transition border-bordermain">
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle"><i class="glyphicon glyphicon-envelope"></i> Email</li>
+									<li><p><a href="#" class="link-linkinner link-linkallhover">mail@web.com</a></p></li>
+								</ul>
+							</li>
+								
+							<li class="one-column">
+								<ul>
+									<li class="nav-title nav-navtitle"><i class="glyphicon glyphicon-user"></i> Phone</li>
+									<li><p>+1 123-456-789</p></li>
+								</ul>
+							</li>
+										
+							<li class="two-column">
+								<ul>
+									<li class="nav-title nav-navtitle"><i class="glyphicon glyphicon-home"></i> Address</li>
+									<li><p>123 Elm Street, City, ST 10001 Country</p></li>
+								</ul>
+							</li>
+										
+							<li class="two-column">
+								<ul>
+									<li class="nav-title nav-navtitle"><i class="icon-map-marker"></i> Location</li>
+									<li><iframe width="270" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Timbuktu,+Tombouctou,+Mali&amp;aq=0&amp;oq=timbu&amp;sll=14.562318,2.109375&amp;sspn=22.948949,40.737305&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Timbuktu,+Tombouctou,+Mali&amp;ll=16.775288,-3.008194&amp;spn=0.032871,0.04652&amp;z=13&amp;iwloc=A&amp;output=embed"></iframe></li>
+								</ul>
+							</li>
+										
+							<li class="two-column">
+								<ul>
+									<li class="nav-title nav-navtitle">Connect with us</li>
+									<li class="social">
+										<a href="#" class="no-background"><img src="img/feed.png" /></a>
+										<a href="#" class="no-background"><img src="img/facebook.png" /></a>
+										<a href="#" class="no-background"><img src="img/twitter.png" /></a>
+										<a href="#" class="no-background"><img src="img/linkedin.png" /></a>
+										<a href="#" class="no-background"><img src="img/flickr.png" /></a>
+										<a href="#" class="no-background"><img src="img/vimeo.png" /></a>
+									</li>
+								</ul>
+							</li>
+									
+						</ul>
+					</li><!-- 2 Menu Example Ends -->
+				</ul><!-- /.nav .navbar-nav -->
+						
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle link-linktop" data-toggle="dropdown">Dropdown <b class="caret  caret-caretborder"></b></a>
+						<ul class="dropdown-menu transition border-bordermain">
+							<li class="nav-title nav-navtitle">This Header</li>
+							<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+							<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+							<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+							<li><a href="#" class="link-linkinner link-linkallhover">Menu Item</a></li>
+						</ul>
+					</li><!-- Regular Menu Ends -->
+						
+				</ul><!-- /.nav .navbar-nav .navbar-right -->
+						
+			</div><!--/.nav-collapse -->
+						
+		</div><!-- /.navbar .navbar-inverse -->
+	
+	</header><!-- /header -->
+	
+	<div>
+		<div class="col-12">
+			
+		<section>
+		
+		<div class="page-header">
+			<h1><em>responsive</em> <strong>Mega Menu</strong>, Customizer</h1>
+		</div>
+		
+		<p class="lead">Customize your colors below</p>
+		
+		<p><strong>IMPORTANT:</strong> Please note, this customizer is provided without any express written guarantee or support. You may still need to modify some of your CSS to get it working exactly as you want. Support requests for the customizer will go unanswered.</p>
+			
+		<p class="well well-sm">*Note: Starred color settings are <u>not previewable</u>, and may override some settngs in preview mode. Copy and paste it in your <code>customized.css</code> file to see the changes.</p>
+	</section><!-- Section -->
+			
+	<!-- Control types -->
+			<div class="well well-sm">
+				<div class="row">
+					<div class="col-lg-3 col-sm-3 col-12">
+						
+						<h3>Main</h3>
+						
+						<div class="form-group">
+							<label for="bgmain">Background</label>
+							<input type="text" id="bgmain" class="form-control demo" data-control="brightness" data-defaultValue="#d9534f">
+						</div>
+						
+						<div class="form-group">
+							<label for="bordermain">Other Backgrounds / Border / Menu Active*</label>
+							<input type="text" id="bordermain" class="form-control demo" data-control="brightness" data-defaultValue="#d43f3a">
+						</div>
+						
+						<div class="form-group">
+							<label for="navtitle">Inner Menu Title</label>
+							<input type="text" id="navtitle" class="form-control demo" data-control="brightness" data-defaultValue="#555555">
+						</div>
+						
+						<div class="form-group">
+							<label for="navtitledesc">Inner Menu Title Description</label>
+							<input type="text" id="navtitledesc" class="form-control demo" data-control="brightness" data-defaultValue="#555555">
+						</div>
+						
+					</div>
+					
+					<div class="col-lg-3 col-sm-3 col-12">
+						<h3>Logo / Caret</h3>
+						
+						<div class="form-group">
+							<label for="logolink">Logo Static</label>
+							<input type="text" id="logolink" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+						<div class="form-group">
+							<label for="caretborder">Caret Border</label>
+							<input type="text" id="caretborder" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+						<div class="form-group">
+							<label for="caretborderhover">Caret Border Hover</label>
+							<input type="text" id="caretborderhover" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+
+					</div>
+					
+					<div class="col-lg-3 col-sm-3 col-12">
+						<h3>Links</h3>
+						
+						<div class="form-group">
+							<label for="linktop">Top Links</label>
+							<input type="text" id="linktop" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+						<div class="form-group">
+							<label for="linktopactive">Top Links Active</label>
+							<input type="text" id="linktopactive" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+						<div class="form-group">
+							<label for="linkinner">Inner Links</label>
+							<input type="text" id="linkinner" class="form-control demo" data-control="brightness" data-defaultValue="#555555">
+						</div>
+						
+						<div class="form-group">
+							<label for="linkallhover">All Links Hover*</label>
+							<input type="text" id="linkallhover" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+					</div>
+					
+					<div class="col-lg-3 col-sm-3 col-12">
+						<h3>Responsive</h3>
+						
+						<div class="form-group">
+							<label for="linkresphover">Resposive Link Hover*</label>
+							<input type="text" id="linkresphover" class="form-control demo" data-control="brightness" data-defaultValue="#541614">
+						</div>
+						
+						<div class="form-group">
+							<label for="bgresp">Responsive Menu Icon</label>
+							<input type="text" id="bgresp" class="form-control demo" data-control="brightness" data-defaultValue="#ffffff">
+						</div>
+						
+						<div class="form-group">
+							<label for="bgrespbg">Responsive Menu Background</label>
+							<input type="text" id="bgrespbg" class="form-control demo" data-control="brightness" data-defaultValue="#333333">
+						</div>
+						
+						<div class="form-group">
+							<label for="bgrespbghover">Responsive Menu Background Hover*</label>
+							<input type="text" id="bgrespbghover" class="form-control demo" data-control="brightness" data-defaultValue="#dddddd">
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		
+		<div class="test">
+			<h3>Customized CSS</h3>
+			
+			<p>Click in the window below to copy your customized CSS, press CTRL + C (PC) / ⌘ + C (MAC) and paste it into your <code>customized.css</code> file.</p>
+			
+			<p><button class="btn btn-info btn-sm">Select CSS</button></p>
+			<div id="selectme" class="well well-sm">
+			<p>.navbar-custom .dropdown-menu { border-color: <span class="borderdisplay-bordermain">#bd362f</span>; }<br /><br />
+
+.navbar-custom .dropdown-menu li.nav-title  { color: <span class="navdisplay-navtitle">#bd362f</span>; }<br /><br />
+
+.navbar-custom .dropdown-menu li.nav-title span.nav-title-description { color: <span class="navdescdisplay-navtitledesc">#999999</span>; }<br /><br />
+
+.navbar-custom { background-color: <span class="bgdisplay-bgmain">#d9534f</span>; border-color: <span class="borderdisplay-bordermain">#bd362f</span> }<br /><br />
+
+.navbar-custom .navbar-brand { color: <span class="linkdisplay-logolink">#777777</span>; }<br /><br />
+  
+.navbar-custom .nav > li > a { color: <span class="linkdisplay-linktop">#bd362f</span>; }<br /><br />
+
+.navbar-custom .nav > li > a:focus, .navbar-custom .nav > li > a:hover, .navbar-default .navbar-brand:hover { color: <span class="linkdisplay-linkallhover">#ffffff</span>; }<br /><br />
+
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle,<br />
+.navbar-custom .nav li.dropdown.active > .dropdown-toggle,<br />
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle { background: <span class="borderdisplay-bordermain">#bd362f</span>; color: <span class="linkdisplay-linktopactive">#ffffff</span>; }<br /><br />
+
+.navbar-custom .nav li.dropdown:hover > .dropdown-toggle .caret { border-top-color: <span class="caretdisplay-caretborderhover">#ffffff</span>; }<br /><br />
+
+.navbar-custom .nav li.dropdown > .dropdown-toggle .caret,<br />
+.navbar-custom .nav li.dropdown.open a:hover .caret,<br />
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle .caret,<br />
+.navbar-custom .nav li.dropdown.active > .dropdown-toggle .caret,<br />
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: <span class="caretdisplay-caretborder">#ffffff</span>; }<br /><br />
+
+.navbar-custom .nav li.dropdown.open a:hover .caret,
+.navbar-custom .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-custom .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: <span class="linkdisplay-linktopactive">#ffffff</span>; }
+
+.navbar-custom .dropdown-menu li a { color: <span class="linkdisplay-linkinner">#555555</span>; text-shadow: none; }<br /><br />
+
+.navbar-custom .dropdown-menu li a.btn,<br />
+.navbar-custom .dropdown-menu li a.btn:hover { color: inherit; }<br /><br />
+
+.navbar-custom .dropdown-menu li a.btn:hover { color: white; padding-left: 0; }<br /><br />
+
+.navbar-custom .dropdown-menu li a.btn-default:hover { color: gray; }<br /><br />
+
+.navbar-custom .dropdown-menu .active > a,<br />
+.navbar-custom .dropdown-menu li > a,<br />
+.navbar-custom .dropdown-submenu > a { padding: 3px 0; }<br /><br />
+
+.navbar-custom .dropdown-menu li > a:hover,<br />
+.navbar-custom .dropdown-menu li > a:focus,<br />
+.navbar-custom .dropdown-submenu:hover > a { color: <span class="linkdisplay-linkallhover">#0066cc</span>; padding-left: 5px; }<br /><br />
+
+.navbar-custom .navbar-toggle .icon-bar { background-color: <span class="bgdisplay-bgresp">#802420</span>; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }<br /><br />
+
+.navbar-custom .navbar-toggle { background: <span class="bgdisplay-bgrespbg">#da4f49</span>; border: 1px solid <span class="borderdisplay-bordermain">#bd362f</span>; }<br /><br />
+
+.navbar-custom .navbar-toggle:hover, .navbar-custom .navbar-toggle:focus { background: <span class="bgdisplay-bgrespbghover">#dddddd</span>; }<br /><br />
+
+@media (max-width: 979px) {<br /><br />
+
+.navbar-custom p, .dropdown-menu li.nav-title span.nav-title-description { color: <span class="navdescdisplay-navtitledesc">#999999</span>; }<br /><br />
+
+.navbar-custom .nav-collapse .btn { color: <span class="borderdisplay-bordermain">#bd362f</span>; }<br /><br />
+
+.navbar-custom .nav > li > a:hover { background: none; }<br /><br />
+
+.navbar-custom .nav a { color: <span class="linkdisplay-linkmain">#ffffff</span>; }<br /><br />
+
+.navbar-custom .dropdown-menu li > a:hover,<br />
+.navbar-custom .dropdown-menu li > a:focus,<br />
+.navbar-custom .dropdown-submenu:hover > a { color: <span class="linkdisplay-linkresphover">#541614</span>; background: none; padding-left: 3px; }<br /><br />
+
+.navbar-custom .navbar-collapse .nav-title { color: <span class="linkdisplay-linkmain">#ffffff</span>; border-bottom: 1px solid <span class="borderdisplay-bordermain">#bd362f</span>; }<br /><br />}</p></div>
+		</div>
+		
+		<hr class="container">
+	
+	<footer>
+		<p>Brought to you by <a href="http://www.weborithm.com">Weborithm</a></p>
+	</footer><!-- Footer -->
+
+</div><!-- /.container -->
+
+<script>
+function SelectText(element) {
+    var doc = document
+        , text = doc.getElementById(element)
+        , range, selection
+    ;    
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) {
+        selection = window.getSelection();        
+        range = document.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+</script>
+
+<script>
+$(function() {
+    $('button').click(function() {
+        SelectText('selectme');
+    });
+});
+</script>
+</body>
+</html>

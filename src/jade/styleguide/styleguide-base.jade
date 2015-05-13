@@ -1,0 +1,28 @@
+doctype html
+html.no-js(lang="en")
+  include ../include/header
+  body
+    script.
+      if (!Modernizr.mq('only all')) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = rootPrefix + 'js/vendor/respond.min.js';
+      if(document.body != null){ document.body.appendChild(script)};
+      var style = document.createElement('style');        
+      style.type = 'text/css';
+      style.src = 'css/ie-only.css';
+      if(document.body != null){ document.body.appendChild(script); document.body.appendChild(style) };}
+    a.sr-only(href="#main-content-sr") Skip to main content
+    // GLOBAL ALERT GOES HERE
+    header.hidden-print
+      include ../includes/nav/nav
+    include ../includes/main
+    include ../includes/footer
+    // Javascript files
+    script(src=httpPrefix +'//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src=httpPrefix +'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+    script(src= rootPrefix + 'js/main.js')
+    //set the background image
+    script.
+      $(window).on("resize", function(){chooseBG("!{rootPrefix}img/hero-driftwood-sm.jpg", "!{rootPrefix}img/hero-driftwood.jpg")}).resize();
+    block custom-js

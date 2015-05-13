@@ -1,0 +1,885 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block custom-style
+  <!-- FormValidation CSS file -->
+  //<link rel="stylesheet" href="css/formValidation.min.css">
+  style.
+    .has-feedback label.sr-only~.form-control-feedback{
+      top:10px;
+    }
+    .has-feedback label~.form-control-feedback {
+      top: 34px;
+      right: 0;
+    }
+    .form-horizontal .has-feedback .form-control-feedback {
+      top: 10px;
+      right: 15px;
+    }
+    .has-feedback label~.form-control-feedback.is-required {
+      top: 34px;
+      right: -30px;
+    }
+    .form-horizontal .has-feedback .form-control-feedback.is-required {
+      top: 10px;
+      right: -10px;
+    }
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h1 Forms
+      .call-out-text.call-out-text-info
+        h4 Always add labels
+        p
+          | Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the 
+          code .sr-only
+          |  class. There are further alternative methods of providing a label for assistive technologies, such as the 
+          code aria-label
+          | , 
+          code aria-labelledby
+          |  or 
+          code title
+          |  attribute. If none of these is present, screen readers may resort to using the 
+          code placeholder
+          |  attribute, if present, but note that use of 
+          code placeholder
+          |  as a replacement for other labelling methods is not advised.
+      h2 Basic example
+      p
+        | Individual form controls automatically receive some global styling. All textual 
+        code input
+        | , 
+        code &lt;textarea&gt;
+        | , and 
+        code &lt;select&gt;
+        |  elements with 
+        code .form-control
+        |  are set to 
+        code width: 100%;
+        |  by default. Wrap labels and controls in 
+        code .form-group
+        |  for optimum spacing.
+
+      div(data-xrayhtml)
+        form
+          .form-group
+            label(for='exampleInputEmail1') Email address
+            input#exampleInputEmail1.form-control(type='email', placeholder='Enter email')
+          .form-group
+            label(for='exampleInputPassword1') Password
+            input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+          .form-group
+            label(for='exampleInputFile') File input
+            input#exampleInputFile(type='file')
+            p.help-block Example block-level help text here.
+          .checkbox
+            label
+              input(type='checkbox')
+              |  Check me out
+          button.btn.btn-default(type='submit') Submit
+      .call-out-text.call-out-text-success
+        h4 Don't mix form groups with input groups
+        p
+          | Do not mix form groups directly with input groups. Instead, nest the input group inside of the form group.
+      h2 Inline form-group
+      p
+        | Add 
+        code .form-inline
+        |  to your 
+        code &lt;form&gt;
+        |  for left-aligned and inline-block controls. 
+        strong This only applies to forms within viewports that are at least 768px wide.
+      div(data-xrayhtml)
+        form.form-inline
+          .form-group
+            label.sr-only(for='exampleInputEmail2') Email address
+            input#exampleInputEmail2.form-control(type='email', placeholder='Enter email')
+          .form-group
+            label.sr-only(for='exampleInputPassword2') Password
+            input#exampleInputPassword2.form-control(type='password', placeholder='Password')
+          .checkbox
+            label
+              input(type='checkbox')
+              |  Remember me
+          button.btn.btn-default(type='submit') Sign in
+      br
+      div(data-xrayhtml)
+        form.form-inline
+          .form-group
+            label.sr-only(for='exampleInputAmount') Amount (in dollars)
+            .input-group
+              .input-group-addon $
+              input#exampleInputAmount.form-control(type='text', placeholder='Amount')
+              .input-group-addon .00
+          button.btn.btn-primary(type='submit') Transfer cash
+      h2 Horizontal form
+      p
+        | Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding 
+        code .form-horizontal
+        |  to the form. Doing so changes 
+        code .form-group
+        | s to behave as grid rows, so no need for 
+        code .row
+        | .
+      div(data-xrayhtml)
+        form.form-horizontal
+          .form-group
+            label.col-sm-2.control-label(for='inputEmail3') Email
+            .col-sm-10
+              input#inputEmail3.form-control(type='email', placeholder='Email')
+          .form-group
+            label.col-sm-2.control-label(for='inputPassword3') Password
+            .col-sm-10
+              input#inputPassword3.form-control(type='password', placeholder='Password')
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              .checkbox
+                label
+                  input(type='checkbox')
+                  |  Remember me
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              button.btn.btn-default(type='submit') Sign in
+      h2 Supported controls
+      p Examples of standard form controls supported in an example form layout.
+      h3 Inputs
+      p
+        | Most common form control, text-based input fields. Includes support for all HTML5 types: 
+        code text
+        | , 
+        code password
+        | , 
+        code datetime
+        | , 
+        code datetime-local
+        | , 
+        code date
+        | , 
+        code month
+        | , 
+        code time
+        | , 
+        code week
+        | , 
+        code number
+        | , 
+        code email
+        | , 
+        code url
+        | , 
+        code search
+        | , 
+        code tel
+        | , and 
+        code color
+        | .
+      .call-out-text.call-out-text-success
+        h4 Type declaration required
+        p
+          | Inputs will only be fully styled if their 
+          code type
+          |  is properly declared.
+      h3 Text
+      div(data-xrayhtml)
+        input.form-control(type='text', placeholder='Text input')
+      h3 Textarea
+      p
+        | Form control which supports multiple lines of text. Change 
+        code rows
+        |  attribute as necessary.
+       div(data-xrayhtml)
+        textarea.form-control(rows='3')
+      h3 Checkboxes and radios
+      p
+        | Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+      p
+        | A checkbox or radio with the 
+        code disabled
+        |  attribute will be styled appropriately. To have the 
+        code &lt;label&gt;
+        |  for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the 
+        code .disabled
+        |  class to your 
+        code .radio
+        | , 
+        code .radio-inline
+        | , 
+        code .checkbox
+        | , 
+        code .checkbox-inline
+        | , or 
+        code &lt;fieldset&gt;
+        | .
+      h4 Default (stacked)
+      .checkbox
+        label
+          input(type='checkbox', value='')
+          |     Option one is this and that—be sure to include why it's great
+      .checkbox.disabled
+        label
+          input(type='checkbox', value='', disabled='')
+          |     Option two is disabled
+      .radio
+        label
+          input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+          |     Option one is this and that—be sure to include why it's great
+      .radio
+        label
+          input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+          |     Option two can be something else and selecting it will deselect option one
+      .radio.disabled
+        label
+          input#optionsRadios3(type='radio', name='optionsRadios', value='option3', disabled='')
+          |     Option three is disabled
+      h4 Inline checkboxes and radios
+      p
+        | Use the 
+        code .checkbox-inline
+        |  or 
+        code .radio-inline
+        |  classes on a series of checkboxes or radios for controls that appear on the same line.
+      label.checkbox-inline
+        input#inlineCheckbox1(type='checkbox', value='option1')
+        |  1
+      label.checkbox-inline
+        input#inlineCheckbox2(type='checkbox', value='option2')
+        |  2
+      label.checkbox-inline
+        input#inlineCheckbox3(type='checkbox', value='option3')
+        |  3
+      label.radio-inline
+        input#inlineRadio1(type='radio', name='inlineRadioOptions', value='option1')
+        |  1
+      label.radio-inline
+        input#inlineRadio2(type='radio', name='inlineRadioOptions', value='option2')
+        |  2
+      label.radio-inline
+        input#inlineRadio3(type='radio', name='inlineRadioOptions', value='option3')
+        |  3
+      h4 Checkboxes and radios without label text
+      p
+        | Should you have no text within the 
+        code <label>
+        | , the input is positioned as you'd expect. 
+        strong Currently only works on non-inline checkboxes and radios.
+        |  Remember to still provide some form of label for assistive technologies (for instance, using 
+        code aria-label
+        | ).
+      .checkbox
+        label
+          input#blankCheckbox(type='checkbox', value='option1', aria-label='...')
+      .radio
+        label
+          input#blankRadio1(type='radio', name='blankRadio', value='option1', aria-label='...')
+      h3 Selects
+      p
+        | Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via 
+        code border-radius
+        |  properties.
+      select.form-control
+        option 1
+        option 2
+        option 3
+        option 4
+        option 5
+      p
+        | For 
+        code &lt;select&gt;
+        |  controls with the 
+        code multiple
+        |  attribute, multiple options are shown by default.
+      select.form-control(multiple='')
+        option 1
+        option 2
+        option 3
+        option 4
+        option 5
+      h2 Static control
+      p
+        | When you need to place plain text next to a form label within a form, use the 
+        code .form-control-static
+        |  class on a 
+        code &lt;p&gt;
+        | .
+      form.form-horizontal
+        .form-group
+          label.col-sm-2.control-label Email
+          .col-sm-10
+            p.form-control-static email@example.com
+        .form-group
+          label.col-sm-2.control-label(for='inputPassword') Password
+          .col-sm-10
+            input#inputPassword.form-control(type='password', placeholder='Password')
+      form.form-inline
+        .form-group
+          label.sr-only Email
+          p.form-control-static email@example.com
+        .form-group
+          label.sr-only(for='inputPassword2') Password
+          input#inputPassword2.form-control(type='password', placeholder='Password')
+        button.btn.btn-default(type='submit') Confirm identity
+      h2 Focus state
+      p
+        | We remove the default 
+        code outline
+        |  styles on some form controls and apply a 
+        code box-shadow
+        |  in its place for 
+        code :focus
+        | .
+      form
+        input.form-control(type='text', value='Click in here to see focus state')
+      h2 Disabled state
+      p
+        | Add the 
+        code disabled
+        |  boolean attribute on an input to prevent user input and trigger a slightly different look.
+      input#disabledInput.form-control(type='text', placeholder='Disabled input here...', disabled='')
+      h3 Disabled fieldsets
+      p
+        | Add the 
+        code disabled
+        |  attribute to a 
+        code &lt;fieldset&gt;
+        |  to disable all the controls within the 
+        code &lt;fieldset&gt;
+        |  at once.
+      .call-out-text.call-out-text-info
+        h4
+          | Caveat about link functionality of 
+          code &lt;a&gt;
+        p
+          | By default, browsers will treat all native form controls (
+          code &lt;input&gt;
+          | , 
+          code &lt;select&gt;
+          |  and 
+          code &lt;button&gt;
+          |  elements) inside a 
+          code &lt;fieldset disabled&gt;
+          |  as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes 
+          code &lt;a ... class="btn btn-*"&gt;
+          |  elements, these will only be given a style of 
+          code pointer-events: none
+          | . As noted in the section about 
+          a(href='#buttons-disabled') disabled state for buttons
+          |  (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+      .call-out-text.call-out-text-success
+        h4 Cross-browser compatibility
+        p
+          | While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the 
+          code disabled
+          |  attribute on a 
+          code &lt;fieldset&gt;
+          | . Use custom JavaScript to disable the fieldset in these browsers.
+      form
+        fieldset(disabled='')
+          .form-group
+            label(for='disabledTextInput') Disabled input
+            input#disabledTextInput.form-control(type='text', placeholder='Disabled input')
+          .form-group
+            label(for='disabledSelect') Disabled select menu
+            select#disabledSelect.form-control
+              option Disabled select
+          .checkbox
+            label
+              input(type='checkbox')
+              |  Can't check this
+          button.btn.btn-primary(type='submit') Submit
+      h2 Readonly state
+      p
+        | Add the 
+        code readonly
+        |  boolean attribute on an input to prevent user input and style the input as disabled.
+      input.form-control(type='text', placeholder='Readonly input here…', readonly='')
+      h2 Validation states
+      p
+        | Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add 
+        code .has-warning
+        | , 
+        code .has-error
+        | , or 
+        code .has-success
+        |  to the parent element. Any 
+        code .control-label
+        | , 
+        code .form-control
+        | , and 
+        code .help-block
+        |  within that element will receive the validation styles.
+      .call-out-text.call-out-text-success
+        h4 Conveying validation state to assistive technologies
+        p
+          | Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.
+        p
+          | Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's 
+          code
+            label
+          |  text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using 
+          code aria-describedby
+          |  (see the example in the following section). In the case of an error, you could also use the 
+          code aria-invalid="true"
+          |  attribute on the form control.
+      .form-group.has-success
+        label.control-label(for='inputSuccess1') Input with success
+        input#inputSuccess1.form-control(type='text')
+      .form-group.has-warning
+        label.control-label(for='inputWarning1') Input with warning
+        input#inputWarning1.form-control(type='text')
+      .form-group.has-error
+        label.control-label(for='inputError1') Input with error
+        input#inputError1.form-control(type='text')
+      .has-success
+        .checkbox
+          label
+            input#checkboxSuccess(type='checkbox', value='option1')
+            |       Checkbox with success
+      .has-warning
+        .checkbox
+          label
+            input#checkboxWarning(type='checkbox', value='option1')
+            |       Checkbox with warning
+      .has-error
+        .checkbox
+          label
+            input#checkboxError(type='checkbox', value='option1')
+            |       Checkbox with error
+      h3 With optional icons
+      p
+        | You can also add optional feedback icons with the addition of 
+        code .has-feedback
+        |  and the right icon.
+      p
+        strong.text-danger
+          | Feedback icons only work with textual 
+          code &lt;input class="form-control"&gt;
+          |  elements.
+      .call-out-text.call-out-text-success
+        h4 Icons, labels, and input groups
+        p
+          | Manual positioning of feedback icons is required for inputs without a label and for 
+          a(href='../components#input-groups') input groups
+          |  with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the 
+          code .sr-only
+          |  class. If you must do without labels, adjust the 
+          code top
+          |  value of the feedback icon. For input groups, adjust the 
+          code right
+          |  value to an appropriate pixel value depending on the width of your addon.
+      .call-out-text.call-out-text-info
+        h4 Conveying the icon's meaning to assistive technologies
+        p
+          | To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the 
+          code .sr-only
+          |  class and explicitly associated with the form control it relates to using 
+          code aria-describedby
+          | . Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual 
+          code &lt;label&gt;
+          |  associated with the form control.
+        p
+          | Although the following examples already mention the validation state of their respective form controls in the 
+          code &lt;label&gt;
+          |  text itself, the above technique (using 
+          code .sr-only
+          |  text and 
+          code aria-describedby
+          | ) has been included for illustrative purposes.
+      .form-group.has-success.has-feedback
+        label.control-label(for='inputSuccess2') Input with success
+        input#inputSuccess2.form-control(type='text', aria-describedby='inputSuccess2Status')
+        span.fa.fa-check.form-control-feedback(aria-hidden='true')
+        span#inputSuccess2Status.sr-only (success)
+      .form-group.has-warning.has-feedback
+        label.control-label(for='inputWarning2') Input with warning
+        input#inputWarning2.form-control(type='text', aria-describedby='inputWarning2Status')
+        span.fa.fa-warning.form-control-feedback(aria-hidden='true')
+        span#inputWarning2Status.sr-only (warning)
+      .form-group.has-error.has-feedback
+        label.control-label(for='inputError2') Input with error
+        input#inputError2.form-control(type='text', aria-describedby='inputError2Status')
+        span.fa.fa-remove.form-control-feedback(aria-hidden='true')
+        span#inputError2Status.sr-only (error)
+      h4 Optional icons in horizontal and inline forms
+      div(data-xrayhtml)
+        form.form-horizontal
+          .form-group.has-success.has-feedback
+            label.control-label.col-sm-3(for='inputSuccess3') Input with success
+            .col-sm-9
+              input#inputSuccess3.form-control(type='text', aria-describedby='inputSuccess3Status')
+              span.fa.fa-check.form-control-feedback(aria-hidden='true')
+              span#inputSuccess3Status.sr-only (success)
+      div(data-xrayhtml)
+        form.form-inline
+          .form-group.has-success.has-feedback
+            label.control-label(for='inputSuccess4') Input with success
+            input#inputSuccess4.form-control(type='text', aria-describedby='inputSuccess4Status')
+            span.fa.fa-checkform-control-feedback(aria-hidden='true')
+            span#inputSuccess4Status.sr-only (success)
+
+      h4
+        | Optional icons with hidden 
+        code .sr-only
+        |  labels
+      p
+        | If you use the 
+        code .sr-only
+        |  class to hide a form control's 
+        code &lt;label&gt;
+        |  (rather than using other labelling options, such as the 
+        code aria-label
+        |  attribute), Bootstrap will automatically adjust the position of the icon once it's been added.
+      .form-group.has-success.has-feedback
+        label.control-label.sr-only(for='inputSuccess5') Hidden label
+        input#inputSuccess5.form-control(type='text', aria-describedby='inputSuccess5Status')
+        span.fa.fa-check.form-control-feedback(aria-hidden='true')
+        span#inputSuccess5Status.sr-only (success)
+      h2
+      p
+        | Set heights using classes like 
+        code .input-lg
+        | , and set widths using grid column classes like 
+        code .col-lg-*
+        | .
+      h3 Height sizing
+      p Create taller or shorter form controls that match button sizes.
+      input.form-control.input-lg(type='text', placeholder='.input-lg')
+      br
+      input.form-control(type='text', placeholder='Default input')
+      br
+      input.form-control.input-sm(type='text', placeholder='.input-sm')
+      br
+      select.form-control.input-lg
+        option(value='') .input-lg
+      br
+      select.form-control
+        option(value='') Default select
+      br
+      select.form-control.input-sm
+        option(value='') .input-sm
+      br
+      h3 Horizontal form group sizes
+      p
+        | Quickly size labels and form controls within 
+        code .form-horizontal
+        |  by adding 
+        code .form-group-lg
+        |  or 
+        code .form-group-sm
+        | .
+      form.form-horizontal
+        .form-group.form-group-lg
+          label.col-sm-2.control-label(for='formGroupInputLarge') Large label
+          .col-sm-10
+            input#formGroupInputLarge.form-control(type='text', placeholder='Large input')
+        .form-group.form-group-sm
+          label.col-sm-2.control-label(for='formGroupInputSmall') Small label
+          .col-sm-10
+            input#formGroupInputSmall.form-control(type='text', placeholder='Small input')
+      h3 Column sizing
+      p
+        | Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.
+      .row
+        .col-xs-2
+          input.form-control(type='text', placeholder='.col-xs-2')
+        .col-xs-3
+          input.form-control(type='text', placeholder='.col-xs-3')
+        .col-xs-4
+          input.form-control(type='text', placeholder='.col-xs-4')
+      h2
+      p Block level help text for form controls.
+      .call-out-text.call-out-text-info
+        h4 Associating help text with form controls
+        p
+          | Help text should be explicitly associated with the form control it relates to using the 
+          code aria-describedby
+          |  attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
+      form()
+      .form-group
+        label(for='inputHelpBlock') Input with help text
+        input#inputHelpBlock.form-control(type='text', aria-describedby='helpBlock')
+      span#helpBlock.help-block A block of help text that breaks onto a new line and may extend beyond one line.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // .row.addon-row.addon-row-attached
+    .col-sm-8
+      form#productForm.form-horizontal(method='post')
+        .form-group
+          label.col-xs-3.control-label Name
+          .col-xs-5
+            input.form-control(type='text', name='name')
+        .form-group
+          label.col-xs-3.control-label Description
+          .col-xs-5
+            textarea.form-control(name='description', rows='5')
+        .form-group
+          label.col-xs-3.control-label Price
+          .col-xs-3
+            .input-group
+              span.input-group-addon $
+              input.form-control(type='text', name='price')
+        .form-group
+          label.col-xs-3.control-label Quantity
+          .col-xs-3
+            input.form-control(type='text', name='quantity')
+        .form-group
+          .col-xs-5.col-xs-offset-3
+            button.btn.btn-default(type='submit') Add product
+      form#productForm2
+        .form-group
+          label Product name
+          input.form-control(type='text', name='name')
+        .form-group
+          label Price
+          .input-group
+            .input-group-addon $
+            input.form-control(type='text', name='price')
+        .form-group
+          label Size
+          .checkbox
+            label
+              input(type='checkbox', name='size[]', value='s')
+              |  S
+          .checkbox
+            label
+              input(type='checkbox', name='size[]', value='m')
+              |  M
+          .checkbox
+            label
+              input(type='checkbox', name='size[]', value='l')
+              |  L
+          .checkbox
+            label
+              input(type='checkbox', name='size[]', value='xl')
+              |  XL
+        .form-group
+          label Available in store
+          .radio
+            label
+              input(type='radio', name='availability', value='yes')
+              |  Yes
+          .radio
+            label
+              input(type='radio', name='availability', value='no')
+              |  No
+        // Do NOT use name="submit" or id="submit" for the Submit button
+        button.btn.btn-default(type='submit') Add product
+    .col-sm-4
+      .call-out-text.call-out-text-info
+        p
+          b Please Note:
+        p The payment system is down for scheduled maintenance every Saturday from 10 p.m. until as late as Sunday morning at 9 a.m.
+        p On occasion, the system requires maintenance outside this weekly time period.
+
+
+
+//block custom-js
+  script(src='js/vendor/formValidation.min.js')
+  script(src="js/vendor/bootstrap.js")
+  script.
+    $(document).ready(function() {
+        $('#productForm2')
+          // IMPORTANT: You must declare .on('init.field.bv')
+          // before calling .bootstrapValidator(options)
+          .on('init.field.fv', function(e, data) {
+            // data.fv      --> The FormValidation instance
+            // data.field   --> The field name
+            // data.element --> The field element
+
+            var $icon      = data.element.data('fv.icon'),
+                options    = data.fv.getOptions(),                      // Entire options
+                validators = data.fv.getOptions(data.field).validators; // The field validators
+
+            if (validators.notEmpty && options.icon && options.icon.required) {
+                // The field uses notEmpty validator
+                // Add required icon
+                $icon.addClass(options.icon.required).show();
+            }
+          })
+         .formValidation({
+          framework: 'bootstrap',
+          icon: {
+              required: 'fa fa-asterisk is-required',
+              valid: 'fa fa-check',
+              invalid: 'fa fa-remove',
+              validating: 'fa fa-refresh'
+          },
+          fields: {
+              name: {
+                  validators: {
+                      notEmpty: {
+                          message: 'The name is required'
+                      },
+                      stringLength: {
+                          min: 6,
+                          max: 30,
+                          message: 'The name must be more than 6 and less than 30 characters long'
+                      },
+                      regexp: {
+                          regexp: /^[a-zA-Z0-9_]+$/,
+                          message: 'The username can only consist of alphabetical, number and underscore'
+                      }
+                  }
+              },
+              price: {
+                  validators: {
+                      notEmpty: {
+                          message: 'The price is required'
+                      },
+                      numeric: {
+                          message: 'The price must be a number'
+                      }
+                  }
+              },
+              'size[]': {
+                  validators: {
+                      notEmpty: {
+                          message: 'The size is required'
+                      }
+                  }
+              },
+              availability: {
+                  validators: {
+                      notEmpty: {
+                          message: 'The availability option is required'
+                      }
+                  }
+              }
+            }
+          })
+          .on('status.field.fv', function(e, data) {
+                        // Remove the required icon when the field updates its status
+                        var $icon      = data.element.data('fv.icon'),
+                            options    = data.fv.getOptions(),                      // Entire options
+                            validators = data.fv.getOptions(data.field).validators; // The field validators
+
+                        if (validators.notEmpty && options.icon && options.icon.required) {
+                            $icon.removeClass(options.icon.required).addClass('fa');
+                        }
+                  })
+          .on('success.field.fv', function(e, data) {
+            // If the field is empty
+            //if (data.element.val() === '') {
+                var $parent = data.element.parents('.form-group');
+                // Remove the has-success class
+                $parent.removeClass('has-success');
+                // Hide the success icon
+                $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]').hide();
+            //}
+        });
+      $('#productForm')
+        // IMPORTANT: You must declare .on('init.field.bv')
+        // before calling .bootstrapValidator(options)
+        .on('init.field.fv', function(e, data) {
+          // data.fv      --> The FormValidation instance
+          // data.field   --> The field name
+          // data.element --> The field element
+
+          var $icon      = data.element.data('fv.icon'),
+              options    = data.fv.getOptions(),                      // Entire options
+              validators = data.fv.getOptions(data.field).validators; // The field validators
+
+          if (validators.notEmpty && options.icon && options.icon.required) {
+              // The field uses notEmpty validator
+              // Add required icon
+              $icon.addClass(options.icon.required).show();
+          }
+        })
+        .formValidation({
+          framework: 'bootstrap',
+          icon: {
+            required: 'fa fa-asterisk is-required',
+            valid: 'fa fa-check',
+            invalid: 'fa fa-times',
+            validating: 'fa fa-refresh'
+        },
+        fields: {
+          name: {
+            validators: {
+              notEmpty: {
+                message: 'The name is required'
+              }
+            }
+          },
+          description: {
+            validators: {
+              stringLength: {
+                max: 300,
+                message: 'The description must be less than 300 characters long'
+              }
+            }
+          },
+          price: {
+            validators: {
+              notEmpty: {
+                message: 'The price is required'
+              },
+              numeric: {
+                message: 'The price must be a number'
+              }
+            }
+          },
+          quantity: {
+            validators: {
+              notEmpty: {
+                message: 'The quantity is required'
+              },
+              integer: {
+                message: 'The quantity must be a number'
+              }
+            }
+          }
+        }
+        })
+        .on('success.field.fv', function(e, data) {
+            // If the field is empty
+            //if (data.element.val() === '') {
+                var $parent = data.element.parents('.form-group');
+
+                // Remove the has-success class
+                $parent.removeClass('has-success');
+
+                // Hide the success icon
+                $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]').hide();
+            //}
+        })
+        .on('status.field.fv', function(e, data) {
+              // Remove the required icon when the field updates its status
+              var $icon      = data.element.data('fv.icon'),
+                  options    = data.fv.getOptions(),                      // Entire options
+                  validators = data.fv.getOptions(data.field).validators; // The field validators
+
+              if (validators.notEmpty && options.icon && options.icon.required) {
+                  $icon.removeClass(options.icon.required).addClass('fa');
+              }
+        })
+
+      });
+   
+
+  
+    

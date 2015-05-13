@@ -1,0 +1,23 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h1.gray-darker gray-darker
+      h1.gray-dark gray-dark
+      h1.gray gray
+      h1.gray-light grey-light
+      h1.gray-lighter grey-lighter
+
+      h1(style="color:#23221f") #23221f
+
+

@@ -1,0 +1,71 @@
+extends includes/base
+block sidebar
+block custom-style
+  style.
+    .thumb {
+      height: 75px;
+      border: 1px solid #000;
+      margin: 10px 5px 0 0;
+    }
+    
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/portal-breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Knockout Example
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+        
+      input(type="file" id="files" name="files[]" multiple data-bind=" event:{change: $root.fileSelect}")
+      output(id="list")
+
+      ul
+        li
+          span(data-bind ="text: name") : 
+          img(class="thumb" data-bind="attr: {'src': src, 'title': name}")
+block custom-js
+  script(src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js")
+  script.
+    // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+    function AppViewModel() {
+      var self = this;     
+      self.files=  ko.observableArray([]);
+      self.fileSelect= function (elemet,event) {
+          var files =  event.target.files;// FileList object
+
+          // Loop through the FileList and render image files as thumbnails.
+          for (var i = 0, f; f = files[i]; i++) {
+
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+              continue;
+            }          
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function(theFile) {
+                return function(e) {                             
+                    self.files.push(new FileModel(escape(theFile.name),e.target.result));
+                };                            
+            })(f);
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+          }
+      };
+    };
+    var FileModel= function (name, src) {
+      var self = this;
+      this.name = name;
+      this.src=src;
+    };
+
+    // Activates knockout.js
+    ko.applyBindings(new AppViewModel());

@@ -1,0 +1,33 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  include includes/news-tool-header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Indents Demo
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      .well
+        | This is with the well class: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+      div.call-out-text
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text-primary
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text-success
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text-info
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text-warning
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text.call-out-text-danger
+        | Style 2: 18 px margin (top and bottom), 15 px padding (all sides), background color light gray or active nav item color, border 1 px next darker gray, border radius 6 px . 90's farm-to-table brunch, messenger bag mumblecore kale chips pour-over jean shorts Truffaut dreamcatcher Marfa squid whatever.
+      div.call-out-text.call-out-text-bordered
+        | Style 3: border left 6 px color default, margin top and bottom 6 px, padding left (40-6) 34 px, padding right 40 px. Irony deep v authentic kale chips, stumptown Etsy American Apparel readymade salvia. Kickstarter vinyl Pinterest next level twee semiotics, locavore craft beer.
+block custom-js

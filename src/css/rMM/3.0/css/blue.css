@@ -1,0 +1,80 @@
+/*
+ Responsive Mega Menu, Blue Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.navbar-blue .dropdown-menu { border-color: #0088cc; }
+
+.navbar-blue .dropdown-menu li.nav-title { color: #0044cc; }
+
+.navbar-blue .dropdown-menu li.nav-title span.nav-title-description { color: #cccccc; }
+
+.navbar-blue { background-color: #006dcc; }
+
+.navbar-blue .navbar-brand { color: #eee; }
+
+.navbar-blue .nav > li > a { color: #fff; }
+
+.navbar-blue .nav > li > a:focus, .navbar-blue .nav > li > a:hover, .navbar-blue .navbar-brand:hover { color: #fff; }
+
+.navbar-blue .nav li.dropdown.open > .dropdown-toggle,
+.navbar-blue .nav li.dropdown.active > .dropdown-toggle,
+.navbar-blue .nav li.dropdown.open.active > .dropdown-toggle { background: #0044cc; color: #fff; }
+
+.navbar-blue .nav li.dropdown:hover > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-blue .nav li.dropdown > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.open a:hover .caret,
+.navbar-blue .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-blue .nav li.dropdown.open a:hover .caret,
+.navbar-blue .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-blue .dropdown-menu li a { color: #333; text-shadow: none; }
+
+.navbar-custom .dropdown-menu li a.btn { color: inherit; }
+
+.navbar-custom .dropdown-menu li a.btn:hover { color: white; padding-left: 0; }
+
+.navbar-custom .dropdown-menu li a.btn-default:hover { color: gray; }
+
+.navbar-blue .dropdown-menu .active > a,
+.navbar-blue .dropdown-menu li > a,
+.navbar-blue .dropdown-submenu > a { padding: 3px 0; }
+
+.navbar-blue .dropdown-menu li > a:hover,
+.navbar-blue .dropdown-menu li > a:focus,
+.navbar-blue .dropdown-submenu:hover > a { color: #006dcc; padding-left: 5px; }
+
+.navbar-blue .navbar-toggle .icon-bar { background-color: #002a80; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+.navbar-blue .navbar-toggle { background: #0088cc; border: 1px solid #0044cc; }
+
+.navbar-blue .navbar-toggle:hover, .navbar-blue .navbar-toggle:focus { background: #00aacc; }
+
+@media (max-width: 979px) {
+
+.navbar-blue p, .dropdown-menu li.nav-title span.nav-title-description { color: #fff; }
+
+.navbar-blue .nav-collapse .btn { color: #0044cc; }
+
+.navbar-blue .nav > li > a:hover { background: none; }
+
+.navbar-blue .nav a { color: #fff; }
+
+.navbar-blue .dropdown-menu li a { color: #eee; }
+
+.navbar-blue .dropdown-menu li > a:hover,
+.navbar-blue .dropdown-menu li > a:focus,
+.navbar-blue .dropdown-submenu:hover > a { color: #fff; background: none; padding-left: 3px; }
+
+.navbar-blue .navbar-collapse li.nav-title { color: #fff; border-bottom: 1px solid #0044cc; }
+
+}

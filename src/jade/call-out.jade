@@ -1,0 +1,64 @@
+extends includes/base
+block sidebar
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include includes/portal-breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Page Header
+        h2: small Sub header
+  .row.addon-row.addon-row-transparent.call-out-row
+    .col-sm-6.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-bullhorn.fa-2x
+          p Current election
+    .col-sm-6.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-group.fa-2x
+          p About Elections
+  .row.addon-row.addon-row-transparent.call-out-row
+    .col-sm-4.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-bullhorn.fa-2x
+          p Current election
+    .col-sm-4.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-group.fa-2x
+          p About Elections
+    .col-sm-4.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-bullhorn.fa-2x
+          p About Voting
+  .row.addon-row.addon-row-transparent.call-out-row
+    .col-sm-3.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-bullhorn.fa-2x
+          p Current election
+    .col-sm-3.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-group.fa-2x
+          p About Elections
+    .col-sm-3.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-bullhorn.fa-2x
+          p About Voting
+    .col-sm-3.call-out
+      .thumbnail
+        a(href="/elections/currentelections.aspx")
+          i.fa.fa-group.fa-2x
+          p About Stuff
+                

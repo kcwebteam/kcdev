@@ -1,0 +1,45 @@
+//KC-MAIN.LESS
+//Main content styles
+#mobile-bg {
+    width: 100%;
+}
+//Page header
+.page-header {
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: (@line-height-computed * 2) 0 @line-height-computed;
+  border-bottom: none;
+  margin-top:20px;
+  margin-bottom:0;
+}
+.page-header {
+    h1 {
+        font-size:  18px;
+        font-weight: (@font-weight-normal);
+        color:@page-title;
+        margin-bottom:0px;
+        margin-top:0;
+        @media screen and (min-width: @screen-sm-min){
+            font-size:  floor((@font-size-base * 2.6)); // ~28px
+        }
+    }
+    h2 {
+        margin:0; 
+        padding:0; 
+        font-size: 28px;
+        line-height:.9;
+        font-weight: 400;
+        @media screen and (min-width: @screen-sm-min){
+            font-size: 36px;
+            line-height:1.1;
+        }
+    }
+}
+//share-links
+.main-share-links{
+    background-color: transparent;
+    ul.list-inline {
+        li {
+            padding-bottom:10px;
+        }
+    }
+}

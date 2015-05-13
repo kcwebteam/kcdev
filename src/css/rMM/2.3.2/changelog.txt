@@ -1,0 +1,34 @@
+v1.3
+----
+
+- Changed HTML structure to use List for menus
+- Added option to show mobile menu collapsed or uncollapsed
+- Some CSS bug fixes for buttons
+- Separated responsive CSS to its own separate file
+- Added respnsiveness for 320px and below width
+- IE8 support for desktop menu (note: IE8 does not support responsiveness)
+
+
+v1.2
+----
+
+- Menu drop down on hover
+- Submenu for plain drop down menus
+
+v1.1
+----
+
+- Now supports up to 6 menus
+- 2 extra styles, Gradient and Fade In
+- Supports Search bar in navigation
+- Extra Google font choices available
+- 90% smaller JS and 20% ligher CSS
+
+
+v1.0 - Initial Release
+----------------------
+
+- Up to 5 menus supported
+- 5 styles
+- 5 colors
+- responsive video with Fitvid.js

@@ -1,0 +1,57 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block main-content
+  .row.addon-row.addon-row-attached(style="border-top: 6px solid #D77819")
+    .col-sm-12
+      .page-header
+        h1 404 File not found error
+  .row.addon-row.addon-row-attached
+    .col-sm-12.text-center(style='color:#A95E14')
+      img(src='img/404-error.gif')
+      p(style='font-size:4em; margin-top:-15px; font-weight:800; margin-bottom:0')
+        | Sorry
+      p(style='font-size:1.8em; font-weight:800')
+        | The page you are looking for cannot be found
+      br
+      br
+    .col-sm-6
+      p 
+        strong This might mean
+      ul
+        li The page was moved
+        li The page was deleted
+        li The URL was mistyped
+    .col-sm-6
+      p
+        | Check the URL, is it typed correctly? If so, try one of the options below to find what you are looking for.
+      p
+        | If you know the page should exist, you can report it missing with our 
+        a(href='http://info.kingcounty.gov/about/contact/') contact form
+        | .
+  .row.addon-row
+    .col-sm-4.text-center(style="padding-bottom:10px")
+      i.fa.fa-home.fa-4x.text-muted
+      br
+      h4
+        a(href='/') Go to the King County home page
+    .col-sm-4.text-center(style="padding-bottom:10px")
+      i.fa.fa-search.fa-4x.text-muted(style="padding-bottom:10px")
+      br
+      form.search-form(role='form', accept-charset='UTF-8', action='http://search.kingcounty.gov/search', method='get')
+        label.sr-only(for='query') Search kingcounty.gov
+        input(name='utf8', type='hidden', value='✓')
+        input#affiliate(name='affiliate', type='hidden', value='kingcounty')
+        input.usagov-search-autocomplete.ui-autocomplete-input.form-control(autocomplete='on', name='query', placeholder='Search Kingcounty.gov', type='search')
+        button.btn.btn-link.search-form-btn(type='submit')
+          i.fa.fa-search
+    .col-sm-4.text-center(style="padding-bottom:10px")
+      i.fa.fa-th-list.fa-4x.text-muted
+      br
+      h4
+        a(href='/services') See a list of King County services
+
+
+

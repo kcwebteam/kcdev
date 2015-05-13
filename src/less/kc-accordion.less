@@ -1,0 +1,77 @@
+.panel-accordion-primary{
+  &.panel {
+    border-top:none;
+    border-right:none;
+    border-left:none;
+  }
+  &>.panel-heading{
+    background-color: transparent;
+    padding-right:0;
+    padding-left:0;
+  }
+  .panel-title {
+    //font-variant:small-caps;
+    position:relative;
+    .fa-plus {
+      padding-right:15px;
+      position: absolute;
+      right:0;
+    }
+    .fa-plus:before {
+      content:"\f068";
+    }
+    .collapsed .fa-plus:before {
+      content:"\f067";
+    }
+    h4 {
+      font-weight: 700;
+    }
+  }
+  .panel-heading {
+    border-radius:0;
+    padding:0;
+    a {
+      color: @brand-primary;
+      font-weight: 800;
+      padding: 10px 15px;
+      //padding-left:0;
+      display:block;
+      //#gradient .horizontal(@start-color: #fff; @end-color:rgba(red(@brand-primary), green(@brand-primary), blue(@brand-primary),.45); @start-percent: 78%; @end-percent: 100%);
+      //background: -moz-linear-gradient(left,  rgba(30,87,153,0) 78%, rgba(30,87,153,0.05) 79%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+      //background: -webkit-linear-gradient(left,  rgba(30,87,153,0) 78%,rgba(30,87,153,0.05) 79%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+      //background: linear-gradient(to right,  rgba(30,87,153,0) 78%,rgba(30,87,153,0.05) 79%,rgba(125,185,232,1) 100%); /* W3C */
+      border-bottom: 3px solid @brand-primary;
+      &.collapsed {
+        font-weight: 600;
+        display:block;
+        background: none;
+        border-bottom: 1px solid #DDD;
+        color:@gray-dark;
+      }
+    }
+  }
+
+}
+.panel-group .panel.panel-accordion-primary+.panel.panel-accordion-primary, .panel-group .panel.panel-accordion-inverse+.panel.panel-accordion-inverse  {
+  margin-top:0;
+}
+.panel-group .panel.panel-accordion-primary, .panel-group .panel.panel-accordion-inverse {
+  border-radius:0;
+}
+.panel-default span.fa{
+  display:none;
+}
+.panel-accordion-inverse {
+  .panel-accordion-primary;
+    .panel-heading {
+    a {
+      color: @white;
+      font-weight: 700;
+      border-bottom: none;
+      background-color: @panel-inverse-heading-bg;
+      &.collapsed {
+        background-color: none;
+      }
+    }
+  }
+}

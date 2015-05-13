@@ -1,0 +1,95 @@
+//
+// KC Navs (Tabs panels)
+// --------------------------------------------------
+
+.nav-tabs {
+  border-bottom:none;
+  font-weight: 600;
+  
+  >li>a, &.nav-justified>li>a{
+    border:1px solid #ddd;//fix
+    border-bottom: @brand-primary 1px solid;
+    background-color: #EFEEE0;//fix
+  }
+  .dropdown-menu a {
+    border-bottom:none;
+  }
+  >li+li {
+    padding-left:5px;
+  }
+  >li.active::after {
+    font-family:FontAwesome;
+    content: "\f0d7";
+    font-size:20px;
+    position:absolute;
+    top:31px;
+    bottom:0;
+    right:45%;
+    color:@navigation-green;
+  }
+  >li.active>a,
+  >li.active>a:hover, 
+  >li.active>a:focus {
+    background-color: #FFFFFF;
+    border-bottom: #dddddd 1px solid;
+    border-top: @brand-primary 1px solid;
+    border-left: @brand-primary 1px solid;
+    border-right: @brand-primary 1px solid;
+  }
+  &.nav-justified > .active > a, 
+  &.nav-justified > .active > a:hover, 
+  &.nav-justified > .active > a:focus{
+    background-color: #FFFFFF;
+    border-bottom: #dddddd 1px solid;
+    border-top: @brand-primary 1px solid;
+    border-left: @brand-primary 1px solid;
+    border-right: @brand-primary 1px solid;
+  }
+  >li>a:hover {
+    border-bottom:none;
+  }
+   @media (@screen-sm-min) { 
+    > li {
+        float:none;
+    }
+    >li+li {
+      padding-left:0;
+    }
+    >li.active::after {
+      font-family:FontAwesome;
+      content: "";
+      font-size:20px;
+      position:absolute;
+      top:31px;
+      bottom:0;
+      right:41%;
+      color:@navigation-green;
+    }
+  }
+}
+
+.tab-pane {
+  padding:20px;
+  border: @brand-primary 1px solid;
+  border-radius: 0px 0px 4px 4px;
+}
+.nav.nav-tabs.nav-justified + .tab-content{
+  margin-top:-1px;
+}
+
+.nav-pills {
+  padding-bottom:6px;
+  font-weight: 600;
+  >li+li {
+    padding-left:6px;
+  }
+  >li>a{
+    border: 1px solid #DDD;
+  }
+  .dropdown-menu>li>a{
+    border-bottom:none;
+  } 
+}
+
+
+

@@ -1,0 +1,82 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  include includes/news-tool-header
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      header#nt-title
+        h1 2013 news archive
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      .news-feed.dated-news-feed
+        .media
+          .pull-left
+            .date-day 9
+            .date-month OCT
+          .media-body
+            a(href='#')
+              | King County Executive rips federal shutdown for halt to essential nutrition programs
+            p
+              | Advance layoff notices were sent this morning to 82 King County employees who provide essential nutrition services for Women, Infants and Children, as a consequence of the continuing federal shutdown.
+        .media
+          .pull-left
+            .date-day 8
+            .date-month OCT
+          .media-body
+            a(href='#')
+              | Inquest ordered into fatal police shooting of gunman at scene of four homicides in Federal Way
+            p
+              | King County Executive Dow Constantine today ordered an inquest into the fatal shooting of Dennis Clark III by Federal Way police on April 21, 2013.
+        .media
+          .pull-left
+            .date-day 4
+            .date-month SEP
+          .media-body
+            a(href='#')
+              | Executive Constantine enhances local services for unincorporated areas in 2014 proposed budget
+            p
+              | King County Executive Dow Constantine has proposed a 2014 Budget that enhances funding for a range of local services for residents of unincorporated King County – including public safety, parks, and the environment.
+        .media
+          .pull-left
+            .date-day 3
+            .date-month OCT
+          .media-body
+            a(href='#') Renton volunteers honored with Executive's Award for Community Preparedness
+            p
+              | Renton Emergency Communication Service praised for emergency readiness and response
+      //.pagination-wrapper
+      .row
+        .col-xs-3
+          ul.pagination
+            li.previous.disabled
+              a(href='#')
+                i.fa.fa-angle-double-left
+                | &nbsp;
+                span.hidden-xs more recent news
+        .col-xs-6.text-center
+          ul.pagination
+            li.active
+              a(href='#') 1
+            li
+              a(href='#') 2
+            li
+              a(href='#') 3
+            li
+              a(href='#') 4
+            li
+              a(href='#') 5
+        .col-xs-3
+          ul.pagination
+            li.next
+              a(href='#')
+                span.hidden-xs older news&nbsp;
+                i.fa.fa-angle-double-right

@@ -1,0 +1,53 @@
+extends includes/base
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block whichtheme
+  - var theme = 'default'
+block custom-style
+  style.
+    #hero-details{
+      /*color:#fff;*/
+      position:absolute;
+      right:0;
+      top:-37px;
+      opacity:0.9;
+    }
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Hero Details
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      // Button trigger modal
+      button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#myModal')
+        | Launch demo modal
+      // Modal
+      #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#myModalLabel.modal-title Modal title
+            .modal-body
+              img(src= rootPrefix +'img/hero-driftwood.jpg' style="padding-bottom: 10px;")
+              p 
+                | Author: Joe Photographer
+              p 
+                | Year: 2015
+              p 
+                | Name: Driftwood 
+              p 
+                | Details: Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+block custom-js

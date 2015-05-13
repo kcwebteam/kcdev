@@ -1,0 +1,33 @@
+{
+  "name": "Web Team Development",
+  "version": "0.0.0",
+  "authors": [
+    "King County Web Team <webteam@kingcounty.gov>"
+  ],
+  "main": "bower.json",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "fontawesome": "~4.3.0",
+    "tablesaw": "~1.0.4",
+    "jquery": "1.11.2",
+    "fitvids": "~1.1.0"
+  },
+  "exportsOverride": {
+    "fontawesome": {
+      "less": "less/*.less"
+    },
+    "bootstrap": {
+      "less": "less/*.less",
+      "less/mixins": "less/mixins/*.less",
+      "js": "dist/js/bootstrap.min.js"
+    }
+  }
+}

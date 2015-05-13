@@ -1,0 +1,16 @@
+#main-content
+  // MOBILE IMAGE IS OPTIONAL
+  img#mobile-bg.visible-xs.img-responsive.hidden-print(src='', alt='background image')
+  .container
+    a#main-content-sr
+    img#logo-img-print.visible-print(src= rootPrefix +'img/KClogo-horiz-black-lg.gif', alt='King County logo')
+    .row.row-offcanvas.row-offcanvas-left
+      block sidebar
+      //- Sets the flex div http://stackoverflow.com/questions/12646451/how-to-pass-variables-between-jade-templates
+      block isfullwidth 
+      div.col-sm-12(class='#{colSize}')
+        block breadcrumb
+        // PAGE CONTENT BEGINS HERE
+        block main-content 
+        include share-links
+        

@@ -1,0 +1,113 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Carousel
+      p
+          | The Web Team has created two slideshow types: 12 column (full-width) and 4 column. Each is optimized to work in desktop and mobile, including scaling of text. 
+      h2 12 column (full-width) example 
+      div(data-xrayhtml)
+        #kc-carousel-1.carousel.slide(data-ride='carousel')
+          // Indicators
+          ol.carousel-indicators
+            li.active(data-target='#kc-carousel-1', data-slide-to='0')
+            li(data-target='#kc-carousel-1', data-slide-to='1')
+            li(data-target='#kc-carousel-1', data-slide-to='2')
+          // Wrapper for slides
+          .carousel-inner
+            .item.active
+              a(href='http://www.kingcounty.gov')
+                img(src='http://placehold.it/845x469', alt='text')
+              // Carousel caption
+              .carousel-caption
+                h3
+                  a(href='http://www.google.com') This is the title #1
+            .item
+              a(href='http://www.kingcounty.gov')
+                img(src='http://placehold.it/845x469', alt='text')
+              // Carousel caption
+              .carousel-caption
+                h3
+                  a(href='http://www.google.com') This is the title #2
+            .item
+              a(href='http://www.kingcounty.gov')
+                img(src='http://placehold.it/845x469', alt='text')
+              // Carousel caption
+              .carousel-caption
+                h3
+                  a(href='http://www.google.com') This is the title #3
+          // Controls
+          a.left.carousel-control(href='#kc-carousel-1', data-slide='prev')
+            span.fa-stack
+              i.fa.fa-square.fa-stack-2x
+              i.fa.fa-chevron-left.fa-stack-1x
+          a.right.carousel-control(href='#kc-carousel-1', data-slide='next')
+            span.fa-stack
+              i.fa.fa-square.fa-stack-2x
+              i.fa.fa-chevron-right.fa-stack-1x
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      h2 4 column example 
+      div(data-xrayhtml)
+        .row
+          .col-sm-4
+            #kc-carousel-2.carousel-col-4.slide(data-ride='carousel')
+              // Indicators
+              ol.carousel-indicators
+                li.active(data-target='#kc-carousel-2', data-slide-to='0')
+                li(data-target='#kc-carousel-2', data-slide-to='1')
+                li(data-target='#kc-carousel-2', data-slide-to='2')
+              // Wrapper for slides
+              .carousel-inner
+                .item.active
+                  a(href='http://www.kingcounty.gov')
+                    img(src='http://placehold.it/845x469', alt='text')
+                  // Carousel caption
+                  .carousel-caption.carousel-caption-primary
+                    h3
+                      a(href='http://www.google.com') This is the title #1
+                .item
+                  a(href='http://www.kingcounty.gov')
+                    img(src='http://placehold.it/845x469', alt='text')
+                  // Carousel caption
+                  .carousel-caption.carousel-caption-primary
+                    h3
+                      a(href='http://www.google.com') This is the title #2
+                .item
+                  a(href='http://www.kingcounty.gov')
+                    img(src='http://placehold.it/845x469', alt='text')
+                  // Carousel caption
+                  .carousel-caption.carousel-caption-primary
+                    h3
+                      a(href='http://www.google.com') This is the title #3
+              // Controls
+              a.left.carousel-control(href='#kc-carousel-2', data-slide='prev')
+                span.fa-stack
+                  i.fa.fa-square.fa-stack-2x
+                  i.fa.fa-chevron-left.fa-stack-1x
+              a.right.carousel-control(href='#kc-carousel-2', data-slide='next')
+                span.fa-stack
+                  i.fa.fa-square.fa-stack-2x
+                  i.fa.fa-chevron-right.fa-stack-1x     
+
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+    });

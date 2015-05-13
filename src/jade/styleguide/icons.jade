@@ -1,0 +1,136 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Icons
+      h2 Fontawesome
+      p 
+        | Use  
+        a(href="http://fortawesome.github.io/Font-Awesome/") Font Awesome
+        |  to add icons to your pages. To use them add 
+        code .fa
+        |  class and then the class for the icon which is found at 
+        a(href="http://fortawesome.github.io/Font-Awesome/icons/") Font Awesome
+        | .
+      div(data-xrayhtml)
+        p
+          i.fa.fa-hand-o-right 
+          |  fa-hand-o-right
+        p
+          i.fa.fa-camera-retro 
+          |  fa-camera-retro 
+        p
+          i.fa.fa-paw 
+          |  fa-paw 
+        p
+          i.fa.fa-facebook 
+          |  fa-facebook
+      br
+      p Increase size of icons by using 
+        code fa-lg 
+        |  (33% increase), 
+        code fa-2x
+        |  , 
+        code fa-3x
+        |  , 
+        code fa-4x
+        |  , or 
+        code fa-5x 
+        |  classes.
+      p Sizes will increase relative to their container.
+      div(data-xrayhtml)
+        i.fa.fa-umbrella.fa-lg
+        | fa-lg
+        br 
+        i.fa.fa-umbrella.fa-2x
+        | fa-2x 
+        br
+        i.fa.fa-umbrella.fa-3x
+        | fa-3x 
+        br
+        i.fa.fa-umbrella.fa-4x
+        | fa-4x 
+        br
+        i.fa.fa-umbrella.fa-5x
+        | fa-5x
+      br
+      p
+        | To stack multiple icons, use the
+        code fa-stack
+        | class on the parent, the
+        code fa-stack-1x
+        | for the regularly sized icon, and
+        code fa-stack-2x
+        | for the larger icon.
+        code fa-inverse
+        | can be used as an alternative icon color. You can even throw larger icon
+        | classes on the parent
+        | to get further control of sizing.
+
+      div(data-xrayhtml)
+        span.fa-stack.fa-lg
+          i.fa.fa-square-o.fa-stack-2x
+          i.fa.fa-twitter.fa-stack-1x
+        | fa-twitter on fa-square-o
+        br
+        span.fa-stack.fa-lg
+          i.fa.fa-circle.fa-stack-2x
+          i.fa.fa-flag.fa-stack-1x.fa-inverse
+        | fa-flag on fa-circle
+        br
+        span.fa-stack.fa-lg
+          i.fa.fa-square.fa-stack-2x
+          i.fa.fa-terminal.fa-stack-1x.fa-inverse
+        | fa-terminal on fa-square
+        br
+        span.fa-stack.fa-lg
+          i.fa.fa-camera.fa-stack-1x
+          i.fa.fa-ban.fa-stack-2x.text-danger
+        | fa-ban on fa-camera
+      br
+      p
+        | Change color of by adding a class.
+      div(data-xrayhtml)
+        i.fa.fa-gavel.fa-5x.fa-color-default
+        |  .fa-color-default
+        br
+        i.fa.fa-gavel.fa-5x.fa-color-primary
+        |  .fa-color-primary
+        br
+        i.fa.fa-gavel.fa-5x.fa-color-success
+        |  .fa-color-success
+        br
+        i.fa.fa-gavel.fa-5x.fa-color-info
+        |  .fa-color-info
+        br
+        i.fa.fa-gavel.fa-5x.fa-color-warning
+        |  .fa-color-warning
+        br
+        i.fa.fa-gavel.fa-5x.fa-color-danger
+        |  .fa-color-danger
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+      $('#your-div-id').eventsCalendar({
+        calNum: "69gk-ky9a", //Socrata database number *Required
+        numItems: 4
+      });
+      $("#feed-div-id").deliciousNewsFeed({});
+     });

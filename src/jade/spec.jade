@@ -1,0 +1,140 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block sidebar
+  // SIDENAV
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Adoptable animals
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      fieldset
+        input(type="radio" id="speciesDog" name="category" value="dog") 
+        label(for="speciesDog") Dog
+        input(type="radio" id="speciesCat" name="category" value="cat") 
+        label(for="speciesCat") Cat
+        input(type="radio" id="speciesOther" name="category" value="other") 
+        label(for="speciesOther") Other
+  .row.addon-row.addon-row-attached
+    .col-sm-6
+      | Search for name: 
+      input#searchterm
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      #results
+
+block custom-js
+  script.
+    $(document).ready(function() {
+      var begin = '<div class="row">';
+      var end = '</div>';
+      var items_html = '';
+      var result_html = '';
+      var all_data;
+
+      var pet_image;
+
+      $.ajax({
+        url: 'http://data.kingcounty.gov/resource/yaai-7frk.json?$$app_token=5zjTtLIKVIjcujZtvtgIaKA74&record_type=FOUND&$order=date%20DESC', 
+        dataType: 'json',
+        jsonp: false,
+        success: parseData,
+        error: function () {
+          crossDomainAjax('http://data.kingcounty.gov/resource/yaai-7frk.json?$$app_token=5zjTtLIKVIjcujZtvtgIaKA74&record_type=LOST&$order=date%20DESC', parseData); 
+        }
+      });
+
+      function parseData(data) {
+        all_data = data;
+        updateList();
+      }
+
+      $('#searchterm').keyup(updateList);
+      $('input[name=category]').change(updateList);
+
+      function updateList() {
+        items_html = '';
+        result_html = '';
+        var text_input = $('#searchterm').val().toLowerCase().trim();
+        var category_input;
+        if($('input:radio[name=category]:checked').val() != undefined){
+          category_input = $('input:radio[name=category]:checked').val().toLowerCase();
+        }
+        else {
+          category_input = 'none';
+        }
+        $.each(all_data, function(i, item) {
+          try {
+            pet_image = '<img src="'+ item.image.url +'">';
+          }
+          catch(e){
+            pet_image = '<img src="http://placehold.it/350x150&text=Image+Missing">';
+          }
+          if (category_input != 'none') { //Show dog or cat
+            if(item.animal_name.toLowerCase().indexOf(text_input) >= 0 && item.animal_type.toLowerCase() == category_input) {
+              if(item.animal_name == 'undefined') {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<p>';
+                items_html += 'No name given';
+                items_html += '</p>';
+                items_html += '</div></div>';
+              }
+              else {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<li>';
+                items_html += item.animal_name;
+                items_html += pet_image;
+                items_html += '</li>';
+                items_html += '</div></div>';
+              }
+            }
+            else if (item.animal_name.toLowerCase().indexOf(text_input) >= 0 && (item.animal_type.toLowerCase() != "cat" && item.animal_type.toLowerCase() != "dog")) {
+              if(item.animal_name == 'undefined') {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<p>';
+                items_html += 'No name given';
+                items_html += '</p>';
+                items_html += '</div></div>';
+              }
+              else {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<p>';
+                items_html += item.animal_name;
+                items_html += pet_image;
+                items_html += '</p>';
+                items_html += '</div></div>';
+              }
+            }
+          }
+          else {//Show everything
+            if(item.animal_name.toLowerCase().indexOf(text_input) >= 0) {
+              if(item.animal_name == 'undefined') {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<p>';
+                items_html += 'No name given';
+                items_html += '</p>';
+                items_html += '</div></div>';
+              }
+              else {
+                items_html += '<div class="col-xs-4"><div class="thumbnail">';
+                items_html += '<p>';
+                items_html += item.animal_name;
+                items_html += pet_image;
+                items_html += '</p>';
+                items_html += '</div></div>';
+              }
+            }
+          }
+        });
+        result_html += begin + items_html + end;
+        $('#results').html(result_html);
+      }
+    });  
+     

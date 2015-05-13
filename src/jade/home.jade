@@ -1,0 +1,243 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block sidebar
+block breadcrumb
+block main-content
+  #kc-home-row.row
+    #kc-home-col-how-do-i.col-xs-12.col-sm-6.col-md-4
+      .floating-content-box.border-top
+        h2 How do I...
+        .portal-list
+          ul
+            li
+              a(title='Plan a bus trip', href='/tools/trip-planner.aspx') Plan a bus trip
+            li
+              a(href='/jobs.aspx') Get a job at King County
+            li
+              a(href='/tools/report-problem.aspx') Report a compliment, question or issue
+            li
+              a(href='/courts/Clerk/E-Filing.aspx', title='eFile Superior Court documents') eFile Superior Court documents
+            li
+              a(href='/operations/Finance/Treasury/PropertyTax.aspx', title='Pay your property tax') Pay your property tax
+            li
+              em
+                a(href='/how-do-i.aspx') More tasks
+    #kc-home-col-carousel.col-xs-12.col-sm-6.col-md-4
+      #kc-carousel.carousel.carousel-col-4.slide(data-ride='carousel')
+        // Indicators
+        ol.carousel-indicators
+          li.active(data-target='#kc-carousel', data-slide-to='0')
+          li(data-target='#kc-carousel', data-slide-to='1')
+          li(data-target='#kc-carousel', data-slide-to='2')
+        // Wrapper for slides
+        .carousel-inner
+          .item.carousel-news-item.active
+            //ul
+              //li
+                //a(href='http://www.google.com') King County closes Flood Warning Center as rain-swollen Tolt River recedes
+              //li
+                //a(href='http://www.google.com')
+                  //| King County Flood Warning Center opens as heavy rain brings minor flooding on Tolt River
+              //li
+                //a(href='http://www.google.com') Project to help protect public health, water quality in the Lower Duwamish River
+            //a(href='http://www.kingcounty.gov')
+              //img(src='img/rotator-gray.jpg', alt='text')
+            // Carousel caption
+            .carousel-caption
+              h3
+                a(href='http://www.google.com')
+                  | Latest News  
+                  i.fa.fa-chevron-right
+          .item
+            a(href='http://www.kingcounty.gov')
+              img(src='http://www.kingcounty.gov/~/media/home/Rotator/2014/3-kids-on-skates.ashx', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title This is the title This is the title This is the title
+          .item
+            a(href='http://www.kingcounty.gov')
+              img(src='http://www.kingcounty.gov/~/media/home/Rotator/2014/rotator-cat.ashx', alt='text')
+            // Carousel caption
+            .carousel-caption.carousel-caption-primary
+              h3
+                a(href='http://www.google.com') This is the title
+        // Controls
+        a.left.carousel-control(href='#kc-carousel', data-slide='prev')
+          span.fa-stack
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-left.fa-stack-1x
+        a.right.carousel-control(href='#kc-carousel', data-slide='next')
+          span.fa-stack
+            i.fa.fa-square.fa-stack-2x
+            i.fa.fa-chevron-right.fa-stack-1x
+    .clearfix.visible-sm.visible-xs
+    #kc-home-col-bus-elected.col-sm-12.col-md-4
+      .row
+        #kc-home-col-bus.col-sm-6.col-md-12
+          .floating-content-box.border-top
+            h2 Taking a bus?
+            form#find_route.form-inline(method='get', onsubmit='return OnSubmitBusForm();', name='find_route', xmlns:kc='http://www.sitecore.net/xhtml', role='form')
+              .input-group
+                label.sr-only(for="bus_route") Search Bus Routes
+                input#bus_route.form-control(type='text', placeholder='Route #', name='bus_route', maxlength='3')
+                .input-group-btn
+                  button#schedule_btn.btn.btn-primary(onclick='document.pressed=this.value', value='Schedule', name='schedule_btn', type='submit')
+                    i.fa.fa-search
+                    | Schedule
+                  button#map_btn.btn.btn-primary(onclick='document.pressed=this.value', value='Map', name='map_btn', type='submit')
+                    i.fa.fa-search
+                    | Map
+            ul.list-unstyled.list-inline
+              li
+                a(href='http://metro.kingcounty.gov/schedules/') Schedules
+                | ·
+              li
+                a(href='http://metro.kingcounty.gov/maps/') Maps
+                | ·
+              li
+                a(href='http://metro.kingcounty.gov/alerts/')
+                  i.fa.fa-warning
+                  | Alerts
+        #kc-home-col-elected.col-sm-6.col-md-12
+          .floating-content-box
+            #elected-title-row.row
+              .col-xs-6
+                a(style='padding-left:15px', href='/council') Dow Constantine
+              .col-xs-6
+                a(href='/elected/executive/constantine') County Council
+            #elected-img-row.row
+              .col-xs-2
+                a(href='/elected/executive/constantine')
+                  img(src='http://editqa.kingcounty.gov/~/media/home/elected/exec-test.ashx', alt='King County Executive Dow Constantine')
+              .col-xs-2
+                p.hidden-md
+                  a(href='/elected/executive/constantine') County Executive
+              .col-xs-8
+                a(href='/council')
+                  img(src='http://editqa.kingcounty.gov/~/media/home/elected/council-test.ashx', alt='King County Council')
+            .row
+              #kc-home-col-elected-bar.col-xs-12
+                p
+                  a(href='/elected') Get to know your elected officials
+  .row.addon-row.addon-row-transparent.addon-row-attached.full-width-row
+    .col-sm-6
+      .floating-content-box
+        .portal-list-light
+          h2
+            span.fa-stack
+              i.fa.fa-square.fa-stack-2x
+              i.fa.fa-hand-o-right.fa-stack-1x.fa-inverse
+            | &nbsp;Services
+          .row
+            .col-sm-6
+              ul
+                li
+                  a(title='Courts', href='/services/courts.aspx') Courts
+                li
+                  a(title='Environment', href='/services/environment.aspx') Environment
+                li
+                  a(title='Health', href='/services/health.aspx') Health
+                li
+                  a(title='Home & property', href='/services/home-property.aspx') Home & property
+                li
+                  a(title='Licenses, permits & records', href='/services/licenses-permits-records.aspx') Licenses, permits & records
+            .col-sm-6
+              ul
+                li
+                  a(title='Parks & recreation', href='/services/parks-recreation.aspx') Parks & recreation
+                li
+                  a(title='Police & safety', href='/services/police-safety.aspx') Police & safety
+                li
+                  a(title='Voting & elections', href='/services/voting-elections.aspx') Voting & elections
+                li
+                  a(title='Transporation & roads', href='/services/transportation-roads')
+    .col-sm-6
+      .floating-content-box
+        .row
+          .col-sm-9.col-md-10
+            #home-events
+          .col-sm-3.col-md-2.remove-link-underline
+            a(href='https://www.facebook.com/KingCountyWA')
+              i.fa.fa-facebook-square.fa-4x
+            a(href='http://www.twitter.com/kcnews')
+              i.fa.fa-twitter-square.fa-4x
+            a(href='http://www.flickr.com/photos/kingcounty')
+              i.fa.fa-flickr.fa-4x
+            a(href='http://feeds.delicious.com/v2/rss/KingCounty')
+              i.fa.fa-rss-square.fa-4x
+block custom-js
+  script.
+    //set the background image
+    $(window).on("resize", function(){chooseBG("!{rootPrefix}img/hero-driftwood-sm.jpg", "!{rootPrefix}img/hero-driftwood.jpg")}).resize();
+    //load calendar
+    $("#home-events").eventsCalendar({calNum: '69gk-ky9a'});
+    
+    /****
+    * Name: Mark B.
+    * Date: 9/1/2013
+    *****/
+    function OnSubmitBusForm()
+    {
+    if(document.pressed == 'Schedule')
+    {
+    document.find_route.action ="!{httpPrefix}//metro.kingcounty.gov/cftemplates/show_schedule.cfm";
+    }
+    else
+    if(document.pressed == 'Map')
+    {
+    document.find_route.action ="!{httpPrefix}//metro.kingcounty.gov/cftemplates/show_map7.cfm";
+    }
+    return true;
+    }
+    (function( $ ){
+
+      $.fn.deliciousNewsFeedHome = function( options ) {  
+        // Create some defaults, extending them with any options that were provided
+        var settings = $.extend( {
+          feedURL      : 'http://feeds.delicious.com/v2/json/kingcounty',
+          numItems     : 3,
+        }, options);
+
+        //Set global scope for instance
+        var $this = this,
+            output = ""
+
+        return this.each(function() {
+          var dataURL = settings.feedURL + '?count=' + settings.numItems;
+          $.ajax({
+            url: dataURL,
+            dataType: 'jsonp',
+            }).
+            success(function(data) {
+              parseData(data);
+            })
+        });
+          
+        function parseData(data) {
+          var counter = 0;
+          output += '<ul>';
+          $.each (data, function(i, item) {
+            //Start HTML string
+            if (item.d.split(': ')[1] === undefined) {
+              return;
+            }
+            var titleStr = item.d;
+            var titleParts = titleStr.split(': ');
+            var titleStrSub = titleParts[1];
+            //Get Event name
+            output += '<li>'
+            output +='<a href="'+item.u+'" title="'+ item.d +'">' + titleStrSub + '</a>';
+            //Wrap up
+            output+='</li>';
+          });
+          output+= '</ul>'
+          output+= '<a href="http://www.kingcounty.gov"><img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAhAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MSA2NC4xNDA5NDksIDIwMTAvMTIvMDctMTA6NTc6MDEgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQyQjk1M0UxMTY5RjExRTRBNkQxQUU5QjEyMkMxMTk5IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQyQjk1M0UyMTY5RjExRTRBNkQxQUU5QjEyMkMxMTk5Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDJCOTUzREYxNjlGMTFFNEE2RDFBRTlCMTIyQzExOTkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDJCOTUzRTAxNjlGMTFFNEE2RDFBRTlCMTIyQzExOTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAPCgoKCwoPCwsPFQ4MDhUZEw8PExkdFxcXFxcdHBYZGBgZFhwcISMkIyEcLCwvLywsQD8/P0BAQEBAQEBAQEBAARAODhASEBQRERQUDxIPFBgTFBQTGCMYGBoYGCMtIBwcHBwgLSgrJCQkKygxMS0tMTE+Pjs+PkBAQEBAQEBAQED/wAARCAJWAv8DASIAAhEBAxEB/8QATAABAQAAAAAAAAAAAAAAAAAAAAUBAQEAAAAAAAAAAAAAAAAAAAABEAEAAAAAAAAAAAAAAAAAAAAAEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCUAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" /></a>';
+          $this.append(output);
+        }
+      };
+    })( jQuery );
+    $(".carousel-news-item").deliciousNewsFeedHome({}); 

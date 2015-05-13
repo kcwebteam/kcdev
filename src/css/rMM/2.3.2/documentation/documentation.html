@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>responsive Mega Menu Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Description">
+        <meta name="author" content="Autor">
+    
+        <!-- loading the css -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+        <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+        
+		<style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+		
+		section {padding: 60px 0 0 0;}
+        </style>
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+    </head>
+    
+    <body data-spy="scroll" data-target=".navbar" id="top">
+    
+        <!-- ========================= NAVIGATION BAR >> START ========================= -->
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+					<a class="brand" href=" "><img src="img/logo.png" alt="responsive Mega Menu" /></a>
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#markup">Markup</a></li>
+                            <li><a href="#colors">Colors</a></li>
+                            <li><a href="#javascript">JavaScript</a></li>
+							<li><a href="#fonts">Fonts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========================= NAVIGATION BAR >> END ========================= -->
+    
+    
+    
+        <!-- ========================= MAIN CONTAINER >> START ========================= -->
+        <div class="container">
+        
+            <!-- ========================= SECTION: OVERVIEW >> START ========================= -->
+            <section id="overview">
+            
+                <div class="hero-unit">
+                    <h1><img src="img/big-logo.png" alt="responsive Mega Menu" /> Documentation</h1>
+                    <p>This file covers the basic HTML and CSS structure of the menu. Please read it carefully on how to implement and use it.</p>
+                    <p class="well well-small">Thank you for purchasing my file. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://codecanyon.net/user/Weborithm">here</a>. Thanks so much! <small>Please note, I do <strong>not</strong> provide customization services</small></p>
+                    <!-- <div class="row-fluid">
+                        <div class="span3"><a href="#nowhere" class="btn btn-primary btn-large btn-block">Item Support</a></div>
+                        <div class="span3"><a href="#nowhere" class="btn btn-inverse btn-large btn-block">Support Forum</a></div>
+                        <div class="span3"><a href="#changelog" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">Changelog</a></div>
+                        <div class="span3"><a href="#credits" role="button" class="btn btn-info btn-large btn-block" data-toggle="modal">Credits</a></div>
+                    </div> -->
+    
+                </div>
+                
+                <hr>
+                
+                <div class="row-fluid">
+                    <div class="span3">
+                        <table width="100%">
+                            <tr>
+                                <td>Author:</td>
+                                <td>Weborithm</td>
+                            </tr>
+                            <tr>
+                                <td>Contact:</td>
+                                <td><a href="http://codecanyon.net/user/Weborithm">via Codencanyon</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="span3">
+                        <table width="100%">
+                            <tr>
+                                <td>Author URL:</td>
+                                <td><a href="#nowhere">http://weborithm.com</a></td>
+                            </tr>
+                            <tr>
+                                <td>Item URL:</td>
+                                <td><a href="http://codecanyon.net/user/Weborithm">on Codecanyon</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="span3">
+                        <table width="100%">
+                            <tr>
+                                <td>Current Version:</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Documentation Version</td>
+                                <td>1.0</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="span3">
+                        <table width="100%">
+                            <tr>
+                                <td>Created:</td>
+                                <td>2012-10-23</td>
+                            </tr>
+                            <tr>
+                                <td>Modified:</td>
+                                <td>2012-10-23</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr>
+                
+            </section>
+            <!-- ========================= SECTION: OVERVIEW >> END ========================= -->
+
+
+          
+            <!-- ========================= SECTION: MARKUP >> START ========================= -->
+            <section id="markup">
+                <div class="page-header">
+                    <h1>Markup <small>Basic Mega Menu markup</small></h1>
+                </div>
+            
+                <p>The markup for the menu is very simple to implement, it does not depart from the default way Bootstrap itself has implemented their regular drop down menu.</p>
+            
+                <hr />
+				
+				<div class="row">
+                    <div class="span3">
+                        <h3>Base CSS and JS</h3>
+                        <p>The base CSS and JS files that need to be called are:</p>
+                    </div>
+            
+                    <div class="span9"> 
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;!-- Place these BEFORE the opening body tag --&gt;
+&lt;link href=&quot;css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/bootstrap-responsive.css&quot; rel="stylesheet&quot;&gt;
+&lt;!-- Mega Menu Style, you kinda really need Bootstrap in order for this to work --&gt;
+&lt;link href=&quot;css/mega-menu.css&quot; rel=&quot;stylesheet&quot;&gt;
+	
+&lt;!-- Place these BEFORE the closing body tag --&gt;
+&lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- If you would like responsive Videos --&gt;
+&lt;script src=&quot;js/fitvid.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+// Basic FitVids Test
+$(&quot;.container&quot;).fitVids();
+&lt;/script&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+            
+			<hr />
+			
+                <div class="row">
+                    <div class="span3">
+                        <h3>General Markup</h3>
+                        <p>The general template structure is the same throughout the template. Here is the general structure.</p>
+                    </div>
+            
+                    <div class="span9"> 
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner&quot;&gt;
+&lt;div class=&quot;container&quot;&gt;
+  
+&lt;a class=&quot;btn btn-navbar&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.nav-collapse&quot;&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;/a&gt;
+   
+&lt;div class=&quot;nav-collapse collapse&quot;&gt;
+    
+&lt;ul class=&quot;nav&quot;&gt;
+	
+&lt;li class=&quot;dropdown mega-menu-2&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Mega &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;
+ &lt;ul class=&quot;dropdown-menu&quot;&gt;
+
+  &lt;li class=&quot;one-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;This Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/li&gt;
+
+  &lt;li class=&quot;one-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;Is Optional&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;ul&gt;
+  &lt;/li&gt;
+
+ &lt;ul&gt;&lt;!-- .dropdown-menu --&gt;
+
+&lt;/li&gt;&lt;!-- .mega-menu-2 --&gt;
+
+&lt;/ul&gt;&lt;!-- .nav --&gt;
+
+&lt;/div&gt;&lt;!--.nav-collapse --&gt;
+
+&lt;/div&gt;&lt;!-- .container --&gt;
+&lt;/div&gt;&lt;!-- .navbar-inner --&gt;
+&lt;/div&gt;&lt;!-- .navbar --&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+            
+                <hr />
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>Add More Columns</h3>
+                        <p>To get more columns in your menu, adjust the CSS tag accordingly:</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;ul class=&quot;dropdown mega-menu-2&quot;&gt;
+&lt;ul class=&quot;dropdown mega-menu-3&quot;&gt;
+&lt;ul class=&quot;dropdown mega-menu-4&quot;&gt;
+&lt;ul class=&quot;dropdown mega-menu-5&quot;&gt;
+&lt;ul class=&quot;dropdown mega-menu-6&quot;&gt;
+  </pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				
+				<hr />
+				
+				<div class="row">
+                    <div class="span3">
+                        <h3>Expand Columns</h3>
+                        <p>You can expand columns to two, three, four or wide widths, here's how:</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;!-- Two column width menu --&gt;
+  &lt;li class=&quot;two-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;This Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/li&gt;
+
+&lt;!-- Three column width menu--&gt;
+  &lt;li class=&quot;three-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;This Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/li&gt;
+
+&lt;!-- Four column width menu --&gt;
+  &lt;li class=&quot;four-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;This Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/li&gt;
+
+&lt;!-- Five column width menu --&gt;
+  &lt;li class=&quot;five-column&quot;&gt;
+   &lt;ul&gt;
+    &lt;li class=&quot;nav-title&quot;&gt;This Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu Item&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/li&gt;
+  </pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+            
+                <hr />
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>Add Icons</h3>
+                        <p>Bootstrap offers icons by default, you can use them in your menu as shown. For a full list of supported icons, please look at <a href="http://twitter.github.com/bootstrap/base-css.html#icons">this page</a>:</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">&lt;i class=&quot;icon-plus-sign&quot;&gt;&lt;/i&gt; Title</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				
+				<hr />
+				
+				<div class="row">
+                    <div class="span3">
+                        <h3>Add Styles</h3>
+                        <p>You can change the styles of the drop down menu, by adding a simple CSS class.</p>
+						<p>Please refer to <code>style.htm</code> to see how it's implemented:</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;ul class=&quot;dropdown-menu style-plain&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-straight&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-bottom-round&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-transparent&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-background&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-gradient&quot;&gt;
+&lt;ul class=&quot;dropdown-menu style-fade-in&quot;&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				
+				<hr />
+				
+				<div class="row">
+                    <div class="span3">
+                        <h3>Misc. Markup</h3>
+                        <p>Other markup that will help you fine tune your Mega Menu.</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;!-- Align the drop down to the right --&gt;
+&lt;ul class=&quot;dropdown-menu pull-right&quot;&gt;
+
+&lt;!-- Automatically re-size images in menus, and give it rounded edges --&gt;
+&lt;li class=&quot;with-image&quot;&gt;&lt;img src=&quot;img/product.jpg&quot; alt=&quot;Cool Product&quot; class=&quot;img-rounded&quot; /&gt;&lt;/li&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				
+            </section>
+            <!-- ========================= SECTION: MARKUP >> END ========================= -->
+            
+
+
+            <!-- ========================= SECTION: STYLES >> START ========================= -->
+            <section id="colors">
+                <div class="page-header">
+                    <h1>Colors <small>CSS3 generated gradients</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>Color Styles</h3>
+                        <p>These CSS files should be called AFTER the <code>mega-menu.css</code> file.</p>
+						<p>Please refer to <code>colors.htm</code> to see how it's implemented:</p>
+                    </div>
+                
+                    <div class="span9">
+                    
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;link href=&quot;css/red.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/blue.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/teal.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/green.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/orange.css&quot; rel=&quot;stylesheet&quot;&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+                
+				<hr />
+				
+				<div class="row">
+                    <div class="span3">
+                        <h3>How To Use</h3>
+                        <p>Simply add any of the CSS classes to the specific div for your desired color choice:</p>
+                    </div>
+                
+                    <div class="span9">
+                    
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner nav-red&quot;&gt;
+
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner nav-blue&quot;&gt;
+
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner nav-teal&quot;&gt;
+
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner nav-green&quot;&gt;
+
+&lt;div class=&quot;navbar&quot;&gt;
+&lt;div class=&quot;navbar-inner nav-orange&quot;&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				
+            </section>
+            <!-- ========================= SECTION: STYLES >> END ========================= -->
+            
+            
+            
+            <!-- ========================= SECTION: JAVASCRIPT >> START ========================= -->
+            <section id="javascript">
+            
+                <div class="page-header">
+                    <h1>JavaScript <small>Essential JS</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>JavaScript Files</h3>
+                        <p>Dropdown menus in Bootstrap need jQuery to work, here's a list of the other essential JS files required for <strong><em>responsive</em> Mega Menu</strong>:</p>
+                    </div>
+                    <div class="span9">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tag</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>jquery.js</code></td>
+                                    <td>jQuery is a Javascript library that greatly reduces the amount of code that you must write (not included).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>bootstrap.min.js</code></td>
+                                    <td>The default JS file that comes with Bootstrap (included).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>fitvid.js</code></td>
+                                    <td>This JS file helps your videos become responsive within the menu (included)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </section>
+            <!-- ========================= SECTION: JAVASCRIPT >> END ========================= -->
+            
+            				<hr />
+			<section id="fonts">
+			
+			<div class="page-header">
+                    <h1>Fonts <small>via Google WebFonts</small></h1>
+                </div>
+				
+                <div class="row">
+                    <div class="span3">
+                        
+                        <p>rMM has built in support for 5 carefully selected Google font families, for your headings and text:</p>
+                    </div>
+                
+                    <div class="span9">
+
+<!-- Code Block >> Start -->                   
+<pre class="prettyprint linenums">
+&lt;!-- Simply uncomment whichever font family you want to use --&gt;
+</pre>
+<!-- Code Block >> End -->                   
+
+                    </div>
+                </div>
+				 </section>
+				 
+            <hr />
+
+            <footer>
+                <p>&copy; Weborithm 2012</p>
+            </footer>
+            
+        </div>
+        <!-- ========================= MAIN CONTAINER >> END ========================= -->
+         
+        
+        <!-- CHANGELOG >> START -->
+        <div class="modal hide fade" id="changelog" tabindex="-1" role="dialog" aria-labelledby="changelog-label" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="changelog-label">Changelog</h3>
+            </div>
+            <div class="modal-body">
+            
+<!-- Code Block >> Start -->                   
+<pre>Legend:
++   Addition
+^   Change
+-   Removed
+*   Security Fix
+#   Bug Fix
+!   Note</pre>
+<!-- Code Block >> End --> 
+                  
+<!-- Code Block >> Start -->                   
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+<!-- Code Block >> End -->                   
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        <!-- CHANGELOG >> END -->
+        
+        
+        
+        <!-- CREDITS >> START -->
+        <div class="modal hide fade" id="credits" tabindex="-1" role="dialog" aria-labelledby="credits-label" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="credits-label">Credits</h3>
+            </div>
+            <div class="modal-body">
+                <p>I've used the following images, icons or other files as listed.</p>
+                <h3>JavaScript</h3>
+                <ol>
+                    <li><a href="#">jQuery</a> <small>&mdash; Nullam quis risus eget urna mollis ornare vel eu leo. </small></li>
+                    <li><a href="#">jCarousel</a> <small>&mdash; Nullam quis risus eget urna mollis ornare vel eu leo. </small></li>
+                    <li><a href="#">CodeCanyon</a> <small>&mdash; Nullam quis risus eget urna mollis ornare vel eu leo. </small></li>
+                </ol>
+                <h3>CSS</h3>
+                <ol>
+                    <li><a href="#">960.gs</a> <small>&mdash; Nullam quis risus eget urna mollis ornare vel eu leo.</small> </li>
+                </ol>
+                <h3>Images</h3>
+                <ol>
+                    <li><a href="#">PhotoDune</a> <small>&mdash; Nullam quis risus eget urna mollis ornare vel eu leo. </small></li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        <!-- CREDITS >> END -->
+
+        <!-- loading javascripts -->
+		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/google-code-prettify/prettify.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+		!function ($) {
+			  $(function(){
+				$('.dropdown-toggle').dropdown()
+				$('.navbar').scrollspy()
+				$(".collapse").collapse()
+				// make code pretty
+				window.prettyPrint && prettyPrint()
+			})
+			}(window.jQuery)
+		</script>
+    </body>
+</html>

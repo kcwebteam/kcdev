@@ -1,0 +1,202 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-9'
+block sidebar
+  // SIDENAV
+  include includes/sidenav
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Page title - FAQ page
+        h2 
+          small this is small a subheader
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      div#accordion-faq.panel-group 
+        //div.panel.panel-faq
+        div.panel.panel-accordion-primary
+          div.panel-heading 
+            h4.panel-title 
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapseOne')
+                | 1. FAQ Question Example
+                span.fa.fa-plus.pull-right
+          div#collapseOne.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-primary
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapseTwo')
+                | 2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseTwo.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-primary
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapseThree')
+                | 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseThree.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-primary
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapse4')
+                | 4. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse4.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-accordion-primary
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapse5')
+                | 5. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse5.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-accordion-primary
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq', href='#collapse6')
+                | 6. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse6.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      div#accordion-faq2.panel-group 
+        //div.panel.panel-faq
+        div.panel.panel-accordion-inverse
+          div.panel-heading 
+            h4.panel-title 
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapseOne2')
+                | 1. FAQ Question Example
+                span.fa.fa-plus.pull-right
+          div#collapseOne2.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-inverse
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapseTwo2')
+                | 2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseTwo2.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-inverse
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapseThree2')
+                | 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseThree2.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-accordion-inverse
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapse42')
+                | 4. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse42.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-accordion-inverse
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapse52')
+                | 5. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse52.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-accordion-inverse
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq2', href='#collapse62')
+                | 6. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse62.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      div#accordion-faq3.panel-group 
+        div.panel.panel-default
+          div.panel-heading 
+            h4.panel-title 
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapseOne3')
+                | 1. FAQ Question Example
+                span.fa.fa-plus.pull-right
+          div#collapseOne3.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-default
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapseTwo3')
+                | 2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseTwo3.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-default
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapseThree3')
+                | 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapseThree3.panel-collapse.collapse
+            div.panel-body
+              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        div.panel.panel-default
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapse43')
+                | 4. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse43.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-default
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapse53')
+                | 5. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse53.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+        div.panel.panel-default
+          div.panel-heading
+            h4.panel-title
+              a.collapsed(data-toggle='collapse', data-parent='#accordion-faq3', href='#collapse63')
+                | 6. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                span.fa.fa-plus.pull-right
+          div#collapse63.panel-collapse.collapse
+            div.panel-body
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+block custom-js
+  script.
+    $(document).ready(function() {
+        var anchor = window.location.hash.replace('#', '');
+        $('#' + anchor).collapse('show');
+
+    });
+    $('.panel-heading panel-title a.collapsed').click(function (e) {
+      e.preventDefault();
+      window.location.hash = $(this).context.hash;
+    });

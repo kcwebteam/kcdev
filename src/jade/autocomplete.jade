@@ -1,0 +1,70 @@
+extends includes/base
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block custom-style
+  style.
+    #typeaheadInput{
+      position:relative;
+    }
+    #typeaheadResults{
+      position:absolute;
+      z-index: 1;
+      width:93%;
+    }
+block sidebar
+block breadcrumb
+  // BREADCRUMB
+  include includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      .page-header
+        h1 Autocomplete demo
+  .row.addon-row.addon-row-attached
+    .col-sm-12
+      form
+        .form-group
+          .input-group#typeaheadInput
+            input.form-control(type="text" placeholder="Search" disabled)
+            //span.input-group-btn
+              //button.btn.btn-default(type="button") Go
+        .form-group#typeaheadResults
+          ul.list-group
+block custom-js
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js")
+  script.
+    $.getJSON('https://data.kingcounty.gov/resource/fyug-m7sc.json', function(data){
+      loadTypeahead(data);
+    });
+
+    function loadTypeahead(data){
+      $input = $('#typeaheadInput input');
+      $results = $('#typeaheadResults');
+
+      $input.removeAttr('disabled');
+
+      $input.keyup(function() {
+          $results.html('');
+          var filteredData = _.filter(data, function(val){ 
+              if(val.task.toLowerCase().indexOf($input.val().toLowerCase()) > -1) {
+                return val;
+              }
+          });
+          $.each(filteredData, function(index, value){
+            $results.append(listItemTemplate(value.task,value.link));
+          });
+
+          $results.find('a').click(function() {
+            $input.val(this.innerHTML);
+            $results.html('');
+          });
+      });
+    }
+
+    function listItemTemplate(text,link){
+      var formatedLink;
+      formatedLink = '<a class="list-group-item" href="'+ link +'">'+ text +'</a>';
+      return formatedLink;
+    }

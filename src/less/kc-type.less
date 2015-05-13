@@ -1,0 +1,165 @@
+//KC-TYPE.LESS
+// Custom King County Typography
+// --------------------------------------------------
+
+// Headings
+// -------------------------
+h3 {
+    //font-weight: (@font-weight-normal);
+    //text-transform: uppercase;
+    font-weight: 600;
+    font-size:22px;
+    text-transform: none;
+    color:#231F20;
+}
+h4 {
+    //color:      (@headings-color-light);
+    font-weight: 800;
+    font-size: 18px;
+    color:#5A5956;
+}
+h5 {
+    //font-weight: (@headings-font-weight-xb);
+    font-weight: 700;
+    font-size: 16px;
+}
+h6 {
+    //font-weight: (@headings-font-weight-sb);
+    //color:      (@headings-color-light);
+    text-transform: uppercase;
+    font-weight:700; 
+    font-size:14px; 
+    color:#5A5956;
+}
+
+// Blockquotes
+blockquote:before {
+    font-family: FontAwesome;
+    display: block;  
+    content: "\f10d";
+    float: left;
+    padding-right: 10px;
+    font-size: 4em;
+    line-height: 1; 
+    color:@gray-lighter;
+}
+blockquote {
+  padding-left: 0;
+  border-left: none;
+  p,
+  ul,
+  ol {
+    margin-left: 80px;
+    font-size: 1em;
+    &:last-child {
+        margin-bottom: 0;
+    }
+  }
+
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    padding:0;
+    margin:6px;
+    color:@gray;
+    font-style:italic;
+    margin-left: 80px;
+    &:before {
+      content: '';
+    }
+  }
+}
+
+
+// Opposite alignment of blockquote
+//
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
+.blockquote-reverse,
+blockquote.pull-right {
+  margin-left: 10px;
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    font-style:italic;
+    &:before { content: ''; }
+    &:after {
+      content: ''; 
+    }
+  }
+}
+
+//Greys
+.gray-darker {
+  color: @gray-darker;
+}
+.gray-dark{
+  color: @gray-dark;
+}
+.gray {
+  color: @gray;
+}
+.gray-light {
+  color: @gray-light;
+}
+.gray-lighter {
+  color: @gray-lighter;
+}
+
+.text-primary {
+  .text-emphasis-variant(@brand-primary);
+}
+.text-success {
+  .text-emphasis-variant(@brand-success);
+}
+.text-info {
+  .text-emphasis-variant(@brand-info);
+}
+.text-warning {
+  .text-emphasis-variant(@brand-warning);
+}
+.text-danger {
+  .text-emphasis-variant(@brand-danger);
+}
+.text-default {
+  .text-emphasis-variant(@brand-default);
+}
+.text-inverse {
+  .text-emphasis-variant(@brand-inverse);
+}
+
+// Contextual backgrounds
+.bg-warning {
+  .bg-variant(lighten(@state-warning-bg,60));
+}
+.bg-danger {
+  .bg-variant(lighten(@state-danger-bg,56));
+}
+
+//Font Awesome colors
+.@{fa-css-prefix}-color-default { 
+  color: @brand-default; 
+}
+.@{fa-css-prefix}-color-primary { 
+  color: @brand-primary; 
+}
+.@{fa-css-prefix}-color-success { 
+  color: @brand-success; 
+}
+.@{fa-css-prefix}-color-info { 
+  color: @brand-info; 
+}
+.@{fa-css-prefix}-color-warning { 
+  color: @brand-warning; 
+}
+.@{fa-css-prefix}-color-danger { 
+  color: @brand-danger; 
+}

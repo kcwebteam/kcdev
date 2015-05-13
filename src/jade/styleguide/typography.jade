@@ -1,0 +1,352 @@
+extends ../includes/base
+block custom-style
+    link(href="css/X-rayHTML.css" rel="stylesheet" type="text/css")
+block whichtheme
+  - var theme = 'default'
+block isfullwidth
+  - var colSize = 'col-md-12'
+block breadcrumb
+  // BREADCRUMB
+  include ../includes/breadcrumb
+block main-content
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h1 Typography
+      h2 Headings
+      p
+        | All HTML headings,
+        code &lt;h1&gt;
+        | through
+        code &lt;h6&gt;
+        | , are available.
+        code .h1
+        | through
+        code .h6
+        | classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+      
+      div(data-xrayhtml)
+        h1 h1. Bootstrap heading
+        h2 h2. Bootstrap heading
+        h3 h3. Bootstrap heading
+        h4 h4. Bootstrap heading
+        h5 h5. Bootstrap heading
+        h6 h6. Bootstrap heading
+      br
+      p
+        | Create lighter, secondary text in any heading with a generic 
+        code &lt;small&gt; 
+        | tag. or the 
+        code .small
+        | class.
+      div(data-xrayhtml)
+        <h1>h1. Bootstrap heading <small>Secondary text</small></h1>
+        <h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+        <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+        <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+        <h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+        <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+      br
+      h2 Body copy
+      p
+        | King County's global default
+        code font-size 
+        | is 
+        strong 14px
+        | , with a
+        code line-height 
+        | of 
+        strong 20px
+        | . This is applied to the
+        code &lt;body&gt;
+        | and all paragraphs. The font family used is 
+        a(href="http://www.google.com/fonts/specimen/Open+Sans") Open Sans
+
+      div(data-xrayhtml)
+        p 
+          | Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+          | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+          | Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+      br
+      h3 Lead body copy
+      p
+        | Make a paragraph stand out by adding
+        code .lead
+        | . 
+
+      div(data-xrayhtml)
+        p.lead
+         | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+      br
+      h2 Emphasis
+      p Make use of HTML's default emphasis tags with lightweight styles.
+      h3 Small text
+      p
+        | For de-emphasizing inline or blocks of text, use the
+        code &lt;small&gt;
+        | tag to set text at 85% the size of the parent. Heading elements receive their own
+        code font-size
+        | for nested
+        code &lt;small&gt;
+        | elements.
+      p
+        | You may alternatively use an inline element with
+        code .small
+        | in place of any
+        code &lt;small&gt;
+        | .
+      div(data-xrayhtml)
+        small 
+          | This line of text is meant to be treated as fine print.
+      br
+      h3 Bold
+      p For emphasizing a snippet of text with a heavier font-weight.
+      div(data-xrayhtml)
+        p The following snippet of text is 
+          strong rendered as bold text.
+      br
+      h3 Italics
+      p For emphasizing a snippet of text with italics.
+      div(data-xrayhtml)
+        p The following snippet of text is rendered as italicized text.
+          em rendered as italicized text.
+      br
+      h2 Alignment classes
+      p Easily realign text to components with text alignment classes
+      div(data-xrayhtml)
+        p.text-left Left align text.
+        p.text-center Center aligned text.
+        p.text-right Right aligned text.
+        p.text-justify Justified text.
+      br
+      h2 Blockquotes
+      p For quoting blocks of content from another source within your document.
+      h3 Default blockquote
+      p Wrap 
+        code blockquote 
+        | around any HTML as the quote. For straight quotes, we recommend a 
+        code &lt;p&gt;
+        |.
+      div(data-xrayhtml)
+        blockquote Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante
+
+      h3 Default blockquote with source
+      p Naming a source
+      p Add a 
+        code &lt;footer&gt; 
+        | for identifying the source. Wrap the name of the source work in 
+        code &lt;cite&gt;
+        | .
+      div(data-xrayhtml)
+        blockquote
+          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+          footer Someone famous in 
+            cite(title="Source Title") Source Title
+      br
+      p Add 
+        code .blockquote-reverse 
+        | for a blockquote with right-aligned content. 
+      div(data-xrayhtml)
+        blockquote.blockquote-reverse
+          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+          footer Someone famous in 
+            cite(title="Source Title") Source Title
+      br
+      h2 Lists
+      h3 Unordered
+      p A list of items in which the order does not explicitly matter.
+      div(data-xrayhtml)
+        ul
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li
+            ul
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      h3 Ordered
+      p A list of items in which the order does explicitly matter.
+      div(data-xrayhtml)
+        ol
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li
+            ol
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      h3 Unstyled
+      p Remove the default 
+        code list-style 
+        | and left margin on list items (immediate children only). This only applies to immediate children list items, meaning you will need to add the class for any nested lists as well.
+      div(data-xrayhtml)
+        ul.list-unstyled
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li
+            ul
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      h3 Inline
+      p Place all list items on a single line with some light padding. 
+      div(data-xrayhtml)
+        ul.list-inline
+          li Lorem ipsum
+          li Phasellus iaculis
+          li Nulla volutpat
+
+      h3 Portal list
+      p 
+        | List stying for displaying important group of links. As seen on 
+        a(href="http://www.kingcounty.gov/services.aspx") service portal pages.
+        | Wrap list in
+        code &lt;div&gt;
+        | with class
+        code .portal-list
+      p
+        | Use 
+        code &lt;h2&gt;
+        | or add 
+        code .portal-list-title
+        | to first 
+        code li 
+        | to add styling for title.
+      div(data-xrayhtml)
+        .row
+          .col-md-6
+            .portal-list
+              h2
+                | List title
+              ul
+                li 
+                  a(href="#") Lorem ipsum
+                li
+                  a(href="#") Phasellus iaculis
+                li
+                  a(href="#") Nulla volutpat
+          .col-md-6
+            .portal-list
+              ul
+                li.portal-list-title Lorem ipsum
+                li
+                  a(href="#") Phasellus iaculis
+                li
+                  a(href="#") Nulla volutpat
+      br 
+      p 
+        |  Use 
+        a(href="http://fortawesome.github.io/Font-Awesome/examples/") font awesome icon-stack
+        |  to add an icon to title.
+      div(data-xrayhtml)
+        .portal-list
+          h2
+            span.icon-stack.fa-stack
+              i.icon-sign-blank.icon-stack-base.fa.fa-square.fa-stack-2x
+              i.icon-hand-right.icon-light.fa.fa-hand-o-right.fa-stack-1x.fa-inverse
+            | List title
+          ul
+            li 
+              a(href="#") Lorem ipsum
+            li
+              a(href="#") Phasellus iaculis
+            li
+              a(href="#") Nulla volutpat
+      h3 Portal list light
+      p 
+        | Alternate styling with lighter
+        code &lt;h2&gt; 
+        | title.
+      div(data-xrayhtml)
+        .portal-list-light
+          h2
+            span.icon-stack.fa-stack
+              i.icon-sign-blank.icon-stack-base.fa.fa-square.fa-stack-2x
+              i.icon-hand-right.icon-light.fa.fa-hand-o-right.fa-stack-1x.fa-inverse
+            | List title
+          ul
+            li 
+              a(href="#") Lorem ipsum
+            li
+              a(href="#") Phasellus iaculis
+            li
+              a(href="#") Nulla volutpat
+  .row.addon-row.addon-row-attached
+    .col-xs-12
+      h2 Buttons
+      h3 Options
+      p Use any of the available button classes to quickly create a styled button.
+      div(data-xrayhtml)
+        button.btn.btn-default(type='button') Default
+        // Provides extra visual weight and identifies the primary action in a set of buttons
+        button.btn.btn-primary(type='button') Primary
+        // Indicates a successful or positive action
+        button.btn.btn-success(type='button') Success
+        // Contextual button for informational alert messages
+        button.btn.btn-info(type='button') Info
+        // Indicates caution should be taken with this action
+        button.btn.btn-warning(type='button') Warning
+        // Indicates a dangerous or potentially negative action
+        button.btn.btn-danger(type='button') Danger
+        // Deemphasize a button by making it look like a link while maintaining button behavior
+        button.btn.btn-link(type='button') Link
+      h3 Sizes
+      p Add 
+        code .btn-lg 
+        |  , 
+        code .btn-sm
+        |  , or 
+        code .btn-xs
+        |  for additional sizes.
+      div(data-xrayhtml)
+        p
+          button.btn.btn-primary.btn-lg(type='button') Large button
+          button.btn.btn-default.btn-lg(type='button') Large button
+        p
+          button.btn.btn-primary(type='button') Default button
+          button.btn.btn-default(type='button') Default button
+        p
+          button.btn.btn-primary.btn-sm(type='button') Small button
+          button.btn.btn-default.btn-sm(type='button') Small button
+        p
+          button.btn.btn-primary.btn-xs(type='button') Extra small button
+          button.btn.btn-default.btn-xs(type='button') Extra small button
+      br
+      p 
+        | Create block level buttons—those that span the full width of a parent— by adding 
+        code .btn-block
+        | .
+      div(data-xrayhtml)
+        div.well(style='max-width: 400px; margin: 0 auto 10px;')
+          button.btn.btn-primary.btn-lg.btn-block(type='button') Block level button
+          button.btn.btn-default.btn-lg.btn-block(type='button') Block level button
+      h3 Anchor tag buttons
+      p
+        | Use the button classes on an 
+        code &lt;a&gt;
+        |  tag to create anchor tags that behave like buttons.
+      div(data-xrayhtml)
+        a.btn.btn-default(href="#" role="button") Link 
+        | &nbsp
+        a.btn.btn-primary(href="#" role="button") Link
+        | &nbsp
+        a.btn.btn-danger(href="#" role="button") Link 
+        | &nbsp
+        a.btn.btn-success(href="#" role="button") Link 
+block custom-js
+  script(type='text/javascript', src="js/x-rayHTML.js")
+  script.
+    $( document ).ready(function() {
+      $('<a class="btn btn-primary">Show code</a>').insertBefore( ".snippet" );
+      $('.xrayhtml a.btn.btn-primary').click(function(){
+        $(this).text(function(i, text){
+            return text === "Show code" ? "Hide code" : "Show code";
+          });
+        $(this).parent().find(".source-panel").collapse('toggle');
+      });
+     });

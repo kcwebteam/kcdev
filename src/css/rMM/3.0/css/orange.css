@@ -1,0 +1,78 @@
+/*
+ Responsive Mega Menu, Orange Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.navbar-orange .dropdown-menu { border-color: #fbb450; }
+
+.navbar-orange .dropdown-menu li.nav-title { color: #f89406; }
+
+.navbar-orange .dropdown-menu li.nav-title span.nav-title-description { color: #cccccc; }
+
+.navbar-orange { background-color: #faa732; }
+
+.navbar-orange .navbar-brand { color: #ad6704; }
+
+.navbar-orange .nav > li > a { color: #fff; }
+
+.navbar-orange .nav > li > a:focus, .navbar-orange .nav > li > a:hover, .navbar-orange .navbar-brand:hover { color: #fff; }
+
+.navbar-orange .nav li.dropdown.open > .dropdown-toggle,
+.navbar-orange .nav li.dropdown.active > .dropdown-toggle,
+.navbar-orange .nav li.dropdown.open.active > .dropdown-toggle { background: #f89406; color: #fff; }
+
+.navbar-orange .nav li.dropdown:hover > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-orange .nav li.dropdown > .dropdown-toggle .caret,
+.navbar-orange .nav li.dropdown.open a:hover .caret,
+.navbar-orange .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-orange .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-orange .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-orange .nav li.dropdown.open a:hover .caret,
+.navbar-orange .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-orange.nav li.dropdown.open.active > .dropdown-toggle .caret { border-top-color: #fff; }
+
+.navbar-orange .dropdown-menu li a { color: #333; text-shadow: none; }
+
+.navbar-orange .dropdown-menu li a.btn { color: inherit; }
+
+.navbar-orange .dropdown-menu li a.btn:hover { color: white; padding-left: 0; }
+
+.navbar-orange .dropdown-menu li a.btn-default:hover { color: gray; }
+
+.navbar-orange .dropdown-menu .active > a,
+.navbar-orange .dropdown-menu li > a,
+.navbar-orange .dropdown-submenu > a { padding: 3px 0; }
+
+.navbar-orange .dropdown-menu li > a:hover,
+.navbar-orange .dropdown-menu li > a:focus,
+.navbar-orange .dropdown-submenu:hover > a { color: #faa732; padding-left: 5px; }
+
+.navbar-orange .navbar-toggle .icon-bar { background-color: #ad6704; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+.navbar-orange .navbar-toggle { background: #faa732; border: 1px solid #f89406; }
+
+.navbar-orange .navbar-toggle:hover, .navbar-orange .navbar-toggle:focus { background: #fbb450; }
+
+@media (max-width: 979px) {
+
+.navbar-orange p, .dropdown-menu li.nav-title span.nav-title-description { color: #fff; }
+
+.navbar-orange .nav-collapse .btn { color: #f89406; }
+
+.navbar-orange .nav > li > a:hover { background: none; }
+
+.navbar-orange .nav a { color: #fff; }
+
+.navbar-orange .dropdown-menu li > a:hover,
+.navbar-orange .dropdown-menu li > a:focus,
+.navbar-orange .dropdown-submenu:hover > a { color: #fff; background: none; padding-left: 3px; }
+
+.navbar-orange .navbar-collapse li.nav-title { color: #fff; border-bottom: 1px solid #f89406; }
+
+}
