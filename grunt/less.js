@@ -22,6 +22,9 @@ module.exports = {
       paths: ['<%= src %>/src/less'],
       cleancss: false,
       compress: false,
+      modifyVars: {
+        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts"'
+      }
     },
     files: {
       '<%= tfs%>/css/kc-theme-default.css': '<%= src %>/less/kc-theme-default.less',

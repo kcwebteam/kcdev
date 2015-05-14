@@ -32,7 +32,7 @@ var addThis = function($) {
         addClickEvent('a#email-share-button', 'email');
         addClickPrintEvent('a#print-share-button');
     }
-
+    
     return {
         init: init
     };

@@ -12,14 +12,15 @@ module.exports = {
     },
     files: {
       '<%= src %>/js/vendor/kc-formValidation.js':
-      ['<%= src %>/js/vendor/form-validator/dist/js/formValidation.js',
-      '<%= src %>/js/vendor/form-validator/dist/js/framework/bootstrap.js'],
+      ['<%= src %>/js/scripts/form-validator/dist/js/formValidation.js',
+      '<%= src %>/js/scripts/form-validator/dist/js/framework/bootstrap.js'],
       '<%= public %>/js/main.js':
       ['<%= src %>/js/lib/*.js',
       '!<%= src %>/js/lib/dept-footer-map.js',
       '<%= src %>/js/vendor/site-improve.js',
       '<%= src %>/js/vendor/fitvids.min.js',
-      '<%= src %>/js/vendor/scrollToFixed.min.js'],
+      '<%= src %>/js/vendor/scrollToFixed.min.js',
+      '<%= src %>/js/vendor/responsive-tabs.js'],
     },
   },
   tfs: {
@@ -36,6 +37,7 @@ module.exports = {
     files: {
       '<%= tfs %>/js/main.js':
       ['<%= src %>/js/lib/*.js',
+      '!<%= src %>/js/lib/dept-footer-map.js',
       '<%= src %>/js/vendor/site-improve.js',
       '<%= src %>/js/vendor/fitvids.min.js',
       '<%= src %>/js/vendor/scrollToFixed.min.js'],
