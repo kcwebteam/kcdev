@@ -42,7 +42,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'styles',
     'Compiles the stylesheets',
-    [ 'concat:development','replace:development', 'copy:dev-js', 'uglify:development']
+    [ 'less:development', 'autoprefixer:development', 'copy:dev-css']
   );
   grunt.registerTask(
     'bower-install',
