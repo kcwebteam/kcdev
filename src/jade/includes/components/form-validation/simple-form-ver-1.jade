@@ -1,0 +1,126 @@
+h2 Simple form
+form#simpleForm
+  .form-group
+    label(for='userName') Your name
+    input#userName.form-control(type='text' placeholder='Name' name='userName')
+  .form-group
+    label.sr-only(for='userEmail') Email
+    .input-group
+      span.input-group-addon 
+        i.fa.fa-envelope
+        |  Email
+      input#userEmail.form-control(type='text' placeholder='example@example.com' name='userEmail')
+  .form-group
+    label(for='address') Address
+    input#address.form-control(type='text' placeholder='address' name='address')
+  .row
+    .col-sm-6
+      .form-group
+        label(for='city') City
+        input#city.form-control(type='text' placeholder='City' name='city')
+    .col-sm-6
+      .form-group
+        label(for='state') State
+        select#state.form-control(name='state')
+          option(value='') State
+          option(value='AL') AL
+          option(value='AK') AK
+          option(value='AZ') AZ
+          option(value='AR') AR
+          option(value='CA') CA
+          option(value='CO') CO
+          option(value='CT') CT
+          option(value='DE') DE
+          option(value='DC') DC
+          option(value='FL') FL
+          option(value='GA') GA
+          option(value='HI') HI
+          option(value='ID') ID
+          option(value='IL') IL
+          option(value='IN') IN
+          option(value='IA') IA
+          option(value='KS') KS
+          option(value='KY') KY
+          option(value='LA') LA
+          option(value='ME') ME
+          option(value='MD') MD
+          option(value='MA') MA
+          option(value='MI') MI
+          option(value='MN') MN
+          option(value='MS') MS
+          option(value='MO') MO
+          option(value='MT') MT
+          option(value='NE') NE
+          option(value='NV') NV
+          option(value='NH') NH
+          option(value='NJ') NJ
+          option(value='NM') NM
+          option(value='NY') NY
+          option(value='NC') NC
+          option(value='ND') ND
+          option(value='OH') OH
+          option(value='OK') OK
+          option(value='OR') OR
+          option(value='PA') PA
+          option(value='RI') RI
+          option(value='SC') SC
+          option(value='SD') SD
+          option(value='TN') TN
+          option(value='TX') TX
+          option(value='UT') UT
+          option(value='VT') VT
+          option(value='VA') VA
+          option(value='WA') WA
+          option(value='WV') WV
+          option(value='WI') WI
+          option(value='WY') WY
+  .row
+    .col-sm-6
+      .form-group
+        label.sr-only(for='zip')
+        select#zip.form-control(name='zip')
+          option(value='') Zip
+          option(value='123456') 123456
+          option(value='123456') 123456
+          option(value='123456') 123456
+          option(value='123456') 123456
+          option(value='123456') 123456
+    .col-sm-6
+      .form-group
+        label.sr-only(for='phone')
+        .input-group
+          span.input-group-addon 
+            i.fa.fa-phone
+            |  Phone
+          input#phone.form-control(type='tel' placeholder='206-555-5555' name="phone")
+  .form-group
+    label(for="radioList") Choose one of these: 
+      a(tabindex='0' data-toggle='popover' data-placement='right' data-content='Tell us what your choice is.' data-trigger="focus")
+        .fa.fa-lg.fa-question-circle
+    .radio
+      label
+        input(type='radio' name='radioList' value='Choice1')
+        | Choice 1
+    .radio
+      label
+        input(type='radio' name='radioList' value='Choice2')
+        | Choice 2
+    .radio
+      label
+        input(type='radio' name='radioList' value='Choice3')
+        | Choice 3
+    .radio
+      label
+        input(type='radio' name='radioList' value='Choice4')
+        | Choice 4
+  .form-group      
+    label(for="gender") Gender: 
+    br
+    label.radio-inline
+      input(type='radio' name='gender' value='male')
+      | Male
+    label.radio-inline
+      input(type='radio' name='gender' value='female')
+      | Female
+  <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+  button.btn.btn-primary(type='submit') Submit

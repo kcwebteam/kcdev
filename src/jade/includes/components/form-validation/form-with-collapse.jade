@@ -1,0 +1,11 @@
+h2 Form with collapse
+form#simpleForm4
+  .collapse#collapseDisclaimer
+    .call-out-text.call-out-text-info When you purchase something from our store, as part of the buying and selling process, we collect the personal information you give us such as your name, address and email address. When you browse our store, we also automatically receive your computer’s internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.        
+  a(data-toggle="collapse" href="#collapseDisclaimer" aria-expanded="false" aria-controls="collapseDisclaimer") Terms and conditions
+  .form-group     
+    .checkbox
+      label(for='disclaimer')
+        input(type='checkbox', value='disclaimerRead' name="disclaimer")
+        | I have read the obligatory disclaimer and would like to move on now.
+  button.btn.btn-primary(type='submit') Submit
