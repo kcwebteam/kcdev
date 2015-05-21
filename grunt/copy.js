@@ -19,6 +19,42 @@ module.exports = {
       dest: '<%= public %>/css/styles/formValidation.min.css'
     }]
   },
+  'git-kcdev':{
+    files: [{
+      expand: true,
+      cwd: 'grunt/',
+      src: ['**'],
+      dest: '<%= git %>/kcdev/grunt/'
+    },
+    {
+      expand: true,
+      cwd: '<%= src %>/less/',
+      src: ['**'],
+      dest: '<%= git %>/kcdev/src/less/'
+    },
+    {
+      expand: true,
+      cwd: '<%= src %>/js/',
+      src: ['**'],
+      dest: '<%= git %>/kcdev/src/js/'
+    },
+    {
+      expand: true,
+      cwd: '<%= src %>/jade/includes/',
+      src: ['**'],
+      dest: '<%= git %>/kcdev/src/jade/includes/'
+    },
+    {
+      expand: true,
+      cwd: '<%= src %>/jade/',
+      src: ['theme-*.jade'],
+      dest: '<%= git %>/kcdev/src/jade/'
+    },
+    {
+      src: '<%= src %>/jade/index.jade',
+      dest: '<%= git %>/kcdev/src/jade/index.jade'
+    }]
+  },
   'tfs-js':{
     files: [{
       src: '<%= src %>/js/vendor/kc-analytics.js',
