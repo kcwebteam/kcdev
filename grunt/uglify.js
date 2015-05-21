@@ -1,16 +1,23 @@
 module.exports = {
-  options: {
-    banner: '/*\n'+
-            ' * Author: King County Web Team\n' +
-            ' * Date: <%= grunt.template.today("yyyy-mm-dd") %> \n'+
-            ' * Description: King County JS file\n'+
-            ' *\/\n'
-  },
   development: {
-    files: {
-      '<%= public %>/js/main.js': ['<%= public %>/js/main.js'],
-      '<%= public %>/js/vendor/kc-formValidation.min.js': ['<%= public %>/js/vendor/kc-formValidation.min.js']
-    }
+    files: [
+      {
+        src: '<%= src %>/js/vendor/bootstrap.min.js',
+        dest: '<%= public %>/js/vendor/bootstrap.min.js'
+      },
+      {
+        src: '<%= src %>/js/vendor/jquery.min.js',
+        dest: '<%= public %>/js/vendor/jquery.min.js'
+      },
+      {
+        src: '<%= src %>/js/vendor/kc-analytics.js',
+        dest: '<%= public %>/js/vendor/kc-analytics.js'
+      },
+      {
+        src: '<%= src %>/js/vendor/modernizr-latest.js',
+        dest: '<%= public %>/js/vendor/modernizr-latest.js'
+      }
+    ]
   },
   tfs: {
     files: {

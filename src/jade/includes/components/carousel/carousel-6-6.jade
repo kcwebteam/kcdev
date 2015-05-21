@@ -1,0 +1,38 @@
+#kc-carousel-6-6.carousel.carousel-col-4.slide(data-ride='carousel')
+  // Indicators
+  ol.carousel-indicators
+    li.active(data-target='#kc-carousel-6-6', data-slide-to='0')
+    li(data-target='#kc-carousel-6-6', data-slide-to='1')
+    li(data-target='#kc-carousel-6-6', data-slide-to='2')
+  // Wrapper for slides
+  .carousel-inner
+    .item.active
+      a(href='http://www.kingcounty.gov')
+        img(src='img/carousel-cat.jpg', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com') Slide 1
+    .item
+      a(href='http://www.kingcounty.gov')
+        img(src='img/carousel-people.jpg', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com') Slide 2
+    .item
+      a(href='http://www.kingcounty.gov')
+        img(src='img/carousel-poppies.jpg', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com') Slide 3
+  // Controls
+  a.left.carousel-control(href='#kc-carousel-6-6', data-slide='prev')
+    span.fa-stack.fa-lg
+      i.fa.fa-square.fa-stack-2x
+      i.fa.fa-chevron-left.fa-stack-1x
+  a.right.carousel-control(href='#kc-carousel-6-6', data-slide='next')
+    span.fa-stack.fa-lg
+      i.fa.fa-square.fa-stack-2x
+      i.fa.fa-chevron-right.fa-stack-1x

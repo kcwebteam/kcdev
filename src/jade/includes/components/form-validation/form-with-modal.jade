@@ -1,0 +1,35 @@
+h2 Form with Modal
+form#simpleForm3
+  a(href="#myModal" data-toggle="modal" data-target="#myModal") Terms and conditions
+  .checkbox
+    label
+      input(type='checkbox', value='disclaimerRead')
+      | I have read the obligatory disclaimer and would like to move on now.
+  button.btn.btn-primary(type='submit') Submit
+  h2 Another Another form
+  form#simpleForm4
+  .collapse#collapseDisclaimer
+    .call-out-text.call-out-text-info When you purchase something from our store, as part of the buying and selling process, we collect the personal information you give us such as your name, address and email address. When you browse our store, we also automatically receive your computer’s internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.        
+  a(data-toggle="collapse" href="#collapseDisclaimer" aria-expanded="false" aria-controls="collapseDisclaimer") Terms and conditions
+  .form-group     
+    .checkbox
+      label(for='disclaimer')
+        input(type='checkbox', value='disclaimerRead' name="disclaimer")
+        | I have read the obligatory disclaimer and would like to move on now.
+  button.btn.btn-primary(type='submit') Submit
+// Modal
+#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', aria-describedby='Terms of service description')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title TERMS OF SERVICE
+      .modal-body
+        p 
+        p OVERVIEW
+        p This website is operated by Shopify. Throughout the site, the terms “we”, “us” and “our” refer to Shopify. Shopify offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+        p By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply  to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content.
+
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Close

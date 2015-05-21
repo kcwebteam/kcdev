@@ -1,6 +1,6 @@
 {
   "name": "Web Team Development",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "King County Web Team <webteam@kingcounty.gov>"
   ],
@@ -16,18 +16,22 @@
   "dependencies": {
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
-    "tablesaw": "~1.0.4",
     "jquery": "1.11.2",
-    "fitvids": "~1.1.0"
+    "fitvids": "~1.1.0",
+    "yamm3": "~1.1.0",
+    "ScrollToFixed": "~1.0.6"
   },
   "exportsOverride": {
     "fontawesome": {
       "less": "less/*.less"
     },
     "bootstrap": {
-      "less": "less/*.less",
+      "less": "less/.css*",
       "less/mixins": "less/mixins/*.less",
       "js": "dist/js/bootstrap.min.js"
+    },
+    "yamm3": {
+      "": "yamm/*.less"
     }
   }
 }

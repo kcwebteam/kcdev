@@ -1,0 +1,48 @@
+#kc-carousel-news.carousel.carousel-col-4.slide(data-ride='carousel')
+  // Indicators
+  ol.carousel-indicators
+    li.active(data-target='#kc-carousel-news', data-slide-to='0')
+    li(data-target='#kc-carousel-news', data-slide-to='1')
+    li(data-target='#kc-carousel-news', data-slide-to='2')
+  // Wrapper for slides
+  .carousel-inner
+    .item.carousel-news-item.active
+      ul
+        li
+          a(href='http://www.google.com') King County closes Flood Warning Center as rain-swollen Tolt River recedes
+        li
+          a(href='http://www.google.com')
+            | King County Flood Warning Center opens as heavy rain brings minor flooding on Tolt River
+        li
+          a(href='http://www.google.com') Project to help protect public health, water quality in the Lower Duwamish River
+      a(href='http://www.kingcounty.gov')
+        img(src='http://placehold.it/845x469', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com')
+            | Latest News
+            i.fa.fa-chevron-right
+    .item
+      a(href='http://www.kingcounty.gov')
+        img(src='img/carousel-poppies.jpg', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com') Slide 2
+    .item
+      a(href='http://www.kingcounty.gov')
+        img(src='img/carousel-people.jpg', alt='text')
+      // Carousel caption
+      .carousel-caption
+        h3
+          a(href='http://www.google.com') Slide 3
+  // Controls
+  a.left.carousel-control(href='#kc-carousel-news', data-slide='prev')
+    span.fa-stack.fa-lg
+      i.fa.fa-square.fa-stack-2x
+      i.fa.fa-chevron-left.fa-stack-1x
+  a.right.carousel-control(href='#kc-carousel-news', data-slide='next')
+    span.fa-stack.fa-lg
+      i.fa.fa-square.fa-stack-2x
+      i.fa.fa-chevron-right.fa-stack-1x
