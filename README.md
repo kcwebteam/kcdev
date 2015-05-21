@@ -10,7 +10,7 @@ Package Installation
 -----------
 Enter these commands from terminal after creating a development folder. This package uses the [grunt](http://gruntjs.com/) task manger to perform most tasks.
 
-* Clone pkg at [https://github.com/aragonwa/kcdev.git]
+* Clone pkg at (https://github.com/aragonwa/kcdev.git)
 ```
 git clone https://github.com/aragonwa/kcdev.git
 ```
