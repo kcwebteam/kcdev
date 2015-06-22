@@ -22,9 +22,6 @@
 
         /**
          * Validate an ISIN (International Securities Identification Number)
-         * Examples:
-         * - Valid: US0378331005, AU0000XVGZA3, GB0002634946
-         * - Invalid: US0378331004, AA0000XVGZA3
          *
          * @see http://en.wikipedia.org/wiki/International_Securities_Identifying_Number
          * @param {FormValidation.Base} validator The validator plugin instance

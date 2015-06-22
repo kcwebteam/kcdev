@@ -27,7 +27,7 @@
  *
  * Use formValidation(.min).js file if you want to have all validators.
  *
- * @version     v0.6.2, built on 2015-04-02 7:24:05 AM
+ * @version     v0.6.3, built on 2015-05-31 10:06:42 PM
  * @author      https://twitter.com/formvalidation
  * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
@@ -83,14 +83,14 @@ if (typeof jQuery === 'undefined') {
         // IE 9 supports input event but the event is still not fired if I press the backspace key.
         // Get IE version
         // https://gist.github.com/padolsey/527683/#comment-7595
-        var ieVersion = (function() {
+        this._ieVersion = (function() {
             var v = 3, div = document.createElement('div'), a = div.all || [];
             while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]) {}
             return v > 4 ? v : !v;
         }());
 
         var el = document.createElement('div');
-        this._changeEvent = (ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
+        this._changeEvent = (this._ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
 
         // The flag to indicate that the form is ready to submit when a remote/callback validator returns
         this._submitIfValid = null;
@@ -145,6 +145,7 @@ if (typeof jQuery === 'undefined') {
                     },
                     events: {
                         formInit:         this.$form.attr('data-' + ns + '-events-form-init'),
+                        formPreValidate:  this.$form.attr('data-' + ns + '-events-form-prevalidate'),
                         formError:        this.$form.attr('data-' + ns + '-events-form-error'),
                         formSuccess:      this.$form.attr('data-' + ns + '-events-form-success'),
                         fieldAdded:       this.$form.attr('data-' + ns + '-events-field-added'),
@@ -168,6 +169,7 @@ if (typeof jQuery === 'undefined') {
                     live:          this.$form.attr('data-' + ns + '-live'),
                     locale:        this.$form.attr('data-' + ns + '-locale'),
                     message:       this.$form.attr('data-' + ns + '-message'),
+                    onPreValidate: this.$form.attr('data-' + ns + '-onprevalidate'),
                     onError:       this.$form.attr('data-' + ns + '-onerror'),
                     onSuccess:     this.$form.attr('data-' + ns + '-onsuccess'),
                     row: {
@@ -290,6 +292,11 @@ if (typeof jQuery === 'undefined') {
             });
 
             // Prepare the events
+            if (this.options.onPreValidate) {
+                this.$form.on(this.options.events.formPreValidate, function(e) {
+                    FormValidation.Helper.call(that.options.onPreValidate, [e]);
+                });
+            }
             if (this.options.onSuccess) {
                 this.$form.on(this.options.events.formSuccess, function(e) {
                     FormValidation.Helper.call(that.options.onSuccess, [e]);
@@ -565,9 +572,13 @@ if (typeof jQuery === 'undefined') {
                 return trigger;
             }
 
+            // IE10/11 auto fires input event of elements using the placeholder attribute
+            // https://connect.microsoft.com/IE/feedback/details/856700/
             var type  = $field.attr('type'),
                 name  = $field.attr('data-' + ns + '-field'),
-                event = ('radio' === type || 'checkbox' === type || 'file' === type || 'SELECT' === $field.get(0).tagName) ? 'change' : this._changeEvent;
+                event = ('radio' === type || 'checkbox' === type || 'file' === type || 'SELECT' === $field.get(0).tagName)
+                        ? 'change'
+                        : (this._ieVersion >= 10 && $field.attr('placeholder') ? 'keyup' : this._changeEvent);
             trigger   = ((this.options.fields[name] ? this.options.fields[name].trigger : null) || this.options.trigger || event).split(' ');
 
             // Since the trigger data is used many times, I need to cache it to use later
@@ -1472,10 +1483,10 @@ if (typeof jQuery === 'undefined') {
                         if ($icon) {
                             $icon.removeClass(this.options.icon.invalid).removeClass(this.options.icon.validating).removeClass(this.options.icon.valid);
                             if (status === this.STATUS_VALID || numIgnored !== $allErrors.length) {
-                                $icon.addClass(isValidField === null
-                                                ? ''
-                                                : (isValidField ? this.options.icon.valid : (isValidating ? this.options.icon.validating : this.options.icon.invalid)))
-                                    .show();
+                                $icon.addClass(isValidating
+                                                ? this.options.icon.validating
+                                                : (isValidField === null ? '' : (isValidField ? this.options.icon.valid : this.options.icon.invalid)))
+                                     .show();
                             }
                         }
 
@@ -1534,8 +1545,9 @@ if (typeof jQuery === 'undefined') {
                 this._submit();
                 return this;
             }
-            this.disableSubmitButtons(true);
+            this.$form.trigger($.Event(this.options.events.formPreValidate));
 
+            this.disableSubmitButtons(true);
             this._submitIfValid = false;
             for (var field in this.options.fields) {
                 this.validateField(field);
@@ -2227,6 +2239,7 @@ if (typeof jQuery === 'undefined') {
         events: {
             // Support backward
             formInit: 'init.form.fv',
+            formPreValidate: 'prevalidate.form.fv',
             formError: 'err.form.fv',
             formSuccess: 'success.form.fv',
             fieldAdded: 'added.field.fv',
@@ -3200,6 +3213,7 @@ if (typeof jQuery === 'undefined') {
 
             return {
                 valid: valid,
+                date: date,
                 message: message
             };
         },
@@ -4162,7 +4176,7 @@ if (typeof jQuery === 'undefined') {
 
             // Support dynamic data
             if ('function' === typeof data) {
-                data = data.call(this, validator);
+                data = data.call(this, validator, $field, value);
             }
 
             // Parse string data from HTML5 attribute
@@ -4172,7 +4186,7 @@ if (typeof jQuery === 'undefined') {
 
             // Support dynamic url
             if ('function' === typeof url) {
-                url = url.call(this, validator);
+                url = url.call(this, validator, $field, value);
             }
 
             data[options.name || name] = value;

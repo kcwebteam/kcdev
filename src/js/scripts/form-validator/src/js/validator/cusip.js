@@ -18,9 +18,6 @@
     FormValidation.Validator.cusip = {
         /**
          * Validate a CUSIP number
-         * Examples:
-         * - Valid: 037833100, 931142103, 14149YAR8, 126650BG6
-         * - Invalid: 31430F200, 022615AC2
          *
          * @see http://en.wikipedia.org/wiki/CUSIP
          * @param {FormValidation.Base} validator The validator plugin instance

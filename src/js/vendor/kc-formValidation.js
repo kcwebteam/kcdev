@@ -1,13 +1,13 @@
 /*
  * Author: King County Web Team
- * Date: 2015-05-18 
+ * Date: 2015-06-22 
  * Description: King County JS file
  */
 /*!
  * FormValidation (http://formvalidation.io)
  * The best jQuery plugin to validate form fields. Support Bootstrap, Foundation, Pure, SemanticUI, UIKit and custom frameworks
  *
- * @version     v0.6.2, built on 2015-04-02 7:24:05 AM
+ * @version     v0.6.3, built on 2015-05-31 10:06:42 PM
  * @author      https://twitter.com/formvalidation
  * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
@@ -63,14 +63,14 @@ if (typeof jQuery === 'undefined') {
         // IE 9 supports input event but the event is still not fired if I press the backspace key.
         // Get IE version
         // https://gist.github.com/padolsey/527683/#comment-7595
-        var ieVersion = (function() {
+        this._ieVersion = (function() {
             var v = 3, div = document.createElement('div'), a = div.all || [];
             while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]) {}
             return v > 4 ? v : !v;
         }());
 
         var el = document.createElement('div');
-        this._changeEvent = (ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
+        this._changeEvent = (this._ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
 
         // The flag to indicate that the form is ready to submit when a remote/callback validator returns
         this._submitIfValid = null;
@@ -125,6 +125,7 @@ if (typeof jQuery === 'undefined') {
                     },
                     events: {
                         formInit:         this.$form.attr('data-' + ns + '-events-form-init'),
+                        formPreValidate:  this.$form.attr('data-' + ns + '-events-form-prevalidate'),
                         formError:        this.$form.attr('data-' + ns + '-events-form-error'),
                         formSuccess:      this.$form.attr('data-' + ns + '-events-form-success'),
                         fieldAdded:       this.$form.attr('data-' + ns + '-events-field-added'),
@@ -148,6 +149,7 @@ if (typeof jQuery === 'undefined') {
                     live:          this.$form.attr('data-' + ns + '-live'),
                     locale:        this.$form.attr('data-' + ns + '-locale'),
                     message:       this.$form.attr('data-' + ns + '-message'),
+                    onPreValidate: this.$form.attr('data-' + ns + '-onprevalidate'),
                     onError:       this.$form.attr('data-' + ns + '-onerror'),
                     onSuccess:     this.$form.attr('data-' + ns + '-onsuccess'),
                     row: {
@@ -270,6 +272,11 @@ if (typeof jQuery === 'undefined') {
             });
 
             // Prepare the events
+            if (this.options.onPreValidate) {
+                this.$form.on(this.options.events.formPreValidate, function(e) {
+                    FormValidation.Helper.call(that.options.onPreValidate, [e]);
+                });
+            }
             if (this.options.onSuccess) {
                 this.$form.on(this.options.events.formSuccess, function(e) {
                     FormValidation.Helper.call(that.options.onSuccess, [e]);
@@ -545,9 +552,13 @@ if (typeof jQuery === 'undefined') {
                 return trigger;
             }
 
+            // IE10/11 auto fires input event of elements using the placeholder attribute
+            // https://connect.microsoft.com/IE/feedback/details/856700/
             var type  = $field.attr('type'),
                 name  = $field.attr('data-' + ns + '-field'),
-                event = ('radio' === type || 'checkbox' === type || 'file' === type || 'SELECT' === $field.get(0).tagName) ? 'change' : this._changeEvent;
+                event = ('radio' === type || 'checkbox' === type || 'file' === type || 'SELECT' === $field.get(0).tagName)
+                        ? 'change'
+                        : (this._ieVersion >= 10 && $field.attr('placeholder') ? 'keyup' : this._changeEvent);
             trigger   = ((this.options.fields[name] ? this.options.fields[name].trigger : null) || this.options.trigger || event).split(' ');
 
             // Since the trigger data is used many times, I need to cache it to use later
@@ -1452,10 +1463,10 @@ if (typeof jQuery === 'undefined') {
                         if ($icon) {
                             $icon.removeClass(this.options.icon.invalid).removeClass(this.options.icon.validating).removeClass(this.options.icon.valid);
                             if (status === this.STATUS_VALID || numIgnored !== $allErrors.length) {
-                                $icon.addClass(isValidField === null
-                                                ? ''
-                                                : (isValidField ? this.options.icon.valid : (isValidating ? this.options.icon.validating : this.options.icon.invalid)))
-                                    .show();
+                                $icon.addClass(isValidating
+                                                ? this.options.icon.validating
+                                                : (isValidField === null ? '' : (isValidField ? this.options.icon.valid : this.options.icon.invalid)))
+                                     .show();
                             }
                         }
 
@@ -1514,8 +1525,9 @@ if (typeof jQuery === 'undefined') {
                 this._submit();
                 return this;
             }
-            this.disableSubmitButtons(true);
+            this.$form.trigger($.Event(this.options.events.formPreValidate));
 
+            this.disableSubmitButtons(true);
             this._submitIfValid = false;
             for (var field in this.options.fields) {
                 this.validateField(field);
@@ -2207,6 +2219,7 @@ if (typeof jQuery === 'undefined') {
         events: {
             // Support backward
             formInit: 'init.form.fv',
+            formPreValidate: 'prevalidate.form.fv',
             formError: 'err.form.fv',
             formSuccess: 'success.form.fv',
             fieldAdded: 'added.field.fv',
@@ -3047,9 +3060,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.cusip = {
         /**
          * Validate a CUSIP number
-         * Examples:
-         * - Valid: 037833100, 931142103, 14149YAR8, 126650BG6
-         * - Invalid: 31430F200, 022615AC2
          *
          * @see http://en.wikipedia.org/wiki/CUSIP
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -3483,6 +3493,7 @@ if (typeof jQuery === 'undefined') {
 
             return {
                 valid: valid,
+                date: date,
                 message: message
             };
         },
@@ -3737,9 +3748,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.ean = {
         /**
          * Validate EAN (International Article Number)
-         * Examples:
-         * - Valid: 73513537, 9780471117094, 4006381333931
-         * - Invalid: 73513536
          *
          * @see http://en.wikipedia.org/wiki/European_Article_Number
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -4103,9 +4111,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.grid = {
         /**
          * Validate GRId (Global Release Identifier)
-         * Examples:
-         * - Valid: A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M
-         * - Invalid: A1-2425G-ABC1234002-Q
          *
          * @see http://en.wikipedia.org/wiki/Global_Release_Identifier
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -4618,9 +4623,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Bulgarian national identification number (EGN)
-         * Examples:
-         * - Valid: 7523169263, 8032056031, 803205 603 1, 8001010008, 7501020018, 7552010005, 7542011030
-         * - Invalid: 8019010008
          *
          * @see http://en.wikipedia.org/wiki/Uniform_civil_number
          * @param {String} value The ID
@@ -4658,9 +4660,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Brazilian national identification number (CPF)
-         * Examples:
-         * - Valid: 39053344705, 390.533.447-05, 111.444.777-35
-         * - Invalid: 231.002.999-00
          *
          * @see http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
          * @param {String} value The ID
@@ -4699,8 +4698,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Swiss Social Security Number (AHV-Nr/No AVS)
-         * Examples:
-         * - Valid: 756.1234.5678.95, 7561234567895
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Switzerland
          * @see http://www.bsv.admin.ch/themen/ahv/00011/02185/index.html?lang=de
@@ -4724,8 +4721,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Chilean national identification number (RUN/RUT)
-         * Examples:
-         * - Valid: 76086428-5, 22060449-7, 12531909-2
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Chile
          * @see https://palena.sii.cl/cvc/dte/ee_empresas_emisoras.html for samples
@@ -5292,9 +5287,6 @@ if (typeof jQuery === 'undefined') {
         
         /**
          * Validate Czech national identification number (RC)
-         * Examples:
-         * - Valid: 7103192745, 991231123
-         * - Invalid: 1103492745, 590312123
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -5335,9 +5327,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Danish Personal Identification number (CPR)
-         * Examples:
-         * - Valid: 2110625629, 211062-5629
-         * - Invalid: 511062-5629
          *
          * @see https://en.wikipedia.org/wiki/Personal_identification_number_(Denmark)
          * @param {String} value The ID
@@ -5370,8 +5359,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Estonian Personal Identification Code (isikukood)
-         * Examples:
-         * - Valid: 37605030299
          *
          * @see http://et.wikipedia.org/wiki/Isikukood
          * @param {String} value The ID
@@ -5384,18 +5371,7 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Spanish personal identity code (DNI)
-         * Support i) DNI (for Spanish citizens), ii) NIE (for foreign people)
-         * and iii) CIF (for legal entities)
-         *
-         * Examples:
-         * - Valid:
-         *      i) 54362315K, 54362315-K
-         *      ii) X2482300W, X-2482300W, X-2482300-W
-         *      iii) A58818501, A-58818501
-         * - Invalid:
-         *      i) 54362315Z
-         *      ii) X-2482300A
-         *      iii) K58818501, G58818507
+         * Support DNI (for Spanish citizens), NIE (for foreign people) and CIF (for legal entities)
          *
          * @see https://en.wikipedia.org/wiki/National_identification_number#Spain
          * @param {String} value The ID
@@ -5465,9 +5441,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Finnish Personal Identity Code (HETU)
-         * Examples:
-         * - Valid: 311280-888Y, 131052-308T
-         * - Invalid: 131052-308U, 310252-308Y
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -5501,9 +5474,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Croatian personal identification number (OIB)
-         * Examples:
-         * - Valid: 33392005961
-         * - Invalid: 33392005962
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -5517,9 +5487,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Irish Personal Public Service Number (PPS)
-         * Examples:
-         * - Valid: 6433435F, 6433435FT, 6433435FW, 6433435OA, 6433435IH, 1234567TW, 1234567FA
-         * - Invalid: 6433435E, 6433435VH
          *
          * @see https://en.wikipedia.org/wiki/Personal_Public_Service_Number
          * @param {String} value The ID
@@ -5555,10 +5522,8 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Iceland national identification number (Kennitala)
-         * Examples:
-         * - Valid: 120174-3399, 1201743399, 0902862349
          *
-         * @see http://en.wikipedia.org/wiki/Kennitala
+         *  @see http://en.wikipedia.org/wiki/Kennitala
          * @param {String} value The ID
          * @returns {Boolean}
          */
@@ -5588,9 +5553,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Lithuanian Personal Code (Asmens kodas)
-         * Examples:
-         * - Valid: 38703181745
-         * - Invalid: 38703181746, 78703181745, 38703421745
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Lithuania
          * @see http://www.adomas.org/midi2007/pcode.html
@@ -5637,9 +5599,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Latvian Personal Code (Personas kods)
-         * Examples:
-         * - Valid: 161175-19997, 16117519997
-         * - Invalid: 161375-19997
          *
          * @see http://laacz.lv/2006/11/25/pk-parbaudes-algoritms/
          * @param {String} value The ID
@@ -5672,16 +5631,17 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Dutch national identification number (BSN)
-         * Examples:
-         * - Valid: 111222333, 941331490, 9413.31.490
-         * - Invalid: 111252333
          *
          * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
          * @param {String} value The ID
          * @returns {Boolean}
          */
         _nl: function(value) {
-            while (value.length < 9) {
+            if (value.length < 8) {
+                return false;
+            }
+
+            if (value.length === 8) {
                 value = '0' + value;
             }
             if (!/^[0-9]{4}[.]{0,1}[0-9]{2}[.]{0,1}[0-9]{3}$/.test(value)) {
@@ -5734,9 +5694,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Romanian numerical personal code (CNP)
-         * Examples:
-         * - Valid: 1630615123457, 1800101221144
-         * - Invalid: 8800101221144, 1632215123457, 1630615123458
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Romania
          * @param {String} value The ID
@@ -5790,9 +5747,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Swedish personal identity number (personnummer)
-         * Examples:
-         * - Valid: 8112289874, 811228-9874, 811228+9874
-         * - Invalid: 811228-9873
          *
          * @see http://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)
          * @param {String} value The ID
@@ -5817,9 +5771,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Slovak national identifier number (RC)
-         * Examples:
-         * - Valid: 7103192745, 991231123
-         * - Invalid: 7103192746, 1103492745
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -5842,9 +5793,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Thailand citizen number
-         * Examples:
-         * - Valid: 7145620509547, 3688699975685, 2368719339716
-         * - Invalid: 1100800092310
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Thailand
          * @param {String} value The ID
@@ -5865,9 +5813,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate South African ID
-         * Example:
-         * - Valid: 8001015009087
-         * - Invalid: 8001015009287, 8001015009086
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#South_Africa
          * @param {String} value The ID
@@ -5976,9 +5921,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.imei = {
         /**
          * Validate IMEI (International Mobile Station Equipment Identity)
-         * Examples:
-         * - Valid: 35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518
-         * - Invalid: 490154203237517
          *
          * @see http://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -6024,9 +5966,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.imo = {
         /**
          * Validate IMO (International Maritime Organization)
-         * Examples:
-         * - Valid: IMO 8814275, IMO 9176187
-         * - Invalid: IMO 8814274
          *
          * @see http://en.wikipedia.org/wiki/IMO_Number
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -6048,11 +5987,6 @@ if (typeof jQuery === 'undefined') {
             // Grab just the digits
             var sum    = 0,
                 digits = value.replace(/^.*(\d{7})$/, '$1');
-            
-            // Go over each char, multiplying by the inverse of it's position
-            // IMO 9176187
-            // (9 * 7) + (1 * 6) + (7 * 5) + (6 * 4) + (1 * 3) + (8 * 2) = 147
-            // Take the last digit of that, that's the check digit (7)
             for (var i = 6; i >= 1; i--) {
                 sum += (digits.slice((6 - i), -i) * (i + 1));
             }
@@ -6177,20 +6111,13 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.isbn = {
         /**
          * Return true if the input value is a valid ISBN 10 or ISBN 13 number
-         * Examples:
-         * - Valid:
-         * ISBN 10: 99921-58-10-7, 9971-5-0210-0, 960-425-059-0, 80-902734-1-6, 85-359-0277-5, 1-84356-028-3, 0-684-84328-5, 0-8044-2957-X, 0-85131-041-9, 0-943396-04-2, 0-9752298-0-X
-         * ISBN 13: 978-0-306-40615-7
-         * - Invalid:
-         * ISBN 10: 99921-58-10-6
-         * ISBN 13: 978-0-306-40615-6
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Book_Number
          * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options] Can consist of the following keys:
          * - message: The invalid message
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
             var value = validator.getFieldValue($field, 'isbn');
@@ -6236,7 +6163,10 @@ if (typeof jQuery === 'undefined') {
                     } else if (checksum === 10) {
                         checksum = 'X';
                     }
-                    return (checksum + '' === chars[length - 1]);
+                    return {
+                        type: type,
+                        valid: (checksum + '' === chars[length - 1])
+                    };
 
                 case 'ISBN13':
                     sum = 0;
@@ -6247,7 +6177,10 @@ if (typeof jQuery === 'undefined') {
                     if (checksum === 10) {
                         checksum = '0';
                     }
-                    return (checksum + '' === chars[length - 1]);
+                    return {
+                        type: type,
+                        valid: (checksum + '' === chars[length - 1])
+                    };
 
                 default:
                     return false;
@@ -6271,9 +6204,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate an ISIN (International Securities Identification Number)
-         * Examples:
-         * - Valid: US0378331005, AU0000XVGZA3, GB0002634946
-         * - Invalid: US0378331004, AA0000XVGZA3
          *
          * @see http://en.wikipedia.org/wiki/International_Securities_Identifying_Number
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -6330,16 +6260,13 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.ismn = {
         /**
          * Validate ISMN (International Standard Music Number)
-         * Examples:
-         * - Valid: M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615
-         * - Invalid: 9790060115614
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Music_Number
          * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
             var value = validator.getFieldValue($field, 'ismn');
@@ -6377,7 +6304,10 @@ if (typeof jQuery === 'undefined') {
                 sum += parseInt(value.charAt(i), 10) * weight[i % 2];
             }
             sum = 10 - sum % 10;
-            return (sum + '' === value.charAt(length - 1));
+            return {
+                type: type,
+                valid: (sum + '' === value.charAt(length - 1))
+            };
         }
     };
 }(jQuery));
@@ -6393,9 +6323,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.issn = {
         /**
          * Validate ISSN (International Standard Serial Number)
-         * Examples:
-         * - Valid: 0378-5955, 0024-9319, 0032-1478
-         * - Invalid: 0032-147X
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Serial_Number
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -6549,9 +6476,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.meid = {
         /**
          * Validate MEID (Mobile Equipment Identifier)
-         * Examples:
-         * - Valid: 293608736500703710, 29360-87365-0070-3710, AF0123450ABCDE, AF-012345-0ABCDE
-         * - Invalid: 2936087365007037101
          *
          * @see http://en.wikipedia.org/wiki/Mobile_equipment_identifier
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -7119,7 +7043,7 @@ if (typeof jQuery === 'undefined') {
 
             // Support dynamic data
             if ('function' === typeof data) {
-                data = data.call(this, validator);
+                data = data.call(this, validator, $field, value);
             }
 
             // Parse string data from HTML5 attribute
@@ -7129,7 +7053,7 @@ if (typeof jQuery === 'undefined') {
 
             // Support dynamic url
             if ('function' === typeof url) {
-                url = url.call(this, validator);
+                url = url.call(this, validator, $field, value);
             }
 
             data[options.name || name] = value;
@@ -7195,8 +7119,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.rtn = {
         /**
          * Validate a RTN (Routing transit number)
-         * Examples:
-         * - Valid: 021200025, 789456124
          *
          * @see http://en.wikipedia.org/wiki/Routing_transit_number
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -7237,8 +7159,6 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.sedol = {
         /**
          * Validate a SEDOL (Stock Exchange Daily Official List)
-         * Examples:
-         * - Valid: 0263494, B0WNLY7
          *
          * @see http://en.wikipedia.org/wiki/SEDOL
          * @param {FormValidation.Base} validator The validator plugin instance
@@ -7848,9 +7768,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Austrian VAT number
-         * Example:
-         * - Valid: ATU13585627
-         * - Invalid: ATU13585626
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -7885,9 +7802,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Belgian VAT number
-         * Example:
-         * - Valid: BE0428759497
-         * - Invalid: BE431150351
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -7913,12 +7827,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Bulgarian VAT number
-         * Example:
-         * - Valid: BG175074752,
-         * BG7523169263, BG8032056031,
-         * BG7542011030,
-         * BG7111042925
-         * - Invalid: BG175074753, BG7552A10004, BG7111042922
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8100,9 +8008,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Cypriot VAT number
-         * Examples:
-         * - Valid: CY10259033P
-         * - Invalid: CY10259033Z
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8140,14 +8045,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Czech Republic VAT number
-         * Can be:
-         * i) Legal entities (8 digit numbers)
-         * ii) Individuals with a RC (the 9 or 10 digit Czech birth number)
-         * iii) Individuals without a RC (9 digit numbers beginning with 6)
-         *
-         * Examples:
-         * - Valid: i) CZ25123891; ii) CZ7103192745, CZ991231123; iii) CZ640903926
-         * - Invalid: i) CZ25123890; ii) CZ1103492745, CZ590312123
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8233,9 +8130,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate German VAT number
-         * Examples:
-         * - Valid: DE136695976
-         * - Invalid: DE136695978
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8253,9 +8147,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Danish VAT number
-         * Example:
-         * - Valid: DK13585628
-         * - Invalid: DK13585627
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8279,9 +8170,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Estonian VAT number
-         * Examples:
-         * - Valid: EE100931558, EE100594102
-         * - Invalid: EE100594103
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8309,10 +8197,6 @@ if (typeof jQuery === 'undefined') {
          * i) DNI (Documento nacional de identidad), for Spaniards
          * ii) NIE (Número de Identificación de Extranjeros), for foreigners
          * iii) CIF (Certificado de Identificación Fiscal), for legal entities and others
-         *
-         * Examples:
-         * - Valid: i) ES54362315K; ii) ESX2482300W, ESX5253868R; iii) ESM1234567L, ESJ99216582, ESB58378431, ESB64717838
-         * - Invalid: i) ES54362315Z; ii) ESX2482300A; iii) ESJ99216583
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8379,9 +8263,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Finnish VAT number
-         * Examples:
-         * - Valid: FI20774740
-         * - Invalid: FI20774741
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8406,10 +8287,6 @@ if (typeof jQuery === 'undefined') {
         /**
          * Validate French VAT number (TVA - taxe sur la valeur ajoutée)
          * It's constructed by a SIREN number, prefixed by two characters.
-         *
-         * Examples:
-         * - Valid: FR40303265045, FR23334175221, FRK7399859412, FR4Z123456782
-         * - Invalid: FR84323140391
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8445,9 +8322,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate United Kingdom VAT number
-         * Example:
-         * - Valid: GB980780684
-         * - Invalid: GB802311781
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8502,9 +8376,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Greek VAT number
-         * Examples:
-         * - Valid: GR023456780, EL094259216
-         * - Invalid: EL123456781
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8538,9 +8409,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Hungarian VAT number
-         * Examples:
-         * - Valid: HU12892312
-         * - Invalid: HU12892313
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8565,9 +8433,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Croatian VAT number
-         * Examples:
-         * - Valid: HR33392005961
-         * - Invalid: HR33392005962
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8585,9 +8450,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Irish VAT number
-         * Examples:
-         * - Valid: IE6433435F, IE6433435OA, IE8D79739I
-         * - Invalid: IE8D79738J
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8627,9 +8489,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Icelandic VAT (VSK) number
-         * Examples:
-         * - Valid: 12345, 123456
-         * - Invalid: 1234567
          *
          * @params {String} value VAT number
          * @returns {Boolean}
@@ -8646,10 +8505,6 @@ if (typeof jQuery === 'undefined') {
          * - First 7 digits are a company identifier
          * - Next 3 are the province of residence
          * - The last one is a check digit
-         *
-         * Examples:
-         * - Valid: IT00743110157
-         * - Invalid: IT00743110158
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8679,10 +8534,6 @@ if (typeof jQuery === 'undefined') {
          * It can be:
          * - 9 digits, for legal entities
          * - 12 digits, for temporarily registered taxpayers
-         *
-         * Examples:
-         * - Valid: LT119511515, LT100001919017, LT100004801610
-         * - Invalid: LT100001919018
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8714,9 +8565,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Luxembourg VAT number
-         * Examples:
-         * - Valid: LU15027442
-         * - Invalid: LU15027443
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8734,9 +8582,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Latvian VAT number
-         * Examples:
-         * - Valid: LV40003521600, LV16117519997
-         * - Invalid: LV40003521601, LV16137519997
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8787,9 +8632,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Maltese VAT number
-         * Examples:
-         * - Valid: MT11679112
-         * - Invalid: MT11679113
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8814,9 +8656,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Dutch VAT number
-         * Examples:
-         * - Valid: NL004495445B01
-         * - Invalid: NL123456789B90
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8872,9 +8711,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Polish VAT number
-         * Examples:
-         * - Valid: PL8567346215
-         * - Invalid: PL8567346216
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8899,9 +8735,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Portuguese VAT number
-         * Examples:
-         * - Valid: PT501964843
-         * - Invalid: PT501964842
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -8929,9 +8762,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Romanian VAT number
-         * Examples:
-         * - Valid: RO18547290
-         * - Invalid: RO18547291
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -9036,9 +8866,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Swedish VAT number
-         * Examples:
-         * - Valid: SE123456789701
-         * - Invalid: SE123456789101
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -9057,10 +8884,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Slovenian VAT number
-         * Examples:
-         * - Valid: SI50223054
-         * - Invalid: SI50223055
-         * - Invalid: SI09999990
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -9090,9 +8913,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Slovak VAT number
-         * Examples:
-         * - Valid: SK2022749619
-         * - Invalid: SK2022749618
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -9110,9 +8930,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate Venezuelan VAT number (RIF)
-         * Examples:
-         * - Valid: VEJ309272292, VEV242818101, VEJ000126518, VEJ000458324, J309272292, V242818101, J000126518, J000458324
-         * - Invalid: VEJ309272293, VEV242818100, J000126519, J000458323
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -9148,9 +8965,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate South African VAT number
-         * Examples:
-         * - Valid: 4012345678
-         * - Invalid: 40123456789, 3012345678
          *
          * @params {String} value VAT number
          * @returns {Boolean}
@@ -9428,10 +9242,6 @@ if (typeof jQuery === 'undefined') {
 
         /**
          * Validate United Kingdom postcode
-         * Examples:
-         * - Standard: EC1A 1BB, W1A 1HQ, M1 1AA, B33 8TH, CR2 6XH, DN55 1PT
-         * - Special cases:
-         * AI-2640, ASCN 1ZZ, GIR 0AA
          *
          * @see http://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
          * @param {String} value The postcode
@@ -9473,7 +9283,7 @@ if (typeof jQuery === 'undefined') {
  * FormValidation (http://formvalidation.io)
  * The best jQuery plugin to validate form fields. Support Bootstrap, Foundation, Pure, SemanticUI, UIKit and custom frameworks
  *
- * @version     v0.6.2, built on 2015-04-02 7:24:05 AM
+ * @version     v0.6.3, built on 2015-05-31 10:06:42 PM
  * @author      https://twitter.com/formvalidation
  * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
@@ -9515,9 +9325,9 @@ if (typeof jQuery === 'undefined') {
             //      feedback: 'form-control-feedback'
             //  }
             icon: {
-                valid: 'fa fa-check',
-                invalid: 'fa fa-times',
-                validating: 'fa fa-refresh',
+                valid: null,
+                invalid: null,
+                validating: null,
                 feedback: 'form-control-feedback'
             },
             row: {
@@ -9721,6 +9531,7 @@ if (typeof jQuery === 'undefined') {
                     events: {
                         // Support backward
                         formInit: 'init.form.bv',
+                        formPreValidate: 'prevalidate.form.bv',
                         formError: 'error.form.bv',
                         formSuccess: 'success.form.bv',
                         fieldAdded: 'added.field.bv',

@@ -18,9 +18,6 @@
     FormValidation.Validator.meid = {
         /**
          * Validate MEID (Mobile Equipment Identifier)
-         * Examples:
-         * - Valid: 293608736500703710, 29360-87365-0070-3710, AF0123450ABCDE, AF-012345-0ABCDE
-         * - Invalid: 2936087365007037101
          *
          * @see http://en.wikipedia.org/wiki/Mobile_equipment_identifier
          * @param {FormValidation.Base} validator The validator plugin instance

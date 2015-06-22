@@ -18,9 +18,6 @@
     FormValidation.Validator.ean = {
         /**
          * Validate EAN (International Article Number)
-         * Examples:
-         * - Valid: 73513537, 9780471117094, 4006381333931
-         * - Invalid: 73513536
          *
          * @see http://en.wikipedia.org/wiki/European_Article_Number
          * @param {FormValidation.Base} validator The validator plugin instance

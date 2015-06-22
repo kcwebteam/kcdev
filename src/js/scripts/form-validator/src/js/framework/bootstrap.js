@@ -250,6 +250,7 @@
                     events: {
                         // Support backward
                         formInit: 'init.form.bv',
+                        formPreValidate: 'prevalidate.form.bv',
                         formError: 'error.form.bv',
                         formSuccess: 'success.form.bv',
                         fieldAdded: 'added.field.bv',

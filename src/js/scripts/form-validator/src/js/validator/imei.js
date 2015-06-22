@@ -18,9 +18,6 @@
     FormValidation.Validator.imei = {
         /**
          * Validate IMEI (International Mobile Station Equipment Identity)
-         * Examples:
-         * - Valid: 35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518
-         * - Invalid: 490154203237517
          *
          * @see http://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
          * @param {FormValidation.Base} validator The validator plugin instance

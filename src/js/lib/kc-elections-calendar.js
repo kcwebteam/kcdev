@@ -4,7 +4,8 @@
 
     // Create some defaults, extending them with any options that were provided
     var settings = $.extend( {
-      calNum       : '69gk-ky9a',
+      //calNum       : '69gk-ky9a',
+      feedUrl      : 'https://electionsdata.kingcounty.gov/resource/js6n-qk85.json',
       numItems     : 4,
       title        : 'Events',
       titleIcon    : 'fa-calendar',
@@ -20,12 +21,15 @@
       $this.append('<i class="fa fa-spinner fa-spin fa-4x"></i>');
 
       //Build URL String
-      var dataURL = '!{httpPrefix}//data.kingcounty.gov/resource/' + settings.calNum +
-                    '.json?';
+      //var dataURL = '!{httpPrefix}//data.kingcounty.gov/resource/' + settings.calNum +
+      //              '.json?';
+      var dataURL;
       if(settings.filter){
         dataURL += '&$q=' + settings.filter;
       }
-      dataURL += '&$order=start_time&$$app_token=bCoT94x6NcBsw8AGGZudTwOs7';
+      dataURL += '&$order=start_time';
+
+      //&$$app_token=bCoT94x6NcBsw8AGGZudTwOs7';
 
       $.ajax({
         url: dataURL,

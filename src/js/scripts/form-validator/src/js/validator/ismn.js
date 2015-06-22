@@ -18,16 +18,13 @@
     FormValidation.Validator.ismn = {
         /**
          * Validate ISMN (International Standard Music Number)
-         * Examples:
-         * - Valid: M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615
-         * - Invalid: 9790060115614
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Music_Number
          * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
             var value = validator.getFieldValue($field, 'ismn');
@@ -65,7 +62,10 @@
                 sum += parseInt(value.charAt(i), 10) * weight[i % 2];
             }
             sum = 10 - sum % 10;
-            return (sum + '' === value.charAt(length - 1));
+            return {
+                type: type,
+                valid: (sum + '' === value.charAt(length - 1))
+            };
         }
     };
 }(jQuery));

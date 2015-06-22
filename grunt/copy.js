@@ -112,10 +112,6 @@ module.exports = {
       {//yamm3
         src: '<%= src %>/bower_components/yamm3/yamm.less',
         dest: '<%= src %>/less/yamm/yamm.less'
-      },
-      {//responsive tabs
-        src: '<%= src %>/bower_components/yamm3/yamm.less',
-        dest: '<%= src %>/less/yamm/yamm.less'
       }
     ]
   }
