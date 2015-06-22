@@ -240,6 +240,7 @@
 
             return {
                 valid: valid,
+                date: date,
                 message: message
             };
         },

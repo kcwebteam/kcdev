@@ -78,7 +78,7 @@
 
             // Support dynamic data
             if ('function' === typeof data) {
-                data = data.call(this, validator);
+                data = data.call(this, validator, $field, value);
             }
 
             // Parse string data from HTML5 attribute
@@ -88,7 +88,7 @@
 
             // Support dynamic url
             if ('function' === typeof url) {
-                url = url.call(this, validator);
+                url = url.call(this, validator, $field, value);
             }
 
             data[options.name || name] = value;

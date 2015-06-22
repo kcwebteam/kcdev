@@ -18,9 +18,6 @@
     FormValidation.Validator.grid = {
         /**
          * Validate GRId (Global Release Identifier)
-         * Examples:
-         * - Valid: A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M
-         * - Invalid: A1-2425G-ABC1234002-Q
          *
          * @see http://en.wikipedia.org/wiki/Global_Release_Identifier
          * @param {FormValidation.Base} validator The validator plugin instance

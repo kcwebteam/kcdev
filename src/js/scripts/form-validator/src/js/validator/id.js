@@ -191,9 +191,6 @@
 
         /**
          * Validate Bulgarian national identification number (EGN)
-         * Examples:
-         * - Valid: 7523169263, 8032056031, 803205 603 1, 8001010008, 7501020018, 7552010005, 7542011030
-         * - Invalid: 8019010008
          *
          * @see http://en.wikipedia.org/wiki/Uniform_civil_number
          * @param {String} value The ID
@@ -231,9 +228,6 @@
 
         /**
          * Validate Brazilian national identification number (CPF)
-         * Examples:
-         * - Valid: 39053344705, 390.533.447-05, 111.444.777-35
-         * - Invalid: 231.002.999-00
          *
          * @see http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
          * @param {String} value The ID
@@ -272,8 +266,6 @@
 
         /**
          * Validate Swiss Social Security Number (AHV-Nr/No AVS)
-         * Examples:
-         * - Valid: 756.1234.5678.95, 7561234567895
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Switzerland
          * @see http://www.bsv.admin.ch/themen/ahv/00011/02185/index.html?lang=de
@@ -297,8 +289,6 @@
 
         /**
          * Validate Chilean national identification number (RUN/RUT)
-         * Examples:
-         * - Valid: 76086428-5, 22060449-7, 12531909-2
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Chile
          * @see https://palena.sii.cl/cvc/dte/ee_empresas_emisoras.html for samples
@@ -865,9 +855,6 @@
         
         /**
          * Validate Czech national identification number (RC)
-         * Examples:
-         * - Valid: 7103192745, 991231123
-         * - Invalid: 1103492745, 590312123
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -908,9 +895,6 @@
 
         /**
          * Validate Danish Personal Identification number (CPR)
-         * Examples:
-         * - Valid: 2110625629, 211062-5629
-         * - Invalid: 511062-5629
          *
          * @see https://en.wikipedia.org/wiki/Personal_identification_number_(Denmark)
          * @param {String} value The ID
@@ -943,8 +927,6 @@
 
         /**
          * Validate Estonian Personal Identification Code (isikukood)
-         * Examples:
-         * - Valid: 37605030299
          *
          * @see http://et.wikipedia.org/wiki/Isikukood
          * @param {String} value The ID
@@ -957,18 +939,7 @@
 
         /**
          * Validate Spanish personal identity code (DNI)
-         * Support i) DNI (for Spanish citizens), ii) NIE (for foreign people)
-         * and iii) CIF (for legal entities)
-         *
-         * Examples:
-         * - Valid:
-         *      i) 54362315K, 54362315-K
-         *      ii) X2482300W, X-2482300W, X-2482300-W
-         *      iii) A58818501, A-58818501
-         * - Invalid:
-         *      i) 54362315Z
-         *      ii) X-2482300A
-         *      iii) K58818501, G58818507
+         * Support DNI (for Spanish citizens), NIE (for foreign people) and CIF (for legal entities)
          *
          * @see https://en.wikipedia.org/wiki/National_identification_number#Spain
          * @param {String} value The ID
@@ -1038,9 +1009,6 @@
 
         /**
          * Validate Finnish Personal Identity Code (HETU)
-         * Examples:
-         * - Valid: 311280-888Y, 131052-308T
-         * - Invalid: 131052-308U, 310252-308Y
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -1074,9 +1042,6 @@
 
         /**
          * Validate Croatian personal identification number (OIB)
-         * Examples:
-         * - Valid: 33392005961
-         * - Invalid: 33392005962
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -1090,9 +1055,6 @@
 
         /**
          * Validate Irish Personal Public Service Number (PPS)
-         * Examples:
-         * - Valid: 6433435F, 6433435FT, 6433435FW, 6433435OA, 6433435IH, 1234567TW, 1234567FA
-         * - Invalid: 6433435E, 6433435VH
          *
          * @see https://en.wikipedia.org/wiki/Personal_Public_Service_Number
          * @param {String} value The ID
@@ -1128,10 +1090,8 @@
 
         /**
          * Validate Iceland national identification number (Kennitala)
-         * Examples:
-         * - Valid: 120174-3399, 1201743399, 0902862349
          *
-         * @see http://en.wikipedia.org/wiki/Kennitala
+         *  @see http://en.wikipedia.org/wiki/Kennitala
          * @param {String} value The ID
          * @returns {Boolean}
          */
@@ -1161,9 +1121,6 @@
 
         /**
          * Validate Lithuanian Personal Code (Asmens kodas)
-         * Examples:
-         * - Valid: 38703181745
-         * - Invalid: 38703181746, 78703181745, 38703421745
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Lithuania
          * @see http://www.adomas.org/midi2007/pcode.html
@@ -1210,9 +1167,6 @@
 
         /**
          * Validate Latvian Personal Code (Personas kods)
-         * Examples:
-         * - Valid: 161175-19997, 16117519997
-         * - Invalid: 161375-19997
          *
          * @see http://laacz.lv/2006/11/25/pk-parbaudes-algoritms/
          * @param {String} value The ID
@@ -1245,16 +1199,17 @@
 
         /**
          * Validate Dutch national identification number (BSN)
-         * Examples:
-         * - Valid: 111222333, 941331490, 9413.31.490
-         * - Invalid: 111252333
          *
          * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
          * @param {String} value The ID
          * @returns {Boolean}
          */
         _nl: function(value) {
-            while (value.length < 9) {
+            if (value.length < 8) {
+                return false;
+            }
+
+            if (value.length === 8) {
                 value = '0' + value;
             }
             if (!/^[0-9]{4}[.]{0,1}[0-9]{2}[.]{0,1}[0-9]{3}$/.test(value)) {
@@ -1307,9 +1262,6 @@
 
         /**
          * Validate Romanian numerical personal code (CNP)
-         * Examples:
-         * - Valid: 1630615123457, 1800101221144
-         * - Invalid: 8800101221144, 1632215123457, 1630615123458
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Romania
          * @param {String} value The ID
@@ -1363,9 +1315,6 @@
 
         /**
          * Validate Swedish personal identity number (personnummer)
-         * Examples:
-         * - Valid: 8112289874, 811228-9874, 811228+9874
-         * - Invalid: 811228-9873
          *
          * @see http://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)
          * @param {String} value The ID
@@ -1390,9 +1339,6 @@
 
         /**
          * Validate Slovak national identifier number (RC)
-         * Examples:
-         * - Valid: 7103192745, 991231123
-         * - Invalid: 7103192746, 1103492745
          *
          * @param {String} value The ID
          * @returns {Boolean}
@@ -1415,9 +1361,6 @@
 
         /**
          * Validate Thailand citizen number
-         * Examples:
-         * - Valid: 7145620509547, 3688699975685, 2368719339716
-         * - Invalid: 1100800092310
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Thailand
          * @param {String} value The ID
@@ -1438,9 +1381,6 @@
 
         /**
          * Validate South African ID
-         * Example:
-         * - Valid: 8001015009087
-         * - Invalid: 8001015009287, 8001015009086
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#South_Africa
          * @param {String} value The ID

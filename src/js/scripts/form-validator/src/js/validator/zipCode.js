@@ -217,10 +217,6 @@
 
         /**
          * Validate United Kingdom postcode
-         * Examples:
-         * - Standard: EC1A 1BB, W1A 1HQ, M1 1AA, B33 8TH, CR2 6XH, DN55 1PT
-         * - Special cases:
-         * AI-2640, ASCN 1ZZ, GIR 0AA
          *
          * @see http://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
          * @param {String} value The postcode

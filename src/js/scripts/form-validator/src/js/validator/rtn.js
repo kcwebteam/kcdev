@@ -18,8 +18,6 @@
     FormValidation.Validator.rtn = {
         /**
          * Validate a RTN (Routing transit number)
-         * Examples:
-         * - Valid: 021200025, 789456124
          *
          * @see http://en.wikipedia.org/wiki/Routing_transit_number
          * @param {FormValidation.Base} validator The validator plugin instance

@@ -1,15 +1,15 @@
 h2 Simple form
-form#simpleForm
+form#simpleForm.fvForm
   .form-group
     label(for='userName') Your name
-    input#userName.form-control(type='text' placeholder='Name' name='userName')
+    input#userName.form-control(type='text' placeholder='Name' name='userName'  )
   .form-group
     label.sr-only(for='userEmail') Email
     .input-group
       span.input-group-addon 
         i.fa.fa-envelope
-        |  Email
-      input#userEmail.form-control(type='text' placeholder='example@example.com' name='userEmail')
+        | Email
+      input#userEmail.form-control(type='text' placeholder='example@example.com' name='userEmail' aria-label="Email")
   .form-group
     label(for='address') Address
     input#address.form-control(type='text' placeholder='address' name='address')
@@ -94,7 +94,7 @@ form#simpleForm
             |  Phone
           input#phone.form-control(type='tel' placeholder='206-555-5555' name="phone")
   .form-group
-    label(for="radioList") Choose one of these: 
+    label.control-label(for="radioList") Choose one of these: 
       a(tabindex='0' data-toggle='popover' data-placement='right' data-content='Tell us what your choice is.' data-trigger="focus")
         .fa.fa-lg.fa-question-circle
     .radio
@@ -114,13 +114,14 @@ form#simpleForm
         input(type='radio' name='radioList' value='Choice4')
         | Choice 4
   .form-group      
-    label(for="gender") Gender: 
-    br
-    label.radio-inline
-      input(type='radio' name='gender' value='male')
-      | Male
-    label.radio-inline
-      input(type='radio' name='gender' value='female')
-      | Female
+    label.control-label(for="gender") Gender: 
+    .radio
+      label
+        input(type='radio' name='gender' value='male')
+        | Male
+    .radio
+      label
+        input(type='radio' name='gender' value='female')
+        | Female
   <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
   button.btn.btn-primary(type='submit') Submit

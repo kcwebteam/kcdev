@@ -18,8 +18,6 @@
     FormValidation.Validator.sedol = {
         /**
          * Validate a SEDOL (Stock Exchange Daily Official List)
-         * Examples:
-         * - Valid: 0263494, B0WNLY7
          *
          * @see http://en.wikipedia.org/wiki/SEDOL
          * @param {FormValidation.Base} validator The validator plugin instance

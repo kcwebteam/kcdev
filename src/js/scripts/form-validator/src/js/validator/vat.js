@@ -114,9 +114,6 @@
 
         /**
          * Validate Austrian VAT number
-         * Example:
-         * - Valid: ATU13585627
-         * - Invalid: ATU13585626
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -151,9 +148,6 @@
 
         /**
          * Validate Belgian VAT number
-         * Example:
-         * - Valid: BE0428759497
-         * - Invalid: BE431150351
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -179,12 +173,6 @@
 
         /**
          * Validate Bulgarian VAT number
-         * Example:
-         * - Valid: BG175074752,
-         * BG7523169263, BG8032056031,
-         * BG7542011030,
-         * BG7111042925
-         * - Invalid: BG175074753, BG7552A10004, BG7111042922
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -366,9 +354,6 @@
 
         /**
          * Validate Cypriot VAT number
-         * Examples:
-         * - Valid: CY10259033P
-         * - Invalid: CY10259033Z
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -406,14 +391,6 @@
 
         /**
          * Validate Czech Republic VAT number
-         * Can be:
-         * i) Legal entities (8 digit numbers)
-         * ii) Individuals with a RC (the 9 or 10 digit Czech birth number)
-         * iii) Individuals without a RC (9 digit numbers beginning with 6)
-         *
-         * Examples:
-         * - Valid: i) CZ25123891; ii) CZ7103192745, CZ991231123; iii) CZ640903926
-         * - Invalid: i) CZ25123890; ii) CZ1103492745, CZ590312123
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -499,9 +476,6 @@
 
         /**
          * Validate German VAT number
-         * Examples:
-         * - Valid: DE136695976
-         * - Invalid: DE136695978
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -519,9 +493,6 @@
 
         /**
          * Validate Danish VAT number
-         * Example:
-         * - Valid: DK13585628
-         * - Invalid: DK13585627
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -545,9 +516,6 @@
 
         /**
          * Validate Estonian VAT number
-         * Examples:
-         * - Valid: EE100931558, EE100594102
-         * - Invalid: EE100594103
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -575,10 +543,6 @@
          * i) DNI (Documento nacional de identidad), for Spaniards
          * ii) NIE (Número de Identificación de Extranjeros), for foreigners
          * iii) CIF (Certificado de Identificación Fiscal), for legal entities and others
-         *
-         * Examples:
-         * - Valid: i) ES54362315K; ii) ESX2482300W, ESX5253868R; iii) ESM1234567L, ESJ99216582, ESB58378431, ESB64717838
-         * - Invalid: i) ES54362315Z; ii) ESX2482300A; iii) ESJ99216583
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -645,9 +609,6 @@
 
         /**
          * Validate Finnish VAT number
-         * Examples:
-         * - Valid: FI20774740
-         * - Invalid: FI20774741
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -672,10 +633,6 @@
         /**
          * Validate French VAT number (TVA - taxe sur la valeur ajoutée)
          * It's constructed by a SIREN number, prefixed by two characters.
-         *
-         * Examples:
-         * - Valid: FR40303265045, FR23334175221, FRK7399859412, FR4Z123456782
-         * - Invalid: FR84323140391
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -711,9 +668,6 @@
 
         /**
          * Validate United Kingdom VAT number
-         * Example:
-         * - Valid: GB980780684
-         * - Invalid: GB802311781
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -768,9 +722,6 @@
 
         /**
          * Validate Greek VAT number
-         * Examples:
-         * - Valid: GR023456780, EL094259216
-         * - Invalid: EL123456781
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -804,9 +755,6 @@
 
         /**
          * Validate Hungarian VAT number
-         * Examples:
-         * - Valid: HU12892312
-         * - Invalid: HU12892313
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -831,9 +779,6 @@
 
         /**
          * Validate Croatian VAT number
-         * Examples:
-         * - Valid: HR33392005961
-         * - Invalid: HR33392005962
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -851,9 +796,6 @@
 
         /**
          * Validate Irish VAT number
-         * Examples:
-         * - Valid: IE6433435F, IE6433435OA, IE8D79739I
-         * - Invalid: IE8D79738J
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -893,9 +835,6 @@
 
         /**
          * Validate Icelandic VAT (VSK) number
-         * Examples:
-         * - Valid: 12345, 123456
-         * - Invalid: 1234567
          *
          * @params {String} value VAT number
          * @returns {Boolean}
@@ -912,10 +851,6 @@
          * - First 7 digits are a company identifier
          * - Next 3 are the province of residence
          * - The last one is a check digit
-         *
-         * Examples:
-         * - Valid: IT00743110157
-         * - Invalid: IT00743110158
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -945,10 +880,6 @@
          * It can be:
          * - 9 digits, for legal entities
          * - 12 digits, for temporarily registered taxpayers
-         *
-         * Examples:
-         * - Valid: LT119511515, LT100001919017, LT100004801610
-         * - Invalid: LT100001919018
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -980,9 +911,6 @@
 
         /**
          * Validate Luxembourg VAT number
-         * Examples:
-         * - Valid: LU15027442
-         * - Invalid: LU15027443
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1000,9 +928,6 @@
 
         /**
          * Validate Latvian VAT number
-         * Examples:
-         * - Valid: LV40003521600, LV16117519997
-         * - Invalid: LV40003521601, LV16137519997
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1053,9 +978,6 @@
 
         /**
          * Validate Maltese VAT number
-         * Examples:
-         * - Valid: MT11679112
-         * - Invalid: MT11679113
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1080,9 +1002,6 @@
 
         /**
          * Validate Dutch VAT number
-         * Examples:
-         * - Valid: NL004495445B01
-         * - Invalid: NL123456789B90
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1138,9 +1057,6 @@
 
         /**
          * Validate Polish VAT number
-         * Examples:
-         * - Valid: PL8567346215
-         * - Invalid: PL8567346216
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1165,9 +1081,6 @@
 
         /**
          * Validate Portuguese VAT number
-         * Examples:
-         * - Valid: PT501964843
-         * - Invalid: PT501964842
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1195,9 +1108,6 @@
 
         /**
          * Validate Romanian VAT number
-         * Examples:
-         * - Valid: RO18547290
-         * - Invalid: RO18547291
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1302,9 +1212,6 @@
 
         /**
          * Validate Swedish VAT number
-         * Examples:
-         * - Valid: SE123456789701
-         * - Invalid: SE123456789101
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1323,10 +1230,6 @@
 
         /**
          * Validate Slovenian VAT number
-         * Examples:
-         * - Valid: SI50223054
-         * - Invalid: SI50223055
-         * - Invalid: SI09999990
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1356,9 +1259,6 @@
 
         /**
          * Validate Slovak VAT number
-         * Examples:
-         * - Valid: SK2022749619
-         * - Invalid: SK2022749618
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1376,9 +1276,6 @@
 
         /**
          * Validate Venezuelan VAT number (RIF)
-         * Examples:
-         * - Valid: VEJ309272292, VEV242818101, VEJ000126518, VEJ000458324, J309272292, V242818101, J000126518, J000458324
-         * - Invalid: VEJ309272293, VEV242818100, J000126519, J000458323
          *
          * @param {String} value VAT number
          * @returns {Boolean}
@@ -1414,9 +1311,6 @@
 
         /**
          * Validate South African VAT number
-         * Examples:
-         * - Valid: 4012345678
-         * - Invalid: 40123456789, 3012345678
          *
          * @params {String} value VAT number
          * @returns {Boolean}

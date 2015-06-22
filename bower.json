@@ -14,12 +14,13 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.4",
+    "bootstrap": "~3.3.5",
     "fontawesome": "~4.3.0",
-    "jquery": "1.11.2",
+    "jquery": "1.11.3",
     "fitvids": "~1.1.0",
     "yamm3": "~1.1.0",
-    "ScrollToFixed": "~1.0.6"
+    "ScrollToFixed": "~1.0.6",
+    "moment": "~2.10.3"
   },
   "exportsOverride": {
     "fontawesome": {
@@ -27,6 +28,7 @@
     },
     "bootstrap": {
       "less": "less/.css*",
+      "less": "less/*.less",
       "less/mixins": "less/mixins/*.less",
       "js": "dist/js/bootstrap.min.js"
     },

@@ -1,5 +1,5 @@
 (function( $ ){
-
+  'use strict';
   $.fn.eventsCalendar = function( options ) {
 
     // Create some defaults, extending them with any options that were provided

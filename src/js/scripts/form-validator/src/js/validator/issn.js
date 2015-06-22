@@ -18,9 +18,6 @@
     FormValidation.Validator.issn = {
         /**
          * Validate ISSN (International Standard Serial Number)
-         * Examples:
-         * - Valid: 0378-5955, 0024-9319, 0032-1478
-         * - Invalid: 0032-147X
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Serial_Number
          * @param {FormValidation.Base} validator The validator plugin instance
