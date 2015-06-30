@@ -28,6 +28,20 @@
         color: @state-primary-text;
         border: 1px solid @state-primary-border; 
         background-color: @state-primary-bg;
+        a {
+            color:@footer-link-color;
+            border-bottom:none;
+            &:visited {color: @footer-link-color-visited; }
+            &:hover {
+                color:@footer-link-color; 
+                text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
+                border-bottom:none;
+            }
+            &:active{
+                //text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
+                border-bottom:@link-dotted-underline;
+            }
+        }
     }
     &.call-out-text-success {
         color: @state-success-text;
