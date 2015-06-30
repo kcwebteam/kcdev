@@ -1,8 +1,13 @@
 //KC-VERTICAL-STORY-PANEL
+
 .row.vertical-story-panel {
   position:relative;
-  border-top: 2px solid @brand-primary;
-  padding-bottom:25px;
+  background-color: @white;
+  margin-top:-20px;
+  margin-bottom:-20px;
+  &.vertical-story-panel-border{
+    border-top: solid 2px @brand-primary;
+  }
   &.vertical-story-panel-success {
     color: @state-success-text;
     background-color: #E1E9C1;
@@ -13,20 +18,70 @@
   }
   &.vertical-story-panel-default {
     color: @state-default-text;
-    background-color: #fff;
-   // border: 1px solid @state-default-border;
+    background-color: @state-default-bg;
+  }
+  &.vertical-story-panel-primary {
+    color: @state-primary-text;
+    background-color: @state-primary-bg;
   }
   .vertical-story-panel-head {
     margin-bottom: 10px;
   }
+  .vertical-story-panel-footer {
+    padding-top:10px;
+    .col-sm-12 {
+      padding-bottom:50px; 
+    }
+  } 
+  .story-panel-title {
+    font-size: 18px;
+    padding:20px; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    color:#fff;
+    width:100%;
+    margin-top:0;
+  }
   span.fa-stack.fa-2x{
-    top:initial;//Remove this after push
+    top:initial;//TODO: Remove this after push
     z-index:4;
     position:absolute; 
     right:0;  
     left:0; 
     margin-left:auto; 
     margin-right:auto;
-    bottom:-27px;
+    bottom:-9px;
+  }
+  @media (min-width: 768px) {
+    .vertical-story-panel-head {
+      position: relative;
+    }
+    .story-panel-title {
+      font-size: 25px;
+      width:70%;
+      &.story-panel-title-top-left {
+        margin-top:40px;
+        position: absolute; 
+        top:0; 
+        left:0; 
+      }
+      &.story-panel-title-top-right {
+        margin-top:40px;
+        position: absolute; 
+        top:0; 
+        right:0;
+      }
+      &.story-panel-title-bottom-left {
+        margin-bottom:40px;
+        position: absolute; 
+        bottom:0; 
+        left:0;
+      }
+      &.story-panel-title-bottom-right {
+        margin-bottom:40px;
+        position: absolute;
+        bottom:0; 
+        right:0;
+      }
+    }
   }
 }
