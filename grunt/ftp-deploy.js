@@ -6,7 +6,7 @@ module.exports = {
       authKey: 'key1'
     },
     src: ['<%= public %>/' ],
-    dest: 'kcproto.kingcounty.gov/bs3/',
+    dest: 'kcproto',
     exclusions: ['<%= public %>/html','']
   }
 };
