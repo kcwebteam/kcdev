@@ -6,7 +6,7 @@ module.exports = {
       authKey: 'key1'
     },
     src: ['<%= public %>/' ],
-    dest: 'kcproto',
+    dest: 'kcproto/bs3/',
     exclusions: ['<%= public %>/html','']
   }
 };
