@@ -1,8 +1,11 @@
 //KC-VERTICAL-STORY-PANEL
+
 .row.vertical-story-panel {
   position:relative;
-  border-top: 2px solid @brand-primary;
-  padding-bottom:25px;
+  background-color: @white;
+  &.vertical-story-panel-border{
+    border-top: solid 2px @brand-primary;
+  }
   &.vertical-story-panel-success {
     color: @state-success-text;
     background-color: #E1E9C1;
@@ -13,20 +16,81 @@
   }
   &.vertical-story-panel-default {
     color: @state-default-text;
-    background-color: #fff;
-   // border: 1px solid @state-default-border;
+    background-color: @state-default-bg;
+  }
+  &.vertical-story-panel-primary {
+    color: @state-primary-text;
+    background-color: @state-primary-bg;
+    a:not(.btn) {
+        color:@footer-link-color;
+        border-bottom:1px dotted #fff;
+        &:visited {color: @footer-link-color-visited; }
+        &:hover {
+          color:@footer-link-color; 
+          text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
+          border-bottom:none;
+        }
+        &:active{
+          border-bottom:@link-dotted-underline;
+        }
+    }
   }
   .vertical-story-panel-head {
+    position: relative;
     margin-bottom: 10px;
   }
+  .vertical-story-panel-footer {
+    padding-top:10px;
+    .col-sm-12 {
+      padding-bottom:30px; 
+    }
+  } 
+  .story-panel-title {
+    font-size: 18px;
+    padding:20px; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    color:#fff;
+    width:100%;
+    margin-top:0;
+  }
   span.fa-stack.fa-2x{
-    top:initial;//Remove this after push
-    z-index:4;
-    position:absolute; 
+    position:absolute;
+    z-index:4; 
     right:0;  
     left:0; 
+    bottom:-26px;
     margin-left:auto; 
     margin-right:auto;
-    bottom:-27px;
+    
+  }
+  @media (min-width: 768px) {
+    .story-panel-title {
+      font-size: 25px;
+      width:70%;
+      &.story-panel-title-top-left {
+        margin-top:40px;
+        position: absolute; 
+        top:0; 
+        left:0; 
+      }
+      &.story-panel-title-top-right {
+        margin-top:40px;
+        position: absolute; 
+        top:0; 
+        right:0;
+      }
+      &.story-panel-title-bottom-left {
+        margin-bottom:40px;
+        position: absolute; 
+        bottom:0; 
+        left:0;
+      }
+      &.story-panel-title-bottom-right {
+        margin-bottom:40px;
+        position: absolute;
+        bottom:0; 
+        right:0;
+      }
+    }
   }
 }

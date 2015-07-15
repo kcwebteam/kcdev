@@ -19,8 +19,7 @@ module.exports = {
       '!<%= src %>/js/lib/dept-footer-map.js',
       //'<%= src %>/js/vendor/site-improve.js',
       '<%= src %>/js/vendor/fitvids.min.js',
-      '<%= src %>/js/vendor/scrollToFixed.min.js',
-      '<%= src %>/js/vendor/responsive-tabs.js'],
+      '<%= src %>/js/vendor/scrollToFixed.min.js'],
     },
   },
   tfs: {
@@ -40,8 +39,7 @@ module.exports = {
       '!<%= src %>/js/lib/dept-footer-map.js',
       //'<%= src %>/js/vendor/site-improve.js',
       '<%= src %>/js/vendor/fitvids.min.js',
-      '<%= src %>/js/vendor/scrollToFixed.min.js',
-      '<%= src %>/js/vendor/responsive-tabs.js'],
+      '<%= src %>/js/vendor/scrollToFixed.min.js'],
     },
   }
 };
