@@ -3,8 +3,6 @@
 .row.vertical-story-panel {
   position:relative;
   background-color: @white;
-  margin-top:-20px;
-  margin-bottom:-20px;
   &.vertical-story-panel-border{
     border-top: solid 2px @brand-primary;
   }
@@ -23,14 +21,28 @@
   &.vertical-story-panel-primary {
     color: @state-primary-text;
     background-color: @state-primary-bg;
+    a:not(.btn) {
+        color:@footer-link-color;
+        border-bottom:1px dotted #fff;
+        &:visited {color: @footer-link-color-visited; }
+        &:hover {
+          color:@footer-link-color; 
+          text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
+          border-bottom:none;
+        }
+        &:active{
+          border-bottom:@link-dotted-underline;
+        }
+    }
   }
   .vertical-story-panel-head {
+    position: relative;
     margin-bottom: 10px;
   }
   .vertical-story-panel-footer {
     padding-top:10px;
     .col-sm-12 {
-      padding-bottom:50px; 
+      padding-bottom:30px; 
     }
   } 
   .story-panel-title {
@@ -42,19 +54,16 @@
     margin-top:0;
   }
   span.fa-stack.fa-2x{
-    top:initial;//TODO: Remove this after push
-    z-index:4;
-    position:absolute; 
+    position:absolute;
+    z-index:4; 
     right:0;  
     left:0; 
+    bottom:-26px;
     margin-left:auto; 
     margin-right:auto;
-    bottom:-9px;
+    
   }
   @media (min-width: 768px) {
-    .vertical-story-panel-head {
-      position: relative;
-    }
     .story-panel-title {
       font-size: 25px;
       width:70%;
