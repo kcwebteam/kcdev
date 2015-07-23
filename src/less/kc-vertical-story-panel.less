@@ -21,18 +21,18 @@
   &.vertical-story-panel-primary {
     color: @state-primary-text;
     background-color: @state-primary-bg;
-    a:not(.btn) {
-        color:@footer-link-color;
-        border-bottom:1px dotted #fff;
-        &:visited {color: @footer-link-color-visited; }
-        &:hover {
-          color:@footer-link-color; 
-          text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
-          border-bottom:none;
-        }
-        &:active{
-          border-bottom:@link-dotted-underline;
-        }
+    a:not(.vertical-story-panel-arrow):not(.btn){
+      color:@footer-link-color;
+      border-bottom:1px dotted #fff;
+      &:visited {color: @footer-link-color-visited; }
+      &:hover {
+        color:@footer-link-color; 
+        text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.9);
+        border-bottom:none;
+      }
+      &:active{
+        border-bottom:@link-dotted-underline;
+      }
     }
   }
   .vertical-story-panel-head {
