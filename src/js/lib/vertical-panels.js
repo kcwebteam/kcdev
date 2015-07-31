@@ -29,7 +29,7 @@ var verticalPanels = function($){
         $($panels[i]).append('<a class="vertical-story-panel-arrow" href="story-panel-'+ (i) +'"><span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-chevron-down fa-stack-1x fa-inverse"></i></span></a>');
       }
     }
-    $('.row.vertical-story-panel > a').click(function(e) {
+    $('.row.vertical-story-panel > a.vertical-story-panel-arrow').click(function(e) {
       e.preventDefault();
       goToByScroll($(this).attr('href'));
     });
