@@ -75,8 +75,8 @@ module.exports = {
   },
   'tfs-css':{
     files: [{
-      src: '<%= src %>/js/scripts/dist/css/formValidation.min.css',
-      dest: '<%= tfs %>/css/styles/formValidation.min.css'
+      src: '<%= src %>/js/scripts/form-validator/dist/css/formValidation.css',
+      dest: '<%= tfs %>/css/styles/formValidation.css'
     }]
   },
   'bower': {
