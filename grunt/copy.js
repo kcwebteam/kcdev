@@ -69,7 +69,7 @@ module.exports = {
       dest: '<%= tfs %>/js/scripts/kc-formValidation.min.js'
     },
     {
-      src: '<%= src %>/js/scripts/dept-footer-map.js',
+      src: '<%= src %>/js/lib/dept-footer-map.js',
       dest: '<%= tfs %>/js/scripts/dept-footer-map.js'
     }]
   },
