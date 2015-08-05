@@ -69,14 +69,14 @@ module.exports = {
       dest: '<%= tfs %>/js/scripts/kc-formValidation.min.js'
     },
     {
-      src: '<%= src %>/js/scripts/dept-footer-map.js',
+      src: '<%= src %>/js/lib/dept-footer-map.js',
       dest: '<%= tfs %>/js/scripts/dept-footer-map.js'
     }]
   },
   'tfs-css':{
     files: [{
-      src: '<%= src %>/js/scripts/dist/css/formValidation.min.css',
-      dest: '<%= tfs %>/css/styles/formValidation.min.css'
+      src: '<%= src %>/js/scripts/form-validator/dist/css/formValidation.css',
+      dest: '<%= tfs %>/css/styles/formValidation.css'
     }]
   },
   'bower': {
