@@ -27,7 +27,7 @@
  *
  * Use formValidation(.min).js file if you want to have all validators.
  *
- * @version     v0.6.3, built on 2015-05-31 10:06:42 PM
+ * @version     v0.7.0, built on 2015-08-01 4:57:17 PM
  * @author      https://twitter.com/formvalidation
  * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
@@ -52,7 +52,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery));
 
 (function($) {
-    // TODO: Remove backward compatibility in v0.7.0
+    // TODO: Remove backward compatibility
     /**
      * Constructor
      *
@@ -78,6 +78,9 @@ if (typeof jQuery === 'undefined') {
         this.STATUS_VALID         = 'VALID';
         this.STATUS_IGNORED       = 'IGNORED';
 
+        // Default message
+        this.DEFAULT_MESSAGE      = $.fn.formValidation.DEFAULT_MESSAGE;
+
         // Determine the event that is fired when user change the field value
         // Most modern browsers supports input event except IE 7, 8.
         // IE 9 supports input event but the event is still not fired if I press the backspace key.
@@ -86,7 +89,7 @@ if (typeof jQuery === 'undefined') {
         this._ieVersion = (function() {
             var v = 3, div = document.createElement('div'), a = div.all || [];
             while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]) {}
-            return v > 4 ? v : !v;
+            return v > 4 ? v : document.documentMode;
         }());
 
         var el = document.createElement('div');
@@ -339,9 +342,12 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            var validatorName;
-            for (validatorName in this.options.fields[field].validators) {
-                if (!FormValidation.Validator[validatorName]) {
+            var validators = this.options.fields[field].validators,
+                validatorName,
+                alias;
+            for (validatorName in validators) {
+                alias = validators[validatorName].alias || validatorName;
+                if (!FormValidation.Validator[alias]) {
                     delete this.options.fields[field].validators[validatorName];
                 }
             }
@@ -384,7 +390,7 @@ if (typeof jQuery === 'undefined') {
 
                 // Create help block elements for showing the error messages
                 $field.data(ns + '.messages', $message);
-                for (validatorName in this.options.fields[field].validators) {
+                for (validatorName in validators) {
                     $field.data(ns + '.result.' + validatorName, this.STATUS_NOT_VALIDATED);
 
                     if (!updateAll || i === total - 1) {
@@ -399,8 +405,9 @@ if (typeof jQuery === 'undefined') {
                     }
 
                     // Init the validator
-                    if ('function' === typeof FormValidation.Validator[validatorName].init) {
-                        FormValidation.Validator[validatorName].init(this, $field, this.options.fields[field].validators[validatorName]);
+                    alias = validators[validatorName].alias || validatorName;
+                    if ('function' === typeof FormValidation.Validator[alias].init) {
+                        FormValidation.Validator[alias].init(this, $field, this.options.fields[field].validators[validatorName], validatorName);
                     }
                 }
 
@@ -435,12 +442,12 @@ if (typeof jQuery === 'undefined') {
                             // Show tooltip/popover message when field gets focus
                             .off('focus.container.' + ns)
                             .on('focus.container.' + ns, function() {
-                                that._showTooltip($field, container);
+                                that._showTooltip($(this), container);
                             })
                             // and hide them when losing focus
                             .off('blur.container.' + ns)
                             .on('blur.container.' + ns, function() {
-                                that._hideTooltip($field, container);
+                                that._hideTooltip($(this), container);
                             });
                     }
 
@@ -595,21 +602,26 @@ if (typeof jQuery === 'undefined') {
          * @returns {String}
          */
         _getMessage: function(field, validatorName) {
-            if (!this.options.fields[field] || !FormValidation.Validator[validatorName]
-                || !this.options.fields[field].validators || !this.options.fields[field].validators[validatorName])
-            {
+            if (!this.options.fields[field] || !this.options.fields[field].validators) {
+                return '';
+            }
+            var validators = this.options.fields[field].validators,
+                alias      = (validators[validatorName] && validators[validatorName].alias) ? validators[validatorName].alias : validatorName;
+            if (!FormValidation.Validator[alias]) {
                 return '';
             }
 
             switch (true) {
-                case !!this.options.fields[field].validators[validatorName].message:
-                    return this.options.fields[field].validators[validatorName].message;
+                case !!validators[validatorName].message:
+                    return validators[validatorName].message;
                 case !!this.options.fields[field].message:
                     return this.options.fields[field].message;
-                case (!!FormValidation.I18n[this.options.locale] && !!FormValidation.I18n[this.options.locale][validatorName] && !!FormValidation.I18n[this.options.locale][validatorName]['default']):
-                    return FormValidation.I18n[this.options.locale][validatorName]['default'];
-                default:
+                case !!this.options.message:
                     return this.options.message;
+                case (!!FormValidation.I18n[this.options.locale] && !!FormValidation.I18n[this.options.locale][alias] && !!FormValidation.I18n[this.options.locale][alias]['default']):
+                    return FormValidation.I18n[this.options.locale][alias]['default'];
+                default:
+                    return this.DEFAULT_MESSAGE;
             }
         },
 
@@ -691,9 +703,11 @@ if (typeof jQuery === 'undefined') {
          * @returns {Object}
          */
         _parseOptions: function($field) {
-            var ns         = this._namespace,
-                field      = $field.attr('name') || $field.attr('data-' + ns + '-field'),
-                validators = {},
+            var ns           = this._namespace,
+                field        = $field.attr('name') || $field.attr('data-' + ns + '-field'),
+                validators   = {},
+                aliasAttr    = new RegExp('^data-' + ns + '-([a-z]+)-alias$'),
+                validatorSet = $.extend({}, FormValidation.Validator),
                 validator,
                 v,          // Validator name
                 attrName,
@@ -704,8 +718,19 @@ if (typeof jQuery === 'undefined') {
                 html5AttrName,
                 html5AttrMap;
 
-            for (v in FormValidation.Validator) {
-                validator    = FormValidation.Validator[v];
+            // Determine whether the alias validator is used by checking the data-fv-validator-alias attribute
+            $.each($field.get(0).attributes, function(i, attribute) {
+                if (attribute.value && aliasAttr.test(attribute.name)) {
+                    v = attribute.name.split('-')[2];
+                    if (validatorSet[attribute.value]) {
+                        validatorSet[v]       = validatorSet[attribute.value];
+                        validatorSet[v].alias = attribute.value;
+                    }
+                }
+            });
+
+            for (v in validatorSet) {
+                validator    = validatorSet[v];
                 attrName     = 'data-' + ns + '-' + v.toLowerCase(),
                 enabled      = $field.attr(attrName) + '';
                 html5AttrMap = ('function' === typeof validator.enableByHtml5) ? validator.enableByHtml5($field) : null;
@@ -721,11 +746,14 @@ if (typeof jQuery === 'undefined') {
                                                     transformer: 'transformer'
                                                 }, validator.html5Attributes);
                     validators[v] = $.extend({}, html5AttrMap === true ? {} : html5AttrMap, validators[v]);
+                    if (validator.alias) {
+                        validators[v].alias = validator.alias;
+                    }
 
                     for (html5AttrName in validator.html5Attributes) {
-                        optionName  = validator.html5Attributes[html5AttrName];
-                        optionAttrName = 'data-' + ns + '-' + v.toLowerCase() + '-' + html5AttrName,
-                        optionValue = $field.attr(optionAttrName);
+                        optionName     = validator.html5Attributes[html5AttrName];
+                        optionAttrName = 'data-' + ns + '-' + v.toLowerCase() + '-' + html5AttrName;
+                        optionValue    = $field.attr(optionAttrName);
                         if (optionValue) {
                             if ('true' === optionValue || optionAttrName === optionValue.toLowerCase()) {
                                 optionValue = true;
@@ -741,6 +769,7 @@ if (typeof jQuery === 'undefined') {
             var opts = {
                     autoFocus:   $field.attr('data-' + ns + '-autofocus'),
                     err:         $field.attr('data-' + ns + '-err-container') || $field.attr('data-' + ns + '-container'), // Support backward
+                    enabled:     $field.attr('data-' + ns + '-enabled'),
                     excluded:    $field.attr('data-' + ns + '-excluded'),
                     icon:        $field.attr('data-' + ns + '-icon') || $field.attr('data-' + ns + '-feedbackicons') || (this.options.fields && this.options.fields[field] ? this.options.fields[field].feedbackIcons : null), // Support backward
                     message:     $field.attr('data-' + ns + '-message'),
@@ -759,7 +788,7 @@ if (typeof jQuery === 'undefined') {
                 emptyValidators = $.isEmptyObject(validators);  // Check if the field validators are set using HTML attributes
 
             if (!emptyValidators || (!emptyOptions && this.options.fields && this.options.fields[field])) {
-                opts.validators = validators;
+                //opts.validators = validators;
                 return opts;
             } else {
                 return null;
@@ -1203,6 +1232,12 @@ if (typeof jQuery === 'undefined') {
                     $errors = $f.data(ns + '.messages')
                                 .find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]');
 
+                if (this.options.fields && this.options.fields[field]
+                    && (this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false))
+                {
+                    continue;
+                }
+
                 if ($errors.filter('[data-' + ns + '-result="' + this.STATUS_INVALID + '"]').length > 0) {
                     return false;
                 }
@@ -1241,7 +1276,9 @@ if (typeof jQuery === 'undefined') {
                 default:
                     break;
             }
-            if (fields.length === 0 || !this.options.fields[field] || this.options.fields[field].enabled === false) {
+            if (fields.length === 0 || !this.options.fields[field]
+                || this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false)
+            {
                 return true;
             }
 
@@ -1580,7 +1617,9 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
-            if (fields.length === 0 || !this.options.fields[field] || this.options.fields[field].enabled === false) {
+            if (fields.length === 0 || !this.options.fields[field]
+                || this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false)
+            {
                 return this;
             }
 
@@ -1591,6 +1630,7 @@ if (typeof jQuery === 'undefined') {
                 validators = this.options.fields[field].validators,
                 verbose    = this.isOptionEnabled(field, 'verbose'),
                 validatorName,
+                alias,
                 validateResult;
 
             for (var i = 0; i < total; i++) {
@@ -1622,7 +1662,10 @@ if (typeof jQuery === 'undefined') {
                     }
 
                     $field.data(ns + '.result.' + validatorName, this.STATUS_VALIDATING);
-                    validateResult = FormValidation.Validator[validatorName].validate(this, $field, validators[validatorName]);
+
+                    // Check whether or not the validator is just an alias of another
+                    alias          = validators[validatorName].alias || validatorName;
+                    validateResult = FormValidation.Validator[alias].validate(this, $field, validators[validatorName], validatorName);
 
                     // validateResult can be a $.Deferred object ...
                     if ('object' === typeof validateResult && validateResult.resolve) {
@@ -1745,7 +1788,7 @@ if (typeof jQuery === 'undefined') {
          * It will remove all error messages, feedback icons and turn off the events
          */
         destroy: function() {
-            var ns = this._namespace, i, field, fields, $field, validator, $icon, row;
+            var ns = this._namespace, i, field, fields, $field, validator, $icon, row, alias;
 
             // Destroy the validators first
             for (field in this.options.fields) {
@@ -1761,8 +1804,9 @@ if (typeof jQuery === 'undefined') {
                               .removeData(ns + '.dfs.' + validator);
 
                         // Destroy the validator
-                        if ('function' === typeof FormValidation.Validator[validator].destroy) {
-                            FormValidation.Validator[validator].destroy(this, $field, this.options.fields[field].validators[validator]);
+                        alias = this.options.fields[field].validators[validator].alias || validator;
+                        if ('function' === typeof FormValidation.Validator[alias].destroy) {
+                            FormValidation.Validator[alias].destroy(this, $field, this.options.fields[field].validators[validator], validator);
                         }
                     }
                 }
@@ -2221,8 +2265,10 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.formValidation.Constructor = FormValidation.Base;
 
-    // The default options
-    // Sorted in alphabetical order
+    // Default message
+    $.fn.formValidation.DEFAULT_MESSAGE = 'This value is not valid';
+
+    // The default options sorted in alphabetical order
     $.fn.formValidation.DEFAULT_OPTIONS = {
         // The first invalid field will be focused automatically
         autoFocus: true,
@@ -2293,7 +2339,7 @@ if (typeof jQuery === 'undefined') {
         locale: 'en_US',
 
         // Default invalid message
-        message: 'This value is not valid',
+        message: null,
 
         // The field will not be live validated if its length is less than this number of characters
         threshold: null,
@@ -2568,16 +2614,13 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'between');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
 
 			value = this._format(value);
-            if (!$.isNumeric(value)) {
-                return false;
-            }
 
             var locale   = validator.getLocale(),
                 min      = $.isNumeric(options.min) ? options.min : validator.getDynamicOption($field, options.min),
@@ -2585,14 +2628,13 @@ if (typeof jQuery === 'undefined') {
                 minValue = this._format(min),
                 maxValue = this._format(max);
 
-            value = parseFloat(value);
 			return (options.inclusive === true || options.inclusive === undefined)
                     ? {
-                        valid: value >= minValue && value <= maxValue,
+                        valid: $.isNumeric(value) && parseFloat(value) >= minValue && parseFloat(value) <= maxValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between['default'], [min, max])
                     }
                     : {
-                        valid: value > minValue  && value <  maxValue,
+                        valid: $.isNumeric(value) && parseFloat(value) > minValue && parseFloat(value) < maxValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between.notInclusive, [min, max])
                     };
         },
@@ -2632,8 +2674,8 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
-            var value  = validator.getFieldValue($field, 'callback'),
+        validate: function(validator, $field, options, validatorName) {
+            var value  = validator.getFieldValue($field, validatorName),
                 dfd    = new $.Deferred(),
                 result = { valid: true };
 
@@ -2642,7 +2684,7 @@ if (typeof jQuery === 'undefined') {
                 result = ('boolean' === typeof response || null === response) ? { valid: response } : response;
             }
 
-            dfd.resolve($field, 'callback', result);
+            dfd.resolve($field, validatorName, result);
             return dfd;
         }
     };
@@ -2685,7 +2727,7 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Object}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var locale     = validator.getLocale(),
                 ns         = validator.getNamespace(),
                 numChoices = $field.is('select')
@@ -2807,8 +2849,8 @@ if (typeof jQuery === 'undefined') {
          * - type: The array of valid color types
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'color');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -2889,8 +2931,8 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'creditCard');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3020,8 +3062,8 @@ if (typeof jQuery === 'undefined') {
          * ii) date, time and A (indicating AM or PM)
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'date');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3362,12 +3404,12 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        init: function(validator, $field, options) {
+        init: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
                 var compareWith = validator.getFieldElements(fields[i]);
-                validator.onLiveChange(compareWith, 'live_different', function() {
-                    var status = validator.getStatus($field, 'different');
+                validator.onLiveChange(compareWith, 'live_' + validatorName, function() {
+                    var status = validator.getStatus($field, validatorName);
                     if (status !== validator.STATUS_NOT_VALIDATED) {
                         validator.revalidateField($field);
                     }
@@ -3383,11 +3425,11 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
                 var compareWith = validator.getFieldElements(fields[i]);
-                validator.offLiveChange(compareWith, 'live_different');
+                validator.offLiveChange(compareWith, 'live_' + validatorName);
             }
         },
 
@@ -3401,8 +3443,8 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'different');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3416,11 +3458,11 @@ if (typeof jQuery === 'undefined') {
                     continue;
                 }
 
-                var compareValue = validator.getFieldValue(compareWith, 'different');
+                var compareValue = validator.getFieldValue(compareWith, validatorName);
                 if (value === compareValue) {
                     isValid = false;
                 } else if (compareValue !== '') {
-                    validator.updateStatus(compareWith, validator.STATUS_VALID, 'different');
+                    validator.updateStatus(compareWith, validator.STATUS_VALID, validatorName);
                 }
             }
 
@@ -3446,8 +3488,8 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} [options]
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'digits');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3486,8 +3528,8 @@ if (typeof jQuery === 'undefined') {
          * - separator: Regex for character or characters expected as separator between addresses; default is comma /[,;]/, i.e. comma or semicolon.
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'emailAddress');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3586,8 +3628,8 @@ if (typeof jQuery === 'undefined') {
          * - type: The allowed MIME type, separated by a comma
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'file');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -3684,29 +3726,25 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'greaterThan');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
             
             value = this._format(value);
-            if (!$.isNumeric(value)) {
-                return false;
-            }
 
             var locale         = validator.getLocale(),
                 compareTo      = $.isNumeric(options.value) ? options.value : validator.getDynamicOption($field, options.value),
                 compareToValue = this._format(compareTo);
 
-            value = parseFloat(value);
 			return (options.inclusive === true || options.inclusive === undefined)
                     ? {
-                        valid: value >= compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) >= compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].greaterThan['default'], compareTo)
                     }
                     : {
-                        valid: value > compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) > compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].greaterThan.notInclusive, compareTo)
                     };
         },
@@ -3739,10 +3777,10 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        init: function(validator, $field, options) {
+        init: function(validator, $field, options, validatorName) {
             var compareWith = validator.getFieldElements(options.field);
-            validator.onLiveChange(compareWith, 'live_identical', function() {
-                var status = validator.getStatus($field, 'identical');
+            validator.onLiveChange(compareWith, 'live_' + validatorName, function() {
+                var status = validator.getStatus($field, validatorName);
                 if (status !== validator.STATUS_NOT_VALIDATED) {
                     validator.revalidateField($field);
                 }
@@ -3757,9 +3795,9 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var compareWith = validator.getFieldElements(options.field);
-            validator.offLiveChange(compareWith, 'live_identical');
+            validator.offLiveChange(compareWith, 'live_' + validatorName);
         },
 
         /**
@@ -3771,16 +3809,16 @@ if (typeof jQuery === 'undefined') {
          * - field: The name of field that will be used to compare with current one
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value       = validator.getFieldValue($field, 'identical'),
+        validate: function(validator, $field, options, validatorName) {
+            var value       = validator.getFieldValue($field, validatorName),
                 compareWith = validator.getFieldElements(options.field);
             if (compareWith === null || compareWith.length === 0) {
                 return true;
             }
 
-            var compareValue = validator.getFieldValue(compareWith, 'identical');
+            var compareValue = validator.getFieldValue(compareWith, validatorName);
             if (value === compareValue) {
-                validator.updateStatus(compareWith, validator.STATUS_VALID, 'identical');
+                validator.updateStatus(compareWith, validator.STATUS_VALID, validatorName);
                 return true;
             }
 
@@ -3798,6 +3836,12 @@ if (typeof jQuery === 'undefined') {
     });
 
     FormValidation.Validator.integer = {
+        html5Attributes: {
+            message: 'message',
+            thousandsseparator: 'thousandsSeparator',
+            decimalseparator: 'decimalSeparator'
+        },
+
         enableByHtml5: function($field) {
             return ('number' === $field.attr('type')) && ($field.attr('step') === undefined || $field.attr('step') % 1 === 0);
         },
@@ -3809,18 +3853,47 @@ if (typeof jQuery === 'undefined') {
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following key:
          * - message: The invalid message
+         * - thousandsSeparator: The thousands separator. It's empty by default
+         * - decimalSeparator: The decimal separator. It's '.' by default
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             if (this.enableByHtml5($field) && $field.get(0).validity && $field.get(0).validity.badInput === true) {
                 return false;
             }
 
-            var value = validator.getFieldValue($field, 'integer');
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
-            return /^(?:-?(?:0|[1-9][0-9]*))$/.test(value);
+
+            var decimalSeparator   = options.decimalSeparator   || '.',
+                thousandsSeparator = options.thousandsSeparator || '';
+            decimalSeparator       = (decimalSeparator   === '.') ? '\\.' : decimalSeparator;
+            thousandsSeparator     = (thousandsSeparator === '.') ? '\\.' : thousandsSeparator;
+
+            var testRegexp         = new RegExp('^-?[0-9]{1,3}(' + thousandsSeparator + '[0-9]{3})*(' + decimalSeparator + '[0-9]+)?$'),
+                thousandsReplacer  = new RegExp(thousandsSeparator, 'g');
+
+            if (!testRegexp.test(value)) {
+                return false;
+            }
+
+            // Replace thousands separator with blank
+            if (thousandsSeparator) {
+                value = value.replace(thousandsReplacer, '');
+            }
+            // Replace decimal separator with a dot
+            if (decimalSeparator) {
+                value = value.replace(decimalSeparator, '.');
+            }
+
+            if (isNaN(value) || !isFinite(value)) {
+                return false;
+            }
+            // TODO: Use Number.isInteger() if available
+            value = parseFloat(value);
+            return Math.floor(value) === value;
         }
     };
 }(jQuery));
@@ -3869,29 +3942,25 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'lessThan');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
             
 			value = this._format(value);
-            if (!$.isNumeric(value)) {
-                return false;
-            }
 
             var locale         = validator.getLocale(),
                 compareTo      = $.isNumeric(options.value) ? options.value : validator.getDynamicOption($field, options.value),
                 compareToValue = this._format(compareTo);
 
-            value = parseFloat(value);
             return (options.inclusive === true || options.inclusive === undefined)
                     ? {
-                        valid: value <= compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) <= compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].lessThan['default'], compareTo)
                     }
                     : {
-                        valid: value < compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) < compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].lessThan.notInclusive, compareTo)
                     };
         },
@@ -3924,7 +3993,7 @@ if (typeof jQuery === 'undefined') {
          * @param {Object} options
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var type = $field.attr('type');
             if ('radio' === type || 'checkbox' === type) {
                 var ns = validator.getNamespace();
@@ -3938,7 +4007,7 @@ if (typeof jQuery === 'undefined') {
                 return true;
             }
 
-            var value = validator.getFieldValue($field, 'notEmpty');
+            var value = validator.getFieldValue($field, validatorName);
             return $.trim(value) !== '';
         }
     };
@@ -3955,7 +4024,9 @@ if (typeof jQuery === 'undefined') {
     FormValidation.Validator.numeric = {
         html5Attributes: {
             message: 'message',
-            separator: 'separator'
+            separator: 'separator',     // deprecated
+            thousandsseparator: 'thousandsSeparator',
+            decimalseparator: 'decimalSeparator'
         },
 
         enableByHtml5: function($field) {
@@ -3969,21 +4040,39 @@ if (typeof jQuery === 'undefined') {
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
-         * - separator: The decimal separator. Can be "." (default), ","
+         * - thousandsSeparator: The thousands separator. It's empty by default
+         * - separator, decimalSeparator: The decimal separator. It's '.' by default
+         * The separator option is deprecated and should be replaced with decimalSeparator
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             if (this.enableByHtml5($field) && $field.get(0).validity && $field.get(0).validity.badInput === true) {
                 return false;
             }
 
-            var value = validator.getFieldValue($field, 'numeric');
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
-            var separator = options.separator || '.';
-            if (separator !== '.') {
-                value = value.replace(separator, '.');
+            var decimalSeparator   = options.separator || options.decimalSeparator || '.',
+                thousandsSeparator = options.thousandsSeparator || '';
+            decimalSeparator       = (decimalSeparator   === '.') ? '\\.' : decimalSeparator;
+            thousandsSeparator     = (thousandsSeparator === '.') ? '\\.' : thousandsSeparator;
+
+            var testRegexp         = new RegExp('^-?[0-9]{1,3}(' + thousandsSeparator + '[0-9]{3})*(' + decimalSeparator + '[0-9]+)?$'),
+                thousandsReplacer  = new RegExp(thousandsSeparator, 'g');
+
+            if (!testRegexp.test(value)) {
+                return false;
+            }
+
+            // Replace thousands separator with blank
+            if (thousandsSeparator) {
+                value = value.replace(thousandsReplacer, '');
+            }
+            // Replace decimal separator with a dot
+            if (decimalSeparator) {
+                value = value.replace(decimalSeparator, '.');
             }
 
             return !isNaN(parseFloat(value)) && isFinite(value);
@@ -4039,19 +4128,19 @@ if (typeof jQuery === 'undefined') {
          * - message: The invalid message
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
-            var value   = validator.getFieldValue($field, 'promise'),
+        validate: function(validator, $field, options, validatorName) {
+            var value   = validator.getFieldValue($field, validatorName),
                 dfd     = new $.Deferred(),
                 promise = FormValidation.Helper.call(options.promise, [value, validator, $field]);
 
             promise
                 .done(function(result) {
-                    dfd.resolve($field, 'promise', result);
+                    dfd.resolve($field, validatorName, result);
                 })
                 .fail(function(result) {
                     result = result || {};
                     result.valid = false;
-                    dfd.resolve($field, 'promise', result);
+                    dfd.resolve($field, validatorName, result);
                 });
 
             return dfd;
@@ -4093,8 +4182,8 @@ if (typeof jQuery === 'undefined') {
          * - regexp: The regular expression you need to check
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'regexp');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -4129,12 +4218,12 @@ if (typeof jQuery === 'undefined') {
         /**
          * Destroy the timer when destroying the FormValidation (using validator.destroy() method)
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var ns    = validator.getNamespace(),
-                timer = $field.data(ns + '.remote.timer');
+                timer = $field.data(ns + '.' + validatorName + '.timer');
             if (timer) {
                 clearTimeout(timer);
-                $field.removeData(ns + '.remote.timer');
+                $field.removeData(ns + '.' + validatorName + '.timer');
             }
         },
 
@@ -4161,12 +4250,12 @@ if (typeof jQuery === 'undefined') {
          * This is useful when connecting to external remote server or APIs provided by 3rd parties
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var ns    = validator.getNamespace(),
-                value = validator.getFieldValue($field, 'remote'),
+                value = validator.getFieldValue($field, validatorName),
                 dfd   = new $.Deferred();
             if (value === '') {
-                dfd.resolve($field, 'remote', { valid: true });
+                dfd.resolve($field, validatorName, { valid: true });
                 return dfd;
             }
             var name     = $field.attr('data-' + ns + '-field'),
@@ -4210,10 +4299,10 @@ if (typeof jQuery === 'undefined') {
                         response.valid = (response[validKey] === true || response[validKey] === 'true')
                                         ? true
                                         : (response[validKey] === false || response[validKey] === 'false' ? false : null);
-                        dfd.resolve($field, 'remote', response);
+                        dfd.resolve($field, validatorName, response);
                     })
                     .error(function(response) {
-                        dfd.resolve($field, 'remote', {
+                        dfd.resolve($field, validatorName, {
                             valid: false
                         });
                     });
@@ -4228,11 +4317,11 @@ if (typeof jQuery === 'undefined') {
             if (options.delay) {
                 // Since the form might have multiple fields with the same name
                 // I have to attach the timer to the field element
-                if ($field.data(ns + '.remote.timer')) {
-                    clearTimeout($field.data(ns + '.remote.timer'));
+                if ($field.data(ns + '.' + validatorName + '.timer')) {
+                    clearTimeout($field.data(ns + '.' + validatorName + '.timer'));
                 }
 
-                $field.data(ns + '.remote.timer', setTimeout(runCallback, options.delay));
+                $field.data(ns + '.' + validatorName + '.timer', setTimeout(runCallback, options.delay));
                 return dfd;
             } else {
                 return runCallback();
@@ -4295,8 +4384,8 @@ if (typeof jQuery === 'undefined') {
          * - utf8bytes: Evaluate string length in UTF-8 bytes, default to false
          * @returns {Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'stringLength');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (options.trim === true || options.trim === 'true') {
                 value = $.trim(value);
             }
@@ -4338,11 +4427,11 @@ if (typeof jQuery === 'undefined') {
                     break;
 
                 case (!!min):
-                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.more, parseInt(min, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.more, parseInt(min, 10) - 1);
                     break;
 
                 case (!!max):
-                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.less, parseInt(max, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.less, parseInt(max, 10) + 1);
                     break;
 
                 default:
@@ -4389,8 +4478,8 @@ if (typeof jQuery === 'undefined') {
          * - protocol: The protocols, separated by a comma. Default to "http, https, ftp"
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'uri');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

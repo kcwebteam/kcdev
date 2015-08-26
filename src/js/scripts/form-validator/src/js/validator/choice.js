@@ -44,7 +44,7 @@
          * - message: The invalid message
          * @returns {Object}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var locale     = validator.getLocale(),
                 ns         = validator.getNamespace(),
                 numChoices = $field.is('select')

@@ -44,10 +44,10 @@
             //      feedback: 'form-control-feedback'
             //  }
             icon: {
-                valid: null,
-                invalid: null,
-                validating: null,
-                feedback: 'form-control-feedback'
+                 valid: 'fa fa-check',
+                 invalid: 'fa fa-times',
+                 validating: 'fa fa-refresh',
+                 feedback: 'form-control-feedback'
             },
             row: {
                 // By default, each field is placed inside the <div class="form-group"></div>

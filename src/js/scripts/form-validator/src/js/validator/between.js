@@ -54,16 +54,13 @@
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'between');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
 
 			value = this._format(value);
-            if (!$.isNumeric(value)) {
-                return false;
-            }
 
             var locale   = validator.getLocale(),
                 min      = $.isNumeric(options.min) ? options.min : validator.getDynamicOption($field, options.min),
@@ -71,14 +68,13 @@
                 minValue = this._format(min),
                 maxValue = this._format(max);
 
-            value = parseFloat(value);
 			return (options.inclusive === true || options.inclusive === undefined)
                     ? {
-                        valid: value >= minValue && value <= maxValue,
+                        valid: $.isNumeric(value) && parseFloat(value) >= minValue && parseFloat(value) <= maxValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between['default'], [min, max])
                     }
                     : {
-                        valid: value > minValue  && value <  maxValue,
+                        valid: $.isNumeric(value) && parseFloat(value) > minValue && parseFloat(value) < maxValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between.notInclusive, [min, max])
                     };
         },

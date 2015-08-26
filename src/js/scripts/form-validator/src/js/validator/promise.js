@@ -55,19 +55,19 @@
          * - message: The invalid message
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
-            var value   = validator.getFieldValue($field, 'promise'),
+        validate: function(validator, $field, options, validatorName) {
+            var value   = validator.getFieldValue($field, validatorName),
                 dfd     = new $.Deferred(),
                 promise = FormValidation.Helper.call(options.promise, [value, validator, $field]);
 
             promise
                 .done(function(result) {
-                    dfd.resolve($field, 'promise', result);
+                    dfd.resolve($field, validatorName, result);
                 })
                 .fail(function(result) {
                     result = result || {};
                     result.valid = false;
-                    dfd.resolve($field, 'promise', result);
+                    dfd.resolve($field, validatorName, result);
                 });
 
             return dfd;

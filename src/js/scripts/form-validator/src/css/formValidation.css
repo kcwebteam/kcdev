@@ -28,6 +28,11 @@
     display: block;
 }
 
+/* Hide the clear icon for field using placeholder attribute on IE10/11 */
+.fv-form [placeholder]::-ms-clear {
+    display: none;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~ For Bootstrap form ~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~ */

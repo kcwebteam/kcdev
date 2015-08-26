@@ -27,7 +27,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery));
 
 (function($) {
-    // TODO: Remove backward compatibility in v0.7.0
+    // TODO: Remove backward compatibility
     /**
      * Constructor
      *
@@ -53,6 +53,9 @@ if (typeof jQuery === 'undefined') {
         this.STATUS_VALID         = 'VALID';
         this.STATUS_IGNORED       = 'IGNORED';
 
+        // Default message
+        this.DEFAULT_MESSAGE      = $.fn.formValidation.DEFAULT_MESSAGE;
+
         // Determine the event that is fired when user change the field value
         // Most modern browsers supports input event except IE 7, 8.
         // IE 9 supports input event but the event is still not fired if I press the backspace key.
@@ -61,7 +64,7 @@ if (typeof jQuery === 'undefined') {
         this._ieVersion = (function() {
             var v = 3, div = document.createElement('div'), a = div.all || [];
             while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]) {}
-            return v > 4 ? v : !v;
+            return v > 4 ? v : document.documentMode;
         }());
 
         var el = document.createElement('div');
@@ -314,9 +317,12 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            var validatorName;
-            for (validatorName in this.options.fields[field].validators) {
-                if (!FormValidation.Validator[validatorName]) {
+            var validators = this.options.fields[field].validators,
+                validatorName,
+                alias;
+            for (validatorName in validators) {
+                alias = validators[validatorName].alias || validatorName;
+                if (!FormValidation.Validator[alias]) {
                     delete this.options.fields[field].validators[validatorName];
                 }
             }
@@ -359,7 +365,7 @@ if (typeof jQuery === 'undefined') {
 
                 // Create help block elements for showing the error messages
                 $field.data(ns + '.messages', $message);
-                for (validatorName in this.options.fields[field].validators) {
+                for (validatorName in validators) {
                     $field.data(ns + '.result.' + validatorName, this.STATUS_NOT_VALIDATED);
 
                     if (!updateAll || i === total - 1) {
@@ -374,8 +380,9 @@ if (typeof jQuery === 'undefined') {
                     }
 
                     // Init the validator
-                    if ('function' === typeof FormValidation.Validator[validatorName].init) {
-                        FormValidation.Validator[validatorName].init(this, $field, this.options.fields[field].validators[validatorName]);
+                    alias = validators[validatorName].alias || validatorName;
+                    if ('function' === typeof FormValidation.Validator[alias].init) {
+                        FormValidation.Validator[alias].init(this, $field, this.options.fields[field].validators[validatorName], validatorName);
                     }
                 }
 
@@ -410,12 +417,12 @@ if (typeof jQuery === 'undefined') {
                             // Show tooltip/popover message when field gets focus
                             .off('focus.container.' + ns)
                             .on('focus.container.' + ns, function() {
-                                that._showTooltip($field, container);
+                                that._showTooltip($(this), container);
                             })
                             // and hide them when losing focus
                             .off('blur.container.' + ns)
                             .on('blur.container.' + ns, function() {
-                                that._hideTooltip($field, container);
+                                that._hideTooltip($(this), container);
                             });
                     }
 
@@ -570,21 +577,26 @@ if (typeof jQuery === 'undefined') {
          * @returns {String}
          */
         _getMessage: function(field, validatorName) {
-            if (!this.options.fields[field] || !FormValidation.Validator[validatorName]
-                || !this.options.fields[field].validators || !this.options.fields[field].validators[validatorName])
-            {
+            if (!this.options.fields[field] || !this.options.fields[field].validators) {
+                return '';
+            }
+            var validators = this.options.fields[field].validators,
+                alias      = (validators[validatorName] && validators[validatorName].alias) ? validators[validatorName].alias : validatorName;
+            if (!FormValidation.Validator[alias]) {
                 return '';
             }
 
             switch (true) {
-                case !!this.options.fields[field].validators[validatorName].message:
-                    return this.options.fields[field].validators[validatorName].message;
+                case !!validators[validatorName].message:
+                    return validators[validatorName].message;
                 case !!this.options.fields[field].message:
                     return this.options.fields[field].message;
-                case (!!FormValidation.I18n[this.options.locale] && !!FormValidation.I18n[this.options.locale][validatorName] && !!FormValidation.I18n[this.options.locale][validatorName]['default']):
-                    return FormValidation.I18n[this.options.locale][validatorName]['default'];
-                default:
+                case !!this.options.message:
                     return this.options.message;
+                case (!!FormValidation.I18n[this.options.locale] && !!FormValidation.I18n[this.options.locale][alias] && !!FormValidation.I18n[this.options.locale][alias]['default']):
+                    return FormValidation.I18n[this.options.locale][alias]['default'];
+                default:
+                    return this.DEFAULT_MESSAGE;
             }
         },
 
@@ -666,9 +678,11 @@ if (typeof jQuery === 'undefined') {
          * @returns {Object}
          */
         _parseOptions: function($field) {
-            var ns         = this._namespace,
-                field      = $field.attr('name') || $field.attr('data-' + ns + '-field'),
-                validators = {},
+            var ns           = this._namespace,
+                field        = $field.attr('name') || $field.attr('data-' + ns + '-field'),
+                validators   = {},
+                aliasAttr    = new RegExp('^data-' + ns + '-([a-z]+)-alias$'),
+                validatorSet = $.extend({}, FormValidation.Validator),
                 validator,
                 v,          // Validator name
                 attrName,
@@ -679,8 +693,19 @@ if (typeof jQuery === 'undefined') {
                 html5AttrName,
                 html5AttrMap;
 
-            for (v in FormValidation.Validator) {
-                validator    = FormValidation.Validator[v];
+            // Determine whether the alias validator is used by checking the data-fv-validator-alias attribute
+            $.each($field.get(0).attributes, function(i, attribute) {
+                if (attribute.value && aliasAttr.test(attribute.name)) {
+                    v = attribute.name.split('-')[2];
+                    if (validatorSet[attribute.value]) {
+                        validatorSet[v]       = validatorSet[attribute.value];
+                        validatorSet[v].alias = attribute.value;
+                    }
+                }
+            });
+
+            for (v in validatorSet) {
+                validator    = validatorSet[v];
                 attrName     = 'data-' + ns + '-' + v.toLowerCase(),
                 enabled      = $field.attr(attrName) + '';
                 html5AttrMap = ('function' === typeof validator.enableByHtml5) ? validator.enableByHtml5($field) : null;
@@ -696,11 +721,14 @@ if (typeof jQuery === 'undefined') {
                                                     transformer: 'transformer'
                                                 }, validator.html5Attributes);
                     validators[v] = $.extend({}, html5AttrMap === true ? {} : html5AttrMap, validators[v]);
+                    if (validator.alias) {
+                        validators[v].alias = validator.alias;
+                    }
 
                     for (html5AttrName in validator.html5Attributes) {
-                        optionName  = validator.html5Attributes[html5AttrName];
-                        optionAttrName = 'data-' + ns + '-' + v.toLowerCase() + '-' + html5AttrName,
-                        optionValue = $field.attr(optionAttrName);
+                        optionName     = validator.html5Attributes[html5AttrName];
+                        optionAttrName = 'data-' + ns + '-' + v.toLowerCase() + '-' + html5AttrName;
+                        optionValue    = $field.attr(optionAttrName);
                         if (optionValue) {
                             if ('true' === optionValue || optionAttrName === optionValue.toLowerCase()) {
                                 optionValue = true;
@@ -716,6 +744,7 @@ if (typeof jQuery === 'undefined') {
             var opts = {
                     autoFocus:   $field.attr('data-' + ns + '-autofocus'),
                     err:         $field.attr('data-' + ns + '-err-container') || $field.attr('data-' + ns + '-container'), // Support backward
+                    enabled:     $field.attr('data-' + ns + '-enabled'),
                     excluded:    $field.attr('data-' + ns + '-excluded'),
                     icon:        $field.attr('data-' + ns + '-icon') || $field.attr('data-' + ns + '-feedbackicons') || (this.options.fields && this.options.fields[field] ? this.options.fields[field].feedbackIcons : null), // Support backward
                     message:     $field.attr('data-' + ns + '-message'),
@@ -734,7 +763,7 @@ if (typeof jQuery === 'undefined') {
                 emptyValidators = $.isEmptyObject(validators);  // Check if the field validators are set using HTML attributes
 
             if (!emptyValidators || (!emptyOptions && this.options.fields && this.options.fields[field])) {
-                opts.validators = validators;
+                //opts.validators = validators;
                 return opts;
             } else {
                 return null;
@@ -1178,6 +1207,12 @@ if (typeof jQuery === 'undefined') {
                     $errors = $f.data(ns + '.messages')
                                 .find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]');
 
+                if (this.options.fields && this.options.fields[field]
+                    && (this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false))
+                {
+                    continue;
+                }
+
                 if ($errors.filter('[data-' + ns + '-result="' + this.STATUS_INVALID + '"]').length > 0) {
                     return false;
                 }
@@ -1216,7 +1251,9 @@ if (typeof jQuery === 'undefined') {
                 default:
                     break;
             }
-            if (fields.length === 0 || !this.options.fields[field] || this.options.fields[field].enabled === false) {
+            if (fields.length === 0 || !this.options.fields[field]
+                || this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false)
+            {
                 return true;
             }
 
@@ -1555,7 +1592,9 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
-            if (fields.length === 0 || !this.options.fields[field] || this.options.fields[field].enabled === false) {
+            if (fields.length === 0 || !this.options.fields[field]
+                || this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false)
+            {
                 return this;
             }
 
@@ -1566,6 +1605,7 @@ if (typeof jQuery === 'undefined') {
                 validators = this.options.fields[field].validators,
                 verbose    = this.isOptionEnabled(field, 'verbose'),
                 validatorName,
+                alias,
                 validateResult;
 
             for (var i = 0; i < total; i++) {
@@ -1597,7 +1637,10 @@ if (typeof jQuery === 'undefined') {
                     }
 
                     $field.data(ns + '.result.' + validatorName, this.STATUS_VALIDATING);
-                    validateResult = FormValidation.Validator[validatorName].validate(this, $field, validators[validatorName]);
+
+                    // Check whether or not the validator is just an alias of another
+                    alias          = validators[validatorName].alias || validatorName;
+                    validateResult = FormValidation.Validator[alias].validate(this, $field, validators[validatorName], validatorName);
 
                     // validateResult can be a $.Deferred object ...
                     if ('object' === typeof validateResult && validateResult.resolve) {
@@ -1720,7 +1763,7 @@ if (typeof jQuery === 'undefined') {
          * It will remove all error messages, feedback icons and turn off the events
          */
         destroy: function() {
-            var ns = this._namespace, i, field, fields, $field, validator, $icon, row;
+            var ns = this._namespace, i, field, fields, $field, validator, $icon, row, alias;
 
             // Destroy the validators first
             for (field in this.options.fields) {
@@ -1736,8 +1779,9 @@ if (typeof jQuery === 'undefined') {
                               .removeData(ns + '.dfs.' + validator);
 
                         // Destroy the validator
-                        if ('function' === typeof FormValidation.Validator[validator].destroy) {
-                            FormValidation.Validator[validator].destroy(this, $field, this.options.fields[field].validators[validator]);
+                        alias = this.options.fields[field].validators[validator].alias || validator;
+                        if ('function' === typeof FormValidation.Validator[alias].destroy) {
+                            FormValidation.Validator[alias].destroy(this, $field, this.options.fields[field].validators[validator], validator);
                         }
                     }
                 }
@@ -2196,8 +2240,10 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.formValidation.Constructor = FormValidation.Base;
 
-    // The default options
-    // Sorted in alphabetical order
+    // Default message
+    $.fn.formValidation.DEFAULT_MESSAGE = 'This value is not valid';
+
+    // The default options sorted in alphabetical order
     $.fn.formValidation.DEFAULT_OPTIONS = {
         // The first invalid field will be focused automatically
         autoFocus: true,
@@ -2268,7 +2314,7 @@ if (typeof jQuery === 'undefined') {
         locale: 'en_US',
 
         // Default invalid message
-        message: 'This value is not valid',
+        message: null,
 
         // The field will not be live validated if its length is less than this number of characters
         threshold: null,

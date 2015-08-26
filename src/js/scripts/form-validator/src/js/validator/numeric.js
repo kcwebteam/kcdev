@@ -18,7 +18,9 @@
     FormValidation.Validator.numeric = {
         html5Attributes: {
             message: 'message',
-            separator: 'separator'
+            separator: 'separator',     // deprecated
+            thousandsseparator: 'thousandsSeparator',
+            decimalseparator: 'decimalSeparator'
         },
 
         enableByHtml5: function($field) {
@@ -32,21 +34,39 @@
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
-         * - separator: The decimal separator. Can be "." (default), ","
+         * - thousandsSeparator: The thousands separator. It's empty by default
+         * - separator, decimalSeparator: The decimal separator. It's '.' by default
+         * The separator option is deprecated and should be replaced with decimalSeparator
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             if (this.enableByHtml5($field) && $field.get(0).validity && $field.get(0).validity.badInput === true) {
                 return false;
             }
 
-            var value = validator.getFieldValue($field, 'numeric');
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
-            var separator = options.separator || '.';
-            if (separator !== '.') {
-                value = value.replace(separator, '.');
+            var decimalSeparator   = options.separator || options.decimalSeparator || '.',
+                thousandsSeparator = options.thousandsSeparator || '';
+            decimalSeparator       = (decimalSeparator   === '.') ? '\\.' : decimalSeparator;
+            thousandsSeparator     = (thousandsSeparator === '.') ? '\\.' : thousandsSeparator;
+
+            var testRegexp         = new RegExp('^-?[0-9]{1,3}(' + thousandsSeparator + '[0-9]{3})*(' + decimalSeparator + '[0-9]+)?$'),
+                thousandsReplacer  = new RegExp(thousandsSeparator, 'g');
+
+            if (!testRegexp.test(value)) {
+                return false;
+            }
+
+            // Replace thousands separator with blank
+            if (thousandsSeparator) {
+                value = value.replace(thousandsReplacer, '');
+            }
+            // Replace decimal separator with a dot
+            if (decimalSeparator) {
+                value = value.replace(decimalSeparator, '.');
             }
 
             return !isNaN(parseFloat(value)) && isFinite(value);

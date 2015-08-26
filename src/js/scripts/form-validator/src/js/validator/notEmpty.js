@@ -29,7 +29,7 @@
          * @param {Object} options
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var type = $field.attr('type');
             if ('radio' === type || 'checkbox' === type) {
                 var ns = validator.getNamespace();
@@ -43,7 +43,7 @@
                 return true;
             }
 
-            var value = validator.getFieldValue($field, 'notEmpty');
+            var value = validator.getFieldValue($field, validatorName);
             return $.trim(value) !== '';
         }
     };

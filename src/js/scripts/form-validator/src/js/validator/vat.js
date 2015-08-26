@@ -80,10 +80,10 @@
          *      - Name of field which its value defines the country code
          *      - Name of callback function that returns the country code
          *      - A callback function that returns the country code
-         * @returns {Boolean|Object}
+         * @returns {Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'vat');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -101,13 +101,12 @@
                 return true;
             }
 
-            var method  = ['_', country.toLowerCase()].join('');
-            return this[method](value)
-                ? true
-                : {
-                    valid: false,
-                    message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].vat.country, FormValidation.I18n[locale].vat.countries[country.toUpperCase()])
-                };
+            var method  = ['_', country.toLowerCase()].join(''),
+                result = this[method](value);
+            result         = (result === true || result === false) ? { valid: result } : result;
+            result.message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].vat.country, FormValidation.I18n[locale].vat.countries[country.toUpperCase()]);
+
+            return result;
         },
 
         // VAT validators
@@ -545,7 +544,7 @@
          * iii) CIF (Certificado de Identificación Fiscal), for legal entities and others
          *
          * @param {String} value VAT number
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         _es: function(value) {
             if (/^ES[0-9A-Z][0-9]{7}[0-9A-Z]$/.test(value)) {
@@ -599,11 +598,20 @@
 
             var first = value.charAt(0);
             if (/^[0-9]$/.test(first)) {
-                return dni(value);
+                return {
+                    valid: dni(value),
+                    type: 'DNI'
+                };
             } else if (/^[XYZ]$/.test(first)) {
-                return nie(value);
+                return {
+                    valid: nie(value),
+                    type: 'NIE'
+                };
             } else {
-                return cif(value);
+                return {
+                    valid: cif(value),
+                    type: 'CIF'
+                };
             }
         },
 
