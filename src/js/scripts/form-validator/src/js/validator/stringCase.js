@@ -32,8 +32,8 @@
          * - case: Can be 'lower' (default) or 'upper'
          * @returns {Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'stringCase');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

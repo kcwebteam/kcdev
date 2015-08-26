@@ -29,11 +29,11 @@
          * @param {Object} options Consists of the following key:
          * - creditCardField: The credit card number field
          */
-        init: function(validator, $field, options) {
+        init: function(validator, $field, options, validatorName) {
             if (options.creditCardField) {
                 var creditCardField = validator.getFieldElements(options.creditCardField);
-                validator.onLiveChange(creditCardField, 'live_cvv', function() {
-                    var status = validator.getStatus($field, 'cvv');
+                validator.onLiveChange(creditCardField, 'live_' + validatorName, function() {
+                    var status = validator.getStatus($field, validatorName);
                     if (status !== validator.STATUS_NOT_VALIDATED) {
                         validator.revalidateField($field);
                     }
@@ -49,10 +49,10 @@
          * @param {Object} options Consists of the following key:
          * - creditCardField: The credit card number field
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             if (options.creditCardField) {
                 var creditCardField = validator.getFieldElements(options.creditCardField);
-                validator.offLiveChange(creditCardField, 'live_cvv');
+                validator.offLiveChange(creditCardField, 'live_' + validatorName);
             }
         },
 
@@ -66,8 +66,8 @@
          * - message: The invalid message
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'cvv');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

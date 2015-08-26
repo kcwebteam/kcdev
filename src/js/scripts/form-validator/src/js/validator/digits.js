@@ -24,8 +24,8 @@
          * @param {Object} [options]
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'digits');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

@@ -71,10 +71,10 @@
          *      - Name of field which its value defines the country code
          *      - Name of callback function that returns the country code
          *      - A callback function that returns the country code
-         * @returns {Boolean|Object}
+         * @returns {Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'id');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -92,13 +92,12 @@
                 return true;
             }
 
-            var method  = ['_', country.toLowerCase()].join('');
-            return this[method](value)
-                    ? true
-                    : {
-                        valid: false,
-                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].id.country, FormValidation.I18n[locale].id.countries[country.toUpperCase()])
-                    };
+            var method = ['_', country.toLowerCase()].join(''),
+                result = this[method](value);
+            result         = (result === true || result === false) ? { valid: result } : result;
+            result.message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].id.country, FormValidation.I18n[locale].id.countries[country.toUpperCase()]);
+
+            return result;
         },
 
         /**
@@ -943,7 +942,7 @@
          *
          * @see https://en.wikipedia.org/wiki/National_identification_number#Spain
          * @param {String} value The ID
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         _es: function(value) {
             var isDNI = /^[0-9]{8}[-]{0,1}[A-HJ-NP-TV-Z]$/.test(value),
@@ -954,19 +953,25 @@
             }
 
             value = value.replace(/-/g, '');
-            var check;
+            var check, type, isValid = true;
             if (isDNI || isNIE) {
+                type = 'DNI';
                 var index = 'XYZ'.indexOf(value.charAt(0));
                 if (index !== -1) {
                     // It is NIE number
                     value = index + value.substr(1) + '';
+                    type  = 'NIE';
                 }
 
                 check = parseInt(value.substr(0, 8), 10);
                 check = 'TRWAGMYFPDXBNJZSQVHLCKE'[check % 23];
-                return (check === value.substr(8, 1));
+                return {
+                    valid: (check === value.substr(8, 1)),
+                    type: type
+                };
             } else {
                 check = value.substr(1, 7);
+                type  = 'CIF';
                 var letter  = value[0],
                     control = value.substr(-1),
                     sum     = 0;
@@ -996,14 +1001,19 @@
                 
                 if ('KQS'.indexOf(letter) !== -1) {
                     // If the CIF starts with a K, Q or S, the control digit must be a letter
-                    return (control === 'JABCDEFGHI'[lastDigit]);
+                    isValid = (control === 'JABCDEFGHI'[lastDigit]);
                 } else if ('ABEH'.indexOf(letter) !== -1) {
                     // If it starts with A, B, E or H, it has to be a number
-                    return (control === ('' + lastDigit));
+                    isValid = (control === ('' + lastDigit));
                 } else {
                     // In any other case, it doesn't matter
-                    return (control === ('' + lastDigit) || control === 'JABCDEFGHI'[lastDigit]);
+                    isValid = (control === ('' + lastDigit) || control === 'JABCDEFGHI'[lastDigit]);
                 }
+
+                return {
+                    valid: isValid,
+                    type: type
+                };
             }
         },
 

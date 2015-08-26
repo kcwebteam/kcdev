@@ -31,12 +31,12 @@
         /**
          * Destroy the timer when destroying the FormValidation (using validator.destroy() method)
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var ns    = validator.getNamespace(),
-                timer = $field.data(ns + '.remote.timer');
+                timer = $field.data(ns + '.' + validatorName + '.timer');
             if (timer) {
                 clearTimeout(timer);
-                $field.removeData(ns + '.remote.timer');
+                $field.removeData(ns + '.' + validatorName + '.timer');
             }
         },
 
@@ -63,12 +63,12 @@
          * This is useful when connecting to external remote server or APIs provided by 3rd parties
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             var ns    = validator.getNamespace(),
-                value = validator.getFieldValue($field, 'remote'),
+                value = validator.getFieldValue($field, validatorName),
                 dfd   = new $.Deferred();
             if (value === '') {
-                dfd.resolve($field, 'remote', { valid: true });
+                dfd.resolve($field, validatorName, { valid: true });
                 return dfd;
             }
             var name     = $field.attr('data-' + ns + '-field'),
@@ -112,10 +112,10 @@
                         response.valid = (response[validKey] === true || response[validKey] === 'true')
                                         ? true
                                         : (response[validKey] === false || response[validKey] === 'false' ? false : null);
-                        dfd.resolve($field, 'remote', response);
+                        dfd.resolve($field, validatorName, response);
                     })
                     .error(function(response) {
-                        dfd.resolve($field, 'remote', {
+                        dfd.resolve($field, validatorName, {
                             valid: false
                         });
                     });
@@ -130,11 +130,11 @@
             if (options.delay) {
                 // Since the form might have multiple fields with the same name
                 // I have to attach the timer to the field element
-                if ($field.data(ns + '.remote.timer')) {
-                    clearTimeout($field.data(ns + '.remote.timer'));
+                if ($field.data(ns + '.' + validatorName + '.timer')) {
+                    clearTimeout($field.data(ns + '.' + validatorName + '.timer'));
                 }
 
-                $field.data(ns + '.remote.timer', setTimeout(runCallback, options.delay));
+                $field.data(ns + '.' + validatorName + '.timer', setTimeout(runCallback, options.delay));
                 return dfd;
             } else {
                 return runCallback();

@@ -51,29 +51,25 @@
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'greaterThan');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
             
             value = this._format(value);
-            if (!$.isNumeric(value)) {
-                return false;
-            }
 
             var locale         = validator.getLocale(),
                 compareTo      = $.isNumeric(options.value) ? options.value : validator.getDynamicOption($field, options.value),
                 compareToValue = this._format(compareTo);
 
-            value = parseFloat(value);
 			return (options.inclusive === true || options.inclusive === undefined)
                     ? {
-                        valid: value >= compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) >= compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].greaterThan['default'], compareTo)
                     }
                     : {
-                        valid: value > compareToValue,
+                        valid: $.isNumeric(value) && parseFloat(value) > compareToValue,
                         message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].greaterThan.notInclusive, compareTo)
                     };
         },

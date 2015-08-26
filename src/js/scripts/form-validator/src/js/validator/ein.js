@@ -44,8 +44,8 @@
          * - message: The invalid message
          * @returns {Object|Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'ein');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

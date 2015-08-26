@@ -73,8 +73,8 @@
          *
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'zipCode');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '' || !options.country) {
                 return true;
             }

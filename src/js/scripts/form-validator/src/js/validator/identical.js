@@ -29,10 +29,10 @@
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        init: function(validator, $field, options) {
+        init: function(validator, $field, options, validatorName) {
             var compareWith = validator.getFieldElements(options.field);
-            validator.onLiveChange(compareWith, 'live_identical', function() {
-                var status = validator.getStatus($field, 'identical');
+            validator.onLiveChange(compareWith, 'live_' + validatorName, function() {
+                var status = validator.getStatus($field, validatorName);
                 if (status !== validator.STATUS_NOT_VALIDATED) {
                     validator.revalidateField($field);
                 }
@@ -47,9 +47,9 @@
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var compareWith = validator.getFieldElements(options.field);
-            validator.offLiveChange(compareWith, 'live_identical');
+            validator.offLiveChange(compareWith, 'live_' + validatorName);
         },
 
         /**
@@ -61,16 +61,16 @@
          * - field: The name of field that will be used to compare with current one
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value       = validator.getFieldValue($field, 'identical'),
+        validate: function(validator, $field, options, validatorName) {
+            var value       = validator.getFieldValue($field, validatorName),
                 compareWith = validator.getFieldElements(options.field);
             if (compareWith === null || compareWith.length === 0) {
                 return true;
             }
 
-            var compareValue = validator.getFieldValue(compareWith, 'identical');
+            var compareValue = validator.getFieldValue(compareWith, validatorName);
             if (value === compareValue) {
-                validator.updateStatus(compareWith, validator.STATUS_VALID, 'identical');
+                validator.updateStatus(compareWith, validator.STATUS_VALID, validatorName);
                 return true;
             }
 

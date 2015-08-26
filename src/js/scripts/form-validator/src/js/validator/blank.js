@@ -18,18 +18,16 @@
          *     validation and an associated message.
          * (4) ajax 400 call handler does the following:
          *
-         *      bv.updateMessage(field, 'blank', errorMessage);
-         *      bv.updateStatus(field, 'INVALID');
+         *      fv.updateMessage(field, 'blank', errorMessage);
+         *      fv.updateStatus(field, 'INVALID', 'blank');
          *
-         * @see https://github.com/formvalidation/formvalidation/issues/542
-         * @see https://github.com/formvalidation/formvalidation/pull/666
          * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
+        validate: function(validator, $field, options, validatorName) {
             return true;
         }
     };

@@ -35,8 +35,8 @@
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'ip');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

@@ -29,12 +29,12 @@
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        init: function(validator, $field, options) {
+        init: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
                 var compareWith = validator.getFieldElements(fields[i]);
-                validator.onLiveChange(compareWith, 'live_different', function() {
-                    var status = validator.getStatus($field, 'different');
+                validator.onLiveChange(compareWith, 'live_' + validatorName, function() {
+                    var status = validator.getStatus($field, validatorName);
                     if (status !== validator.STATUS_NOT_VALIDATED) {
                         validator.revalidateField($field);
                     }
@@ -50,11 +50,11 @@
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          */
-        destroy: function(validator, $field, options) {
+        destroy: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
                 var compareWith = validator.getFieldElements(fields[i]);
-                validator.offLiveChange(compareWith, 'live_different');
+                validator.offLiveChange(compareWith, 'live_' + validatorName);
             }
         },
 
@@ -68,8 +68,8 @@
          * - message: The invalid message
          * @returns {Boolean}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'different');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }
@@ -83,11 +83,11 @@
                     continue;
                 }
 
-                var compareValue = validator.getFieldValue(compareWith, 'different');
+                var compareValue = validator.getFieldValue(compareWith, validatorName);
                 if (value === compareValue) {
                     isValid = false;
                 } else if (compareValue !== '') {
-                    validator.updateStatus(compareWith, validator.STATUS_VALID, 'different');
+                    validator.updateStatus(compareWith, validator.STATUS_VALID, validatorName);
                 }
             }
 

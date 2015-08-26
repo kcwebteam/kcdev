@@ -218,8 +218,8 @@
          * By default, this option is not defined
          * @returns {Boolean|Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'iban');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (value === '') {
                 return true;
             }

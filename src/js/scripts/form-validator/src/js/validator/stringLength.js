@@ -61,8 +61,8 @@
          * - utf8bytes: Evaluate string length in UTF-8 bytes, default to false
          * @returns {Object}
          */
-        validate: function(validator, $field, options) {
-            var value = validator.getFieldValue($field, 'stringLength');
+        validate: function(validator, $field, options, validatorName) {
+            var value = validator.getFieldValue($field, validatorName);
             if (options.trim === true || options.trim === 'true') {
                 value = $.trim(value);
             }
@@ -104,11 +104,11 @@
                     break;
 
                 case (!!min):
-                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.more, parseInt(min, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.more, parseInt(min, 10) - 1);
                     break;
 
                 case (!!max):
-                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.less, parseInt(max, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.less, parseInt(max, 10) + 1);
                     break;
 
                 default:

@@ -36,8 +36,8 @@
          * - message: The invalid message
          * @returns {Deferred}
          */
-        validate: function(validator, $field, options) {
-            var value  = validator.getFieldValue($field, 'callback'),
+        validate: function(validator, $field, options, validatorName) {
+            var value  = validator.getFieldValue($field, validatorName),
                 dfd    = new $.Deferred(),
                 result = { valid: true };
 
@@ -46,7 +46,7 @@
                 result = ('boolean' === typeof response || null === response) ? { valid: response } : response;
             }
 
-            dfd.resolve($field, 'callback', result);
+            dfd.resolve($field, validatorName, result);
             return dfd;
         }
     };
