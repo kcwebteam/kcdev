@@ -2,15 +2,11 @@ module.exports = {
   'dev-js':{
     files: [{
       src: '<%= src %>/js/scripts/kc-formValidation.js',
-      dest: '<%= public %>/js/scripts/kc-formValidation.min.js'
+      dest: '<%= public %>/js/scripts/kc-formValidation.js'
     },
     {
       src: '<%= src %>/js/lib/dept-footer-map.js',
       dest: '<%= public %>/js/scripts/dept-footer-map.js'
-    },
-    {
-      src: '<%= src %>/js/scripts/kc-formValidation.js',
-      dest: '<%= public %>/js/scripts/kc-formValidation.min.js'
     }]
   },
   'dev-css':{
@@ -66,7 +62,7 @@ module.exports = {
     },
     {
       src: '<%= src %>/js/scripts/kc-formValidation.js',
-      dest: '<%= tfs %>/js/scripts/kc-formValidation.min.js'
+      dest: '<%= tfs %>/js/scripts/kc-formValidation.js'
     },
     {
       src: '<%= src %>/js/lib/dept-footer-map.js',
