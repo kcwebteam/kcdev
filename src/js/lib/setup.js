@@ -33,18 +33,20 @@ $(function(){
 
 
     //Sticky footer setup
-    $('#sticky-footer').scrollToFixed( {
-        bottom: 0,
-        limit: $('#footer-nav-limit').offset().top,
-        fixed: function () {
-            $(this).css('display', 'block');
-            $(this).css('width', '100%');
-        },
-        unfixed: function () {
-           $(this).css('display', 'none');
-        },
-        dontSetWidth: false
-    });
+    if($('#sticky-footer').length !== 0){
+        $('#sticky-footer').scrollToFixed( {
+            bottom: 0,
+            limit: $('#footer-nav-limit').offset().top,
+            fixed: function () {
+                $(this).css('display', 'block');
+                $(this).css('width', '100%');
+            },
+            unfixed: function () {
+               $(this).css('display', 'none');
+            },
+            dontSetWidth: false
+        });
+    }
 
     //Initialize Fitvids
     $('#main-content').fitVids();
