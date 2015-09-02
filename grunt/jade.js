@@ -1,7 +1,6 @@
 module.exports = function(grunt){
   // List all files in the templates directory.
   var htmlFiles = grunt.file.expand({filter: 'isFile', cwd: 'src/jade'}, ['*']);
-  //var htmlFiles = ['hi', 'h2'];
 
   return {
     development: {
@@ -54,6 +53,19 @@ module.exports = function(grunt){
         dest:'../styleguide/',
         expand: true,
         ext:'.html',
+      }]
+    },
+    app: {
+      options: {
+        pretty: true,
+        data: {
+          debug: false,
+          rootPrefix: '',
+          httpPrefix: 'http:'
+        }
+      },
+      files: [{
+         '<%= app %>/public/app.html': '<%= app %>/jade/app.jade'
       }]
     },
     spec: {

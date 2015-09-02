@@ -34,5 +34,18 @@ module.exports = {
       '<%= tfs %>/css/kc-print.css': '<%= src %>/less/print/kc-print.less',
       '<%= tfs %>/css/ie-only.css': '<%= src %>/less/IE-only/ie-only.less'
     }
+  },
+  app: {
+    options: {
+      paths: ['<%= app %>/less'],
+      cleancss: false,
+      compress: false,
+      modifyVars: {
+        'fa-font-path' : '"http://netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts"'
+      }
+    },
+    files: {
+      '<%= app%>/public/css/kc-app-theme-corporate.css': '<%= app %>/less/kc-app-theme-corporate.less',
+    }
   }
 };
