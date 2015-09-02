@@ -12,7 +12,7 @@ module.exports = {
   'dev-css':{
     files: [{
       src: '<%= src %>/js/scripts/form-validator/dist/css/formValidation.min.css',
-      dest: '<%= public %>/css/styles/formValidation.min.css'
+      dest: '<%= public %>/css/styles/kc-formValidation.css'
     }]
   },
   'git-kcdev':{
@@ -72,7 +72,7 @@ module.exports = {
   'tfs-css':{
     files: [{
       src: '<%= src %>/js/scripts/form-validator/dist/css/formValidation.css',
-      dest: '<%= tfs %>/css/styles/formValidation.css'
+      dest: '<%= tfs %>/css/styles/kc-formValidation.css'
     }]
   },
   'bower': {
