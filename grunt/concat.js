@@ -6,7 +6,6 @@ module.exports = {
       },
       banner: '/*\n'+
               ' * Author: King County Web Team\n' +
-              ' * Date: <%= grunt.template.today("yyyy-mm-dd") %> \n'+
               ' * Description: King County JS file\n'+
               ' *\/\n',
     },
@@ -31,7 +30,6 @@ module.exports = {
       },
       banner: '/*\n'+
               ' * Author: King County Web Team\n' +
-              ' * Date: <%= grunt.template.today("yyyy-mm-dd") %> \n'+
               ' * Description: King County JS file\n'+
               ' *\/\n',
     },
@@ -51,7 +49,6 @@ module.exports = {
       },
       banner: '/*\n'+
               ' * Author: King County Web Team\n' +
-              ' * Date: <%= grunt.template.today("yyyy-mm-dd") %> \n'+
               ' * Description: King County JS file\n'+
               ' *\/\n',
     },

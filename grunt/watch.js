@@ -22,7 +22,10 @@ module.exports = {
   },
   spec: {
     files: ['<%= src %>/jade/<%= targetFile %>.jade'],
-    tasks: ['jade:spec']
+    tasks: ['jade:spec'],
+    options: {
+      atBegin: true
+    }
   },
   app: {
     files: ['<%= app %>/jade/**/*.jade'],

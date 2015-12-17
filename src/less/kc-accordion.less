@@ -27,7 +27,7 @@
       font-weight: 700;
     }
   }
-  .panel-heading {
+  &>.panel-heading {
     border-radius:0;
     padding:0;
     a {
@@ -58,7 +58,7 @@
 .panel-group .panel.panel-accordion-primary, .panel-group .panel.panel-accordion-inverse {
   border-radius:0;
 }
-.panel-default span.fa{
+.panel-default a[data-toggle="collapse"] > span.fa.fa-plus {
   display:none;
 }
 .panel-default a:active{
