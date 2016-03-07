@@ -2,7 +2,7 @@ module.exports = {
   server: {
     options: {
       useAvailablePort: true,
-      base: '<%= tfs %>',
+      base: '<%= public %>',
       keepalive: true
     }
   }
