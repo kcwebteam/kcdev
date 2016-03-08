@@ -11,7 +11,7 @@
       // when focus leaves this element, 
       // remove the tabindex attribute
       $(this).removeAttr('tabindex');
-    }).find('a')[0].focus(); // focus on the content container
+    }).focus(); // focus on the content container
     return false;
   });
 })(jQuery);
