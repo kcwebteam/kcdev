@@ -7,6 +7,6 @@ module.exports = {
     },
     src: ['<%= public %>/' ],
     dest: 'kcproto/bs3/',
-    exclusions: ['<%= public %>/html','']
+    exclusions: ['<%= public %>/html','<%= public %>/kctv-schedule']
   }
 };

@@ -26,6 +26,10 @@
         border-bottom: @link-dotted-underline;
       }
     }
+    span.fa.fa-angle-double-right {
+      padding: 0 5px 0 9px;
+      color: #d6d5d1;
+    }
 }
 .main-breadcrumb-row {
     button {
@@ -39,8 +43,9 @@
 .breadcrumb {
     > li {
         + li:before {
-            font-family: "FontAwesome";
-            content: "@{breadcrumb-separator}"; // Unicode space added since inline-block means non-collapsing white-space
+              content: none;
+              padding: 0;
+              color: inherit;
         }
     }
 }
