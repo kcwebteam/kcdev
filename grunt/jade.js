@@ -8,8 +8,8 @@ module.exports = function(grunt){
         pretty: true,
         data: {
           debug: false,
-          rootPrefix: '',
-          httpPrefix: 'http:',
+          //rootPrefix: '',
+          //httpPrefix: 'http:',
           htmlFiles : htmlFiles
         }
       },
@@ -25,14 +25,14 @@ module.exports = function(grunt){
       options: {
         pretty: true,
         data: {
-          debug: false,
-          rootPrefix: '/',
-          httpPrefix: ''
+          debug: false
+          //rootPrefix: '/',
+          //httpPrefix: ''
         }
       },
       files: [{
         cwd: '<%= src %>/jade',
-        src: '*.jade',
+        src: ['*.jade', '!index.jade'],
         dest:'<%= tfs %>/',
         expand: true,
         ext:'.html',
@@ -42,9 +42,9 @@ module.exports = function(grunt){
       options: {
         pretty: true,
         data: {
-          debug: false,
-          rootPrefix: '../public/',
-          httpPrefix: 'http:'
+          debug: false
+          //rootPrefix: '../public/',
+          //httpPrefix: 'http:'
         }
       },
       files: [{
@@ -59,9 +59,9 @@ module.exports = function(grunt){
       options: {
         pretty: true,
         data: {
-          debug: false,
-          rootPrefix: '',
-          httpPrefix: 'http:'
+          debug: false
+          //rootPrefix: '',
+          //httpPrefix: 'http:'
         }
       },
       files: [{
@@ -73,9 +73,9 @@ module.exports = function(grunt){
         pretty: true,
         data: {
           debug: false,
-          rootPrefix: '',
-          httpPrefix: 'http:',
-          htmlFiles : htmlFiles
+          rootPrefix: ''
+          //httpPrefix: 'http:',
+          //htmlFiles : htmlFiles
         }
       },
       files: {
