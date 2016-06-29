@@ -32,6 +32,3 @@ module.exports = {
     tasks: ['jade:app']
   }
 };
-    
-      
-    

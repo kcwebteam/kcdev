@@ -4,7 +4,7 @@ module.exports = {
     overwrite: true,
     replacements: [{
       from: '!{httpPrefix}',
-      to: 'http:'
+      to: ''
     }]
   },
   tfs: {
