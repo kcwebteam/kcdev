@@ -2,33 +2,33 @@
   .row
     #nav-left-lg
       #logo-wrapper
-        a(href='/', title='King County home')
-          img#kc-logo.img-responsive(src= rootPrefix + 'img/KClogo-horiz-black-lg.gif', alt='King County Logo')
+        a(href='/')
+          img#kc-logo.img-responsive(src='/img/KClogo-horiz-black-lg.gif', alt='King County Logo')
     //#nav-logo-lg 
     #nav-right-lg
       .row
         #lg-search-wrapper.navbar-right
           form.search-form(role='form', accept-charset='UTF-8', action='//search.kingcounty.gov/search', method='get')
-            label.sr-only(for='query') Search kingcounty.gov
+            label.sr-only(for='lg-search-input') Search kingcounty.gov
             input(name='utf8', type='hidden', value='✓')
             input#affiliate(name='affiliate', type='hidden', value='kingcounty')
-            input.usagov-search-autocomplete.ui-autocomplete-input.form-control.search-form-text(autocomplete='on', name='query', placeholder='Search Kingcounty.gov', type='search')
+            input.usagov-search-autocomplete.ui-autocomplete-input.form-control.search-form-text(autocomplete='on', id='lg-search-input' name='query', placeholder='Search Kingcounty.gov', type='search')
             button.btn.btn-link.search-form-btn(type='submit')
-              i.fa.fa-search
+              span.fa.fa-search
       .row
         nav#navbar-full.navbar.yamm.navbar-inverse(role='navigation')
           ul.nav.navbar-nav.pull-right
             li
-              a.nav-header.bold(href='/', title='King County home')
+              a.nav-header.bold(href='/')
                 span.active
                   span#full-home-text Home
-                  i.fa.fa-home
+                  span.fa.fa-home
             include nav-how-do-i
             include nav-services
             li.dropdown.yamm-fw
-              a.dropdown-toggle.disabled.nav-header(href='/about', data-toggle='dropdown', title='About King County')
-                span. About King County 
-                i.fa.fa-caret-down
+              a.dropdown-toggle.disabled.nav-header(href='/about', data-toggle='dropdown')
+                span(class='') About King County 
+                span.fa.fa-caret-down
               ul.dropdown-menu
                 li
                   .yamm-content
@@ -36,33 +36,33 @@
                       .col-md-6
                         ul.list-unstyled
                           li
-                            a(title='Contact us', href='/customerservice') Contact us
+                            a href='/customerservice') Contact us
                           li
-                            a(title='Elected officials', href='/elected') Elected officials
+                            a(href='/elected') Elected officials
                           li
-                            a(title='Equity and social justice', href='/exec/equity.aspx') Equity & social justice
+                            a(href='/exec/equity.aspx') Equity & social justice
                           li
-                            a(title='History', href='/operations/archives/historylinks.aspx#_General_County_History') History
+                            a(href='/operations/archives/historylinks.aspx#_General_County_History') History
                           li
-                            a(title='Jobs and training', href='/services/jobs-training.aspx') Jobs & training
+                            a(href='/services/jobs-training.aspx') Jobs & training
                           li
-                            a(title='News and events', href='/about/news.aspx') News & events
+                            a(href='/about/news.aspx') News & events
                       .col-md-6
                         ul.list-unstyled
                           li
-                            a(title='Maps', href='/about/region/maps.aspx') Maps
+                            a(href='/about/region/maps.aspx') Maps
                           li
-                            a(title='Data and statistics', href='/exec/PSB/Demographics/DataReports.aspx') Data and statistics
+                            a(href='/exec/PSB/Demographics/DataReports.aspx') Data and statistics
                           li
-                            a(title='King County Employees', href='/employees.aspx') King County Employees
+                            a(href='/employees.aspx') King County Employees
                           li
-                            a(title='Vision and strategic plan', href='/about/vision-strategic.aspx') Vision & strategic plan
+                            a(href='/about/vision-strategic.aspx') Vision & strategic plan
                           li
-                            a.btn.nav-dropdown-btn.btn-block(title='More information', href='/about.aspx') More information
+                            a.btn.nav-dropdown-btn.btn-block(href='/about.aspx') More information
             li.dropdown.yamm-fw
-              a.dropdown-toggle.disabled.nav-header(href='/depts', data-toggle='dropdown', title='Departments')
-                span. Departments 
-                i.fa.fa-caret-down
+              a.dropdown-toggle.disabled.nav-header(href='/depts', data-toggle='dropdown')
+                span(class='') Departments 
+                span.fa.fa-caret-down
               ul.dropdown-menu
                 li
                   .yamm-content
@@ -70,60 +70,60 @@
                       .col-md-4
                         ul.list-unstyled
                           li
-                            a(href='/courts/detention', title='Adult ∓ Juvenile Detention') Adult & Juvenile Detention
+                            a(href='/courts/detention') Adult & Juvenile Detention
                           li
-                            a(href='/assessor', title='Assessor') Assessor
+                            a(href='/assessor') Assessor
                           li
-                            a(href='/operations/auditor', title='Auditor') Auditor
+                            a(href='/operations/auditor') Auditor
                           li
-                            a(href='/property/PropertyTaxAppeals/about', title='Board of Appeals/Equalization') Board of Appeals/Equalization
+                            a(href='/property/PropertyTaxAppeals/about') Board of Appeals/Equalization
                           li
-                            a(href='/operations/DCHS', title='Community & Human Services') Community & Human Services
+                            a(href='/operations/DCHS') Community & Human Services
                           li
-                            a(href='/council', title='Council') Council
+                            a(href='/council') Council
                           li
-                            a(href='/courts/DistrictCourt', title='District Court') District Court
+                            a(href='/courts/DistrictCourt') District Court
                           li
-                            a(href='/business/Forecasting', title='Economic & Financial Analysis') Economic & Financial Analysis
+                            a(href='/business/Forecasting') Economic & Financial Analysis
                           li
-                            a(href='/elections', title='Elections') Elections
+                            a(href='/elections') Elections
                       .col-md-4
                         ul.list-unstyled
                           li
-                            a(href='/exec', title='Executive Office') Executive Office
+                            a(href='/exec') Executive Office
                           li
-                            a(href='/operations/ExecutiveServices', title='Executive Services') Executive Servces
+                            a(href='/operations/ExecutiveServices') Executive Servces
                           li
-                            a(href='/property/HearingExaminer', title='Hearing Examiner') Hearing Examiner
+                            a(href='/property/HearingExaminer') Hearing Examiner
                           li
-                            a(href='/operations/it', title='Information Technology') Information Technology
+                            a(href='/operations/it') Information Technology
                           li
-                            a(href='/KCTV', title='King County TV') King County TV
+                            a(href='/KCTV') King County TV
                           li
-                            a(href='/operations/oleo', title='Law Enforcement Oversight') Law Enforcement Oversight
+                            a(href='/operations/oleo') Law Enforcement Oversight
                           li
-                            a(href='/environment/dnrp', title='Natural Resources & Parks') Natural Resources & Parks
+                            a(href='/environment/dnrp') Natural Resources & Parks
                           li
-                            a(href='/operations/Ombudsman', title='Ombudsman') Ombudsman
+                            a(href='/operations/Ombudsman') Ombudsman
                       .col-md-4
                         ul.list-unstyled
                           li
-                            a(href='/property/permits', title='Permitting & Environmental Review') Permitting & Environmental Review
+                            a(href='/property/permits') Permitting & Environmental Review
                           li
-                            a(href='/Prosecutor', title='Prosecuting Attorney') Prosecuting Attorney
+                            a(href='/Prosecutor') Prosecuting Attorney
                           li
-                            a(href='/courts/OPD', title='Department of Public Defense') Public Defense
+                            a(href='/courts/OPD') Public Defense
                           li
-                            a(href='/healthservices/health', title='Public Health') Public Health
+                            a(href='/healthservices/health') Public Health
                           li
-                            a(href='/safety/sheriff', title='Sheriff') Sheriff
+                            a(href='/safety/sheriff') Sheriff
                           li
-                            a(href='/courts/SuperiorCourt', title='Superior Court') Superior Court
+                            a(href='/courts/SuperiorCourt') Superior Court
                           li
-                            a(href='/courts/Clerk.aspx', title='Superior Court Clerk\'s Offie (DJA)') Superior Court Clerk's Office (DJA)
+                            a(href='/courts/Clerk.aspx') Superior Court Clerk's Office (DJA)
                           li
-                            a(href='/transportation/kcdot', title='Transportation') Transportation
+                            a(href='/transportation/kcdot') Transportation
                           li
-                            a(href='/property/TaxAdvisor', title='Tax Advisor') Tax Advisor
+                            a(href='/property/TaxAdvisor') Tax Advisor
                           li
-                            a.btn.nav-dropdown-btn.btn-block(href='/depts', title='More departments') More departments
+                            a.btn.nav-dropdown-btn.btn-block(href='/depts') More departments
