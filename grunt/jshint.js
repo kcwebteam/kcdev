@@ -1,7 +1,7 @@
 module.exports = {
   development: {
     options: {
-      //https://github.com/airbnb/javascript/blob/master/linters/jshintrc
+      // https://github.com/airbnb/javascript/blob/master/linters/jshintrc
       browser: true,
       jquery: true,
       node: true,
@@ -10,7 +10,7 @@ module.exports = {
       eqeqeq: true,
       indent: 2,
       latedef: true,
-      //maxlen: 80,
+      // maxlen: 80,
       newcap: true,
       quotmark: 'single',
       strict: true,
@@ -18,7 +18,7 @@ module.exports = {
       unused: true,
       eqnull: true
     },
-    files : {
+    files: {
       src: ['<%= src %>/js/lib/choose-bg.js']
     }
   },
@@ -32,7 +32,7 @@ module.exports = {
       eqeqeq: true,
       indent: 2,
       latedef: true,
-      //maxlen: 80,
+      // maxlen: 80,
       newcap: true,
       quotmark: 'single',
       strict: true,
@@ -40,8 +40,8 @@ module.exports = {
       unused: true,
       eqnull: true
     },
-    files : {
+    files: {
       src: ['<%= src %>/js/lib/onload/onload-lib/onload.js']
     }
   }
-};
+}
