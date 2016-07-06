@@ -87,10 +87,6 @@ module.exports = {
         src: '<%= src %>/bower_components/bootstrap/js/bootstrap.min.js',
         dest: '<%= src %>/js/vendor/bootstrap.min.js'
       },
-      {//Fitvids
-        src: '<%= src %>/bower_components/fitvids/jquery.fitvids.js',
-        dest: '<%= src %>/js/vendor/fitvids.min.js'
-      },
       {//Fontawesome
         expand: true,
         cwd: '<%= src %>/bower_components/fontawesome/less/',

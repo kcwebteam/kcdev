@@ -3,20 +3,20 @@ nav#nav-xs.navbar.navbar-inverse(role='navigation')
     .navbar-header.remove-border-bottom
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-dropdown-xs')
         span.sr-only Toggle navigation
-        i.fa.fa-search.fa-2x
+        span.fa.fa-search.fa-2x
       a(href='/')
-        img.img-responsive(src=rootPrefix + 'img/KClogo-horiz-white-sm-xs.png', alt='King County logo')
+        img.img-responsive(src='/img/KClogo-horiz-white-sm-xs.png', alt='King County logo')
       button#nav-search-btn-xs.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-dropdown-xs')
         span.sr-only Toggle navigation
-        i.fa.fa-bars.fa-2x
+        span.fa.fa-bars.fa-2x
     #navbar-dropdown-xs.collapse.navbar-collapse
       form.navbar-form.search-form(role='search', action='//search.kingcounty.gov/search', method='get', accept-charset='UTF-8')
-        label.sr-only(for='search-form-text') Search kingcounty.gov
+        label.sr-only(for='xs-search-input') Search kingcounty.gov
         input(name='utf8', type='hidden', value='✓')
         input#affiliate(name='affiliate', type='hidden', value='kingcounty')
-        input.usagov-search-autocomplete.form-control(autocomplete='off', type='text', name='query', placeholder='Search Kingcounty.gov')
+        input.usagov-search-autocomplete.form-control(id="xs-search-input", autocomplete='off', type='text', name='query', placeholder='Search Kingcounty.gov')
         button.btn.btn-link.search-form-btn(type='submit')
-          i.fa.fa-search
+          span.fa.fa-search
       ul.nav.navbar-nav
         li
           a(href='/')

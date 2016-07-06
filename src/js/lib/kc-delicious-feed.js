@@ -4,12 +4,12 @@
 
     // Create some defaults, extending them with any options that were provided
     var settings = $.extend( {
-      feedURL      : '!{httpPrefix}//feeds.delicious.com/v2/json/kingcounty',
+      feedURL      : '//feeds.delicious.com/v2/json/kingcounty',
       numItems     : 3,
       title        : 'News',
       titleIcon    : 'fa-file-text-o',
       showSummary  : true,
-      allItemsUrl  : '!{httpPrefix}//www.kingcounty.gov/about/news/events',
+      allItemsUrl  : '//www.kingcounty.gov/about/news/events',
       allItemsText : 'See all King County news'
     }, options);
 

@@ -8,7 +8,7 @@
       numItems     : 4,
       title        : 'Events',
       titleIcon    : 'fa-calendar',
-      allItemsUrl  : '!{httpPrefix}//www.kingcounty.gov/about/news/events',
+      allItemsUrl  : '//www.kingcounty.gov/about/news/events',
       allItemsText : 'See all events',
       filter       : ''
     }, options);
@@ -20,7 +20,7 @@
       $this.append('<i class="fa fa-spinner fa-spin fa-4x"></i>');
 
       //Build URL String
-      var dataURL = '!{httpPrefix}//data.kingcounty.gov/resource/' + settings.calNum +
+      var dataURL = '//data.kingcounty.gov/resource/' + settings.calNum +
                     '.json?';
       if(settings.filter){
         dataURL += '&$q=' + settings.filter;
@@ -158,7 +158,7 @@
                 $this.addClass('calendar-events-list');
                 var output = '';
                 output += '<h2><span class=\"fa-stack\"><i class=\"fa fa-square fa-stack-2x\"></i><i class=\"fa '+ settings.titleIcon +' fa-stack-1x fa-inverse\"></i> </span> Events</h2>';
-                output ='<iframe width=\"100%\" height=\"425px\" src=\"!{httpPrefix}//data.kingcounty.gov/w/' + settings.calNum +'\"frameborder=\"0\" scrolling=\"no\"></iframe>';
+                output ='<iframe width=\"100%\" height=\"425px\" src=\"//data.kingcounty.gov/w/' + settings.calNum +'\"frameborder=\"0\" scrolling=\"no\"></iframe>';
                 output += '<p class=\"all-events\"><a href=\"'+ settings.allItemsUrl+'\"><em>'+settings.allItemsUrl+'</em></a></p>';
                 $this.html(output);
             }

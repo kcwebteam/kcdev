@@ -22,7 +22,7 @@ module.exports = {
   },
   spec: {
     files: ['<%= src %>/jade/<%= targetFile %>.jade'],
-    tasks: ['jade:spec', 'connect'],
+    tasks: ['jade:spec'],
     options: {
       atBegin: true
     }
@@ -32,6 +32,3 @@ module.exports = {
     tasks: ['jade:app']
   }
 };
-    
-      
-    
