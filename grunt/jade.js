@@ -65,7 +65,7 @@ module.exports = function(grunt){
         }
       },
       files: [{
-         '<%= app %>/public/app.html': '<%= app %>/jade/app.jade'
+         '<%= app %>/public/index.html': '<%= app %>/jade/app.jade'
       }]
     },
     spec: {

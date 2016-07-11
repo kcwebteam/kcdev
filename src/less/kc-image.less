@@ -1,0 +1,25 @@
+// Responsive images by defualt
+img {
+  .img-responsive();
+}
+
+figure {
+  // Normalize adds `margin` to `figure`s as browsers apply it inconsistently.
+  // We reset that to create a better flow in-page.
+  margin: 0 0 1rem;
+}
+
+.figure {
+  // Ensures the caption's text aligns with the image.
+  display: inline-block;
+}
+
+.figure-img {
+  margin-bottom: (@spacer-y / 2);
+  line-height: 1;
+}
+
+.figure-caption {
+  font-size: @figure-caption-font-size;
+  color: @gray;
+}

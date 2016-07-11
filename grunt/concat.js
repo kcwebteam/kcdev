@@ -18,8 +18,6 @@ module.exports = {
       '<%= public %>/js/main.js':
       ['<%= src %>/js/lib/*.js',
       '!<%= src %>/js/lib/dept-footer-map.js',
-      //'<%= src %>/js/vendor/site-improve.js',
-      //'<%= src %>/js/vendor/fitvids.min.js',
       '<%= src %>/js/vendor/scrollToFixed.min.js'],
     },
   },
@@ -37,8 +35,6 @@ module.exports = {
       '<%= tfs %>/js/main.js':
       ['<%= src %>/js/lib/*.js',
       '!<%= src %>/js/lib/dept-footer-map.js',
-      //'<%= src %>/js/vendor/site-improve.js',
-     // '<%= src %>/js/vendor/fitvids.min.js',
       '<%= src %>/js/vendor/scrollToFixed.min.js'],
     },
   },
@@ -67,7 +63,6 @@ module.exports = {
       '!<%= src %>/js/lib/dept-footer-map.js',
       '<%= app %>/js/setup.js',
       '<%= app %>/js/choose-bg.js'
-      //'<%= src %>/js/vendor/fitvids.min.js'
       ],
     },
   }
