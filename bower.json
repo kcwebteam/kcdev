@@ -19,7 +19,7 @@
     "jquery": "1.11.3",
     "fitvids": "~1.1.0",
     "yamm3": "~1.1.0",
-    "ScrollToFixed": "~1.0.6",
+    "ScrollToFixed": "1.0.6",
     "moment": "~2.10.3"
   },
   "exportsOverride": {
