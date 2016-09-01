@@ -20,7 +20,7 @@
         } else {
           $(this).next().collapse('toggle');
         }
-        $(this).find('i').toggleClass('fa-minus').toggleClass('fa-plus');
+        $(this).find('span').toggleClass('fa-minus').toggleClass('fa-plus');
       }
     });
   });
