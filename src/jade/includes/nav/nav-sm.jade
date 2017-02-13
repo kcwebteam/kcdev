@@ -161,18 +161,11 @@ nav#nav-sm.navbar.navbar-inverse.yamm(role='navigation')
                     li
                       a(href='http://info.kingcounty.gov/Assessor/eRealProperty/default.aspx') Property search
                 .col-sm-6
-                  form.search-form(role='form', action='//search.kingcounty.gov/search', method='get')
+                  form.search-form(role='form', action='/search-results.html', method='get')
                     label.sr-only(for='sm-search-input') Search kingcounty.gov
                     input(name='utf8', type='hidden', value='✓')
                     input#affiliate-sm(name='affiliate', type='hidden', value='kingcounty')
-                    input.usagov-search-autocomplete.form-control.search-form-text(autocomplete='on', id="sm-search-input", name='query', placeholder='Search Kingcounty.gov', type='search')
+                    input.form-control.search-form-text(id="sm-search-input", name='q', placeholder='Search Kingcounty.gov', type='search')
                     button.btn.btn-link.search-form-btn(type='submit')
+                      span.sr-only Search KingCounty.gov
                       span.fa.fa-search
-                    .radio(style='visibility: hidden;')
-                      label
-                        input#sm-search-radio-search-all(type='radio', name='sm-search-radio-option', value='searchAll', checked='checked')
-                        | Search all of King County
-                    .radio(style='visibility: hidden;')
-                      label
-                        input#sm-search-radio-search-site(type='radio', name='sm-search-radio-option', value='searchSite')
-                        | Search this site only
