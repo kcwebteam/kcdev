@@ -10,12 +10,12 @@ nav#nav-xs.navbar.navbar-inverse(role='navigation')
         span.sr-only Toggle navigation
         span.fa.fa-bars.fa-2x
     #navbar-dropdown-xs.collapse.navbar-collapse
-      form.navbar-form.search-form(role='search', action='//search.kingcounty.gov/search', method='get', accept-charset='UTF-8')
+      form.navbar-form.search-form(role='search', action='/search-results.html', method='get', accept-charset='UTF-8')
         label.sr-only(for='xs-search-input') Search kingcounty.gov
         input(name='utf8', type='hidden', value='✓')
-        input#affiliate-xs(name='affiliate', type='hidden', value='kingcounty')
-        input.usagov-search-autocomplete.form-control(id="xs-search-input", autocomplete='off', type='text', name='query', placeholder='Search Kingcounty.gov')
+        input.form-control(id="xs-search-input", type='text', name='q', placeholder='Search Kingcounty.gov')
         button.btn.btn-link.search-form-btn(type='submit')
+          span.sr-only Search KingCounty.gov
           span.fa.fa-search
       ul.nav.navbar-nav
         li

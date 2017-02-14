@@ -5,7 +5,7 @@ module.exports = {
       cleancss: false,
       compress: false,
       modifyVars: {
-        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.6.3/fonts"'
+        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts"'
       }
     },
     files: {
@@ -23,7 +23,7 @@ module.exports = {
       cleancss: false,
       compress: false,
       modifyVars: {
-        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.6.3/fonts"'
+        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts"'
       }
     },
     files: {
@@ -41,7 +41,7 @@ module.exports = {
       cleancss: false,
       compress: false,
       modifyVars: {
-        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.6.3/fonts"'
+        'fa-font-path' : '"//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts"'
       }
     },
     files: {
