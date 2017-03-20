@@ -11,81 +11,110 @@
       titleIcon: 'fa-calendar',
       allItemsUrl: '//www.kingcounty.gov/about/news/events',
       allItemsText: 'See all events',
-      filter: ''
+      filter: '',
+      version: 1
     }, options);
-    //Set global scope for instance
+
+    // Deprecate after moving to ver 2.0
+    (settings.version === 2) ? settings.calNum = 'wv5q-a3ty' : settings.calNum = settings.calNum;
+
     var $this = this;
     var allpops = [];
 
     return this.each(function () {
-      $this.append('<i class="fa fa-spinner fa-spin fa-4x"></i>');
+      $this.append('<span class="fa fa-spinner fa-spin fa-4x"></span>');
 
-      //Build URL String
+      // Build URL String
+      // TODO: Today's date to 12 months. The return obj may be events too far in the future
       var dataURL = '//data.kingcounty.gov/resource/' + settings.calNum +
         '.json?';
-      if(settings.url) {
+
+      if (settings.url) {
         dataURL = settings.url;
       }
-      
+
       if (settings.filter) {
         dataURL += '&$q=' + settings.filter;
       }
-      dataURL += '&$order=start_time&$$app_token=bCoT94x6NcBsw8AGGZudTwOs7';
+
+      // Format date: YYYY-MM-DD
+      // https://data.kingcounty.gov/resource/grxi-zqg2.json?&$order=start_time&$where=start_time%3E'2019-03-01'
+      var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      d = "'" + [year, month, day].join('-') + "'";
+
+      dataURL += '&$order=start_time&$where=start_time>=' + d + '&$$app_token=bCoT94x6NcBsw8AGGZudTwOs7';
 
       $.ajax({
         url: dataURL,
         dataType: 'json',
         jsonp: false
       })
-      .success(function (data) {
-        parseData(data);
-      })
-      .error(function () {
-        crossDomainAjax(dataURL, parseData);
-      });
+        .success(function (data) {
+          parseData(data);
+        })
+        .error(function () {
+          crossDomainAjax(dataURL, parseData);
+        });
 
-      // Daylight savings time
-      //http://stackoverflow.com/questions/11887934/how-to-check-if-the-dst-daylight-saving-time-is-in-effect-and-if-it-is-whats
-      Date.prototype.stdTimezoneOffset = function() {
-          var jan = new Date(this.getFullYear(), 0, 1);
-          var jul = new Date(this.getFullYear(), 6, 1);
-          return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-      }
+      // Daylight savings time Remove when with 2.0
+      Date.prototype.stdTimezoneOffset = function () {
+        var jan = new Date(this.getFullYear(), 0, 1);
+        var jul = new Date(this.getFullYear(), 6, 1);
+        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+      };
 
-      Date.prototype.dst = function() {
-          return this.getTimezoneOffset() < this.stdTimezoneOffset();
-      }
+      Date.prototype.dst = function () {
+        return this.getTimezoneOffset() < this.stdTimezoneOffset();
+      };
 
-      function parseData(data) {
+      function parseData (data) {
         var counter = 0;
 
         $this.addClass('calendar-events-list');
 
-        var output = '<h2><span class=\"fa-stack\"><i class=\"fa fa-square fa-stack-2x\"></i><i class=\"fa ' + settings.titleIcon + ' fa-stack-1x fa-inverse\"></i> </span> ' + settings.title + '</h2>';
+        var output = '<h2><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa ' + settings.titleIcon + ' fa-stack-1x fa-inverse"></i> </span> ' + settings.title + '</h2>';
 
         $.each(data, function (i, item) {
+          var date = new Date(item.end_time);
 
-          var date = new Date(0);
-
-          date.setUTCSeconds(item.end_time);//Updated this line on 2/17
-          if (date.dst()) {
-            date.setHours(date.getHours() + 1)
+          // Deprecate after moving to ver 2.0
+          if (settings.version !== 2) {
+            date = new Date(0);
+            date.setUTCSeconds(item.end_time);
+            if (date.dst() && date.getHours() <= 1) {
+              date.setHours(date.getHours() + 1);
+            }
           }
+
           var currentDate = new Date();
 
           if (date >= currentDate && counter < settings.numItems) {
-            output += '<div class=\"media\"><div class="media-left">';
+            output += '<div class="media"><div class="media-left">';
             var dateDay = date.getDate();
-            output += '<div class=\"date-day\">' + dateDay + '</div> ';
-            output += '<div class=\"date-month\">' + monthFormat(date.getMonth()) + '</div>';
-            output += '</div>';//end pull left div
+            output += '<div class="date-day">' + dateDay + '</div> ';
+            output += '<div class="date-month">' + monthFormat(date.getMonth()) + '</div>';
+            output += '</div>'; // end pull left div
             var city;
             var address;
             var location;
+            var itemLocation;
             try {
-              var itemLocation = $.parseJSON(item.location.human_address);
-              city = itemLocation.city;
-              address = itemLocation.address;
+              // Deprecate after moving to ver 2.0
+              if (settings.version !== 2) {
+                itemLocation = $.parseJSON(item.location.human_address);
+                city = itemLocation.city;
+                address = itemLocation.address;
+              } else {
+                city = item.location_city || 'Not available';
+                address = item.location_address || 'Not available';
+              }
             } catch (e) {
               city = 'Not available';
               address = 'Not available';
@@ -99,34 +128,37 @@
             var url;
             try {
               url = item.url.url;
+              // Deprecate after moving to ver 2.0
+              if (settings.version === 2) {
+                url = item.url;
+              }
             } catch (e) {
               url = '\/about\/news\/events';
             }
 
-            output += '<div class=\"media-body\">';
+            output += '<div class="media-body">';
             var eventName;
             if (item.event_name.search('<') === 0) {
               eventName = $(item.event_name).text();
-            }
-            else {
+            }else {
               eventName = item.event_name;
             }
-            output += '<p><a class=\"pop\" id=\"popover' + i + '\"' + 'rel=\"popover\" data-animation=\"true\" data-html=\"true\" data-placement=\"top\" data-trigger=\"hover\" data-delay=\"0\"';
+            output += '<p><a class="pop" id="popover' + i + '"' + 'rel="popover" data-animation="true" data-html="true" data-placement="top" data-trigger="hover" data-delay="0"';
             output += 'data-content="' + popoverContent + '"';
-            output += 'title=\"' + item.event_name + '"';
-            output += 'href=\"' + url + '"';
+            output += 'title="' + item.event_name + '"';
+            output += 'href="' + url + '"';
             output += '>' + eventName + '</a></p>';
-            output += '</div></div>';//end media div
+            output += '</div></div>'; // end media div
             allpops.push('#popover' + i);
             counter += 1;
           }
         });
-        //If there are no active events output error message
+        // If there are no active events output error message
         if (counter === 0) {
-          output += '<div class=\"media\"><div class="media-left">';
-          output += '<div class=\"date-day\"><i class="fa fa-info-circle"></i></div> ';
-          output += '<div class=\"date-month\"></div></div>';
-          output += '<div class=\"media-body\">';
+          output += '<div class="media"><div class="media-left">';
+          output += '<div class="date-day"><i class="fa fa-info-circle"></i></div> ';
+          output += '<div class="date-month"></div></div>';
+          output += '<div class="media-body">';
           output += '<p>There are no upcoming events in this calendar.</p>';
           output += '</div></div>';
         }
@@ -138,7 +170,7 @@
           $(allpops).popover();
         });
       }
-      function crossDomainAjax(url, successCallback) {
+      function crossDomainAjax (url, successCallback) {
         /* IE8 & 9 only Cross domain JSON GET request */
         if ('XDomainRequest' in window && window.XDomainRequest !== null) {
           var xdr = new XDomainRequest(); /* Use Microsoft XDR */
@@ -153,8 +185,8 @@
             }
             successCallback(JSON);
           };
-          xdr.onprogress = function () { };
-          xdr.ontimeout = function () { };
+          xdr.onprogress = function () {};
+          xdr.ontimeout = function () {};
           xdr.onerror = function () {
             _result = false;
           };
@@ -178,17 +210,17 @@
               /* regular embed, last resort */
               $this.addClass('calendar-events-list');
               var output = '';
-              output += '<h2><span class=\"fa-stack\"><i class=\"fa fa-square fa-stack-2x\"></i><i class=\"fa ' + settings.titleIcon + ' fa-stack-1x fa-inverse\"></i> </span> Events</h2>';
-              output = '<iframe width=\"100%\" height=\"425px\" src=\"//data.kingcounty.gov/w/' + settings.calNum + '\"frameborder=\"0\" scrolling=\"no\"></iframe>';
-              output += '<p class=\"all-events\"><a href=\"' + settings.allItemsUrl + '\"><em>' + settings.allItemsUrl + '</em></a></p>';
+              output += '<h2><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa ' + settings.titleIcon + ' fa-stack-1x fa-inverse"></i> </span> Events</h2>';
+              output = '<iframe width="100%" height="425px" src="//data.kingcounty.gov/w/' + settings.calNum + '"frameborder="0" scrolling="no"></iframe>';
+              output += '<p class="all-events"><a href="' + settings.allItemsUrl + '"><em>' + settings.allItemsUrl + '</em></a></p>';
               $this.html(output);
             }
           });
         }
       }
     });
-    //Helper function for Events Calendar function
-    function monthFormat(monthToFormat) {
+    // Helper function for Events Calendar function
+    function monthFormat (monthToFormat) {
       var month = [];
       month[0] = 'JAN';
       month[1] = 'FEB';
