@@ -1,8 +1,6 @@
 (function ($) {
   'use strict';
   $.fn.eventsCalendar = function (options) {
-
-    // Create some defaults, extending them with any options that were provided
     var settings = $.extend({
       url: '',
       calNum: '69gk-ky9a',
@@ -11,12 +9,11 @@
       titleIcon: 'fa-calendar',
       allItemsUrl: '//www.kingcounty.gov/about/news/events',
       allItemsText: 'See all events',
-      filter: '',
       version: 1
     }, options);
 
     // Deprecate after moving to ver 2.0
-    (settings.version === 2) ? settings.calNum = 'wv5q-a3ty' : settings.calNum = settings.calNum;
+    (settings.version === 2 && settings.callNum === '69gk-ky9a') ? settings.calNum = 'wv5q-a3ty' : settings.calNum = settings.calNum;
 
     var $this = this;
     var allpops = [];
@@ -29,12 +26,12 @@
       var dataURL = '//data.kingcounty.gov/resource/' + settings.calNum +
         '.json?';
 
+      // if (settings.filter) {
+        //   dataURL += '&$q=' + settings.filter
+        // }
+
       if (settings.url) {
         dataURL = settings.url;
-      }
-
-      if (settings.filter) {
-        dataURL += '&$q=' + settings.filter;
       }
 
       // Format date: YYYY-MM-DD
@@ -174,8 +171,8 @@
         /* IE8 & 9 only Cross domain JSON GET request */
         if ('XDomainRequest' in window && window.XDomainRequest !== null) {
           var xdr = new XDomainRequest(); /* Use Microsoft XDR */
-          /* 
-          * XDomainRequest object requires a method for each event handler, 
+          /*
+          * XDomainRequest object requires a method for each event handler,
           * even if anonymous, and to set properties explicitly
           */
           xdr.onload = function () {
