@@ -1,36 +1,57 @@
-#sidebar.col-sm-4.col-md-3.sidebar-offcanvas.hidden-print(role='navigation')
+#sidebar.col-sm-4.col-md-3.sidebar-offcanvas.hidden-print(role='navigation', aria-label='Secondary navigation')
   a.sr-only.skip-contents(href="#main-content-sr") Skip to main content
   .panel.panel-default
     .panel-heading
-      .list-group
-        a.active.list-group-item(href='#') King county Executive
-        a.active.sidebar-nav-subsite-heading.list-group-item(href='#') Dow Constantine
+      ul.list-group
+        li.list-group-item
+          a.active(href='#') King County Executive
+        li.list-group-item
+          a.active.sidebar-nav-subsite-heading(href='#') Dow Constantine
     .panel-body
-      .list-group
-        a.list-group-item(href='#') Cras justo odio
-        a.list-group-item(href='#') Dapibus ac facilisis in
-        a.list-group-item(href='#') Level 1
-        .list-group.collapsed
-          a.list-group-item(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Level 2
-          .list-group.collapsed
-            a.list-group-item(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu
-            a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
-            a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Level 3
-            .list-group.collapsed
-              a.list-group-item.active(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
-              a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Level 4 
-              .list-group.collapsed
-                a.list-group-item(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
-                a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
-                a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Level 5 
-                .list-group.collapsed
-                  a.list-group-item(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
-                  a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
-          a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') Morbi leo risus
-        a.collapsed.list-group-item(href='#', data-toggle='collapse', data-target='#two1')
-          | Priorities
-          span.fa.fa-plus.pull-right
-        #two1.list-group.collapse
-          a.list-group-item(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') State of the County 
-          a.list-group-item(href='/exec/PSB/Budget/2014Budget.aspx') 2014 budget 
-        a.list-group-item(href='#') Vestibulum at eros
+      ul.list-group
+        li.list-group-item
+          a(href='#') Cras justo odio
+        li.list-group-item 
+          a(href='#') Dapibus ac facilisis in
+        li.list-group-item
+          a(href='#') Level 1
+          ul.list-group.collapsed
+            li.list-group-item         
+              a(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Level 2
+              ul.list-group.collapsed
+                li.list-group-item
+                  a(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu
+                li.list-group-item
+                  a(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
+                li.list-group-item           
+                  a(href='/exec/PSB/Budget/2014Budget.aspx') Level 3
+                  ul.list-group.collapsed
+                    li.list-group-item
+                      a.active(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
+                    li.list-group-item
+                      a(href='/exec/PSB/Budget/2014Budget.aspx') Level 4 
+                      ul.list-group.collapsed
+                        li.list-group-item
+                          a(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
+                        li.list-group-item
+                          a(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
+                        li.list-group-item
+                          a(href='/exec/PSB/Budget/2014Budget.aspx') Level 5 
+                        ul.list-group.collapsed
+                          li.list-group-item
+                            a(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') Sub menu 
+                          li.list-group-item
+                            a(href='/exec/PSB/Budget/2014Budget.aspx') Sub menu
+              li.list-group-item
+                a(href='/exec/PSB/Budget/2014Budget.aspx') Morbi leo risus
+          li.list-group-item
+            a.collapsed(href='#', data-toggle='collapse', data-target='#two1')
+              | Priorities
+              span.fa.fa-plus.pull-right
+          ul.list-group.collapse#two1
+            li.list-group-item
+              a(href='/elected/executive/constantine/priorities/state-of-the-county/2014-sotc.aspx') State of the County 
+            li.list-group-item
+              a(href='/exec/PSB/Budget/2014Budget.aspx') 2014 budget 
+          li.list-group-item
+            a(href='#') Vestibulum at eros
