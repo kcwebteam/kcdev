@@ -129,6 +129,8 @@
               if (settings.version === 2) {
                 url = item.url;
               }
+              // Remove protocol from string
+              url = url.replace(/(^\w+:|^)/, '');
             } catch (e) {
               url = '\/about\/news\/events';
             }
