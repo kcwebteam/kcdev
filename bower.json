@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.6",
-    "fontawesome": "~4.5.0",
+    "fontawesome": "~4.7.0",
     "jquery": "1.11.3",
     "fitvids": "~1.1.0",
     "yamm3": "~1.1.0",

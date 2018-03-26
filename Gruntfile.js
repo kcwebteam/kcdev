@@ -80,5 +80,5 @@ module.exports = function(grunt) {
     'Compiles all of the assets into to the build directory.',
     ['clean','bower-install','styles', 'scripts', 'jade:development', 'ftp-deploy']
   );
-
+  
 };
