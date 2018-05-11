@@ -6,11 +6,11 @@
   'use strict';
 
   if ($('#nav-xs').css('display') === 'none') {
-    $('#footer-nav .col-sm-4 ul').collapse('show');
+    $('#footer-nav').find('[class^="col-sm-"]').find('ul').collapse('show');
   } else {
-    $('#footer-nav .col-sm-4 ul').collapse('hide');
+    $('#footer-nav').find('[class^="col-sm-"]').find('ul').collapse('hide');
   }
-  $('#footer-nav .col-sm-4 h4').each(function (index) {
+  $('#footer-nav').find('[class^="col-sm-"]').find('h4').each(function (index) {
     $(this).click(function (event) {
       event.preventDefault();
       if ($('#nav-xs').css('display') === 'block') {
